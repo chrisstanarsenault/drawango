@@ -1,28 +1,23 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+   // App.js
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
-
-export default App;
+   import React, { Component, Fragment } from 'react';
+   import './App.css';
+   import Canvas from './canvas';
+   class App extends Component {
+     render() {
+       return (
+         <Fragment>
+           <h3 style={{ textAlign: 'center' }}>Dos Paint</h3>
+           <div className="main">
+             <div className="color-guide">
+               <h5>Color Guide</h5>
+               <div className="user user">User</div>
+               <div className="user guest">Guest</div>
+             </div>
+             <Canvas />
+           </div>
+         </Fragment>
+       );
+     }
+   }
+   export default App;
