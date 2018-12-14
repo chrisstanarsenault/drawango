@@ -11,7 +11,6 @@ import {
 } from "react-device-detect";
 import MobileMainView from './mobileMainView';
 
-
 class App extends Component {
   render() {
     return (
