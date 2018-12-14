@@ -8,8 +8,8 @@ import { v4 } from 'uuid';
 class Canvas extends Component {
   constructor(props) {
     super(props);
-    this.onMouseDown = this.onMouseDown.bind(this);
-    this.onMouseMove = this.onMouseMove.bind(this);
+    this.onTouchStart= this.onTouchStart.bind(this);
+    this.onTouchMove = this.onTouchMove.bind(this);
     this.endPaintEvent = this.endPaintEvent.bind(this);
     this.socket = undefined;
     this.state = {
@@ -24,13 +24,13 @@ class Canvas extends Component {
   line = [];
   // v4 creates a unique id for each user. We used this since there's no auth to tell users apart
   userId = v4();
-  prevPos = { offsetX: 0, offsetY: 0 };
+  prevPos = { pageX: 0, pageY: 0 };
 
 
   onMouseDown({ nativeEvent }) {
     const { offsetX, offsetY } = nativeEvent;
     this.isPainting = true;
-    this.prevPos = { offsetX, offsetY };
+    this.prevPos = { pageX, pageY };
   }
 
   onMouseMove({ nativeEvent }) {
@@ -75,7 +75,7 @@ class Canvas extends Component {
       userId: this.userId,
     };
     // We use the native fetch API to make requests to the server
-    this.socket.send(JSON.stringify(body)); 
+    this.socket.send(JSON.stringify(body));
     this.line = [];
   }
 
@@ -88,7 +88,7 @@ class Canvas extends Component {
   }
 
   componentDidMount() {
-    // Here we set up the properties of the canvas element. 
+    // Here we set up the properties of the canvas element.
     this.canvas.width = 1000;
     this.canvas.height = 800;
     this.ctx = this.canvas.getContext('2d');
@@ -117,7 +117,7 @@ class Canvas extends Component {
   render() {
     return (
       <canvas
-      // We use the ref attribute to get direct access to the canvas element. 
+      // We use the ref attribute to get direct access to the canvas element.
         ref={(ref) => (this.canvas = ref)}
         style={{ background: 'black' }}
         onMouseDown={this.onMouseDown}
