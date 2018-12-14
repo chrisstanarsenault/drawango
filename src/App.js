@@ -22,11 +22,6 @@
             <h1> This is rendered only on mobile </h1>
           </MobileView>
            <div className="main">
-             <div className="color-guide">
-               <h5>Color Guide</h5>
-               <div className="user user">User</div>
-               <div className="user guest">Guest</div>
-             </div>
              <Canvas />
            </div>
          </Fragment>
