@@ -14,7 +14,7 @@
      render() {
        return (
          <Fragment>
-           <h3 style={{ textAlign: 'center' }}>Dos Paint</h3>
+           <h3 style={{ textAlign: 'center' }}>Draw Daddy</h3>
            <BrowserView>
           <h1> This is rendered only in browser </h1>
           </BrowserView>
