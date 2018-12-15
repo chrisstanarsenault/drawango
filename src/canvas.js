@@ -26,42 +26,24 @@ class Canvas extends Component {
   line = [];
   // v4 creates a unique id for each user. We used this since there's no auth to tell users apart
   userId = v4();
-  prevPos = {
-    clientX: 0,
-    clientY: 0
-  };
+
+  prevPos = { clientX: 0, clientY: 0 };
 
 
-  onTouchStart({
-    nativeEvent
-  }) {
+  onTouchStart({ nativeEvent }) {
     const touch = nativeEvent.changedTouches[0];
-    const {
-      clientX,
-      clientY
-    } = touch;
+    const { clientX, clientY } = touch;
     this.isPainting = true;
-    this.prevPos = {
-      clientX,
-      clientY
-    };
+    this.prevPos = { clientX, clientY };
   }
 
-  onTouchMove({
-    nativeEvent
-  }) {
+  onTouchMove({ nativeEvent }) {
     nativeEvent.preventDefault();
     if (this.isPainting) {
       const touch = nativeEvent.changedTouches[0]
-      // console.log(touch);
-      const {
-        clientX,
-        clientY
-      } = touch;
-      const offSetData = {
-        clientX,
-        clientY
-      };
+      const { clientX, clientY } = touch;
+      const offSetData = { clientX, clientY };
+
       // Set the start and stop position of the paint event.
       const positionData = {
         start: { ...this.prevPos
@@ -75,10 +57,12 @@ class Canvas extends Component {
       this.sendPaintData();
     }
   }
-  //   document.body.addEventListener("touchmove", function(event) {
-  //     event.preventDefault();
-  //     event.stopPropagation();
-  // }, false);
+
+//   document.body.addEventListener("touchmove", function(event) {
+//     event.preventDefault();
+//     event.stopPropagation();
+// }, false);
+
 
   endPaintEvent() {
     if (this.isPainting) {
@@ -87,14 +71,9 @@ class Canvas extends Component {
     }
   }
   paint(prevPos, currPos, strokeStyle) {
-    const {
-      clientX,
-      clientY
-    } = currPos;
-    const {
-      clientX: x,
-      clientY: y
-    } = prevPos;
+
+    const { clientX, clientY } = currPos;
+    const { clientX: x, clientY: y } = prevPos;
 
     this.ctx.beginPath();
     this.ctx.strokeStyle = strokeStyle;
@@ -104,10 +83,7 @@ class Canvas extends Component {
     this.ctx.lineTo(clientX, clientY);
     // Visualize the line using the strokeStyle
     this.ctx.stroke();
-    this.prevPos = {
-      clientX,
-      clientY
-    };
+    this.prevPos = { clientX, clientY };
   }
 
 
@@ -133,9 +109,8 @@ class Canvas extends Component {
     // Here we set up the properties of the canvas element.
     this.canvas.width = window.innerWidth;
     this.canvas.height = window.innerHeight;
-    this.canvas.addEventListener("touchmove", function (event) {
-      event.preventDefault();
-    });
+    this.canvas.addEventListener("touchmove", function(event) {
+    event.preventDefault();});
     this.ctx = this.canvas.getContext('2d');
     this.ctx.lineJoin = 'round';
     this.ctx.lineCap = 'round';
@@ -163,27 +138,15 @@ class Canvas extends Component {
   }
 
   render() {
-    return ( <
-      canvas
+    return ( <canvas
       // We use the ref attribute to get direct access to the canvas element.
-      ref = {
-        (ref) => (this.canvas = ref)
-      }
-      style = {
-        {
-          background: 'black'
-        }
-      }
-      onTouchStart = {
-        this.onTouchStart
-      }
-      onTouchEnd = {
-        this.endPaintEvent
-      }
-      // onMouseUp={this.endPaintEvent}
-      onTouchMove = {
-        this.onTouchMove
-      }
+
+        ref={(ref) => (this.canvas = ref)}
+        style={{ background: 'black' }}
+        onTouchStart={this.onTouchStart}
+        onTouchEnd={this.endPaintEvent}
+        // onMouseUp={this.endPaintEvent}
+        onTouchMove={this.onTouchMove}
       />
     );
   }

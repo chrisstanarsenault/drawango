@@ -1,4 +1,4 @@
-  // App.js
+// App.js
 
   import React, { Component, Fragment } from 'react';
   import './App.css';
@@ -36,4 +36,5 @@
       );
     }
   }
-  export default App;
+}
+export default App;
