@@ -13,9 +13,10 @@ class App extends Component {
     super();
     this.state = {
       gameStage: "welcomeStage",
+      mainPlayer: "",
       players: [],
       currentPlayer: "",
-      mainPlayer: ""
+      turns: []
     };
     this.changeGameStage = this.changeGameStage.bind(this);
     this.socket = undefined;
@@ -29,15 +30,19 @@ class App extends Component {
   }
 
   componentDidMount() {
-  const hostname = App.getHostName();
-  const port = 3001;
-  this.socket = new WebSocket("ws://" + hostname + ":" + port);
-  this.socket.onopen = function (event) {
-    console.log('Connected to: ' + event.currentTarget.url);
-  };
-  this.socket.onmessage = event => {
-    const message = JSON.parse(event.data);
-    console.log(message)
+    const hostname = App.getHostName();
+    const port = 3001;
+    this.socket = new WebSocket("ws://" + hostname + ":" + port);
+    this.socket.onopen = function (event) {
+      console.log('Connected to: ' + event.currentTarget.url);
+    };
+    this.socket.onmessage = event => {
+      const message = JSON.parse(event.data);
+      if (message.type === "gameStage"){
+        console.log("check two", message.type)
+        this.setState({ gameStage: message.stage })
+        console.log("check one",this.setState)
+      }    
     }
   }
 
