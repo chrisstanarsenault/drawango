@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 class Welcome extends Component {
   render() {
+
     return (
     <div>
       <h1>Welcome to Draw Daddy</h1>
@@ -9,6 +10,7 @@ class Welcome extends Component {
       <p>Who's all playing: John, Frank, Sam, Rowle</p>
 
       <button>Let's begin!</button>
+      <button onClick={this.props.changeGameStage}> Everyone's in! </button>
     </div>
     )
   }
