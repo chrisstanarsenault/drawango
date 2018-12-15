@@ -89,6 +89,7 @@ class Canvas extends Component {
 
   sendPaintData() {
     const body = {
+      type: "canvas",
       line: this.line,
       userId: this.userId,
     };
@@ -124,15 +125,16 @@ class Canvas extends Component {
     this.socket.onmessage = event => {
       console.log("message from the socket", event)
       const message = JSON.parse(event.data);
-      console.log(message)
-      const {
-        userId,
-        line
-      } = message;
-      if (userId !== this.userId) {
-        line.forEach((position) => {
-          this.paint(position.start, position.stop, this.guestStrokeStyle);
-        });
+      if (message.type === "canvas") {
+        const {
+          userId,
+          line
+        } = message;
+        if (userId !== this.userId) {
+          line.forEach((position) => {
+            this.paint(position.start, position.stop, this.guestStrokeStyle);
+          });
+        }
       }
     }
   }
