@@ -1,14 +1,16 @@
-// canvas.js
-
-import React, { Component } from 'react';
-import { v4 } from 'uuid';
+import React, {
+  Component
+} from 'react';
+import {
+  v4
+} from 'uuid';
 
 //take out as a helper function
 
 class Canvas extends Component {
   constructor(props) {
     super(props);
-    this.onTouchStart= this.onTouchStart.bind(this);
+    this.onTouchStart = this.onTouchStart.bind(this);
     this.onTouchMove = this.onTouchMove.bind(this);
     this.endPaintEvent = this.endPaintEvent.bind(this);
     this.socket = undefined;
@@ -24,6 +26,7 @@ class Canvas extends Component {
   line = [];
   // v4 creates a unique id for each user. We used this since there's no auth to tell users apart
   userId = v4();
+
   prevPos = { clientX: 0, clientY: 0 };
 
 
@@ -40,10 +43,13 @@ class Canvas extends Component {
       const touch = nativeEvent.changedTouches[0]
       const { clientX, clientY } = touch;
       const offSetData = { clientX, clientY };
+
       // Set the start and stop position of the paint event.
       const positionData = {
-        start: { ...this.prevPos },
-        stop: { ...offSetData },
+        start: { ...this.prevPos
+        },
+        stop: { ...offSetData
+        },
       };
       // Add the position to the line array
       this.line = this.line.concat(positionData);
@@ -51,10 +57,12 @@ class Canvas extends Component {
       this.sendPaintData();
     }
   }
+
 //   document.body.addEventListener("touchmove", function(event) {
 //     event.preventDefault();
 //     event.stopPropagation();
 // }, false);
+
 
   endPaintEvent() {
     if (this.isPainting) {
@@ -63,6 +71,7 @@ class Canvas extends Component {
     }
   }
   paint(prevPos, currPos, strokeStyle) {
+
     const { clientX, clientY } = currPos;
     const { clientX: x, clientY: y } = prevPos;
 
@@ -109,26 +118,29 @@ class Canvas extends Component {
     const hostname = Canvas.getHostName();
     const port = 3001;
     this.socket = new WebSocket("ws://" + hostname + ":" + port);
-    this.socket.onopen = function(event) {
-    console.log('Connected to: ' + event.currentTarget.url);
+    this.socket.onopen = function (event) {
+      console.log('Connected to: ' + event.currentTarget.url);
     };
     this.socket.onmessage = event => {
-      console.log("message from the socket",event)
+      console.log("message from the socket", event)
       const message = JSON.parse(event.data);
       console.log(message)
-      const { userId, line } = message;
+      const {
+        userId,
+        line
+      } = message;
       if (userId !== this.userId) {
         line.forEach((position) => {
           this.paint(position.start, position.stop, this.guestStrokeStyle);
         });
       }
+    }
   }
-}
 
   render() {
-    return (
-      <canvas
+    return ( <canvas
       // We use the ref attribute to get direct access to the canvas element.
+
         ref={(ref) => (this.canvas = ref)}
         style={{ background: 'black' }}
         onTouchStart={this.onTouchStart}
