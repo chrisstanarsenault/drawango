@@ -12,7 +12,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      gameStage: "notStarted",
+      gameStage: "welcomeStage",
       players: [],
       currentPlayer: "",
       mainPlayer: ""
@@ -44,10 +44,10 @@ class App extends Component {
   changeGameStage(stage) {
     const gameStage = {
       type: "gameStage",
-      stage,
+      stage
     };
     this.socket.send(JSON.stringify(gameStage));
-    this.setState({ gameStage: stage });
+    this.setState({ gameStage: stage })
     console.log(this.setState);
   }
 
