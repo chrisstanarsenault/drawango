@@ -3,6 +3,7 @@ import MobileNavBar from './mobileNavBar';
 import MobileGuessingScreen from './mobileGuessingScreen';
 import MobileSubmitName from './mobileSubmitName';
 import MobileVotes from './mobileVotes';
+import Canvas from './canvas';
 
 
 class MobileMainView extends Component {
@@ -11,11 +12,12 @@ class MobileMainView extends Component {
     return (
       <div>
         <MobileNavBar/>
-        <MobileGuessingScreen/>
         <MobileSubmitName/>
+        <MobileGuessingScreen/>
         <MobileVotes/>
         <p>Hello Main View for Mobile</p>
-      </div>  
+        <Canvas />
+      </div>
     );
   }
 }
