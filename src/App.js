@@ -16,9 +16,9 @@ class App extends Component {
       mainPlayer: "",
       players: [],
       currentPlayer: "",
-      turns: []
     };
     this.changeGameStage = this.changeGameStage.bind(this);
+    this.takeTurns = this.takeTurns.bind(this);
     this.socket = undefined;
   }
 
@@ -39,11 +39,17 @@ class App extends Component {
     this.socket.onmessage = event => {
       const message = JSON.parse(event.data);
       if (message.type === "gameStage"){
-        console.log("check two", message.type)
         this.setState({ gameStage: message.stage })
-        console.log("check one",this.setState)
-      }    
+      } else if (message.type === "turns") {
+        this.setState({ currentPlayer: message.currentPlayer })
+      }
     }
+  }
+
+  takeTurns() {
+    //probably won't need this method, kept it here for now for tests
+    const test = {type: "turns"};
+    this.socket.send(JSON.stringify(test));
   }
 
   changeGameStage(stage) {
@@ -53,13 +59,13 @@ class App extends Component {
     };
     this.socket.send(JSON.stringify(gameStage));
     this.setState({ gameStage: stage })
-    console.log(this.setState);
   }
 
   render() {
     return (
       <Fragment>
         <h3 style={{ textAlign: 'center' }}>Draw Daddy</h3>
+        <button onClick={this.takeTurns}> take turns </button>
         <BrowserView>
           <DesktopMainView stage={this.state} changeGameStage={this.changeGameStage}/>
         </BrowserView>
