@@ -9,6 +9,20 @@ const server = express()
 
 const wss = new SocketServer({ server });
 
+const game = {
+  gameStage: "welcomeStage",
+  players: ["Valeria","Sylvain","Chris","Alisa"],
+  currentPlayer: "",
+  turns: ["Valeria"]
+}
+
+function takeTurns() {
+  const playersWhoHaveNotGone = game.players.filter(function(obj) { return game.turns.indexOf(obj) === -1; });
+  const currentPlayer = playersWhoHaveNotGone[Math.floor(Math.random()*playersWhoHaveNotGone.length)];
+  game.turns.push(currentPlayer);
+  game.currentPlayer = currentPlayer;
+}
+
 wss.broadcast = function broadcast(data) {
     wss.clients.forEach(function each(ws) {
         ws.send(data);
@@ -17,11 +31,30 @@ wss.broadcast = function broadcast(data) {
 
 
 wss.on('connection', (ws) => {
-    
   console.log('Client connected');
   
+  const gameStage = {
+    type: "gameStage",
+    stage: game.gameStage
+  };
+
+  ws.send(JSON.stringify(gameStage));
+
   ws.on('message', function (event) {
-    wss.broadcast(event);  
+    let data = JSON.parse(event);
+    if (data.type === "gameStage") {
+      game.gameStage = data.stage;
+      console.log(game.gameStage);
+      wss.broadcast(event);  
+    } else if (data.type === "turns"){
+      if (game.players.length === game.turns.length){
+        game.currentPlayer = "";
+        wss.broadcast(JSON.stringify("Game over"));  
+      } else {
+        const player = takeTurns();
+        wss.broadcast(JSON.stringify(player));  
+      }
+  }
   })
 
   ws.on('close', function () {
