@@ -1,40 +1,74 @@
-// App.js
-
-  import React, { Component, Fragment } from 'react';
-  import './App.css';
-  import Canvas from './canvas';
-  import {
-    BrowserView,
-    MobileView,
-    isBrowser,
-    isMobile
-  } from "react-device-detect";
-  import MobileMainView from './mobileMainView';
-  import DesktopMainView from './desktopMainView';
+import React, { Component, Fragment } from 'react';
+import './App.css';
+import {
+  BrowserView,
+  MobileView
+} from "react-device-detect";
+import MobileMainView from './mobileMainView';
+import DesktopMainView from './desktopMainView';
 
 
-  class App extends Component {
-    render() {
-      return (
-        <Fragment>
-          <h3 style={{ textAlign: 'center' }}>Draw Daddy</h3>
-        <BrowserView>
-          <DesktopMainView/>
-        </BrowserView>
-        <MobileView>
-          <MobileMainView/>
-        </MobileView>
-          {/* <div className="main">
-            <div className="color-guide">
-              <h5>Color Guide</h5>
-              <div className="user user">User</div>
-              <div className="user guest">Guest</div>
-            </div>
-            <Canvas />
-          </div> */}
-        </Fragment>
-      );
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      gameStage: "welcomeStage",
+      mainPlayer: "",
+      players: [],
+      currentPlayer: "",
+      turns: []
+    };
+    this.changeGameStage = this.changeGameStage.bind(this);
+    this.socket = undefined;
+  }
+
+  //find out what is a static function
+  static getHostName() {
+    const parser = document.createElement('a')
+    parser.href = document.location;
+    return parser.hostname;
+  }
+
+  componentDidMount() {
+    const hostname = App.getHostName();
+    const port = 3001;
+    this.socket = new WebSocket("ws://" + hostname + ":" + port);
+    this.socket.onopen = function (event) {
+      console.log('Connected to: ' + event.currentTarget.url);
+    };
+    this.socket.onmessage = event => {
+      const message = JSON.parse(event.data);
+      if (message.type === "gameStage"){
+        console.log("check two", message.type)
+        this.setState({ gameStage: message.stage })
+        console.log("check one",this.setState)
+      }    
     }
   }
+
+  changeGameStage(stage) {
+    const gameStage = {
+      type: "gameStage",
+      stage
+    };
+    this.socket.send(JSON.stringify(gameStage));
+    this.setState({ gameStage: stage })
+    console.log(this.setState);
+  }
+
+  render() {
+    return (
+      <Fragment>
+        <h3 style={{ textAlign: 'center' }}>Draw Daddy</h3>
+        <BrowserView>
+          <DesktopMainView stage={this.state} changeGameStage={this.changeGameStage}/>
+        </BrowserView>
+        <MobileView>
+          <MobileMainView stage={this.state} changeGameStage={this.changeGameStage}/>
+        </MobileView>
+      </Fragment>
+    );
+  }
+}
 
 export default App;

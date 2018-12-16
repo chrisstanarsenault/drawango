@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 
 class Welcome extends Component {
+  
+  handleEvent = event => {   
+    this.props.changeGameStage("drawingStage");
+  }
+  
   render() {
     return (
     <div>
@@ -9,6 +14,7 @@ class Welcome extends Component {
       <p>Who's all playing: John, Frank, Sam, Rowle</p>
 
       <button>Let's begin!</button>
+      <button onClick={this.handleEvent}> Everyone's in! </button>
     </div>
     )
   }

@@ -10,6 +10,7 @@
     "react-device-detect": "^1.6.1",
     "react-dom": "^16.6.3",
     "react-scripts": "2.1.1",
+    "react-tappable": "^1.0.4",
     "uuid": "^3.3.2",
     "ws": "^6.1.2"
   },

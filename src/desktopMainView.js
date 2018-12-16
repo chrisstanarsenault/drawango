@@ -7,7 +7,8 @@ class DesktopMainView extends Component {
     return (
       <div>
         <p>"Hello desktop user"</p>
-        <Welcome />
+        <p>Current stage {this.props.stage.gameStage} </p>
+        <Welcome changeGameStage={this.props.changeGameStage}/>
         <Timer />
       </div>
     );
