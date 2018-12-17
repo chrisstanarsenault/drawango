@@ -5,13 +5,14 @@ import DesktopDrawingScreen from './desktopDrawingScreen';
 import DesktopGuessingScreen from './desktopGuessingScreen';
 import DesktopVotingScreen from './desktopVotes';
 import DesktopScoresScreen from './desktopScores';
+import './desktop.scss'
 
 class DesktopMainView extends Component {
 	render() {
 		let view;
 		switch (this.props.stage.gameStage) {
 			case 'welcomeStage':
-				view = <DesktopWelcome changeGameStage={this.props.changeGameStage} />;
+				view = <DesktopWelcome changeGameStage={this.props.changeGameStage} players={this.props.players} />;
 				break;
 			case 'drawingStage':
 				view = <DesktopDrawingScreen changeGameStage={this.props.changeGameStage} />;

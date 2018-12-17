@@ -1,13 +1,16 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class JoinedUsers extends Component {
-  render() {
-    return (
-      <div>
-        <p>Users Joined: Chris, Alisa, Sylvain, Valeria</p>
-      </div>
-    )
-  }
+	render() {
+		return (
+			<div>
+				<u>
+					Users Joined:
+					{this.props.players ? this.props.players.map((player) => <li>{player.name}</li>) : 'none yet'}
+				</u>
+			</div>
+		);
+	}
 }
 
 export default JoinedUsers;
