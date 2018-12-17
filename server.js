@@ -1,3 +1,14 @@
+// This class helps us to keep track of the clients connected
+class Clients {
+  constructor() {
+    this.clientList = {};
+    this.saveClient = this.saveClient.bind(this);
+  }
+  saveClient(username, client) {
+    this.clientList[username] = client;
+  }
+}
+
 const SocketServer = require('ws').Server;
 const express = require('express');
 const clients = new Clients();
@@ -12,16 +23,7 @@ const wss = new SocketServer({
   server
 });
 
-// This class helps us to keep track of the clients connected
-class Clients {
-  constructor() {
-    this.clientList = {};
-    this.saveClient = this.saveClient.bind(this);
-  }
-  saveClient(username, client) {
-    this.clientList[username] = client;
-  }
-}
+
 
 const game = {
   gameStage: "welcomeStage",
