@@ -17,42 +17,45 @@ class MobileMainView extends Component {
   }
 
   render() {
-    if (this.props.stage.gameStage === "welcomeStage") {
+    let view;
+    switch (this.props.stage.gameStage) {
+      case 'welcomeStage':
+        view =  <div>
+                <MobileNavBar/>
+                <MobileSubmitName addPlayerName={this.props.addPlayerName} changeGameStage={this.props.changeGameStage} />
+                </div>
+        break;
+      case 'drawingStage':
+        view =  <div>
+                <MobileNavBar changeGameStage={this.props.changeGameStage}/>
+                <Canvas />
+                </div>
+        break;
+      case 'guessingStage':
+        view =  <div>
+                <MobileNavBar/>
+                <MobileGuessingScreen changeGameStage={this.props.changeGameStage}  addGuess={this.props.addGuess}/>
+                <button onTouchStart={this.handleTapEventTwo}> pick your guess </button>
+                </div>
+        break;
+      case 'votingStage':
+        view =  <div>
+                <MobileNavBar/>
+                <MobileVotes/>
+                </div>
+        break;
+      case 'scoreStage':
+        view =  <div>
+                <MobileNavBar/>
+                <h2>Great job! Score: points!</h2>
+                </div>
+        break;
+    }
     return (
       <div>
-        <MobileNavBar/>
-        <MobileSubmitName addPlayerName={this.props.addPlayerName} changeGameStage={this.props.changeGameStage}/>
+        {view}
       </div>
     );
-    } else if (this.props.stage.gameStage === "drawingStage"){
-      return (
-        <div>
-          <p>Hello Main View for Mobile</p>
-          <p>Current stage {this.props.stage.gameStage} </p>
-          <Canvas />
-          <button onTouchStart={this.handleTapEventOne}> DONE DRAWING </button>
-        </div>
-      );
-    } else if (this.props.stage.gameStage === "guessingStage"){
-      return (
-        <div>
-          <p>Hello Main View for Mobile</p>
-          <p>Current stage {this.props.stage.gameStage} </p>
-          <MobileNavBar/>
-          <MobileGuessingScreen changeGameStage={this.props.changeGameStage}  addGuess={this.props.addGuess}/>
-          <button onTouchStart={this.handleTapEventTwo}> pick your guess </button>
-        </div>
-      );
-    } else if (this.props.stage.gameStage === "votingStage"){
-      return (
-        <div>
-          <p>Hello Main View for Mobile</p>
-          <p>Current stage {this.props.stage.gameStage} </p>
-          <MobileNavBar/>
-          <MobileVotes/>
-        </div>
-      );
-    }
   }
 }
 export default MobileMainView;

@@ -1,11 +1,17 @@
 import React, {Component} from 'react';
 
 class MobileNavBar extends Component {
+
+  handleTapEventOne = event => {
+    event.preventDefault();
+    this.props.changeGameStage("guessingStage");
+  }
+
   render() {
     return (
       <nav>
-        <p>This is the Mobile Nav Bar</p>
         <h1>DRAW ME DADDY</h1>
+        <button onTouchStart={this.handleTapEventOne}> DONE DRAWING </button>
       </nav>
     );
   }
