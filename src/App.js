@@ -116,7 +116,11 @@ class App extends Component {
 				</h3>
 				<button onClick={this.takeTurns}> take turns </button>
 				<BrowserView>
-					<DesktopMainView stage={this.state} changeGameStage={this.changeGameStage} />
+					<DesktopMainView
+						stage={this.state}
+						changeGameStage={this.changeGameStage}
+						players={this.state.players}
+					/>
 				</BrowserView>
 				<MobileView>
 					<MobileMainView
