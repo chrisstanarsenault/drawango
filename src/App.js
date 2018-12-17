@@ -14,8 +14,10 @@ class App extends Component {
     this.state = {
       gameStage: "welcomeStage",
       mainPlayer: "",
-      players: [],
+      players: [{name: "",
+                points: 0}],
       currentPlayer: "",
+      guessChoices: []
     };
     this.changeGameStage = this.changeGameStage.bind(this);
     this.takeTurns = this.takeTurns.bind(this);
@@ -33,8 +35,7 @@ class App extends Component {
     const hostname = App.getHostName();
     const port = 3001;
     this.socket = new WebSocket("ws://" + hostname + ":" + port);
-    this.socket.onopen = function (event) {
-      console.log('Connected to: ' + event.currentTarget.url);
+    this.socket.onopen = function (even ent.currentTarget.url);
     };
     this.socket.onmessage = event => {
       const message = JSON.parse(event.data);
@@ -61,6 +62,22 @@ class App extends Component {
     this.setState({ gameStage: stage })
   }
 
+  addPlayerName = name => {
+    console.log(this.state.players);
+    const previousPlayers = this.state.players;
+    const updatePlayers = [...previousPlayers, {name: name, points: 0}];
+    console.log(updatePlayers);
+    this.setState({players: updatePlayers});
+  }
+// DID THIS UNDER ASSUMPTION THAT PLAYER HAS ONE GUESS AND
+// THEIR GUESS ARE NOT ASSOCIATED WITH THEIR NAME.. basically the vote is what gets the score? IDK
+  addGuess = guess => {
+    const previousGuess = this.state.guessChoices;
+    const updateGuess = [...previousGuess, guess];
+    this.setState({guessChoices: updateGuess});
+  }
+
+
   render() {
     return (
       <Fragment>
@@ -70,7 +87,7 @@ class App extends Component {
           <DesktopMainView stage={this.state} changeGameStage={this.changeGameStage}/>
         </BrowserView>
         <MobileView>
-          <MobileMainView stage={this.state} changeGameStage={this.changeGameStage}/>
+          <MobileMainView  stage={this.state} addPlayerName={this.addPlayerName} addGuess={this.addGuess} changeGameStage={this.changeGameStage}/>
         </MobileView>
       </Fragment>
     );
