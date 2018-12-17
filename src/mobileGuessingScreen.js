@@ -4,6 +4,8 @@ class MobileGuessingScreen extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    const guessInput = event.target.elements.guess;
+    this.props.addGuess(guessInput.value);
     this.props.changeGameStage("votingStage");
     }
 

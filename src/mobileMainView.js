@@ -39,8 +39,8 @@ class MobileMainView extends Component {
           <p>Hello Main View for Mobile</p>
           <p>Current stage {this.props.stage.gameStage} </p>
           <MobileNavBar/>
-          <MobileGuessingScreen changeGameStage={this.props.changeGameStage}/>
-          </* what is this for?? button onTouchStart={this.handleTapEventTwo}> pick your guess </button*/>
+          <MobileGuessingScreen changeGameStage={this.props.changeGameStage}  addGuess={this.props.addGuess}/>
+          <button onTouchStart={this.handleTapEventTwo}> pick your guess </button>
         </div>
       );
     } else if (this.props.stage.gameStage === "votingStage"){
