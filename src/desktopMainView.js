@@ -5,6 +5,7 @@ import DesktopDrawingScreen from './desktopDrawingScreen';
 import DesktopGuessingScreen from './desktopGuessingScreen';
 import DesktopVotingScreen from './desktopVotes';
 import DesktopScoresScreen from './desktopScores';
+import './desktop.scss'
 
 class DesktopMainView extends Component {
 	render() {

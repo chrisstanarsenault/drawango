@@ -9,8 +9,8 @@ class DesktopWelcome extends Component {
 
   render() {
     return (
-    <div>
-      <h1>Welcome to Draw Daddy</h1>
+    <div className="desktopWelcomeContainer">
+      <h1 className="desktopWelcomeTitle">Welcome to Draw Daddy</h1>
       <p>Go to this site on your mobile to play: www.whatever-we-want-this-to-be.com</p>
       <JoinedUsers />
 
