@@ -6,7 +6,7 @@ class MobileSubmitName extends Component {
     event.preventDefault();
     const nameInput = event.target.elements.name;
     this.props.addPlayerName(nameInput.value);
-    this.props.changeGameStage("drawingStage");
+    // this.props.changeGameStage("drawingStage");
     }
 
   render() {
