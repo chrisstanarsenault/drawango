@@ -7,17 +7,13 @@ import { instanceOf } from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
 
 class App extends Component {
+  //below is the logic for the cookies
   static propTypes = {
     cookies: instanceOf(Cookies).isRequired
   };
-
 	constructor(props) {
     super(props);
-    
     const { cookies } = props;
-
-    console.log(cookies)
-
 		this.state = {
 			gameStage: 'welcomeStage',
 			mainPlayer: cookies.get('name') || '',
@@ -29,13 +25,12 @@ class App extends Component {
       ],
 			currentPlayer: '',      
     };
-
+    console.log("this is user's name",this.state.mainPlayer)
 		this.changeGameStage = this.changeGameStage.bind(this);
 		this.takeTurns = this.takeTurns.bind(this);
 		this.socket = undefined;
 	}
 
-	//find out what is a static function
 	static getHostName() {
 		const parser = document.createElement('a');
 		parser.href = document.location;
@@ -44,8 +39,7 @@ class App extends Component {
 
 	componentDidMount() {
 		const hostname = App.getHostName();
-		const port = 3001;
-		this.socket = new WebSocket('ws://' + hostname + ':' + port);
+    this.socket = new WebSocket('ws://' + hostname + ':' + 3001);
 		this.socket.onopen = function(event) {
 			console.log('Connected to: ' + event.currentTarget.url);
 		};
@@ -101,16 +95,6 @@ class App extends Component {
 		this.socket.send(JSON.stringify(setName));
 	};
 
-	// addPlayerList = (name) => {
-	// 	const previousList = this.state.players;
-	// 	const updateList = [ ...previousList, { name: name, points: 0 } ];
-	// 	this.setState({
-	// 		players: updateList
-	// 	});
-	// 	console.log(this.state.players);
-	// };
-	// DID THIS UNDER ASSUMPTION THAT PLAYER HAS ONE GUESS AND
-	// THEIR GUESS ARE NOT ASSOCIATED WITH THEIR NAME.. basically the vote is what gets the score? IDK
 	addGuess = (guess) => {
 		const previousGuess = this.state.guessChoices;
 		const updateGuess = [ ...previousGuess, guess ];
