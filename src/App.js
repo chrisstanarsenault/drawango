@@ -40,21 +40,25 @@ class App extends Component {
 		};
 		this.socket.onmessage = (event) => {
 			const message = JSON.parse(event.data);
-			if (message.type === 'setName') {
-				const previousList = this.state.players;
-				const updateList = [ ...previousList, { name: message.username, points: 0 } ];
-				this.setState({
-					players: updateList
-				});
-				console.log(this.state.players);
-			} else if (message.type === 'gameStage') {
-				this.setState({
-					gameStage: message.stage
-				});
-			} else if (message.type === 'turns') {
-				this.setState({
-					currentPlayer: message.currentPlayer
-				});
+			switch (message.type) {
+				case 'setName':
+					const previousList = this.state.players;
+					const updateList = [ ...previousList, { name: message.username, points: 0 } ];
+					this.setState({
+						players: updateList
+					});
+					console.log(this.state.players);
+					break;
+				case 'gameStage':
+					this.setState({
+						gameStage: message.stage
+					});
+					break;
+				case 'turns':
+					this.setState({
+						currentPlayer: message.currentPlayer
+					});
+					break;
 			}
 		};
 	}
@@ -90,14 +94,6 @@ class App extends Component {
 		this.socket.send(JSON.stringify(setName));
 	};
 
-	// addPlayerList = (name) => {
-	// 	const previousList = this.state.players;
-	// 	const updateList = [ ...previousList, { name: name, points: 0 } ];
-	// 	this.setState({
-	// 		players: updateList
-	// 	});
-	// 	console.log(this.state.players);
-	// };
 	// DID THIS UNDER ASSUMPTION THAT PLAYER HAS ONE GUESS AND
 	// THEIR GUESS ARE NOT ASSOCIATED WITH THEIR NAME.. basically the vote is what gets the score? IDK
 	addGuess = (guess) => {
