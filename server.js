@@ -63,19 +63,24 @@ wss.on('connection', (ws) => {
 
   ws.on('message', function (event) {
     let data = JSON.parse(event);
-    if (data.type === 'setName') {
-      clients.saveClient(data.username, ws);
-      wss.broadcast(event);
-    } else if (data.type === "gameStage") {
-      game.gameStage = data.stage;
-      wss.broadcast(event);
-    } else if (data.type === "turns") {
-      takeTurns();
-      const turns = {
-        type: "turns",
-        currentPlayer: game.currentPlayer
-      };
-      wss.broadcast(JSON.stringify(turns));
+
+    switch (data.type) {
+      case 'setName':
+        clients.saveClient(data.username, ws);
+        wss.broadcast(event);
+        break;
+      case "gameStage":
+        game.gameStage = data.stage;
+        wss.broadcast(event);
+        break;
+      case 'turns':
+        takeTurns();
+        const turns = {
+          type: "turns",
+          currentPlayer: game.currentPlayer
+        };
+        wss.broadcast(JSON.stringify(turns));
+        break;
     }
   })
 
