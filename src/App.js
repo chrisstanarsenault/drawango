@@ -9,13 +9,19 @@ import {
 } from 'react-device-detect';
 import MobileMainView from './mobileMainView';
 import DesktopMainView from './desktopMainView';
+import { instanceOf } from 'prop-types';
+import { withCookies, Cookies } from 'react-cookie';
 
 class App extends Component {
-	constructor() {
-		super();
+  //below is the logic for the cookies
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired
+  };
+	constructor(props) {
+    super(props);
+    const { cookies } = props;
 		this.state = {
-			gameStage: 'welcomeStage',
-			mainPlayer: '',
+			mainPlayer: cookies.get('name') || '',
 			players: [],
 			currentPlayer: '',
 			playerGuess: {}
@@ -25,7 +31,6 @@ class App extends Component {
 		this.socket = undefined;
 	}
 
-	//find out what is a static function
 	static getHostName() {
 		const parser = document.createElement('a');
 		parser.href = document.location;
@@ -68,7 +73,6 @@ class App extends Component {
 	}
 
 	takeTurns() {
-		//probably won't need this method, kept it here for now for tests
 		const test = {
 			type: 'turns'
 		};
@@ -87,17 +91,17 @@ class App extends Component {
 	}
 
 	addPlayerName = (name) => {
-		console.log(name);
+    const { cookies } = this.props;
+    cookies.set('name', name, { path: '/' });
 		this.setState({
 			mainPlayer: name
-		});
+    });
 		const setName = {
 			type: 'setName',
 			username: name
 		};
 		this.socket.send(JSON.stringify(setName));
 	};
-
 
 	addGuess = (guess) => {
     console.log(guess);
@@ -164,4 +168,5 @@ class App extends Component {
 	}
 }
 
-export default App;
+export default withCookies(App);
+
