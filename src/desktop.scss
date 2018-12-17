@@ -1,16 +1,24 @@
 body {
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .desktopWelcomeContainer {
   display: flex;
-  justify-content: center;
+  align-items: center;
   flex-direction: column;
   border: 1px solid black;
     .desktopWelcomeTitle {
-      font-size: 30px;
+      font-size: 3rem;
       border: 1px solid black;
     }
+  p {
+    font-size: 2rem;
+  }
+
+  button {
+    height: 3rem;
+    width: 5rem;
+  }
 }
 
 /* .desktopWelcomeTitle {
