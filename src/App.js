@@ -37,6 +37,7 @@ class App extends Component {
 		return parser.hostname;
 	}
 
+
 	componentDidMount() {
 		const hostname = App.getHostName();
 		const port = 3001;
@@ -71,6 +72,7 @@ class App extends Component {
 			}
 		};
 	}
+
 
 	takeTurns() {
 		const test = {
@@ -166,6 +168,7 @@ class App extends Component {
 			/Fragment>
 		);
 	}
+
 }
 
 export default withCookies(App);

@@ -27,22 +27,22 @@ class Canvas extends Component {
   // v4 creates a unique id for each user. We used this since there's no auth to tell users apart
   userId = v4();
 
-  prevPos = { clientX: 0, clientY: 0 };
+  prevPos = { pageX: 0, pageY: 0 };
 
 
   onTouchStart({ nativeEvent }) {
     const touch = nativeEvent.changedTouches[0];
-    const { clientX, clientY } = touch;
+    const { pageX, pageY } = touch;
     this.isPainting = true;
-    this.prevPos = { clientX, clientY };
+    this.prevPos = { pageX, pageY };
   }
 
   onTouchMove({ nativeEvent }) {
     nativeEvent.preventDefault();
     if (this.isPainting) {
       const touch = nativeEvent.changedTouches[0]
-      const { clientX, clientY } = touch;
-      const offSetData = { clientX, clientY };
+      const { pageX, pageY } = touch;
+      const offSetData = { pageX, pageY };
 
       // Set the start and stop position of the paint event.
       const positionData = {
@@ -58,12 +58,6 @@ class Canvas extends Component {
     }
   }
 
-//   document.body.addEventListener("touchmove", function(event) {
-//     event.preventDefault();
-//     event.stopPropagation();
-// }, false);
-
-
   endPaintEvent() {
     if (this.isPainting) {
       this.isPainting = false;
@@ -72,18 +66,18 @@ class Canvas extends Component {
   }
   paint(prevPos, currPos, strokeStyle) {
 
-    const { clientX, clientY } = currPos;
-    const { clientX: x, clientY: y } = prevPos;
+    const { pageX, pageY } = currPos;
+    const { pageX: x, pageY: y } = prevPos;
 
     this.ctx.beginPath();
     this.ctx.strokeStyle = strokeStyle;
     // Move the the prevPosition of the mouse
     this.ctx.moveTo(x, y);
     // Draw a line to the current position of the mouse
-    this.ctx.lineTo(clientX, clientY);
+    this.ctx.lineTo(pageX, pageY);
     // Visualize the line using the strokeStyle
     this.ctx.stroke();
-    this.prevPos = { clientX, clientY };
+    this.prevPos = { pageX, pageY };
   }
 
 
@@ -137,6 +131,11 @@ class Canvas extends Component {
         }
       }
     }
+  }
+
+    handleTapEventOne = event => {
+    event.preventDefault();
+    this.props.changeGameStage("guessingStage");
   }
 
   render() {
