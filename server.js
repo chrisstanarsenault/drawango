@@ -23,8 +23,6 @@ const wss = new SocketServer({
   server
 });
 
-
-
 const game = {
   gameStage: "welcomeStage",
   players: ["Valeria", "Sylvain", "Chris", "Alisa"],

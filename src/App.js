@@ -3,22 +3,33 @@ import './App.css';
 import { BrowserView, MobileView } from 'react-device-detect';
 import MobileMainView from './mobileMainView';
 import DesktopMainView from './desktopMainView';
+import { instanceOf } from 'prop-types';
+import { withCookies, Cookies } from 'react-cookie';
 
 class App extends Component {
-	constructor() {
-		super();
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired
+  };
+
+	constructor(props) {
+    super(props);
+    
+    const { cookies } = props;
+
+    console.log(cookies)
+
 		this.state = {
 			gameStage: 'welcomeStage',
-			mainPlayer: '',
-			players: [
-				{
-					name: '',
+			mainPlayer: cookies.get('name') || '',
+      players:[
+        {
+					name: "",
 					points: 0
-				}
-			],
-			currentPlayer: '',
-			guessChoices: []
-		};
+        }
+      ],
+			currentPlayer: '',      
+    };
+
 		this.changeGameStage = this.changeGameStage.bind(this);
 		this.takeTurns = this.takeTurns.bind(this);
 		this.socket = undefined;
@@ -60,7 +71,6 @@ class App extends Component {
 	}
 
 	takeTurns() {
-		//probably won't need this method, kept it here for now for tests
 		const test = {
 			type: 'turns'
 		};
@@ -79,10 +89,11 @@ class App extends Component {
 	}
 
 	addPlayerName = (name) => {
-		console.log(name);
+    const { cookies } = this.props;
+    cookies.set('name', name, { path: '/' });
 		this.setState({
 			mainPlayer: name
-		});
+    });
 		const setName = {
 			type: 'setName',
 			username: name
@@ -109,6 +120,7 @@ class App extends Component {
 	};
 
 	render() {
+
 		return (
 			<Fragment>
 				<h3
@@ -135,4 +147,4 @@ class App extends Component {
 	}
 }
 
-export default App;
+export default withCookies(App);
