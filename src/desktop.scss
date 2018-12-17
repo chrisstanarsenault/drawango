@@ -1,0 +1,18 @@
+body {
+  font-size: 20px;
+}
+
+.desktopWelcomeContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid black;
+    .desktopWelcomeTitle {
+      font-size: 30px;
+      border: 1px solid black;
+    }
+}
+
+/* .desktopWelcomeTitle {
+  border: 1px solid black;
+} */
