@@ -1,4 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, {
+  Component,
+  Fragment
+} from 'react';
 import './App.css';
 import {
   BrowserView,
@@ -14,8 +17,10 @@ class App extends Component {
     this.state = {
       gameStage: "welcomeStage",
       mainPlayer: "",
-      players: [{name: "",
-                points: 0}],
+      players: [{
+        name: "",
+        points: 0
+      }],
       currentPlayer: "",
       guessChoices: []
     };
@@ -35,21 +40,28 @@ class App extends Component {
     const hostname = App.getHostName();
     const port = 3001;
     this.socket = new WebSocket("ws://" + hostname + ":" + port);
-    this.socket.onopen = function (even ent.currentTarget.url);
+    this.socket.onopen = function (event) {
+      console.log('Connected to: ' + event.currentTarget.url);
     };
     this.socket.onmessage = event => {
       const message = JSON.parse(event.data);
-      if (message.type === "gameStage"){
-        this.setState({ gameStage: message.stage })
+      if (message.type === "gameStage") {
+        this.setState({
+          gameStage: message.stage
+        })
       } else if (message.type === "turns") {
-        this.setState({ currentPlayer: message.currentPlayer })
+        this.setState({
+          currentPlayer: message.currentPlayer
+        })
       }
     }
   }
 
   takeTurns() {
     //probably won't need this method, kept it here for now for tests
-    const test = {type: "turns"};
+    const test = {
+      type: "turns"
+    };
     this.socket.send(JSON.stringify(test));
   }
 
@@ -59,37 +71,73 @@ class App extends Component {
       stage
     };
     this.socket.send(JSON.stringify(gameStage));
-    this.setState({ gameStage: stage })
+    this.setState({
+      gameStage: stage
+    })
   }
 
   addPlayerName = name => {
     console.log(this.state.players);
     const previousPlayers = this.state.players;
-    const updatePlayers = [...previousPlayers, {name: name, points: 0}];
+    const updatePlayers = [...previousPlayers, {
+      name: name,
+      points: 0
+    }];
     console.log(updatePlayers);
-    this.setState({players: updatePlayers});
+    this.setState({
+      players: updatePlayers
+    });
   }
-// DID THIS UNDER ASSUMPTION THAT PLAYER HAS ONE GUESS AND
-// THEIR GUESS ARE NOT ASSOCIATED WITH THEIR NAME.. basically the vote is what gets the score? IDK
+  // DID THIS UNDER ASSUMPTION THAT PLAYER HAS ONE GUESS AND
+  // THEIR GUESS ARE NOT ASSOCIATED WITH THEIR NAME.. basically the vote is what gets the score? IDK
   addGuess = guess => {
     const previousGuess = this.state.guessChoices;
     const updateGuess = [...previousGuess, guess];
-    this.setState({guessChoices: updateGuess});
+    this.setState({
+      guessChoices: updateGuess
+    });
   }
 
 
   render() {
-    return (
-      <Fragment>
-        <h3 style={{ textAlign: 'center' }}>Draw Daddy</h3>
-        <button onClick={this.takeTurns}> take turns </button>
-        <BrowserView>
-          <DesktopMainView stage={this.state} changeGameStage={this.changeGameStage}/>
-        </BrowserView>
-        <MobileView>
-          <MobileMainView  stage={this.state} addPlayerName={this.addPlayerName} addGuess={this.addGuess} changeGameStage={this.changeGameStage}/>
-        </MobileView>
-      </Fragment>
+    return ( <
+      Fragment >
+      <
+      h3 style = {
+        {
+          textAlign: 'center'
+        }
+      } > Draw Daddy < /h3> <
+      button onClick = {
+        this.takeTurns
+      } > take turns < /button> <
+      BrowserView >
+      <
+      DesktopMainView stage = {
+        this.state
+      }
+      changeGameStage = {
+        this.changeGameStage
+      }
+      /> <
+      /BrowserView> <
+      MobileView >
+      <
+      MobileMainView stage = {
+        this.state
+      }
+      addPlayerName = {
+        this.addPlayerName
+      }
+      addGuess = {
+        this.addGuess
+      }
+      changeGameStage = {
+        this.changeGameStage
+      }
+      /> <
+      /MobileView> <
+      /Fragment>
     );
   }
 }
