@@ -6,7 +6,7 @@ class JoinedUsers extends Component {
 			<div>
 				<p>
 					Users Joined:
-					{this.props.players ? this.props.players.forEach((player) => player.name) : 'none yet'}
+					{this.props.players ? this.props.players.map((player) => player.name) : 'none yet'}
 				</p>
 			</div>
 		);
