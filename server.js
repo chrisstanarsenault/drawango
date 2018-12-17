@@ -63,8 +63,8 @@ wss.on('connection', (ws) => {
 
   ws.on('message', function (event) {
     let data = JSON.parse(event);
-    if (data.type === 'setupName') {
-      clients.saveClient(data.username, client);
+    if (data.type === 'setName') {
+      clients.saveClient(data.username, ws);
       wss.broadcast(event);
     } else if (data.type === "gameStage") {
       game.gameStage = data.stage;
