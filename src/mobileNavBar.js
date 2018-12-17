@@ -3,9 +3,10 @@ import React, {Component} from 'react';
 class MobileNavBar extends Component {
   render() {
     return (
-      <div>
+      <nav>
         <p>This is the Mobile Nav Bar</p>
-      </div>  
+        <h1>DRAW ME DADDY</h1>
+      </nav>
     );
   }
 }

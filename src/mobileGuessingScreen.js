@@ -1,14 +1,26 @@
 import React, {Component} from 'react';
 
 class MobileGuessingScreen extends Component {
+
+  handleSubmit = event => {
+    event.preventDefault();
+    const guessInput = event.target.elements.guess;
+    this.props.addGuess(guessInput.value);
+    this.props.changeGameStage("votingStage");
+    }
+
   render() {
-
-    //this guessing screen needs a form where you can submit your guess 
-
     return (
       <div>
-        <p>This is the guessing screen</p>
-      </div>  
+        <p>Make your guess!</p>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            What's the drawing?:
+            <input type="text" name="guess" />
+          </label>
+          <input type="submit" value="Guess" />
+        </form>
+      </div>
     );
   }
 }
