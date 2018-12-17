@@ -116,8 +116,6 @@ class App extends Component {
     this.socket.send(JSON.stringify(setGuess));
 	};
 
-//guess {mainplayer:this.state.mainPlayer, type: setGuess, content: "guess"}
-
 	render() {
 		return ( <
 			Fragment >
