@@ -4,7 +4,7 @@ import MobileGuessingScreen from './mobileGuessingScreen';
 import MobileSubmitName from './mobileSubmitName';
 import MobileVotes from './mobileVotes';
 import Canvas from './canvas';
-import './mobile.css'
+import './mobile.scss'
 
 class MobileMainView extends Component {
   handleTapEventOne = event => {
