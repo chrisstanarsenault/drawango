@@ -18,7 +18,7 @@ class App extends Component {
 			mainPlayer: '',
 			players: [],
 			currentPlayer: '',
-			guessChoices: []
+			playerGuess: {}
 		};
 		this.changeGameStage = this.changeGameStage.bind(this);
 		this.takeTurns = this.takeTurns.bind(this);
@@ -98,14 +98,22 @@ class App extends Component {
 		this.socket.send(JSON.stringify(setName));
 	};
 
-	// DID THIS UNDER ASSUMPTION THAT PLAYER HAS ONE GUESS AND
-	// THEIR GUESS ARE NOT ASSOCIATED WITH THEIR NAME.. basically the vote is what gets the score? IDK
+
 	addGuess = (guess) => {
-		const previousGuess = this.state.guessChoices;
-		const updateGuess = [...previousGuess, guess];
+    console.log(guess);
+    const player = this.state.mainPlayer
 		this.setState({
-			guessChoices: updateGuess
+			playerGuess: {
+        player: guess
+      }
 		});
+    const setGuess = {
+      type: 'setGuess',
+      player: this.state.mainPlayer,
+      content: guess
+    };
+    console.log(setGuess);
+    this.socket.send(JSON.stringify(setGuess));
 	};
 
 	render() {
