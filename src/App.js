@@ -1,6 +1,12 @@
-import React, { Component, Fragment } from 'react';
+import React, {
+	Component,
+	Fragment
+} from 'react';
 import './App.css';
-import { BrowserView, MobileView } from 'react-device-detect';
+import {
+	BrowserView,
+	MobileView
+} from 'react-device-detect';
 import MobileMainView from './mobileMainView';
 import DesktopMainView from './desktopMainView';
 
@@ -10,12 +16,7 @@ class App extends Component {
 		this.state = {
 			gameStage: 'welcomeStage',
 			mainPlayer: '',
-			players: [
-				{
-					name: '',
-					points: 0
-				}
-			],
+			players: [],
 			currentPlayer: '',
 			guessChoices: []
 		};
@@ -35,7 +36,7 @@ class App extends Component {
 		const hostname = App.getHostName();
 		const port = 3001;
 		this.socket = new WebSocket('ws://' + hostname + ':' + port);
-		this.socket.onopen = function(event) {
+		this.socket.onopen = function (event) {
 			console.log('Connected to: ' + event.currentTarget.url);
 		};
 		this.socket.onmessage = (event) => {
@@ -43,7 +44,10 @@ class App extends Component {
 			switch (message.type) {
 				case 'setName':
 					const previousList = this.state.players;
-					const updateList = [ ...previousList, { name: message.username, points: 0 } ];
+					const updateList = [...previousList, {
+						name: message.username,
+						points: 0
+					}];
 					this.setState({
 						players: updateList
 					});
@@ -98,39 +102,56 @@ class App extends Component {
 	// THEIR GUESS ARE NOT ASSOCIATED WITH THEIR NAME.. basically the vote is what gets the score? IDK
 	addGuess = (guess) => {
 		const previousGuess = this.state.guessChoices;
-		const updateGuess = [ ...previousGuess, guess ];
+		const updateGuess = [...previousGuess, guess];
 		this.setState({
 			guessChoices: updateGuess
 		});
 	};
 
 	render() {
-		return (
-			<Fragment>
-				<h3
-					style={{
-						textAlign: 'center'
-					}}
-				>
-					Draw Daddy
-				</h3>
-				<button onClick={this.takeTurns}> take turns </button>
-				<BrowserView>
-					<DesktopMainView
-						stage={this.state}
-						changeGameStage={this.changeGameStage}
-						players={this.state.players}
-					/>
-				</BrowserView>
-				<MobileView>
-					<MobileMainView
-						stage={this.state}
-						addPlayerName={this.addPlayerName}
-						addGuess={this.addGuess}
-						changeGameStage={this.changeGameStage}
-					/>
-				</MobileView>
-			</Fragment>
+		return ( <
+			Fragment >
+			<
+			h3 style = {
+				{
+					textAlign: 'center'
+				}
+			} >
+			Draw Daddy <
+			/h3> <
+			button onClick = {
+				this.takeTurns
+			} > take turns < /button> <
+			BrowserView >
+			<
+			DesktopMainView stage = {
+				this.state
+			}
+			changeGameStage = {
+				this.changeGameStage
+			}
+			players = {
+				this.state.players
+			}
+			/> <
+			/BrowserView> <
+			MobileView >
+			<
+			MobileMainView stage = {
+				this.state
+			}
+			addPlayerName = {
+				this.addPlayerName
+			}
+			addGuess = {
+				this.addGuess
+			}
+			changeGameStage = {
+				this.changeGameStage
+			}
+			/> <
+			/MobileView> <
+			/Fragment>
 		);
 	}
 }
