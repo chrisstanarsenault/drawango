@@ -61,6 +61,12 @@ class App extends Component {
     this.setState({ gameStage: stage })
   }
 
+  addPlayerName = name => {
+    const oldNames = this.state.players;
+    const updateNames = [...oldNames, name];
+    this.setState({players: updateNames});
+  }
+
   render() {
     return (
       <Fragment>
@@ -68,9 +74,10 @@ class App extends Component {
         <button onClick={this.takeTurns}> take turns </button>
         <BrowserView>
           <DesktopMainView stage={this.state} changeGameStage={this.changeGameStage}/>
+           <MobileMainView addPlayerName={this.addPlayerName} stage={this.state} changeGameStage={this.changeGameStage}/>
         </BrowserView>
         <MobileView>
-          <MobileMainView stage={this.state} changeGameStage={this.changeGameStage}/>
+          <MobileMainView addPlayerName={this.addPlayerName} stage={this.state} changeGameStage={this.changeGameStage}/>
         </MobileView>
       </Fragment>
     );

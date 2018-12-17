@@ -20,10 +20,9 @@ class MobileMainView extends Component {
     if (this.props.stage.gameStage === "welcomeStage") {
     return (
       <div>
-        <p>Hello Main View for Mobile</p>
         <MobileNavBar/>
-        <MobileSubmitName/>
-      </div>  
+        <MobileSubmitName addPlayerName={this.props.addPlayerName} changeGameStage={this.props.changeGameStage}/>
+      </div>
     );
     } else if (this.props.stage.gameStage === "drawingStage"){
       return (
@@ -32,7 +31,7 @@ class MobileMainView extends Component {
           <p>Current stage {this.props.stage.gameStage} </p>
           <Canvas />
           <button onTouchStart={this.handleTapEventOne}> DONE DRAWING </button>
-        </div>  
+        </div>
       );
     } else if (this.props.stage.gameStage === "guessingStage"){
       return (
@@ -40,9 +39,9 @@ class MobileMainView extends Component {
           <p>Hello Main View for Mobile</p>
           <p>Current stage {this.props.stage.gameStage} </p>
           <MobileNavBar/>
-          <MobileGuessingScreen/>
-          <button onTouchStart={this.handleTapEventTwo}> pick your guess </button>
-        </div>  
+          <MobileGuessingScreen changeGameStage={this.props.changeGameStage}/>
+          </* what is this for?? button onTouchStart={this.handleTapEventTwo}> pick your guess </button*/>
+        </div>
       );
     } else if (this.props.stage.gameStage === "votingStage"){
       return (
@@ -51,7 +50,7 @@ class MobileMainView extends Component {
           <p>Current stage {this.props.stage.gameStage} </p>
           <MobileNavBar/>
           <MobileVotes/>
-        </div>  
+        </div>
       );
     }
   }
