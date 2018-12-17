@@ -68,8 +68,7 @@ wss.on('connection', (ws) => {
     if (data.type === 'setupName') {
       clients.saveClient(data.username, client);
       wss.broadcast(event);
-    }
-    if (data.type === "gameStage") {
+    } else if (data.type === "gameStage") {
       game.gameStage = data.stage;
       wss.broadcast(event);
     } else if (data.type === "turns") {
