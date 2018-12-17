@@ -54,10 +54,6 @@ wss.broadcast = function broadcast(data) {
 
 wss.on('connection', (ws) => {
   console.log('Client connected');
-  ws.on('message', (msg) => {
-    const parsedMsg = Json.parse(msg);
-
-  });
 
   const gameStage = {
     type: "gameStage",
