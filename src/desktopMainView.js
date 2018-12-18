@@ -32,7 +32,7 @@ class DesktopMainView extends Component {
 				<p>Hello desktop user</p>
 				<p>Current stage: {this.props.stage.gameStage} </p>
 				{view}
-				{/* <Timer /> */}
+				<Timer />
 			</div>
 		);
 	}
