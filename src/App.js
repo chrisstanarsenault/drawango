@@ -58,9 +58,7 @@ class App extends Component {
 					this.setState({ gameStage: message.stage});
 					break;
 				case 'turns':
-					this.setState({
-						currentPlayer: message.currentPlayer
-					});
+					this.setState({ currentPlayer: message.currentPlayer});
 					break;
 				default:
 				throw new Error("Unknown event type " + message.type)
@@ -68,10 +66,9 @@ class App extends Component {
 		};
 	}
 
-	//potentially we won't need this function
 	takeTurns() {
-		const test = { type: 'turns'};
-		this.socket.send(JSON.stringify(test));
+		const takeTurns = { type: 'turns'};
+		this.socket.send(JSON.stringify(takeTurns));
 	}
 
 	changeGameStage(stage) {
@@ -84,12 +81,9 @@ class App extends Component {
 	}
 
 	addPlayerName = (name) => {
-		//Set the cookie
     const { cookies } = this.props;
 		cookies.set('name', name, { path: '/' });
-		//Update the player's name
 		this.setState({ mainPlayer: name });
-		//Broadcast to the rest of the players that a user has joined the game
 		const setName = {
 			type: 'setName',
 			player: name
@@ -110,33 +104,12 @@ class App extends Component {
 	};
 
 	render() {
-		return ( <
-			Fragment >
-			<
-			h3 style = {
-				{
-					textAlign: 'center'
-				}
-			} >
-			Draw Daddy <
-			/h3> <
-			button onClick = {
-				this.takeTurns
-			} > take turns < /button> <
-			BrowserView >
-			<
-			DesktopMainView stage = {
-				this.state
-			}
-			changeGameStage = {
-				this.changeGameStage
-			}
-			players = {
-				this.state.players
-			}
-			/> <
-			/BrowserView> <
-			MobileView >
+		return ( <Fragment >
+			<h3 style={{ textAlign: 'center' }}> Draw Daddy </h3> 
+			<BrowserView >
+				<DesktopMainView gameData={this.state} changeGameStage={this.changeGameStage} takeTurns={this.takeTurns}/> 
+			</BrowserView> 
+			<MobileView >
 			<
 			MobileMainView stage = {
 				this.state

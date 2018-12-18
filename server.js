@@ -37,6 +37,7 @@ wss.broadcast = function broadcast(data) {
 
 wss.on('connection', (ws) => {
   console.log('Client connected');
+
   const welcomePack = {
     type: "welcomePack",
     players: game.players,
@@ -44,7 +45,6 @@ wss.on('connection', (ws) => {
     gameStage: game.gameStage,
     playerGuess: game.playerGuess
   };
-  console.log("this is the welcome pack", welcomePack)
   ws.send(JSON.stringify(welcomePack));
 
   ws.on('message', function (event) {
@@ -54,12 +54,19 @@ wss.on('connection', (ws) => {
         const addPlayer = { name: data.player, points: 0 }
         game.players.push(addPlayer);
         const players = {
-        type: "addPlayer",
-        player: data.player
-      };
-      console.log("adding player",players)
-      wss.broadcast(JSON.stringify(players));
+          type: "addPlayer",
+          player: data.player
+        };
+        wss.broadcast(JSON.stringify(players));
         break;
+      case 'turns':
+        takeTurns();
+        const turns = {
+          type: "turns",
+          currentPlayer: game.currentPlayer
+        };
+        wss.broadcast(JSON.stringify(turns));
+        break
       case 'setGuess':
         const player = data['player'];
         const content = data.content;
@@ -69,15 +76,7 @@ wss.on('connection', (ws) => {
       case "gameStage":
         game.gameStage = data.stage;
         wss.broadcast(event);
-        break;
-      case 'turns':
-        takeTurns();
-        const turns = {
-          type: "turns",
-          currentPlayer: game.currentPlayer
-        };
-        wss.broadcast(JSON.stringify(turns));
-        break;
+        break;;
       default:
 			throw new Error("Unknown event type " + data.type)
     }
