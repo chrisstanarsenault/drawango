@@ -21,7 +21,7 @@ class App extends Component {
 			players: [],
 			currentPlayer: '',
 			playerGuess: {},
-			line: []
+			line: [],
 		};
 		this.changeGameStage = this.changeGameStage.bind(this);
 		this.takeTurns = this.takeTurns.bind(this);
@@ -50,11 +50,10 @@ class App extends Component {
 					this.setState({ players: message.players });
 					this.setState({ currentPlayer: message.currentPlayer.name });
 					this.setState({ playerGuess: message.playerGuess });
+					this.setState({ draw: message.draw });
 					break
 				case 'addPlayer':
-					const previousList = this.state.players;
-					const updateList = [...previousList, { name: message.player, points: 0}];
-					this.setState({ players: updateList });
+					this.setState({ players: message.players });
 					break;
 				case 'gameStage':
 					this.setState({ gameStage: message.stage});

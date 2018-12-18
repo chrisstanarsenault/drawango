@@ -16,7 +16,14 @@ class MobileMainView extends Component {
   render() {
 
     let view;
-
+    let draw;
+    this.props.gameData.players.forEach(player => { 
+      if (player.name === this.props.gameData.currentPlayer) {
+        draw = player.task;
+        console.log(player);
+      }
+    });
+ 
     switch (this.props.gameData.gameStage) {
 
       case 'welcomeStage':
@@ -29,8 +36,10 @@ class MobileMainView extends Component {
       case 'drawingStage':
         if (this.props.gameData.currentPlayer === this.props.gameData.mainPlayer) {
           view =  <div>
-                    <Canvas gameData={this.props.gameData} sendPaintData={this.props.sendPaintData}/>
+                    <MobileNavBar/>
                     <button onTouchStart={this.handleEvent}> Done Drawing </button>
+                    <p>Your turn! Draw a {draw}</p>
+                    <Canvas gameData={this.props.gameData} sendPaintData={this.props.sendPaintData}/>
                   </div>
         } else {
           view =  <div>
