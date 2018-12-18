@@ -106,32 +106,27 @@ class App extends Component {
     this.socket.send(JSON.stringify(setGuess));
 	};
 
+	sendPaintData(line) {
+    const lineData = {
+      type: "canvas",
+      line
+    };
+    this.socket.send(JSON.stringify(lineData));
+  }
+
 	render() {
-		return ( <Fragment >
-			<h3 style={{ textAlign: 'center' }}> Draw Daddy </h3> 
-			<BrowserView >
-				<DesktopMainView gameData={this.state} changeGameStage={this.changeGameStage} takeTurns={this.takeTurns}/> 
-			</BrowserView> 
-			<MobileView >
-			<
-			MobileMainView stage = {
-				this.state
-			}
-			addPlayerName = {
-				this.addPlayerName
-			}
-			addGuess = {
-				this.addGuess
-			}
-			changeGameStage = {
-				this.changeGameStage
-			}
-			/> <
-			/MobileView> <
-			/Fragment>
+		return ( 
+			<Fragment >
+				<h3 style={{ textAlign: 'center' }}> Draw Daddy </h3> 
+				<BrowserView >
+					<DesktopMainView gameData={this.state} changeGameStage={this.changeGameStage} takeTurns={this.takeTurns}/> 
+				</BrowserView> 
+				<MobileView >
+					<MobileMainView stage={this.state} addPlayerName={this.addPlayerName} addGuess={this.addGuess} changeGameStage={this.changeGameStage}/> 
+				</MobileView>
+			</Fragment>
 		);
 	}
-
 }
 
 export default withCookies(App);

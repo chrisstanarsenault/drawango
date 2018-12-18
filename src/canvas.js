@@ -7,6 +7,7 @@ class Canvas extends Component {
     this.onTouchStart = this.onTouchStart.bind(this);
     this.onTouchMove = this.onTouchMove.bind(this);
     this.endPaintEvent = this.endPaintEvent.bind(this);
+    
     //replace this later
     this.socket = undefined;
   }
