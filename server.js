@@ -43,10 +43,11 @@ wss.on('connection', (ws) => {
 
   const welcomePack = {
     type: "welcomePack",
+    gameStage: game.gameStage,
     players: game.players,
     currentPlayer: game.currentPlayer,
-    gameStage: game.gameStage,
     playerGuess: game.playerGuess,
+    line: game.line
   };
   ws.send(JSON.stringify(welcomePack));
 
@@ -71,7 +72,6 @@ wss.on('connection', (ws) => {
         const turns = {
           type: "turns",
           currentPlayer: game.currentPlayer,
-          draw: draw
         };
         wss.broadcast(JSON.stringify(turns));
         break
@@ -81,21 +81,18 @@ wss.on('connection', (ws) => {
         break
       case 'setGuess':
         game.playerGuess[data.player] = data.guess;
-        const guess = {
+        const guesses = {
           type: "addGuess",
           guesses: game.playerGuess
         };
-        wss.broadcast(JSON.stringify(guess));
+        wss.broadcast(JSON.stringify(guesses));
         break;
       case "gameStage":
         game.gameStage = data.stage;
         wss.broadcast(event);
         break;
-      case "canvas":
-        console.log("hi");
-        break;
       default:
-			throw new Error("Unknown event type " + data.type);
+			  throw new Error("Unknown event type " + data.type);
     }
   })
 

@@ -57,7 +57,6 @@ class App extends Component {
 					break;
         case 'addGuess':
           this.setState({ playerGuess: message.guesses});
-          console.log("statemotherfucker", this.state.playerGuess);
           break;
 				case 'gameStage':
 					this.setState({ gameStage: message.stage });
@@ -68,11 +67,8 @@ class App extends Component {
 				case 'canvas':
 					this.setState({ line: message.line});
 					break;
-        case 'canvas':
-          console.log("hi");
-          break;
 				default:
-				throw new Error("Unknown event type " + message.type)
+					throw new Error("Unknown event type " + message.type)
 			}
 		};
 	}
