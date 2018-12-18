@@ -24,7 +24,7 @@ class App extends Component {
 			mainPlayer: cookies.get('name') || '',
 			players: [],
 			currentPlayer: '',
-			playerGuess: {}
+			playerGuess: []
 		};
 		this.changeGameStage = this.changeGameStage.bind(this);
 		this.takeTurns = this.takeTurns.bind(this);
@@ -59,6 +59,17 @@ class App extends Component {
 					});
 					console.log(this.state.players);
 					break;
+        // case 'setGuess':
+        //   const previousGuess = this.state.playerGuess;
+        //   const player = message.player;
+        //   const content = message.content;
+        //   const updateGuess = {
+        //        player: content
+        //   }};
+        //   this.setState({
+        //       playerGuess: { previousGuess, updateGuess }
+        //   });
+        //   break;
 				case 'gameStage':
 					this.setState({
 						gameStage: message.stage
@@ -104,71 +115,38 @@ class App extends Component {
 		};
 		this.socket.send(JSON.stringify(setName));
 	};
-
+// game.playerGuess[player] = content;
 	addGuess = (guess) => {
-    console.log(guess);
-    const player = this.state.mainPlayer
-		this.setState({
-			playerGuess: {
-        player: guess
-      }
-		});
+    const player = this.state.mainPlayer;
+    const newGuess = {}
+    newGuess[this.state.mainPlayer] = guess;
+    const previousGuess = this.state.playerGuess;
+    const updateGuess = [...previousGuess, newGuess]
+    this.setState({
+      playerGuess: updateGuess
+    });
     const setGuess = {
       type: 'setGuess',
       player: this.state.mainPlayer,
       content: guess
     };
-    console.log(setGuess);
     this.socket.send(JSON.stringify(setGuess));
 	};
 
-	render() {
-		return ( <
-			Fragment >
-			<
-			h3 style = {
-				{
-					textAlign: 'center'
-				}
-			} >
-			Draw Daddy <
-			/h3> <
-			button onClick = {
-				this.takeTurns
-			} > take turns < /button> <
-			BrowserView >
-			<
-			DesktopMainView stage = {
-				this.state
-			}
-			changeGameStage = {
-				this.changeGameStage
-			}
-			players = {
-				this.state.players
-			}
-			/> <
-			/BrowserView> <
-			MobileView >
-			<
-			MobileMainView stage = {
-				this.state
-			}
-			addPlayerName = {
-				this.addPlayerName
-			}
-			addGuess = {
-				this.addGuess
-			}
-			changeGameStage = {
-				this.changeGameStage
-			}
-			/> <
-			/MobileView> <
-			/Fragment>
-		);
-	}
-
+	 render() {
+    return (
+      <Fragment>
+       <h3 style = {{textAlign: 'center'}} >Draw Daddy </h3>
+        <button onClick = {this.takeTurns} > take turns </button>
+        <BrowserView >
+           <DesktopMainView stage = {this.state} changeGameStage = {this.changeGameStage} players = {this.state.players}/>
+        </BrowserView>
+        <MobileView >
+           <MobileMainView stage = {this.state} addPlayerName = {this.addPlayerName} addGuess = {this.addGuess} changeGameStage = {this.changeGameStage} playerGuess = {this.state.playerGuess}/>
+        </MobileView>
+      </Fragment>
+    );
+  }
 }
 
 export default withCookies(App);

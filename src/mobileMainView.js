@@ -29,6 +29,7 @@ class MobileMainView extends Component {
       case 'drawingStage':
         view =  <div>
                 <MobileNavBar changeGameStage={this.props.changeGameStage}/>
+                <button onTouchStart={this.handleTapEventOne}> DONE DRAWING </button>
                 <Canvas />
                 </div>
         break;
@@ -42,7 +43,7 @@ class MobileMainView extends Component {
       case 'votingStage':
         view =  <div>
                 <MobileNavBar/>
-                <MobileVotes/>
+                <MobileVotes playerGuess={this.props.playerGuess}/>
                 </div>
         break;
       case 'scoreStage':

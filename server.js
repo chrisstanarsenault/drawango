@@ -28,7 +28,7 @@ const game = {
   players: ["Valeria", "Sylvain", "Chris", "Alisa"],
   currentPlayer: "",
   turns: ["Valeria"],
-  playerGuess: {}
+  playerGuess: []
 }
 
 function takeTurns() {
@@ -72,6 +72,7 @@ wss.on('connection', (ws) => {
         const player = data['player'];
         const content = data.content;
         game.playerGuess[player] = content;
+        console.log(event);
         wss.broadcast(event);
         break;
       case "gameStage":
