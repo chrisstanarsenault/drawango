@@ -1,28 +1,31 @@
-import React, {Component} from 'react';
+                                                                                    import React, {Component} from 'react';
 
 class Timer extends Component {
 
 
 
   render() {
-    // let timeleft = 30;
-    // var downloadTimer = setInterval(function () {
-    //   document.getElementById("countTimer").value = 30 - --timeleft;
-    //   if (timeleft <= 0)
-    //     clearInterval(downloadTimer);
-    // }, 1000);
+    // Progress Bar Timer
+    let timeleftBar = 30;
+    var downloadTimerBar = setInterval(function () {
+      document.getElementById("progressBar").value = 30 - --timeleftBar;
+      if (timeleftBar <= 0)
+        clearInterval(downloadTimerBar);
+    }, 1000);
 
-    var timeleft = 30;
-    var downloadTimer = setInterval(function(){
-    timeleft--;
-    document.getElementById("countTimer").textContent = timeleft;
-    if(timeleft <= 0)
-        clearInterval(downloadTimer);
+    // Countdown Timer
+    let timeleftCounter = 30;
+    let downloadTimerCounter = setInterval(function(){
+    timeleftCounter--;
+    document.getElementById("countTimer").textContent = timeleftCounter;
+    if(timeleftCounter <= 0)
+        clearInterval(downloadTimerCounter);
     },1000);
+
     return (
-      <div>
-        {/* <progress value="0" max="30" id="progressBar"></progress> */}
-        <p>You have <span id="countTimer">30</span> seconds left!</p>
+      <div className="desktopNavBarContainer">
+        <progress value="0" max="30" id="progressBar"></progress>
+        <span id="countTimer">30</span>
       </div>
     );
   }

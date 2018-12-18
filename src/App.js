@@ -1,30 +1,26 @@
-import React, {
-	Component,
-	Fragment
-} from 'react';
+import React, { Component, Fragment } from 'react';
 import './App.css';
-import {
-	BrowserView,
-	MobileView
-} from 'react-device-detect';
+import { BrowserView, MobileView } from 'react-device-detect';
 import MobileMainView from './mobileMainView';
 import DesktopMainView from './desktopMainView';
 import { instanceOf } from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
 
 class App extends Component {
-  //below is the logic for the cookies
+  //below is to set up cookies
   static propTypes = {
     cookies: instanceOf(Cookies).isRequired
-  };
+	};
+
 	constructor(props) {
     super(props);
     const { cookies } = props;
 		this.state = {
+			gameStage: '',
 			mainPlayer: cookies.get('name') || '',
 			players: [],
 			currentPlayer: '',
-			playerGuess: []
+			playerGuess: {}
 		};
 		this.changeGameStage = this.changeGameStage.bind(this);
 		this.takeTurns = this.takeTurns.bind(this);
@@ -37,7 +33,6 @@ class App extends Component {
 		return parser.hostname;
 	}
 
-
 	componentDidMount() {
 		const hostname = App.getHostName();
 		const port = 3001;
@@ -48,48 +43,39 @@ class App extends Component {
 		this.socket.onmessage = (event) => {
 			const message = JSON.parse(event.data);
 			switch (message.type) {
-				case 'setName':
+				case 'welcomePack':
+					this.setState({ gameStage: message.gameStage });
+					this.setState({ players: message.players });
+					this.setState({ currentPlayer: message.currentPlayer });
+					this.setState({ playerGuess: message.playerGuess });
+					break
+				case 'addPlayer':
 					const previousList = this.state.players;
-					const updateList = [...previousList, {
-						name: message.username,
-						points: 0
-					}];
-					this.setState({
-						players: updateList
-					});
-					console.log(this.state.players);
+					const updateList = [...previousList, { name: message.player, points: 0}];
+					this.setState({ players: updateList });
 					break;
-        // case 'setGuess':
-        //   const previousGuess = this.state.playerGuess;
-        //   const player = message.player;
-        //   const content = message.content;
-        //   const updateGuess = {
-        //        player: content
-        //   }};
-        //   this.setState({
-        //       playerGuess: { previousGuess, updateGuess }
-        //   });
-        //   break;
+        case 'addGuess':
+          this.setState({ playerGuess: message.guesses});
+          console.log("statemotherfucker", this.state.playerGuess);
+          break;
 				case 'gameStage':
-					this.setState({
-						gameStage: message.stage
-					});
+					this.setState({ gameStage: message.stage });
 					break;
 				case 'turns':
-					this.setState({
-						currentPlayer: message.currentPlayer
-					});
+					this.setState({ currentPlayer: message.currentPlayer});
 					break;
+        case 'canvas':
+          console.log("hi");
+          break;
+				default:
+				throw new Error("Unknown event type " + message.type)
 			}
 		};
 	}
 
-
 	takeTurns() {
-		const test = {
-			type: 'turns'
-		};
-		this.socket.send(JSON.stringify(test));
+		const takeTurns = { type: 'turns'};
+		this.socket.send(JSON.stringify(takeTurns));
 	}
 
 	changeGameStage(stage) {
@@ -98,37 +84,25 @@ class App extends Component {
 			stage
 		};
 		this.socket.send(JSON.stringify(gameStage));
-		this.setState({
-			gameStage: stage
-		});
+		this.setState({ gameStage: stage });
 	}
 
 	addPlayerName = (name) => {
     const { cookies } = this.props;
-    cookies.set('name', name, { path: '/' });
-		this.setState({
-			mainPlayer: name
-    });
+		cookies.set('name', name, { path: '/' });
+		this.setState({ mainPlayer: name });
 		const setName = {
 			type: 'setName',
-			username: name
+			player: name
 		};
 		this.socket.send(JSON.stringify(setName));
 	};
-// game.playerGuess[player] = content;
+
 	addGuess = (guess) => {
-    const player = this.state.mainPlayer;
-    const newGuess = {}
-    newGuess[this.state.mainPlayer] = guess;
-    const previousGuess = this.state.playerGuess;
-    const updateGuess = [...previousGuess, newGuess]
-    this.setState({
-      playerGuess: updateGuess
-    });
     const setGuess = {
       type: 'setGuess',
       player: this.state.mainPlayer,
-      content: guess
+      guess
     };
     this.socket.send(JSON.stringify(setGuess));
 	};
@@ -139,10 +113,10 @@ class App extends Component {
        <h3 style = {{textAlign: 'center'}} >Draw Daddy </h3>
         <button onClick = {this.takeTurns} > take turns </button>
         <BrowserView >
-           <DesktopMainView stage = {this.state} changeGameStage = {this.changeGameStage} players = {this.state.players}/>
+           <DesktopMainView gameData = {this.state} changeGameStage = {this.changeGameStage} takeTurns={this.takeTurns}/>
         </BrowserView>
         <MobileView >
-           <MobileMainView stage = {this.state} addPlayerName = {this.addPlayerName} addGuess = {this.addGuess} changeGameStage = {this.changeGameStage} playerGuess = {this.state.playerGuess}/>
+           <MobileMainView gameData = {this.state} addPlayerName = {this.addPlayerName} addGuess = {this.addGuess} changeGameStage = {this.changeGameStage}/>
         </MobileView>
       </Fragment>
     );

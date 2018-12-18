@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import MobileNavBar from './mobileNavBar';
 import MobileGuessingScreen from './mobileGuessingScreen';
 import MobileSubmitName from './mobileSubmitName';
-import MobileVotes from './mobileVotes';
+import MobileVotesScreen from './mobileVotesScreen';
 import Canvas from './canvas';
 import './mobile.scss'
 
@@ -19,11 +19,11 @@ class MobileMainView extends Component {
 
   render() {
     let view;
-    switch (this.props.stage.gameStage) {
+    switch (this.props.gameData.gameStage) {
       case 'welcomeStage':
         view =  <div>
                 <MobileNavBar/>
-                <MobileSubmitName addPlayerName={this.props.addPlayerName} changeGameStage={this.props.changeGameStage} />
+                <MobileSubmitName addPlayerName={this.props.addPlayerName} changeGameStage={this.props.changeGameStage} gameData={this.props.gameData} />
                 </div>
         break;
       case 'drawingStage':
@@ -43,7 +43,7 @@ class MobileMainView extends Component {
       case 'votingStage':
         view =  <div>
                 <MobileNavBar/>
-                <MobileVotes playerGuess={this.props.playerGuess}/>
+                <MobileVotesScreen gameData={this.props.gameData}/>
                 </div>
         break;
       case 'scoreStage':

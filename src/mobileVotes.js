@@ -1,20 +1,13 @@
 import React, {Component} from 'react';
 
-class MobileVotes extends Component {
-
-  getGuess = () => {
-    console.log("this from votes", this.props.playerGuess);
-    for (var guess in this.props.playerGuess) {
-      return this.props.playerGuess[guess];
-    }
-  }
-
+class Votes extends Component {
   render() {
     return (
       <div>
-        <p>{this.getGuess()}</p>
+        <p>{this.props.guess}</p>
       </div>
     );
   }
 }
-export default MobileVotes;
+
+export default Votes;
