@@ -20,10 +20,12 @@ class App extends Component {
 			mainPlayer: cookies.get('name') || '',
 			players: [],
 			currentPlayer: '',
-			playerGuess: {}
+			playerGuess: {},
+			line: []
 		};
 		this.changeGameStage = this.changeGameStage.bind(this);
 		this.takeTurns = this.takeTurns.bind(this);
+		this.sendPaintData = this.sendPaintData.bind(this);
 		this.socket = undefined;
 	}
 
@@ -46,7 +48,7 @@ class App extends Component {
 				case 'welcomePack':
 					this.setState({ gameStage: message.gameStage });
 					this.setState({ players: message.players });
-					this.setState({ currentPlayer: message.currentPlayer });
+					this.setState({ currentPlayer: message.currentPlayer.name });
 					this.setState({ playerGuess: message.playerGuess });
 					break
 				case 'addPlayer':
@@ -58,9 +60,10 @@ class App extends Component {
 					this.setState({ gameStage: message.stage});
 					break;
 				case 'turns':
-					this.setState({
-						currentPlayer: message.currentPlayer
-					});
+					this.setState({ currentPlayer: message.currentPlayer.name});
+					break;
+				case 'canvas':
+					this.setState({ line: message.line});
 					break;
 				default:
 				throw new Error("Unknown event type " + message.type)
@@ -68,13 +71,12 @@ class App extends Component {
 		};
 	}
 
-	//potentially we won't need this function
 	takeTurns() {
-		const test = { type: 'turns'};
-		this.socket.send(JSON.stringify(test));
+		const takeTurns = { type: 'turns'};
+		this.socket.send(JSON.stringify(takeTurns));
 	}
 
-	changeGameStage(stage) {
+	changeGameStage = (stage) => {
 		const gameStage = {
 			type: 'gameStage',
 			stage
@@ -84,12 +86,9 @@ class App extends Component {
 	}
 
 	addPlayerName = (name) => {
-		//Set the cookie
     const { cookies } = this.props;
 		cookies.set('name', name, { path: '/' });
-		//Update the player's name
 		this.setState({ mainPlayer: name });
-		//Broadcast to the rest of the players that a user has joined the game
 		const setName = {
 			type: 'setName',
 			player: name
@@ -109,51 +108,26 @@ class App extends Component {
     this.socket.send(JSON.stringify(setGuess));
 	};
 
+  sendPaintData = (line) => {
+    const body = {
+      type: "canvas",
+      line: line,
+    };
+    this.socket.send(JSON.stringify(body));
+  }
+
 	render() {
-		return ( <Fragment >
-			<h3 style = {
-				{
-					textAlign: 'center'
-				}
-			} >
-			Draw Daddy <
-			/h3> <
-			button onClick = {
-				this.takeTurns
-			} > take turns < /button> <
-			BrowserView >
-			<
-			DesktopMainView stage = {
-				this.state
-			}
-			changeGameStage = {
-				this.changeGameStage
-			}
-			players = {
-				this.state.players
-			}
-			/> <
-			/BrowserView> <
-			MobileView >
-			<
-			MobileMainView stage = {
-				this.state
-			}
-			addPlayerName = {
-				this.addPlayerName
-			}
-			addGuess = {
-				this.addGuess
-			}
-			changeGameStage = {
-				this.changeGameStage
-			}
-			/> <
-			/MobileView> <
-			/Fragment>
+		return (
+			<Fragment >
+				<BrowserView >
+					<DesktopMainView gameData={this.state} changeGameStage={this.changeGameStage} takeTurns={this.takeTurns}/>
+				</BrowserView>
+				<MobileView >
+					<MobileMainView gameData={this.state} addPlayerName={this.addPlayerName} sendPaintData={this.sendPaintData} addGuess={this.addGuess} changeGameStage={this.changeGameStage}/>
+				</MobileView>
+			</Fragment>
 		);
 	}
-
 }
 
 export default withCookies(App);

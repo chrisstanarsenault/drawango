@@ -3,15 +3,16 @@ import Canvas from './canvas'
 
 class DesktopDrawingScreen extends Component {
 
-  handleEvent = event => {
-    this.props.changeGameStage("guessingStage");
-  }
+  // handleEvent = event => {
+  //   this.props.changeGameStage("guessingStage");
+  // }
 
   render() {
     return (
       <div>
-        <Canvas />
-        <button onClick={this.handleEvent}> Test Next Stage </button>
+        <p> {this.props.gameData.currentPlayer} is drawing </p>
+        <Canvas gameData={this.props.gameData} />
+        <button onClick={this.handleEvent}> Test Next Stage - this needs to be removed later! </button>
       </div>
     )
   }

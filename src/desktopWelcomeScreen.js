@@ -4,14 +4,14 @@ import JoinedUsers from './desktopJoinedUsers';
 class DesktopWelcome extends Component {
 	handleEvent = (event) => {
 		this.props.changeGameStage('drawingStage');
+		this.props.takeTurns();
+		console.log("this is the console",this.props.gameData)
 	};
 
 	render() {
-
-		const players = this.props.players.map(player => (
-      <JoinedUsers key={player} player={player} />
+		const players = this.props.gameData.players.map(player => (
+      <JoinedUsers key={player} player={player}/>
     ));
-
 		return (
       <div>
         <div className="desktopWelcomeContainer">
