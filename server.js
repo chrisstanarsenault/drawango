@@ -23,13 +23,12 @@ const wss = new SocketServer({
   server
 });
 
-
-
 const game = {
   gameStage: "welcomeStage",
   players: ["Valeria", "Sylvain", "Chris", "Alisa"],
   currentPlayer: "",
-  turns: ["Valeria"]
+  turns: ["Valeria"],
+  playerGuess: {}
 }
 
 function takeTurns() {
@@ -67,6 +66,12 @@ wss.on('connection', (ws) => {
     switch (data.type) {
       case 'setName':
         clients.saveClient(data.username, ws);
+        wss.broadcast(event);
+        break;
+      case 'setGuess':
+        const player = data['player'];
+        const content = data.content;
+        game.playerGuess[player] = content;
         wss.broadcast(event);
         break;
       case "gameStage":
