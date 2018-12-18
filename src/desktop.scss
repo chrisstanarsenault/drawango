@@ -58,6 +58,24 @@ button {
 
 
 
+@media (min-width: 1025px) {
+#desktop-canvas-container {
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+    canvas {
+      border: 3rem solid transparent;
+      // width: 50rem;
+      // height: 50rem;
+      // margin: 10rem;
+      // padding: 10rem;
+      border-image: url(https://d1yn1kh78jj1rr.cloudfront.net/image/preview/rDtN98Qoishumwih/colored-drops-border-design-vector_7Jc0XM_SB_PM.jpg)50 round;
+    }
+  }
+}
+
+
 
 #progressBar {
   /* Reset the default appearance */
