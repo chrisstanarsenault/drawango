@@ -4,7 +4,7 @@ class Votes extends Component {
   render() {
     return (
       <div>
-        <p>{this.props.guess}</p>
+        <button>{this.props.guess}</button>
       </div>
     );
   }

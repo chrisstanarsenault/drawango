@@ -17,11 +17,10 @@ class MobileMainView extends Component {
 
     let view;
 
-    let draw;
+    let task;
     this.props.gameData.players.forEach(player => { 
       if (player.name === this.props.gameData.currentPlayer) {
-        draw = player.task;
-        console.log(player);
+        task = player.task;
       }
     });
  
@@ -40,7 +39,7 @@ class MobileMainView extends Component {
           view =  <div>
                     <MobileNavBar/>
                     <button onTouchStart={this.handleEvent}> Done Drawing </button>
-                    <p>Your turn! Draw a {draw}</p>
+                    <p>Your turn! Draw a {task}</p>
                     <Canvas gameData={this.props.gameData} sendPaintData={this.props.sendPaintData}/>
                   </div>
         } else {
@@ -52,17 +51,31 @@ class MobileMainView extends Component {
         break;
 
       case 'guessingStage':
-        view =  <div>
-                  <MobileNavBar/>
-                  <MobileGuessingScreen addGuess={this.props.addGuess}/>
-                </div>
+        if (this.props.gameData.currentPlayer === this.props.gameData.mainPlayer) {
+          view =  <div>
+                    <MobileNavBar/>
+                    <p> This is the default page </p>
+                  </div>
+        } else {
+          view =  <div>
+                    <MobileNavBar/>
+                    <MobileGuessingScreen addGuess={this.props.addGuess}/>
+                  </div>
+        }
         break;
 
       case 'votingStage':
-        view =  <div>
-                <MobileNavBar/>
-                <MobileVotesScreen gameData={this.props.gameData}/>
+        if (this.props.gameData.currentPlayer === this.props.gameData.mainPlayer) {
+          view =  <div>
+                    <MobileNavBar/>
+                    <p> This is the default page </p>
                 </div>
+        } else {
+          view =  <div>
+                  <MobileNavBar/>
+                  <MobileVotesScreen gameData={this.props.gameData}/>
+                  </div>
+        }
         break;
 
       case 'scoreStage':
