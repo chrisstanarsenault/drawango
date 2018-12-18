@@ -17,6 +17,8 @@ const game = {
   line: []
 }
 
+const draw = "Cat"
+
 function takeTurns() {
   if (game.players.length === game.turns.length) {
     game.currentPlayer = "gameOver";
@@ -41,10 +43,11 @@ wss.on('connection', (ws) => {
 
   const welcomePack = {
     type: "welcomePack",
+    gameStage: game.gameStage,
     players: game.players,
     currentPlayer: game.currentPlayer,
-    gameStage: game.gameStage,
-    playerGuess: game.playerGuess
+    playerGuess: game.playerGuess,
+    line: game.line
   };
   ws.send(JSON.stringify(welcomePack));
 
@@ -52,19 +55,23 @@ wss.on('connection', (ws) => {
     let data = JSON.parse(event);
     switch (data.type) {
       case 'setName':
-        const addPlayer = { name: data.player, points: 0 }
+        const addPlayer = { 
+          name: data.player, 
+          points: 0,
+          task: draw
+        }
         game.players.push(addPlayer);
         const players = {
           type: "addPlayer",
-          player: data.player
-        };
+          players: game.players
+        }
         wss.broadcast(JSON.stringify(players));
         break;
       case 'turns':
         takeTurns();
         const turns = {
           type: "turns",
-          currentPlayer: game.currentPlayer
+          currentPlayer: game.currentPlayer,
         };
         wss.broadcast(JSON.stringify(turns));
         break
@@ -73,17 +80,20 @@ wss.on('connection', (ws) => {
         wss.broadcast(event);
         break
       case 'setGuess':
-        const player = data['player'];
-        const content = data.content;
-        game.playerGuess[player] = content;
-        wss.broadcast(event);
+        game.playerGuess[data.player] = data.guess;
+        game.playerGuess[game.currentPlayer.name] = draw;
+        const guesses = {
+          type: "addGuess",
+          guesses: game.playerGuess
+        };
+        wss.broadcast(JSON.stringify(guesses));
         break;
       case "gameStage":
         game.gameStage = data.stage;
         wss.broadcast(event);
-        break;;
+        break;
       default:
-			throw new Error("Unknown event type " + data.type)
+			  throw new Error("Unknown event type " + data.type);
     }
   })
 
