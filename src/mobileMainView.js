@@ -8,6 +8,11 @@ import './mobile.scss'
 
 class MobileMainView extends Component {
 
+  handleEvent = (event) => {
+    event.preventDefault();
+    this.props.changeGameStage("guessingStage");
+  }
+
   render() {
 
     let view;
@@ -24,8 +29,8 @@ class MobileMainView extends Component {
       case 'drawingStage':
         if (this.props.gameData.currentPlayer === this.props.gameData.mainPlayer) {
           view =  <div>
-                    <MobileNavBar/>
                     <Canvas gameData={this.props.gameData} sendPaintData={this.props.sendPaintData}/>
+                    <button onTouchStart={this.handleEvent}> Done Drawing </button>
                   </div>
         } else {
           view =  <div>

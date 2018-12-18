@@ -119,7 +119,6 @@ class App extends Component {
 	render() {
 		return ( 
 			<Fragment >
-				<h3 style={{ textAlign: 'center' }}> Draw Daddy </h3> 
 				<BrowserView >
 					<DesktopMainView gameData={this.state} changeGameStage={this.changeGameStage} takeTurns={this.takeTurns}/> 
 				</BrowserView> 

@@ -59,25 +59,23 @@ class Canvas extends Component {
   componentDidMount() {
     this.canvas.width = window.innerWidth;
     this.canvas.height = window.innerHeight;
-
-    //this we need the one below???
     this.canvas.addEventListener("touchmove", function(event) {
     event.preventDefault();});
-      ////////
     this.ctx = this.canvas.getContext('2d');
     this.ctx.lineJoin = 'round';
     this.ctx.lineCap = 'round';
     this.ctx.lineWidth = 5;
-    
     const line = this.props.gameData.line;
-    console.log("checking the line on the desktop", line)
     line.forEach((position) => {
       this.paint(position.start, position.stop, this.strokeStyle);
     });
   }
 
   componentDidUpdate() {
-    this.scrollToBottom();
+    const line = this.props.gameData.line;
+    line.forEach((position) => {
+      this.paint(position.start, position.stop, this.strokeStyle);
+    });
   }
 
   render() {
