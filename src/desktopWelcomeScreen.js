@@ -7,12 +7,16 @@ class DesktopWelcome extends Component {
 	};
 
 	render() {
+
+		const players = this.props.players.map(player => (
+      <JoinedUsers key={player} player={player} />
+    ));
+
 		return (
 			<div className="desktopWelcomeContainer">
 				<h1 className="desktopWelcomeTitle">Welcome to Draw Daddy</h1>
 				<p>Go to this site on your mobile to play: www.whatever-we-want-this-to-be.com</p>
-				<JoinedUsers players={this.props.players} />
-
+				<p>{players}</p>
 				<button onClick={this.handleEvent}> Everyone's in! </button>
 			</div>
 		);
@@ -20,3 +24,4 @@ class DesktopWelcome extends Component {
 }
 
 export default DesktopWelcome;
+

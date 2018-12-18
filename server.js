@@ -11,7 +11,7 @@ const wss = new SocketServer({
 const game = {
   gameStage: "welcomeStage",
   players: ["Valeria", "Sylvain", "Chris", "Alisa"],
-  currentPlayer: "",
+  currentPlayer: "Valeria",
   turns: ["Valeria"],
   playerGuess: {}
 }
@@ -37,11 +37,15 @@ wss.broadcast = function broadcast(data) {
 
 wss.on('connection', (ws) => {
   console.log('Client connected');
-  const gameStage = {
-    type: "gameStage",
-    stage: game.gameStage
+  const welcomePack = {
+    type: "welcomePack",
+    players: game.players,
+    currentPlayer: game.currentPlayer,
+    gameStage: game.gameStage,
+    playerGuess: game.playerGuess
   };
-  ws.send(JSON.stringify(gameStage));
+  console.log("this is the welcome pack", welcomePack)
+  ws.send(JSON.stringify(welcomePack));
 
   ws.on('message', function (event) {
     let data = JSON.parse(event);

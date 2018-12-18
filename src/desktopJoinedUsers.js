@@ -4,10 +4,7 @@ class JoinedUsers extends Component {
 	render() {
 		return (
 			<div>
-				<u>
-					Users Joined:
-					{this.props.players ? this.props.players.map((player) => <li>{player.name}</li>) : 'none yet'}
-				</u>
+				<p>{this.props.player.name}</p>
 			</div>
 		);
 	}

@@ -43,11 +43,16 @@ class App extends Component {
 		this.socket.onmessage = (event) => {
 			const message = JSON.parse(event.data);
 			switch (message.type) {
+				case 'welcomePack':
+					this.setState({ gameStage: message.gameStage });
+					this.setState({ players: message.players });
+					this.setState({ currentPlayer: message.currentPlayer });
+					this.setState({ playerGuess: message.playerGuess });
+					break
 				case 'addPlayer':
 					const previousList = this.state.players;
 					const updateList = [...previousList, { name: message.player, points: 0}];
 					this.setState({ players: updateList });
-					console.log("list of players",this.state);
 					break;
 				case 'gameStage':
 					this.setState({ gameStage: message.stage});
@@ -93,7 +98,6 @@ class App extends Component {
 	};
 
 	addGuess = (guess) => {
-    const player = this.state.mainPlayer
 		this.setState({
 			playerGuess: { player: guess }
 		});
