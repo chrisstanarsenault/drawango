@@ -10,10 +10,10 @@ class MobileSubmitName extends Component {
 
 	render() {
 
-		if (this.props.gameData.mainPlayer){
+		if (this.props.gameData.mainPlayer){ 
 			return (
-			  <div>
-				  <p> default page</p>
+				<div>
+					<p>default page</p>
 				</div>
 			);
 		}
@@ -31,4 +31,5 @@ class MobileSubmitName extends Component {
 		);
 	}
 }
+
 export default MobileSubmitName;

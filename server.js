@@ -13,8 +13,11 @@ const game = {
   players: [],
   currentPlayer: "",
   turns: [],
-  playerGuess: {}
+  playerGuess: {},
+  line: []
 }
+
+const draw = "Cat"
 
 function takeTurns() {
   if (game.players.length === game.turns.length) {
@@ -43,7 +46,7 @@ wss.on('connection', (ws) => {
     players: game.players,
     currentPlayer: game.currentPlayer,
     gameStage: game.gameStage,
-    playerGuess: game.playerGuess
+    playerGuess: game.playerGuess,
   };
   ws.send(JSON.stringify(welcomePack));
 
@@ -51,21 +54,30 @@ wss.on('connection', (ws) => {
     let data = JSON.parse(event);
     switch (data.type) {
       case 'setName':
-        const addPlayer = { name: data.player, points: 0 }
+        const addPlayer = { 
+          name: data.player, 
+          points: 0,
+          task: draw
+        }
         game.players.push(addPlayer);
         const players = {
           type: "addPlayer",
-          player: data.player
-        };
+          players: game.players
+        }
         wss.broadcast(JSON.stringify(players));
         break;
       case 'turns':
         takeTurns();
         const turns = {
           type: "turns",
-          currentPlayer: game.currentPlayer
+          currentPlayer: game.currentPlayer,
+          draw: draw
         };
         wss.broadcast(JSON.stringify(turns));
+        break
+      case 'canvas':
+        game.line = data.line;
+        wss.broadcast(event);
         break
       case 'setGuess':
         game.playerGuess[data.player] = data.guess;

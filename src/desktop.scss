@@ -21,16 +21,43 @@ body {
   p {
     font-size: 2rem;
   }
+}
 
-  button {
-    height: 3rem;
-    width: 10rem;
-    border-radius: .7rem;
-    background-color: darkturquoise;
-    font-size: 1.1rem;
-    font-weight: bold;
+#desktop-players-title-container {
+  display:flex;
+  justify-content: center;
+    #desktop-players-title {
+      font-size: 2.5rem;
   }
 }
+
+#desktop-user-name-container {
+  display: flex;
+  position: relative;
+  #individual-name-container {
+    border: 6px groove lightgrey;
+    position: relative;
+    font-size: 3rem;
+    font-family: $cabinFont;
+    margin: 2rem 5rem;
+    padding: 1.2rem;
+  }
+
+}
+
+
+
+button {
+  height: 3rem;
+  width: 10rem;
+  border-radius: .7rem;
+  background-color: darkturquoise;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+
+
 
 #progressBar {
   /* Reset the default appearance */
@@ -60,7 +87,7 @@ progress[value]::-webkit-progress-value {
     background-size: 35px 20px, 100% 100%, 100% 100%;
 }
 
-.desktopNavBarContainer {
+.desktopTimerContainer {
   display: flex;
   flex-direction: column;
   align-items: center;

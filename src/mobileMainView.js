@@ -7,57 +7,83 @@ import Canvas from './canvas';
 import './mobile.scss'
 
 class MobileMainView extends Component {
-  handleTapEventOne = event => {
+
+  handleEvent = (event) => {
     event.preventDefault();
     this.props.changeGameStage("guessingStage");
   }
 
-  handleTapEventTwo = event => {
-    event.preventDefault();
-    this.props.changeGameStage("votingStage");
-  }
-
   render() {
+
     let view;
+
+    let draw;
+    this.props.gameData.players.forEach(player => { 
+      if (player.name === this.props.gameData.currentPlayer) {
+        draw = player.task;
+        console.log(player);
+      }
+    });
+ 
     switch (this.props.gameData.gameStage) {
+
       case 'welcomeStage':
         view =  <div>
-                <MobileNavBar/>
-                <MobileSubmitName addPlayerName={this.props.addPlayerName} changeGameStage={this.props.changeGameStage} gameData={this.props.gameData} />
+                  <MobileNavBar/>
+                  <MobileSubmitName addPlayerName={this.props.addPlayerName} changeGameStage={this.props.changeGameStage} gameData={this.props.gameData}/>
                 </div>
         break;
+
       case 'drawingStage':
-        view =  <div>
-                <MobileNavBar changeGameStage={this.props.changeGameStage}/>
-                <button onTouchStart={this.handleTapEventOne}> DONE DRAWING </button>
-                <Canvas />
-                </div>
+        
+        if (this.props.gameData.currentPlayer === this.props.gameData.mainPlayer) {
+          view =  <div>
+                    <MobileNavBar/>
+                    <button onTouchStart={this.handleEvent}> Done Drawing </button>
+                    <p>Your turn! Draw a {draw}</p>
+                    <Canvas gameData={this.props.gameData} sendPaintData={this.props.sendPaintData}/>
+                  </div>
+        } else {
+          view =  <div>
+                    <MobileNavBar/>
+                    <p> This is the default page </p>
+                  </div>
+        }
         break;
+
       case 'guessingStage':
         view =  <div>
-                <MobileNavBar/>
-                <MobileGuessingScreen changeGameStage={this.props.changeGameStage}  addGuess={this.props.addGuess}/>
-                <button onTouchStart={this.handleTapEventTwo}> pick your guess </button>
+                  <MobileNavBar/>
+                  <MobileGuessingScreen addGuess={this.props.addGuess}/>
                 </div>
         break;
+
       case 'votingStage':
         view =  <div>
                 <MobileNavBar/>
                 <MobileVotesScreen gameData={this.props.gameData}/>
                 </div>
         break;
+
       case 'scoreStage':
         view =  <div>
-                <MobileNavBar/>
-                <h2>Great job! Score: points!</h2>
+                  <MobileNavBar/>
                 </div>
         break;
+
+      default:
+        view =  <div>
+                  <p>This is the default case. There is a problem if you see this</p>
+                </div>
     }
+
     return (
       <div>
         {view}
       </div>
     );
+  
   }
 }
+
 export default MobileMainView;
