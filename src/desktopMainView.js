@@ -18,7 +18,7 @@ class DesktopMainView extends Component {
 				view = <DesktopDrawingScreen changeGameStage={this.props.changeGameStage} gameData={this.props.gameData}/>;
 				break;
 			case 'guessingStage':
-				view = <DesktopGuessingScreen changeGameStage={this.props.changeGameStage}/>;
+				view = <DesktopGuessingScreen changeGameStage={this.props.changeGameStage} gameData={this.props.gameData}/>;
 				break;
 			case 'votingStage':
 				view = <DesktopVotingScreen changeGameStage={this.props.changeGameStage}/>;
