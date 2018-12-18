@@ -13,7 +13,8 @@ const game = {
   players: [],
   currentPlayer: "",
   turns: [],
-  playerGuess: {}
+  playerGuess: {},
+  line: []
 }
 
 function takeTurns() {
@@ -65,9 +66,12 @@ wss.on('connection', (ws) => {
           type: "turns",
           currentPlayer: game.currentPlayer
         };
+        console.log("the turns fucntion is triggered",turns)
         wss.broadcast(JSON.stringify(turns));
         break
       case 'canvas':
+        game.line = data.line;
+        console.log(game.line);
         wss.broadcast(event);
         break
       case 'setGuess':

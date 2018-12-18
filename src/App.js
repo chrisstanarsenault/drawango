@@ -46,7 +46,7 @@ class App extends Component {
 				case 'welcomePack':
 					this.setState({ gameStage: message.gameStage });
 					this.setState({ players: message.players });
-					this.setState({ currentPlayer: message.currentPlayer });
+					this.setState({ currentPlayer: message.currentPlayer.name });
 					this.setState({ playerGuess: message.playerGuess });
 					break
 				case 'addPlayer':
@@ -58,7 +58,8 @@ class App extends Component {
 					this.setState({ gameStage: message.stage});
 					break;
 				case 'turns':
-					this.setState({ currentPlayer: message.currentPlayer});
+					this.setState({ currentPlayer: message.currentPlayer.name});
+					console.log("this is the proof that the state has been updated", this.state.currentPlayer)
 					break;
 				case 'canvas':
 					console.log("canvas went through")
@@ -106,14 +107,6 @@ class App extends Component {
     this.socket.send(JSON.stringify(setGuess));
 	};
 
-	sendPaintData(line) {
-    const lineData = {
-      type: "canvas",
-      line
-    };
-    this.socket.send(JSON.stringify(lineData));
-  }
-
 	render() {
 		return ( 
 			<Fragment >
@@ -122,7 +115,7 @@ class App extends Component {
 					<DesktopMainView gameData={this.state} changeGameStage={this.changeGameStage} takeTurns={this.takeTurns}/> 
 				</BrowserView> 
 				<MobileView >
-					<MobileMainView stage={this.state} addPlayerName={this.addPlayerName} addGuess={this.addGuess} changeGameStage={this.changeGameStage}/> 
+					<MobileMainView gameData={this.state} addPlayerName={this.addPlayerName} addGuess={this.addGuess} changeGameStage={this.changeGameStage}/> 
 				</MobileView>
 			</Fragment>
 		);

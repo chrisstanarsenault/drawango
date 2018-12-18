@@ -10,8 +10,7 @@ class MobileNavBar extends Component {
   render() {
     return (
       <nav>
-        <h1>DRAW ME DADDY</h1>
-        <button onTouchStart={this.handleTapEventOne}> DONE DRAWING </button>
+        <h1>DRAW ME DADDY - this is a nav bar</h1>
       </nav>
     );
   }

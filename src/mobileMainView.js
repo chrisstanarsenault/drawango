@@ -7,56 +7,67 @@ import Canvas from './canvas';
 import './mobile.scss'
 
 class MobileMainView extends Component {
-  handleTapEventOne = event => {
-    event.preventDefault();
-    this.props.changeGameStage("guessingStage");
-  }
-
-  handleTapEventTwo = event => {
-    event.preventDefault();
-    this.props.changeGameStage("votingStage");
-  }
 
   render() {
+
     let view;
-    switch (this.props.stage.gameStage) {
+
+    switch (this.props.gameData.gameStage) {
+
       case 'welcomeStage':
         view =  <div>
-                <MobileNavBar/>
-                <MobileSubmitName addPlayerName={this.props.addPlayerName} changeGameStage={this.props.changeGameStage} stage={this.props.stage} />
+                  <MobileNavBar/>
+                  <MobileSubmitName addPlayerName={this.props.addPlayerName} gameData={this.props.gameData}/>
                 </div>
         break;
+
       case 'drawingStage':
-        view =  <div>
-                <MobileNavBar changeGameStage={this.props.changeGameStage}/>
-                <Canvas />
-                </div>
+        if (this.props.gameData.currentPlayer === this.props.gameData.mainPlayer) {
+          view =  <div>
+                    <MobileNavBar changeGameStage={this.props.changeGameStage}/>
+                    <Canvas gameData={this.props.gameData}/>
+                  </div>
+        } else {
+          view =  <div>
+                    <MobileNavBar/>
+                    <p> This is the default page </p>
+                  </div>
+        }
         break;
+
       case 'guessingStage':
         view =  <div>
-                <MobileNavBar/>
-                <MobileGuessingScreen changeGameStage={this.props.changeGameStage}  addGuess={this.props.addGuess}/>
-                <button onTouchStart={this.handleTapEventTwo}> pick your guess </button>
+                  <MobileNavBar/>
+                  <MobileGuessingScreen addGuess={this.props.addGuess}/>
                 </div>
         break;
+
       case 'votingStage':
         view =  <div>
-                <MobileNavBar/>
-                <MobileVotes/>
+                  <MobileNavBar/>
+                  <MobileVotes/>
                 </div>
         break;
+
       case 'scoreStage':
         view =  <div>
-                <MobileNavBar/>
-                <h2>Great job! Score: points!</h2>
+                  <MobileNavBar/>
                 </div>
         break;
+
+      default:
+        view =  <div>
+                  <p>This is the default case. There is a problem if you see this</p>
+                </div>
     }
+
     return (
       <div>
         {view}
       </div>
     );
+  
   }
 }
+
 export default MobileMainView;

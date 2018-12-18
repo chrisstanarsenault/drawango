@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { v4 } from 'uuid';
 
 class Canvas extends Component {
   constructor(props) {
@@ -7,8 +6,8 @@ class Canvas extends Component {
     this.onTouchStart = this.onTouchStart.bind(this);
     this.onTouchMove = this.onTouchMove.bind(this);
     this.endPaintEvent = this.endPaintEvent.bind(this);
-    
-    //replace this later
+
+    //replace?
     this.socket = undefined;
   }
 
@@ -37,7 +36,7 @@ class Canvas extends Component {
       this.line = this.line.concat(positionData);
       this.paint(this.prevPos, offSetData, this.strokeStyle);
 
-      // below should come from App file
+      // replace?
       this.sendPaintData();
     }
   }
@@ -45,7 +44,7 @@ class Canvas extends Component {
   endPaintEvent() {
     if (this.isPainting) {
       this.isPainting = false;
-            // below should come from App file
+      //replace?
       this.sendPaintData();
     }
   }
@@ -61,17 +60,19 @@ class Canvas extends Component {
     this.prevPos = { pageX, pageY };
   }
 
-//replace this entire fucntion 
+//replace?
   sendPaintData() {
     const body = {
       type: "canvas",
       line: this.line,
+      player: this.props.gameData.mainPlayer
     };
+    console.log("this is the taget", body.player)
     this.socket.send(JSON.stringify(body));
     this.line = [];
   }
 
-  //replace this entiure fucntion
+  //replace?
   static getHostName() {
     const parser = document.createElement('a')
     parser.href = document.location;
@@ -85,13 +86,13 @@ class Canvas extends Component {
     //this we need the one below???
     this.canvas.addEventListener("touchmove", function(event) {
     event.preventDefault();});
-
+      ////////
     this.ctx = this.canvas.getContext('2d');
     this.ctx.lineJoin = 'round';
     this.ctx.lineCap = 'round';
     this.ctx.lineWidth = 5;
 
-    //delete the one below
+    //replace?
     const hostname = Canvas.getHostName();
     const port = 3001;
     this.socket = new WebSocket("ws://" + hostname + ":" + port);

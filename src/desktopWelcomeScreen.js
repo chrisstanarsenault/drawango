@@ -5,6 +5,7 @@ class DesktopWelcome extends Component {
 	handleEvent = (event) => {
 		this.props.changeGameStage('drawingStage');
 		this.props.takeTurns();
+		console.log("this is the console",this.props.gameData)
 	};
 
 	render() {
