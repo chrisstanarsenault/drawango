@@ -10,7 +10,9 @@ class DesktopGuessingScreen extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.handleEvent}> Test Next Stage </button>
+        <p> What do you think this is? Submit your guesses </p>
+        <Canvas gameData={this.props.gameData} />
+        <button onClick={this.handleEvent}> Test Next Stage - this will be removed </button>
       </div>
     )
   }

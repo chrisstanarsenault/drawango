@@ -14,7 +14,8 @@ class Canvas extends Component {
   prevPos = { pageX: 0, pageY: 0 };
 
   onTouchStart({ nativeEvent }) {
-    nativeEvent.preventDefault();
+    //maybe I won't need below
+    // nativeEvent.preventDefault();
     const touch = nativeEvent.changedTouches[0];
     const { pageX, pageY } = touch;
     this.isPainting = true;
@@ -22,18 +23,18 @@ class Canvas extends Component {
   }
 
   onTouchMove({ nativeEvent }) {
-    nativeEvent.preventDefault();
+    //maybe I won't need below
+    // nativeEvent.preventDefault();
     if (this.isPainting) {
       const touch = nativeEvent.changedTouches[0]
       const { pageX, pageY } = touch;
       const offSetData = { pageX, pageY };
-      const positionData = {start: { ...this.prevPos}, 
-                            stop: { ...offSetData},
-                          };
+      const positionData = {  start: { ...this.prevPos}, 
+                              stop: { ...offSetData},
+                            };
       this.line = this.line.concat(positionData);
       this.paint(this.prevPos, offSetData, this.strokeStyle);
       this.props.sendPaintData(this.line);
-      this.line = [];
     }
   }
 
@@ -41,7 +42,6 @@ class Canvas extends Component {
     if (this.isPainting) {
       this.isPainting = false;
       this.props.sendPaintData(this.line);
-      this.line = [];
     }
   }
 
