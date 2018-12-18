@@ -11,7 +11,7 @@ class App extends Component {
   static propTypes = {
     cookies: instanceOf(Cookies).isRequired
 	};
-	
+
 	constructor(props) {
     super(props);
     const { cookies } = props;
@@ -110,10 +110,8 @@ class App extends Component {
 	};
 
 	render() {
-		return ( <
-			Fragment >
-			<
-			h3 style = {
+		return ( <Fragment >
+			<h3 style = {
 				{
 					textAlign: 'center'
 				}
