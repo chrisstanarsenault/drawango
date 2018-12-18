@@ -67,6 +67,9 @@ wss.on('connection', (ws) => {
         };
         wss.broadcast(JSON.stringify(turns));
         break
+      case 'canvas':
+        wss.broadcast(event);
+        break
       case 'setGuess':
         const player = data['player'];
         const content = data.content;

@@ -60,6 +60,9 @@ class App extends Component {
 				case 'turns':
 					this.setState({ currentPlayer: message.currentPlayer});
 					break;
+				case 'canvas':
+					console.log("canvas went through")
+					break;
 				default:
 				throw new Error("Unknown event type " + message.type)
 			}
