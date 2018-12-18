@@ -10,9 +10,9 @@ const wss = new SocketServer({
 
 const game = {
   gameStage: "welcomeStage",
-  players: ["Valeria", "Sylvain", "Chris", "Alisa"],
-  currentPlayer: "Valeria",
-  turns: ["Valeria"],
+  players: [],
+  currentPlayer: "",
+  turns: [],
   playerGuess: {}
 }
 
@@ -51,14 +51,15 @@ wss.on('connection', (ws) => {
     let data = JSON.parse(event);
     switch (data.type) {
       case 'setName':
-       game.players.push(data.player);
-       const players = {
+        const addPlayer = { name: data.player, points: 0 }
+        game.players.push(addPlayer);
+        const players = {
         type: "addPlayer",
         player: data.player
       };
       console.log("adding player",players)
       wss.broadcast(JSON.stringify(players));
-       break;
+        break;
       case 'setGuess':
         const player = data['player'];
         const content = data.content;
