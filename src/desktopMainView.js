@@ -10,29 +10,26 @@ import './desktop.scss'
 class DesktopMainView extends Component {
 	render() {
 		let view;
-		switch (this.props.stage.gameStage) {
+		switch (this.props.gameData.gameStage) {
 			case 'welcomeStage':
-				view = <DesktopWelcome changeGameStage={this.props.changeGameStage} players={this.props.players} />;
+				view = <DesktopWelcome changeGameStage={this.props.changeGameStage} takeTurns={this.props.takeTurns} gameData={this.props.gameData}/>;
 				break;
 			case 'drawingStage':
-				view = <DesktopDrawingScreen changeGameStage={this.props.changeGameStage} />;
+				view = <DesktopDrawingScreen changeGameStage={this.props.changeGameStage}/>;
 				break;
 			case 'guessingStage':
-				view = <DesktopGuessingScreen changeGameStage={this.props.changeGameStage} />;
+				view = <DesktopGuessingScreen changeGameStage={this.props.changeGameStage}/>;
 				break;
 			case 'votingStage':
-				view = <DesktopVotingScreen changeGameStage={this.props.changeGameStage} />;
+				view = <DesktopVotingScreen changeGameStage={this.props.changeGameStage}/>;
 				break;
 			case 'scoreStage':
-				view = <DesktopScoresScreen changeGameStage={this.props.changeGameStage} />;
+				view = <DesktopScoresScreen changeGameStage={this.props.changeGameStage}/>;
 				break;
 		}
 		return (
 			<div>
-				<p>Hello desktop user</p>
-				<p>Current stage: {this.props.stage.gameStage} </p>
 				{view}
-				<Timer />
 			</div>
 		);
 	}
