@@ -1,20 +1,13 @@
-import React, { Component } from "react";
-import Canvas from './canvas'
+import React, {Component} from 'react';
 
-class DesktopScoresScreen extends Component {
-
-  handleEvent = event => {
-    this.props.changeGameStage("scoreStage");
-  }
-
+class Scores extends Component {
   render() {
     return (
       <div>
-        <p>This is the last stage</p>
-        {/* <button onClick={this.handleEvent}> Test Next Stage </button> */}
+        <p> {this.props.player} {this.props.scores}</p>
       </div>
-    )
+    );
   }
 }
 
-export default DesktopScoresScreen;
+export default Scores;
