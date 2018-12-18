@@ -11,7 +11,7 @@ class App extends Component {
   static propTypes = {
     cookies: instanceOf(Cookies).isRequired
 	};
-	
+
 	constructor(props) {
     super(props);
     const { cookies } = props;
@@ -117,13 +117,13 @@ class App extends Component {
   }
 
 	render() {
-		return ( 
+		return (
 			<Fragment >
 				<BrowserView >
-					<DesktopMainView gameData={this.state} changeGameStage={this.changeGameStage} takeTurns={this.takeTurns}/> 
-				</BrowserView> 
+					<DesktopMainView gameData={this.state} changeGameStage={this.changeGameStage} takeTurns={this.takeTurns}/>
+				</BrowserView>
 				<MobileView >
-					<MobileMainView gameData={this.state} addPlayerName={this.addPlayerName} sendPaintData={this.sendPaintData} addGuess={this.addGuess} changeGameStage={this.changeGameStage}/> 
+					<MobileMainView gameData={this.state} addPlayerName={this.addPlayerName} sendPaintData={this.sendPaintData} addGuess={this.addGuess} changeGameStage={this.changeGameStage}/>
 				</MobileView>
 			</Fragment>
 		);

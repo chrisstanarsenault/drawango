@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 class JoinedUsers extends Component {
 	render() {
 		return (
-			<div>
-				<p>{this.props.player.name}</p>
+			<div id="individual-name-container">
+				<span>{this.props.player.name}</span>
 			</div>
 		);
 	}
