@@ -55,8 +55,12 @@ class App extends Component {
 				case 'addPlayer':
 					this.setState({ players: message.players });
 					break;
+        case 'addGuess':
+          this.setState({ playerGuess: message.guesses});
+          console.log("statemotherfucker", this.state.playerGuess);
+          break;
 				case 'gameStage':
-					this.setState({ gameStage: message.stage});
+					this.setState({ gameStage: message.stage });
 					break;
 				case 'turns':
 					this.setState({ currentPlayer: message.currentPlayer.name});
@@ -64,6 +68,9 @@ class App extends Component {
 				case 'canvas':
 					this.setState({ line: message.line});
 					break;
+        case 'canvas':
+          console.log("hi");
+          break;
 				default:
 				throw new Error("Unknown event type " + message.type)
 			}
@@ -96,13 +103,10 @@ class App extends Component {
 	};
 
 	addGuess = (guess) => {
-		this.setState({
-			playerGuess: { player: guess }
-		});
     const setGuess = {
       type: 'setGuess',
       player: this.state.mainPlayer,
-      content: guess
+      guess
     };
     this.socket.send(JSON.stringify(setGuess));
 	};

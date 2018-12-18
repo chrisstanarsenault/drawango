@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 class MobileSubmitName extends Component {
-	
+
 	handleSubmit = (event) => {
 		event.preventDefault();
 		const nameInput = event.target.elements.name;
@@ -17,7 +17,7 @@ class MobileSubmitName extends Component {
 				</div>
 			);
 		}
- 
+
 		return (
 			<div>
 				<form onSubmit={this.handleSubmit}>

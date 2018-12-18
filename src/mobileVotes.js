@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 
-class MobileVotes extends Component {
+class Votes extends Component {
   render() {
     return (
       <div>
-        <p>This is where pick what you think is the right answer</p>
-      </div>  
+        <p>{this.props.guess}</p>
+      </div>
     );
   }
 }
-export default MobileVotes;
+
+export default Votes;

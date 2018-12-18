@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import MobileNavBar from './mobileNavBar';
 import MobileGuessingScreen from './mobileGuessingScreen';
 import MobileSubmitName from './mobileSubmitName';
-import MobileVotes from './mobileVotes';
+import MobileVotesScreen from './mobileVotesScreen';
 import Canvas from './canvas';
 import './mobile.scss'
 
@@ -16,6 +16,7 @@ class MobileMainView extends Component {
   render() {
 
     let view;
+
     let draw;
     this.props.gameData.players.forEach(player => { 
       if (player.name === this.props.gameData.currentPlayer) {
@@ -29,11 +30,12 @@ class MobileMainView extends Component {
       case 'welcomeStage':
         view =  <div>
                   <MobileNavBar/>
-                  <MobileSubmitName addPlayerName={this.props.addPlayerName} gameData={this.props.gameData}/>
+                  <MobileSubmitName addPlayerName={this.props.addPlayerName} changeGameStage={this.props.changeGameStage} gameData={this.props.gameData}/>
                 </div>
         break;
 
       case 'drawingStage':
+        
         if (this.props.gameData.currentPlayer === this.props.gameData.mainPlayer) {
           view =  <div>
                     <MobileNavBar/>
@@ -58,8 +60,8 @@ class MobileMainView extends Component {
 
       case 'votingStage':
         view =  <div>
-                  <MobileNavBar/>
-                  <MobileVotes/>
+                <MobileNavBar/>
+                <MobileVotesScreen gameData={this.props.gameData}/>
                 </div>
         break;
 

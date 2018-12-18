@@ -2,11 +2,6 @@ import React, {Component} from 'react';
 
 class MobileNavBar extends Component {
 
-  handleTapEventOne = event => {
-    event.preventDefault();
-    this.props.changeGameStage("guessingStage");
-  }
-
   render() {
     return (
       <nav>
