@@ -1,26 +1,22 @@
-import React, {
-	Component,
-	Fragment
-} from 'react';
+import React, { Component, Fragment } from 'react';
 import './App.css';
-import {
-	BrowserView,
-	MobileView
-} from 'react-device-detect';
+import { BrowserView, MobileView } from 'react-device-detect';
 import MobileMainView from './mobileMainView';
 import DesktopMainView from './desktopMainView';
 import { instanceOf } from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
 
 class App extends Component {
-  //below is the logic for the cookies
+  //below is to set up cookies
   static propTypes = {
     cookies: instanceOf(Cookies).isRequired
-  };
+	};
+	
 	constructor(props) {
     super(props);
     const { cookies } = props;
 		this.state = {
+			gameStage: '',
 			mainPlayer: cookies.get('name') || '',
 			players: [],
 			currentPlayer: '',
@@ -37,7 +33,6 @@ class App extends Component {
 		return parser.hostname;
 	}
 
-
 	componentDidMount() {
 		const hostname = App.getHostName();
 		const port = 3001;
@@ -48,36 +43,29 @@ class App extends Component {
 		this.socket.onmessage = (event) => {
 			const message = JSON.parse(event.data);
 			switch (message.type) {
-				case 'setName':
+				case 'addPlayer':
 					const previousList = this.state.players;
-					const updateList = [...previousList, {
-						name: message.username,
-						points: 0
-					}];
-					this.setState({
-						players: updateList
-					});
-					console.log(this.state.players);
+					const updateList = [...previousList, { name: message.player, points: 0}];
+					this.setState({ players: updateList });
+					console.log("list of players",this.state);
 					break;
 				case 'gameStage':
-					this.setState({
-						gameStage: message.stage
-					});
+					this.setState({ gameStage: message.stage});
 					break;
 				case 'turns':
 					this.setState({
 						currentPlayer: message.currentPlayer
 					});
 					break;
+				default:
+				throw new Error("Unknown event type " + message.type)
 			}
 		};
 	}
 
-
+	//potentially we won't need this function
 	takeTurns() {
-		const test = {
-			type: 'turns'
-		};
+		const test = { type: 'turns'};
 		this.socket.send(JSON.stringify(test));
 	}
 
@@ -87,38 +75,33 @@ class App extends Component {
 			stage
 		};
 		this.socket.send(JSON.stringify(gameStage));
-		this.setState({
-			gameStage: stage
-		});
+		this.setState({ gameStage: stage });
 	}
 
 	addPlayerName = (name) => {
+		//Set the cookie
     const { cookies } = this.props;
-    cookies.set('name', name, { path: '/' });
-		this.setState({
-			mainPlayer: name
-    });
+		cookies.set('name', name, { path: '/' });
+		//Update the player's name
+		this.setState({ mainPlayer: name });
+		//Broadcast to the rest of the players that a user has joined the game
 		const setName = {
 			type: 'setName',
-			username: name
+			player: name
 		};
 		this.socket.send(JSON.stringify(setName));
 	};
 
 	addGuess = (guess) => {
-    console.log(guess);
     const player = this.state.mainPlayer
 		this.setState({
-			playerGuess: {
-        player: guess
-      }
+			playerGuess: { player: guess }
 		});
     const setGuess = {
       type: 'setGuess',
       player: this.state.mainPlayer,
       content: guess
     };
-    console.log(setGuess);
     this.socket.send(JSON.stringify(setGuess));
 	};
 
