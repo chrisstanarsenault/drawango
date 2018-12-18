@@ -51,23 +51,31 @@ class MobileMainView extends Component {
         break;
 
       case 'guessingStage':
-        // if (this.props.gameData.currentPlayer === this.props.gameData.mainPlayer) {
-        //   view =  <div>
-        //             <MobileNavBar/>
-        //             <p> This is the default page </p>
-        //           </div>
-        // } else {
+        if (this.props.gameData.currentPlayer === this.props.gameData.mainPlayer) {
+          view =  <div>
+                    <MobileNavBar/>
+                    <p> This is the default page </p>
+                  </div>
+        } else {
           view =  <div>
                     <MobileNavBar/>
                     <MobileGuessingScreen addGuess={this.props.addGuess}/>
                   </div>
-        // }
+        }
         break;
+
       case 'votingStage':
-        view =  <div>
-                <MobileNavBar/>
-                <MobileVotesScreen gameData={this.props.gameData}/>
+        if (this.props.gameData.currentPlayer === this.props.gameData.mainPlayer) {
+          view =  <div>
+                    <MobileNavBar/>
+                    <p> This is the default page </p>
                 </div>
+        } else {
+          view =  <div>
+                  <MobileNavBar/>
+                  <MobileVotesScreen gameData={this.props.gameData}/>
+                  </div>
+        }
         break;
 
       case 'scoreStage':

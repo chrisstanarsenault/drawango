@@ -81,6 +81,7 @@ wss.on('connection', (ws) => {
         break
       case 'setGuess':
         game.playerGuess[data.player] = data.guess;
+        game.playerGuess[game.currentPlayer.name] = draw;
         const guesses = {
           type: "addGuess",
           guesses: game.playerGuess

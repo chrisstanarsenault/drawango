@@ -9,8 +9,8 @@ class DesktopVotingScreen extends Component {
 
   render() {
 
+    //instead of having all this code below, maybe ensure that all players have choice?
     const players = [];
-    
     this.props.gameData.players.forEach(player => { 
       if (this.props.gameData.playerGuess[player.name]) {
         players.push(player);
