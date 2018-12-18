@@ -7,6 +7,11 @@ class DesktopWelcome extends Component {
 	};
 
 	render() {
+
+		const players = this.props.players.map(player => (
+      <JoinedUsers key={player} player={player} />
+    ));
+
 		return (
       <div>
 			<div className="desktopWelcomeContainer">
@@ -27,3 +32,4 @@ class DesktopWelcome extends Component {
 }
 
 export default DesktopWelcome;
+

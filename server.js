@@ -1,33 +1,18 @@
-// This class helps us to keep track of the clients connected
-class Clients {
-  constructor() {
-    this.clientList = {};
-    this.saveClient = this.saveClient.bind(this);
-  }
-  saveClient(username, client) {
-    this.clientList[username] = client;
-  }
-}
-
 const SocketServer = require('ws').Server;
 const express = require('express');
-const clients = new Clients();
-
 const PORT = 3001;
-
 const server = express()
   .use(express.static('public'))
   .listen(PORT, '0.0.0.0', 'localhost', () => console.log(`Listening on ${ PORT }`));
-
 const wss = new SocketServer({
   server
 });
 
 const game = {
   gameStage: "welcomeStage",
-  players: ["Valeria", "Sylvain", "Chris", "Alisa"],
+  players: [],
   currentPlayer: "",
-  turns: ["Valeria"],
+  turns: [],
   playerGuess: {}
 }
 
@@ -50,23 +35,30 @@ wss.broadcast = function broadcast(data) {
   });
 };
 
-
 wss.on('connection', (ws) => {
   console.log('Client connected');
-
-  const gameStage = {
-    type: "gameStage",
-    stage: game.gameStage
+  const welcomePack = {
+    type: "welcomePack",
+    players: game.players,
+    currentPlayer: game.currentPlayer,
+    gameStage: game.gameStage,
+    playerGuess: game.playerGuess
   };
-  ws.send(JSON.stringify(gameStage));
+  console.log("this is the welcome pack", welcomePack)
+  ws.send(JSON.stringify(welcomePack));
 
   ws.on('message', function (event) {
     let data = JSON.parse(event);
-
     switch (data.type) {
       case 'setName':
-        clients.saveClient(data.username, ws);
-        wss.broadcast(event);
+        const addPlayer = { name: data.player, points: 0 }
+        game.players.push(addPlayer);
+        const players = {
+        type: "addPlayer",
+        player: data.player
+      };
+      console.log("adding player",players)
+      wss.broadcast(JSON.stringify(players));
         break;
       case 'setGuess':
         const player = data['player'];
@@ -86,6 +78,8 @@ wss.on('connection', (ws) => {
         };
         wss.broadcast(JSON.stringify(turns));
         break;
+      default:
+			throw new Error("Unknown event type " + data.type)
     }
   })
 
