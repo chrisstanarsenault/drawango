@@ -8,13 +8,20 @@ class DesktopWelcome extends Component {
 
 	render() {
 		return (
+      <div>
 			<div className="desktopWelcomeContainer">
 				<h1 className="desktopWelcomeTitle">Welcome to Draw Daddy</h1>
 				<p>Go to this site on your mobile to play: www.whatever-we-want-this-to-be.com</p>
-				<JoinedUsers players={this.props.players} />
+      </div>
 
+      <div id="user-container">
+				<JoinedUsers players={this.props.players} />
+      </div>
+
+      <div>
 				<button onClick={this.handleEvent}> Everyone's in! </button>
 			</div>
+    </div>
 		);
 	}
 }

@@ -22,7 +22,33 @@ body {
     font-size: 2rem;
   }
 
-  button {
+
+
+
+}
+
+#users-joined-title {
+  font-size: 4rem;
+  text-decoration: underline;
+}
+
+#user-container {
+    // border: 2px dotted red;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+
+    #each-user {
+      // border: 1px solid black;
+      font-size: 3rem;
+      margin: 80px;
+      padding: 0 20px;
+      font-family: $cabinFont;
+    }
+  }
+
+button {
     height: 3rem;
     width: 10rem;
     border-radius: .7rem;
@@ -30,7 +56,6 @@ body {
     font-size: 1.1rem;
     font-weight: bold;
   }
-}
 
 #progressBar {
   /* Reset the default appearance */
