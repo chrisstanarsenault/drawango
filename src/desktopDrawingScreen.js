@@ -10,8 +10,8 @@ class DesktopDrawingScreen extends Component {
   render() {
     return (
       <div>
-        <Canvas />
-        <button onClick={this.handleEvent}> Test Next Stage </button>
+        <Canvas gameData={this.props.gameData} />
+        <button onClick={this.handleEvent}> Test Next Stage - this needs to be removed later! </button>
       </div>
     )
   }

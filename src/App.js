@@ -20,10 +20,12 @@ class App extends Component {
 			mainPlayer: cookies.get('name') || '',
 			players: [],
 			currentPlayer: '',
-			playerGuess: {}
+			playerGuess: {},
+			line: []
 		};
 		this.changeGameStage = this.changeGameStage.bind(this);
 		this.takeTurns = this.takeTurns.bind(this);
+		this.sendPaintData = this.sendPaintData.bind(this);
 		this.socket = undefined;
 	}
 
@@ -59,10 +61,9 @@ class App extends Component {
 					break;
 				case 'turns':
 					this.setState({ currentPlayer: message.currentPlayer.name});
-					console.log("this is the proof that the state has been updated", this.state.currentPlayer)
 					break;
 				case 'canvas':
-					console.log("canvas went through")
+					this.setState({ line: message.line});
 					break;
 				default:
 				throw new Error("Unknown event type " + message.type)
@@ -75,7 +76,7 @@ class App extends Component {
 		this.socket.send(JSON.stringify(takeTurns));
 	}
 
-	changeGameStage(stage) {
+	changeGameStage = (stage) => {
 		const gameStage = {
 			type: 'gameStage',
 			stage
@@ -107,6 +108,14 @@ class App extends Component {
     this.socket.send(JSON.stringify(setGuess));
 	};
 
+  sendPaintData = (line) => {
+    const body = {
+      type: "canvas",
+      line: line,
+    };
+    this.socket.send(JSON.stringify(body));
+  }
+
 	render() {
 		return ( 
 			<Fragment >
@@ -115,7 +124,7 @@ class App extends Component {
 					<DesktopMainView gameData={this.state} changeGameStage={this.changeGameStage} takeTurns={this.takeTurns}/> 
 				</BrowserView> 
 				<MobileView >
-					<MobileMainView gameData={this.state} addPlayerName={this.addPlayerName} addGuess={this.addGuess} changeGameStage={this.changeGameStage}/> 
+					<MobileMainView gameData={this.state} addPlayerName={this.addPlayerName} sendPaintData={this.sendPaintData} addGuess={this.addGuess} changeGameStage={this.changeGameStage}/> 
 				</MobileView>
 			</Fragment>
 		);

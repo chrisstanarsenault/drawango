@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 
 class Canvas extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.onTouchStart = this.onTouchStart.bind(this);
     this.onTouchMove = this.onTouchMove.bind(this);
     this.endPaintEvent = this.endPaintEvent.bind(this);
-
-    //replace?
-    this.socket = undefined;
   }
 
   isPainting = false;
@@ -35,17 +32,16 @@ class Canvas extends Component {
                           };
       this.line = this.line.concat(positionData);
       this.paint(this.prevPos, offSetData, this.strokeStyle);
-
-      // replace?
-      this.sendPaintData();
+      this.props.sendPaintData(this.line);
+      this.line = [];
     }
   }
 
   endPaintEvent() {
     if (this.isPainting) {
       this.isPainting = false;
-      //replace?
-      this.sendPaintData();
+      this.props.sendPaintData(this.line);
+      this.line = [];
     }
   }
 
@@ -60,25 +56,6 @@ class Canvas extends Component {
     this.prevPos = { pageX, pageY };
   }
 
-//replace?
-  sendPaintData() {
-    const body = {
-      type: "canvas",
-      line: this.line,
-      player: this.props.gameData.mainPlayer
-    };
-    console.log("this is the taget", body.player)
-    this.socket.send(JSON.stringify(body));
-    this.line = [];
-  }
-
-  //replace?
-  static getHostName() {
-    const parser = document.createElement('a')
-    parser.href = document.location;
-    return parser.hostname;
-  }
-
   componentDidMount() {
     this.canvas.width = window.innerWidth;
     this.canvas.height = window.innerHeight;
@@ -91,39 +68,29 @@ class Canvas extends Component {
     this.ctx.lineJoin = 'round';
     this.ctx.lineCap = 'round';
     this.ctx.lineWidth = 5;
-
-    //replace?
-    const hostname = Canvas.getHostName();
-    const port = 3001;
-    this.socket = new WebSocket("ws://" + hostname + ":" + port);
-    this.socket.onopen = function (event) {
-      console.log('Connected to: ' + event.currentTarget.url);
-    };
-    this.socket.onmessage = event => {
-      console.log("message from the socket", event)
-      const message = JSON.parse(event.data);
-      if (message.type === "canvas") {
-        const { line } = message;
-        line.forEach((position) => {
-          this.paint(position.start, position.stop, this.strokeStyle);
-        });
-      }
-    }
+    
+    const line = this.props.gameData.line;
+    console.log("checking the line on the desktop", line)
+    line.forEach((position) => {
+      this.paint(position.start, position.stop, this.strokeStyle);
+    });
   }
 
-    handleTapEventOne = event => {
-    event.preventDefault();
-    this.props.changeGameStage("guessingStage");
+  componentDidUpdate() {
+    this.scrollToBottom();
   }
 
   render() {
-    return ( <canvas 
-              ref={(ref) => (this.canvas = ref)}
-              style={{ background: 'white' }}
-              onTouchStart={this.onTouchStart}
-              onTouchEnd={this.endPaintEvent}
-              onTouchMove={this.onTouchMove}
-      />
+    return ( 
+      <div>
+        <canvas 
+          ref={(ref) => (this.canvas = ref)}
+          style={{ background: 'white' }}
+          onTouchStart={this.onTouchStart}
+          onTouchEnd={this.endPaintEvent}
+          onTouchMove={this.onTouchMove}
+        />
+      </div>
     );
   }
 }
