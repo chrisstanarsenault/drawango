@@ -23,7 +23,7 @@ class MobileMainView extends Component {
       case 'welcomeStage':
         view =  <div>
                 <MobileNavBar/>
-                <MobileSubmitName addPlayerName={this.props.addPlayerName} changeGameStage={this.props.changeGameStage} />
+                <MobileSubmitName addPlayerName={this.props.addPlayerName} changeGameStage={this.props.changeGameStage} stage={this.props.stage} />
                 </div>
         break;
       case 'drawingStage':
