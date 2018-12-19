@@ -102,6 +102,9 @@ wss.on('connection', (ws) => {
 			case 'gameStage':
 				game.gameStage = data.stage;
 				wss.broadcast(event);
+				if (data.stage === 'drawingStage') {
+					timer(30, 'guessingStage');
+				}
 				break;
 			default:
 				throw new Error('Unknown event type ' + data.type);
