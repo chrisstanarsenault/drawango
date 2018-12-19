@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import Votes from './mobileVotes';
 
 class MobileVotesScreen extends Component {
+  
+
+
 
   render() {
 
@@ -14,7 +17,7 @@ class MobileVotesScreen extends Component {
     });
     
     const guesses = players.map(player => (
-      <Votes key={player.name} guess={this.props.gameData.playerGuess[player.name]}/>
+      <Votes key={player.name} player={player.name} guess={this.props.gameData.playerGuess[player.name]} gameData={this.props.gameData}/>
       ));
     
     return (
