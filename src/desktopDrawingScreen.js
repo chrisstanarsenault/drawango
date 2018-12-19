@@ -8,7 +8,6 @@ class DesktopDrawingScreen extends Component {
 			<div>
 				<p> {this.props.gameData.currentPlayer} is drawing </p>
 				<Canvas gameData={this.props.gameData} />
-				<Timer />
 			</div>
 		);
 	}
