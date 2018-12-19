@@ -59,7 +59,7 @@ class MobileMainView extends Component {
         } else {
           view =  <div>
                     <MobileNavBar/>
-                    <MobileGuessingScreen addGuess={this.props.addGuess}/>
+                    <MobileGuessingScreen addGuess={this.props.addGuess} gameData={this.props.gameData}/>
                   </div>
         }
         break;

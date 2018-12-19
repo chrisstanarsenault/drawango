@@ -1,14 +1,19 @@
 import React, {Component} from 'react';
 
 class Votes extends Component {
+  constructor() {
+    super();
+    this.state = { 
+      vote: true
+    }
+  }
 
   handleEvent = (event) => {
     const whoseGuess = event.target.value;
-    const currentPlayer = this.props.gameData.currentPlayer;
-
-    if (whoseGuess === currentPlayer) {
-      this.props.addPoints(100, currentPlayer);
-      this.props.addPoints(100, whoseGuess);
+    this.setState({ vote: false });
+    if (whoseGuess === this.props.gameData.currentPlayer) {
+      this.props.addPoints(100, this.props.gameData.currentPlayer);
+      this.props.addPoints(100, this.props.gameData.mainPlayer);
     } else {
       this.props.addPoints(50, whoseGuess);
     }
@@ -16,9 +21,17 @@ class Votes extends Component {
 
 
   render() {
+
+    if (this.state.vote) {
+      return (
+        <div>
+          <button onTouchStart={this.handleEvent} value={this.props.player}>{this.props.guess}</button>
+        </div>
+      );
+    }
     return (
       <div>
-        <button onTouchStart={this.handleEvent} value={this.props.player}>{this.props.guess}</button>
+        <p>Default page</p>
       </div>
     );
   }
