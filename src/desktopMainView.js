@@ -3,7 +3,6 @@ import DesktopWelcome from './desktopWelcomeScreen';
 import Timer from './desktopTimerFooter';
 import DesktopDrawingScreen from './desktopDrawingScreen';
 import DesktopGuessingScreen from './desktopGuessingScreen';
-
 import DesktopVotingScreen from './desktopVotesScreen';
 import DesktopScoresScreen from './desktopScoresScreen';
 
@@ -28,7 +27,7 @@ class DesktopMainView extends Component {
 				view = <DesktopVotingScreen changeGameStage={this.props.changeGameStage} gameData={this.props.gameData}/>;
 				break;
 			case 'scoreStage':
-				view = <DesktopScoresScreen changeGameStage={this.props.changeGameStage} gameData={this.props.gameData} takeTurns={this.props.takeTurns}/>;
+				view = <DesktopScoresScreen changeGameStage={this.props.changeGameStage} gameData={this.props.gameData}/>;
 				break;
 		}
 		return (
