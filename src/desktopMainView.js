@@ -5,7 +5,7 @@ import DesktopDrawingScreen from './desktopDrawingScreen';
 import DesktopGuessingScreen from './desktopGuessingScreen';
 
 import DesktopVotingScreen from './desktopVotesScreen';
-import DesktopScoresScreen from './desktopScores';
+import DesktopScoresScreen from './desktopScoresScreen';
 
 import './desktop.scss'
 

@@ -17,7 +17,7 @@ class MobileVotesScreen extends Component {
     });
     
     const guesses = players.map(player => (
-      <Votes key={player.name} player={player.name} guess={this.props.gameData.playerGuess[player.name]} gameData={this.props.gameData}/>
+      <Votes key={player.name} player={player.name} guess={this.props.gameData.playerGuess[player.name]} gameData={this.props.gameData} addPoints={this.props.addPoints}/>
       ));
     
     return (

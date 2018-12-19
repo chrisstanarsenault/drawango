@@ -19,13 +19,23 @@ const game = {
 
 const draw = 'Cat';
 
+wss.broadcast = function broadcast(data) {
+	wss.clients.forEach(function each(ws) {
+		ws.send(data);
+	});
+};
+
 timer = (time, stage) => {
 	let timeleftCounter = time;
 	let downloadTimerCounter = setInterval(function() {
 		timeleftCounter--;
 		if (timeleftCounter <= 0) {
 			clearInterval(downloadTimerCounter);
-			wss.broadcast(JSON.stringify({ type: 'gameStage', stage: stage }));
+			if(game.gameStage !== stage) {
+				wss.broadcast(JSON.stringify({ type: 'gameStage', stage: stage }));
+				console.log("this was triggered here");
+			}
+      console.log("this was triggered another");
 		}
 	}, 1000);
 };
@@ -42,12 +52,6 @@ function takeTurns() {
 		game.currentPlayer = currentPlayer;
 	}
 }
-
-wss.broadcast = function broadcast(data) {
-	wss.clients.forEach(function each(ws) {
-		ws.send(data);
-	});
-};
 
 wss.on('connection', (ws) => {
 	console.log('Client connected');
@@ -73,7 +77,7 @@ wss.on('connection', (ws) => {
 				};
 				game.players.push(addPlayer);
 				const players = {
-					type: 'addPlayer',
+					type: 'updatePlayers',
 					players: game.players
 				};
 				wss.broadcast(JSON.stringify(players));
@@ -105,6 +109,28 @@ wss.on('connection', (ws) => {
 				if (data.stage === 'drawingStage') {
 					timer(30, 'guessingStage');
 				}
+				if (data.stage === 'guessingStage') {
+					timer(30, 'votingStage');
+				}
+				if (data.stage === 'votingStage') {
+					timer(30, 'scoreStage');
+				}
+				if (data.stage === 'scoreStage') {
+					timer(15, 'scoreStage');
+				}
+        break;
+      case 'addPoints':
+        for (let i = 0; i < game.players.length; i++ ){
+          if (game.players[i].name === data.player) {
+            game.players[i].points += data.points;
+          }
+        }
+        const updatePlayers = {
+					type: 'updatePlayers',
+					players: game.players
+				};
+        wss.broadcast(JSON.stringify(updatePlayers));
+        console.log("updated palyers",updatePlayers)
 				break;
 			default:
 				throw new Error('Unknown event type ' + data.type);

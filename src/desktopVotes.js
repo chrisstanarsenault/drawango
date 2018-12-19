@@ -4,7 +4,7 @@ class DesktopVotes extends Component {
   render() {
     return (
       <div>
-        <button>{this.props.guess}</button>
+        <p>{this.props.guess}</p>
       </div>
     );
   }
