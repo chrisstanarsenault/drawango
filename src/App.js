@@ -26,6 +26,7 @@ class App extends Component {
 		this.changeGameStage = this.changeGameStage.bind(this);
 		this.takeTurns = this.takeTurns.bind(this);
 		this.sendPaintData = this.sendPaintData.bind(this);
+		this.addPoints = this.addPoints.bind(this);
 		this.socket = undefined;
 	}
 
@@ -115,6 +116,15 @@ class App extends Component {
     this.socket.send(JSON.stringify(body));
   }
 
+	addPoints(points, player) {
+		const addPoints = {
+      type: 'addPoints',
+      player,
+      points
+    };
+		this.socket.send(JSON.stringify(addPoints));
+	}
+
 	render() {
 		return (
 			<Fragment >
@@ -122,7 +132,7 @@ class App extends Component {
 					<DesktopMainView gameData={this.state} changeGameStage={this.changeGameStage} takeTurns={this.takeTurns}/>
 				</BrowserView>
 				<MobileView >
-					<MobileMainView gameData={this.state} addPlayerName={this.addPlayerName} sendPaintData={this.sendPaintData} addGuess={this.addGuess} changeGameStage={this.changeGameStage}/>
+					<MobileMainView gameData={this.state} addPlayerName={this.addPlayerName} sendPaintData={this.sendPaintData} addGuess={this.addGuess} changeGameStage={this.changeGameStage} addPoints={this.addPoints}/>
 				</MobileView>
 			</Fragment>
 		);

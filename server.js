@@ -105,6 +105,20 @@ wss.on('connection', (ws) => {
 				if (data.stage === 'drawingStage') {
 					timer(30, 'guessingStage');
 				}
+        break;
+      case 'addPoints':
+        const updatedPlayers = game.players.map(player => { 
+          if (player.name === data.player) {
+            player.points += data.points; 
+          }
+        });
+        console.log("this is the ipdated list",updatedPlayers);
+        game.players = updatedPlayers;
+        const players = {
+					type: 'addPlayer',
+					players: game.players
+				};
+				wss.broadcast(JSON.stringify(players));
 				break;
 			default:
 				throw new Error('Unknown event type ' + data.type);
