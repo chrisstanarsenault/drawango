@@ -23,7 +23,7 @@ class Timer extends Component {
     },1000);
 
     return (
-      <div className="desktopNavBarContainer">
+      <div className="desktopTimerContainer">
         <progress value="0" max="30" id="progressBar"></progress>
         <span id="countTimer">30</span>
       </div>

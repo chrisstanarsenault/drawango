@@ -9,7 +9,7 @@ class Canvas extends Component {
   }
 
   isPainting = false;
-  strokeStyle = '#EE92C2';
+  strokeStyle = '#FF00FF';
   line = [];
   prevPos = { pageX: 0, pageY: 0 };
 
@@ -29,7 +29,7 @@ class Canvas extends Component {
       const touch = nativeEvent.changedTouches[0]
       const { pageX, pageY } = touch;
       const offSetData = { pageX, pageY };
-      const positionData = {  start: { ...this.prevPos}, 
+      const positionData = {  start: { ...this.prevPos},
                               stop: { ...offSetData},
                             };
       this.line = this.line.concat(positionData);
@@ -79,9 +79,9 @@ class Canvas extends Component {
   }
 
   render() {
-    return ( 
-      <div>
-        <canvas 
+    return (
+      <div id="desktop-canvas-container">
+        <canvas
           ref={(ref) => (this.canvas = ref)}
           style={{ background: 'white' }}
           onTouchStart={this.onTouchStart}
