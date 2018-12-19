@@ -80,7 +80,7 @@ class Canvas extends Component {
 
   render() {
     return (
-      <div>
+      <div id="desktop-canvas-container">
         <canvas
           ref={(ref) => (this.canvas = ref)}
           style={{ background: 'white' }}

@@ -12,12 +12,14 @@ import './desktop.scss'
 class DesktopMainView extends Component {
 	render() {
 		let view;
+		let timer;
 		switch (this.props.gameData.gameStage) {
 			case 'welcomeStage':
 				view = <DesktopWelcome changeGameStage={this.props.changeGameStage} takeTurns={this.props.takeTurns} gameData={this.props.gameData}/>;
 				break;
 			case 'drawingStage':
 				view = <DesktopDrawingScreen changeGameStage={this.props.changeGameStage} gameData={this.props.gameData}/>;
+				timer = <Timer />
 				break;
 			case 'guessingStage':
 				view = <DesktopGuessingScreen changeGameStage={this.props.changeGameStage} gameData={this.props.gameData}/>;
@@ -32,6 +34,7 @@ class DesktopMainView extends Component {
 		return (
 			<div>
 				{view}
+				{timer}
 			</div>
 		);
 	}
