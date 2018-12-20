@@ -23,6 +23,7 @@ class App extends Component {
 			playerGuess: {},
 			line: [],
 		};
+
 		this.changeGameStage = this.changeGameStage.bind(this);
 		this.takeTurns = this.takeTurns.bind(this);
 		this.sendPaintData = this.sendPaintData.bind(this);

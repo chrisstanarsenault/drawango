@@ -8,8 +8,8 @@ class DesktopWelcome extends Component {
 		console.log("this is the console",this.props.gameData)
 	};
 	render() {
-		const players = this.props.gameData.players.map(player => (
-      <JoinedUsers key={player} player={player}/>
+		const players = this.props.gameData.players.map((player, index) => (
+      <JoinedUsers key={player} player={player} index={index}/>
     ));
 		return (
       <div>

@@ -10,7 +10,7 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  border: 1px solid black;
+  // border: 1px solid black;
     .desktopWelcomeTitle {
       font-size: 5rem;
       font-family: $cabinFont;
@@ -34,18 +34,77 @@ body {
 #desktop-user-name-container {
   display: flex;
   position: relative;
-  #individual-name-container {
+
+  #individual-name-container0 {
     border: 6px groove lightgrey;
     position: relative;
     font-size: 3rem;
     font-family: $cabinFont;
-    margin: 2rem 5rem;
+    margin: -5rem 5rem 0 5rem;;
     padding: 1.2rem;
+    background-color: red;
+    align-self: flex-start;
+
   }
 
+  #individual-name-container1 {
+    border: 6px groove lightgrey;
+    position: relative;
+    font-size: 3rem;
+    font-family: $cabinFont;
+    margin: 1.3rem -5rem -1.9rem -3rem;
+    padding: 1.2rem;
+    background-color: green;
+    align-self: flex-end;
+
+  }
+
+  #individual-name-container2 {
+    border: 6px groove lightgrey;
+    position: relative;
+    font-size: 3rem;
+    font-family: $cabinFont;
+    margin: 2rem 20rem;;
+    padding: 1.2rem;
+    background-color: blue;
+
+  }
+
+  #individual-name-container3 {
+    border: 6px groove lightgrey;
+    position: relative;
+    font-size: 3rem;
+    font-family: $cabinFont;
+    margin: 2rem 5rem -6rem -5rem;
+    padding: 1.2rem;
+    background-color: purple;
+    align-self: flex-end;
+
+  }
+
+  #individual-name-container4 {
+    border: 6px groove lightgrey;
+    position: relative;
+    font-size: 3rem;
+    font-family: $cabinFont;
+    margin: -4rem 5rem 2rem -4rem;
+    padding: 1.2rem;
+    background-color: cyan;
+    align-self: flex-start;
+
+  }
+
+  #individual-name-container5 {
+    border: 6px groove lightgrey;
+    position: relative;
+    font-size: 3rem;
+    font-family: $cabinFont;
+    margin: 2rem 9rem;
+    padding: 1.2rem;
+    background-color: magenta;
+
+  }
 }
-
-
 
 button {
   height: 3rem;
@@ -56,26 +115,58 @@ button {
   font-weight: bold;
 }
 
-
-
 @media (min-width: 1025px) {
-#desktop-canvas-container {
-  border: 1px solid black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  #desktop-canvas-container {
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     canvas {
       border: 3rem solid transparent;
       width: 50rem;
       // height: 50rem;
       // margin: 10rem;
       // padding: 10rem;
+      // border-image: url(https://d1yn1kh78jj1rr.cloudfront.net/image/preview/rDtN98Qoishumwih/colored-drops-border-design-vector_7Jc0XM_SB_PM.jpg)180 round;
+    }
+  }
+  #canvas-votes-container {
+    display:flex;
+    justify-content: space-evenly;
+      // border-image: url(https://d1yn1kh78jj1rr.cloudfront.net/image/preview/rDtN98Qoishumwih/colored-drops-border-design-vector_7Jc0XM_SB_PM.jpg)180 round;
+
+    #desktop-mock-canvas-container {
+      display: flex;
+      align-items: center;
+      width: 20rem;
+      justify-content: center;
+      border: 3rem solid transparent;
       border-image: url(https://d1yn1kh78jj1rr.cloudfront.net/image/preview/rDtN98Qoishumwih/colored-drops-border-design-vector_7Jc0XM_SB_PM.jpg)180 round;
+
+    }
+
+    #desktop-votes-container {
+      // border: 1px solid red;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: flex-start;
+
+    #desktop-individual-votes {
+      display: flex;
+      border: 1px dotted green;
+      margin: 1rem;
+      height: 6rem;
+      width: 15rem;
+      justify-content: center;
+      align-items: center;
+      background-color: green;
+      border-radius: 10px;
+      font-size: 3rem;
+      }
     }
   }
 }
-
-
 
 #progressBar {
   /* Reset the default appearance */
@@ -115,12 +206,8 @@ progress[value]::-webkit-progress-value {
     font-weight: bold;
     font-family: 'Cabin Sketch', cursive;
   }
-
 }
 
 
 
 
-/* .desktopWelcomeTitle {
-  border: 1px solid black;
-} */
