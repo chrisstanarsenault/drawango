@@ -3,6 +3,7 @@ import MobileNavBar from './mobileNavBar';
 import MobileGuessingScreen from './mobileGuessingScreen';
 import MobileSubmitName from './mobileSubmitName';
 import MobileVotesScreen from './mobileVotesScreen';
+import MobileScore from './mobileScore';
 import Canvas from './canvas';
 import './mobile.scss'
 
@@ -18,12 +19,12 @@ class MobileMainView extends Component {
     let view;
 
     let task;
-    this.props.gameData.players.forEach(player => { 
+    this.props.gameData.players.forEach(player => {
       if (player.name === this.props.gameData.currentPlayer) {
         task = player.task;
       }
     });
- 
+
     switch (this.props.gameData.gameStage) {
 
       case 'welcomeStage':
@@ -34,7 +35,7 @@ class MobileMainView extends Component {
         break;
 
       case 'drawingStage':
-        
+
         if (this.props.gameData.currentPlayer === this.props.gameData.mainPlayer) {
           view =  <div>
                     <MobileNavBar/>
@@ -59,7 +60,7 @@ class MobileMainView extends Component {
         } else {
           view =  <div>
                     <MobileNavBar/>
-                    <MobileGuessingScreen addGuess={this.props.addGuess}/>
+                    <MobileGuessingScreen addGuess={this.props.addGuess} gameData={this.props.gameData}/>
                   </div>
         }
         break;
@@ -73,7 +74,7 @@ class MobileMainView extends Component {
         } else {
           view =  <div>
                   <MobileNavBar/>
-                  <MobileVotesScreen gameData={this.props.gameData}/>
+                  <MobileVotesScreen gameData={this.props.gameData} addPoints={this.props.addPoints}/>
                   </div>
         }
         break;
@@ -81,6 +82,7 @@ class MobileMainView extends Component {
       case 'scoreStage':
         view =  <div>
                   <MobileNavBar/>
+                  <MobileScore gameData={this.props.gameData}/>
                 </div>
         break;
 
@@ -95,7 +97,7 @@ class MobileMainView extends Component {
         {view}
       </div>
     );
-  
+
   }
 }
 

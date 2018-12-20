@@ -9,6 +9,16 @@ class MobileGuessingScreen extends Component {
     }
 
   render() {
+
+
+    if(this.props.gameData.playerGuess[this.props.gameData.mainPlayer]) {
+      return (
+        <div>
+          <p>Default page</p>
+        </div>
+      );
+    }
+
     return (
       <div>
         <p>Make your guess!</p>

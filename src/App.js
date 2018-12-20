@@ -21,12 +21,14 @@ class App extends Component {
 			players: [],
 			currentPlayer: '',
 			playerGuess: {},
+			playerVote: {},
 			line: [],
 		};
 
 		this.changeGameStage = this.changeGameStage.bind(this);
 		this.takeTurns = this.takeTurns.bind(this);
 		this.sendPaintData = this.sendPaintData.bind(this);
+		this.addPoints = this.addPoints.bind(this);
 		this.socket = undefined;
 	}
 
@@ -51,25 +53,33 @@ class App extends Component {
 					this.setState({ players: message.players });
 					this.setState({ currentPlayer: message.currentPlayer.name });
 					this.setState({ playerGuess: message.playerGuess });
-					this.setState({ draw: message.draw });
+					this.setState({ playerVote: message.playerVote });
+					this.setState({ line: message.line });
 					break
-				case 'addPlayer':
+				case 'updatePlayers':
 					this.setState({ players: message.players });
 					break;
-        case 'addGuess':
-          this.setState({ playerGuess: message.guesses});
+				case 'updateVotes':
+					this.setState({ playerVote: message.playerVote });
+					console.log("this are the votes", this.state.playerVote)
+					break;
+				case 'addGuess':
+					this.setState({ playerGuess: message.playerGuess});
           break;
 				case 'gameStage':
-					this.setState({ gameStage: message.stage });
+					this.setState({ gameStage: message.gameStage });
 					break;
 				case 'turns':
 					this.setState({ currentPlayer: message.currentPlayer.name});
+					this.setState({ line: [] });
+					this.setState({ playerGuess: {} });
+					this.setState({ playerVote: {} });
 					break;
 				case 'canvas':
 					this.setState({ line: message.line});
 					break;
 				default:
-					throw new Error("Unknown event type " + message.type)
+					console.log("Unknown event type " + message.type);
 			}
 		};
 	}
@@ -82,7 +92,7 @@ class App extends Component {
 	changeGameStage = (stage) => {
 		const gameStage = {
 			type: 'gameStage',
-			stage
+			gameStage: stage
 		};
 		this.socket.send(JSON.stringify(gameStage));
 		this.setState({ gameStage: stage });
@@ -116,6 +126,16 @@ class App extends Component {
     this.socket.send(JSON.stringify(body));
   }
 
+	addPoints(points, player, mainPlayer) {
+		const addPoints = {
+      type: 'addPoints',
+      player,
+			points,
+			mainPlayer
+		};
+		this.socket.send(JSON.stringify(addPoints));
+	}
+
 	render() {
 		return (
 			<Fragment >
@@ -123,7 +143,7 @@ class App extends Component {
 					<DesktopMainView gameData={this.state} changeGameStage={this.changeGameStage} takeTurns={this.takeTurns}/>
 				</BrowserView>
 				<MobileView >
-					<MobileMainView gameData={this.state} addPlayerName={this.addPlayerName} sendPaintData={this.sendPaintData} addGuess={this.addGuess} changeGameStage={this.changeGameStage}/>
+					<MobileMainView gameData={this.state} addPlayerName={this.addPlayerName} sendPaintData={this.sendPaintData} addGuess={this.addGuess} changeGameStage={this.changeGameStage} addPoints={this.addPoints}/>
 				</MobileView>
 			</Fragment>
 		);
@@ -132,3 +152,6 @@ class App extends Component {
 
 export default withCookies(App);
 
+// and when everyones votes next stage 
+// can't put the same guess into the system
+// RANDOMIZE THE GUESSES
