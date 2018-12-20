@@ -24,6 +24,7 @@ class App extends Component {
 			playerVote: {},
 			line: [],
 		};
+
 		this.changeGameStage = this.changeGameStage.bind(this);
 		this.takeTurns = this.takeTurns.bind(this);
 		this.sendPaintData = this.sendPaintData.bind(this);
