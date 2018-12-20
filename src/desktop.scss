@@ -36,73 +36,73 @@ body {
   position: relative;
 
   #individual-name-container0 {
-    border: 6px groove lightgrey;
+    // border: 6px groove lightgrey;
     position: relative;
     font-size: 3rem;
     font-family: $cabinFont;
     margin: -5rem 5rem 0 5rem;;
     padding: 1.2rem;
-    background-color: red;
+    // background-color: red;
     align-self: flex-start;
-
+    animation: rock 0.3s linear 2;
   }
 
   #individual-name-container1 {
-    border: 6px groove lightgrey;
+    // border: 6px groove lightgrey;
     position: relative;
     font-size: 3rem;
     font-family: $cabinFont;
     margin: 1.3rem -5rem -1.9rem -3rem;
     padding: 1.2rem;
-    background-color: green;
+    // background-color: green;
     align-self: flex-end;
-
+    animation: push 0.2s linear 4;
   }
 
   #individual-name-container2 {
-    border: 6px groove lightgrey;
+    // border: 6px groove lightgrey;
     position: relative;
     font-size: 3rem;
     font-family: $cabinFont;
     margin: 2rem 20rem;;
     padding: 1.2rem;
-    background-color: blue;
-
+    // background-color: blue;
+    animation: pop-in 0.32s linear 1;
   }
 
   #individual-name-container3 {
-    border: 6px groove lightgrey;
+    // border: 6px groove lightgrey;
     position: relative;
     font-size: 3rem;
     font-family: $cabinFont;
     margin: 2rem 5rem -6rem -5rem;
     padding: 1.2rem;
-    background-color: purple;
+    // background-color: purple;
     align-self: flex-end;
-
+    animation: push 0.4s linear 4;
   }
 
   #individual-name-container4 {
-    border: 6px groove lightgrey;
+    // border: 6px groove lightgrey;
     position: relative;
     font-size: 3rem;
     font-family: $cabinFont;
     margin: -4rem 5rem 2rem -4rem;
     padding: 1.2rem;
-    background-color: cyan;
+    // background-color: cyan;
     align-self: flex-start;
-
+    animation: reverse-rotate 0.3s linear 3;
   }
 
   #individual-name-container5 {
-    border: 6px groove lightgrey;
+    // border: 6px groove lightgrey;
     position: relative;
     font-size: 3rem;
     font-family: $cabinFont;
     margin: 2rem 9rem;
     padding: 1.2rem;
-    background-color: magenta;
-
+    // background-color: magenta;
+    animation: pop-in 0.3s linear 3;
   }
 }
 
@@ -113,6 +113,30 @@ button {
   background-color: darkturquoise;
   font-size: 1.1rem;
   font-weight: bold;
+}
+
+@keyframes push{
+  50%  {transform: scale(0.8);}
+}
+
+@keyframes pop-in {
+0% { opacity: 0; transform: scale(0.5); }
+100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes rotate {
+  100% {transform: rotate(360deg)}
+}
+
+@keyframes reverse-rotate {
+  100% {transform: rotate(-360deg)}
+}
+
+@keyframes rock {
+  25% {transform: rotate(30deg)}
+  50% {transform: rotate(-60deg)}
+  75% {transform: rotate(60deg)}
+  100% {transform: rotate(-60deg)}
 }
 
 @media (min-width: 1025px) {
