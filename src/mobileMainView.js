@@ -28,72 +28,43 @@ class MobileMainView extends Component {
     switch (this.props.gameData.gameStage) {
 
       case 'welcomeStage':
-        view =  <div>
-                  <MobileNavBar/>
-                  <MobileSubmitName addPlayerName={this.props.addPlayerName} changeGameStage={this.props.changeGameStage} gameData={this.props.gameData}/>
-                </div>
+        view = <MobileSubmitName addPlayerName={this.props.addPlayerName} changeGameStage={this.props.changeGameStage} gameData={this.props.gameData}/>
         break;
-
       case 'drawingStage':
-
         if (this.props.gameData.currentPlayer === this.props.gameData.mainPlayer) {
           view =  <div>
-                    <MobileNavBar/>
-                    <button onTouchStart={this.handleEvent}> Done Drawing </button>
-                    <p>Your turn! Draw a {task}</p>
-                    <Canvas gameData={this.props.gameData} sendPaintData={this.props.sendPaintData}/>
+                  <button onTouchStart={this.handleEvent}> Done Drawing </button>
+                  <p>Your turn! Draw a {task}</p>
+                  <Canvas gameData={this.props.gameData} sendPaintData={this.props.sendPaintData}/>
                   </div>
         } else {
-          view =  <div>
-                    <MobileNavBar/>
-                    <p> This is the default page </p>
-                  </div>
+          view = <p> This is the default page </p>
         }
         break;
-
       case 'guessingStage':
         if (this.props.gameData.currentPlayer === this.props.gameData.mainPlayer) {
-          view =  <div>
-                    <MobileNavBar/>
-                    <p> This is the default page </p>
-                  </div>
+          view = <p> This is the default page </p>
         } else {
-          view =  <div>
-                    <MobileNavBar/>
-                    <MobileGuessingScreen addGuess={this.props.addGuess} gameData={this.props.gameData}/>
-                  </div>
+          view = <MobileGuessingScreen addGuess={this.props.addGuess} gameData={this.props.gameData}/>
         }
         break;
-
       case 'votingStage':
         if (this.props.gameData.currentPlayer === this.props.gameData.mainPlayer) {
-          view =  <div>
-                    <MobileNavBar/>
-                    <p> This is the default page </p>
-                </div>
+          view = <p> This is the default page </p>
         } else {
-          view =  <div>
-                  <MobileNavBar/>
-                  <MobileVotesScreen gameData={this.props.gameData} addPoints={this.props.addPoints}/>
-                  </div>
+          view = <MobileVotesScreen gameData={this.props.gameData} addPoints={this.props.addPoints}/>
         }
         break;
-
       case 'scoreStage':
-        view =  <div>
-                  <MobileNavBar/>
-                  <MobileScore gameData={this.props.gameData}/>
-                </div>
+        view = <MobileScore gameData={this.props.gameData}/>
         break;
-
       default:
-        view =  <div>
-                  <p>This is the default case. There is a problem if you see this</p>
-                </div>
+        view = <p>This is the default case. There is a problem if you see this</p>
     }
 
     return (
       <div>
+        <MobileNavBar/>
         {view}
       </div>
     );

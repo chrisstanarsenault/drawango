@@ -6,22 +6,10 @@ import Timer from './desktopTimerFooter';
 
 class DesktopVotingScreen extends Component {
 
-  handleEvent = event => {
-    this.props.changeGameStage("scoreStage");
-  }
+  render() {  
 
-  render() {
-
-    //instead of having all this code below, maybe ensure that all players have choice?
-    const players = [];
-    this.props.gameData.players.forEach(player => {
-      if (this.props.gameData.playerGuess[player.name]) {
-        players.push(player);
-      }
-    });
-
-    const guesses = players.map(player => (
-      <DesktopVotes key={player.name} guess={this.props.gameData.playerGuess[player.name]}/>
+    const guesses = Object.values(this.props.gameData.playerGuess).map((guess, index) => (
+      <DesktopVotes key={index} guess={guess}/>
     ));
 
     return (

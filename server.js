@@ -20,8 +20,6 @@ const game = {
 
 const draw = 'Cat';
 
-// const gameStages = [welcome]
-
 wss.broadcast = function broadcast(data) {
 	wss.clients.forEach(function each(ws) {
 		ws.send(data);
@@ -113,25 +111,12 @@ wss.on('connection', (ws) => {
 			case 'gameStage':
 				game.gameStage = data.gameStage;
 				wss.broadcast(event);
-				switch (data.gameStage) {
-					case "drawingStage":
-						timer(31);
-						break;
-					case "guessingStage":
-						timer(31);
-						break;
-					case "votingStage":
-						timer(31);
-						break;
-					case "scoreStage":
-						timer(15);
-						break;
-					default:
-					console.log("what is this stage", data.gameStage)
-
-					console.log("do I need default condition?")
+				if (data.gameStage === "drawingStage" || data.gameStage === "guessingStage" || data.gameStage === "votingStage") { 
+					timer (31)
+				} else if (data.gameStage === "scoreStage") {
+					timer(15);
 				}
-        break;
+				break;
       case 'addPoints':
         for (let i = 0; i < game.players.length; i++ ){
           if (game.players[i].name === data.player) {
