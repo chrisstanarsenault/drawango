@@ -20,23 +20,21 @@ const game = {
 
 const draw = 'Cat';
 
+// const gameStages = [welcome]
+
 wss.broadcast = function broadcast(data) {
 	wss.clients.forEach(function each(ws) {
 		ws.send(data);
 	});
 };
 
-timer = (time, stage) => {
+function timer(time) {
 	let timeleftCounter = time;
 	let downloadTimerCounter = setInterval(function() {
 		timeleftCounter--;
+		wss.broadcast(JSON.stringify({ type: 'timer', timer: timeleftCounter }));
 		if (timeleftCounter <= 0) {
 			clearInterval(downloadTimerCounter);
-			if(game.gameStage !== stage) {
-				wss.broadcast(JSON.stringify({ type: 'gameStage', stage: stage }));
-				console.log("this was triggered here");
-			}
-      console.log("this was triggered another");
 		}
 	}, 1000);
 };
@@ -66,18 +64,18 @@ wss.on('connection', (ws) => {
 		playerVote: game.playerVote,
 		line: game.line
 	};
-	ws.send(JSON.stringify(welcomePack));
+		ws.send(JSON.stringify(welcomePack));
 
-	ws.on('message', function(event) {
-		let data = JSON.parse(event);
+		ws.on('message', function(event) {
+			let data = JSON.parse(event);
 		switch (data.type) {
-			case 'setName':
-				const addPlayer = {
+			case 'addPlayer':
+				const player = {
 					name: data.player,
 					points: 0,
-					task: draw,
+					task: draw
 				};
-				game.players.push(addPlayer);
+				game.players.push(player);
 				const players = {
 					type: 'updatePlayers',
 					players: game.players
@@ -115,41 +113,41 @@ wss.on('connection', (ws) => {
 			case 'gameStage':
 				game.gameStage = data.gameStage;
 				wss.broadcast(event);
-				//the logic is not complete, make sure the stage is not too ahead
-				// if (data.gameStage === 'drawingStage') {
-				// 	timer(30,'guessingStage');
-				// }
-				// if (data.gameStage === 'guessingStage') {
-				// 	timer(30,'votingStage');
-				// }
-				// if (data.gameStage === 'votingStage') {
-				// 	timer(30,'scoreStage');
-				// }
-				// if (data.gameStage === 'scoreStage') {
-				// 	timer(15,'scoreStage');
-				// }
+				switch (data.gameStage) {
+					case "drawingStage":
+						timer(31);
+						break;
+					case "guessingStage":
+						timer(31);
+						break;
+					case "votingStage":
+						timer(31);
+						break;
+					case "scoreStage":
+						timer(15);
+						break;
+					default:
+					console.log("what is this stage", data.gameStage)
+
+					console.log("do I need default condition?")
+				}
         break;
       case 'addPoints':
         for (let i = 0; i < game.players.length; i++ ){
           if (game.players[i].name === data.player) {
 						game.players[i].points += data.points;
-						console.log("points" )
 					}
 				}
-
 				for (let i = 0; i < game.players.length; i++ ){
 					if (game.players[i].name === data.mainPlayer){
 						game.playerVote[data.mainPlayer] = true;
-						console.log('main player',data.mainPlayer )
 					}
 				}
-
         const updatePlayers = {
 					type: 'updatePlayers',
 					players: game.players
 				};
 				wss.broadcast(JSON.stringify(updatePlayers));
-
 				const updateVotes = {
 					type: 'updateVotes',
 					playerVote: game.playerVote

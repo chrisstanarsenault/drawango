@@ -23,12 +23,14 @@ class App extends Component {
 			playerGuess: {},
 			playerVote: {},
 			line: [],
+			timer: ""
 		};
 
 		this.changeGameStage = this.changeGameStage.bind(this);
 		this.takeTurns = this.takeTurns.bind(this);
 		this.sendPaintData = this.sendPaintData.bind(this);
 		this.addPoints = this.addPoints.bind(this);
+		this.resetTimer = this.resetTimer.bind(this);
 		this.socket = undefined;
 	}
 
@@ -55,13 +57,13 @@ class App extends Component {
 					this.setState({ playerGuess: message.playerGuess });
 					this.setState({ playerVote: message.playerVote });
 					this.setState({ line: message.line });
+					this.setState({ timer: message.timer });
 					break
 				case 'updatePlayers':
 					this.setState({ players: message.players });
 					break;
 				case 'updateVotes':
 					this.setState({ playerVote: message.playerVote });
-					console.log("this are the votes", this.state.playerVote)
 					break;
 				case 'addGuess':
 					this.setState({ playerGuess: message.playerGuess});
@@ -77,6 +79,9 @@ class App extends Component {
 					break;
 				case 'canvas':
 					this.setState({ line: message.line});
+					break;
+				case 'timer':
+					this.setState({ timer: message.timer});
 					break;
 				default:
 					console.log("Unknown event type " + message.type);
@@ -102,11 +107,11 @@ class App extends Component {
     const { cookies } = this.props;
 		cookies.set('name', name, { path: '/' });
 		this.setState({ mainPlayer: name });
-		const setName = {
-			type: 'setName',
+		const addPlayer = {
+			type: 'addPlayer',
 			player: name
 		};
-		this.socket.send(JSON.stringify(setName));
+		this.socket.send(JSON.stringify(addPlayer));
 	};
 
 	addGuess = (guess) => {
@@ -121,7 +126,7 @@ class App extends Component {
   sendPaintData = (line) => {
     const body = {
       type: "canvas",
-      line: line,
+      line: line
     };
     this.socket.send(JSON.stringify(body));
   }
@@ -136,11 +141,15 @@ class App extends Component {
 		this.socket.send(JSON.stringify(addPoints));
 	}
 
+	resetTimer(){
+		this.setState({ timer: "" });
+	}
+
 	render() {
 		return (
 			<Fragment >
 				<BrowserView >
-					<DesktopMainView gameData={this.state} changeGameStage={this.changeGameStage} takeTurns={this.takeTurns}/>
+					<DesktopMainView gameData={this.state} changeGameStage={this.changeGameStage} takeTurns={this.takeTurns} resetTimer={this.resetTimer}/>
 				</BrowserView>
 				<MobileView >
 					<MobileMainView gameData={this.state} addPlayerName={this.addPlayerName} sendPaintData={this.sendPaintData} addGuess={this.addGuess} changeGameStage={this.changeGameStage} addPoints={this.addPoints}/>
@@ -152,6 +161,7 @@ class App extends Component {
 
 export default withCookies(App);
 
-// and when everyones votes next stage 
+//can't enter the same name 
 // can't put the same guess into the system
-// RANDOMIZE THE GUESSES
+// randomize guesses 
+// logic for the next round and timer

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import DesktopVotes from './desktopVotes';
-import Canvas from './canvas'
+import Canvas from './canvas';
+import Timer from './desktopTimerFooter';
+
 
 class DesktopVotingScreen extends Component {
 
@@ -20,20 +22,21 @@ class DesktopVotingScreen extends Component {
 
     const guesses = players.map(player => (
       <DesktopVotes key={player.name} guess={this.props.gameData.playerGuess[player.name]}/>
-      ));
+    ));
 
     return (
       <div>
-        <button onClick={this.handleEvent}> Test Next Stage </button>
         <div id="canvas-votes-container">
           <div id="desktop-mock-canvas-container">
             <p>I am Canvas Container!</p>
           </div>
           <div id="desktop-votes-container">
-          {guesses}
+            {guesses}
           </div>
         </div>
-        {/* <Canvas gameData={this.props.gameData} /> */}
+        <div>
+          <Timer gameData={this.props.gameData} changeGameStage={this.props.changeGameStage} stage={"scoreStage"} resetTimer={this.props.resetTimer}/>
+        </div>
       </div>
     )
   }
