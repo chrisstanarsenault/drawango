@@ -43,7 +43,6 @@ class MobileGuessingScreen extends Component {
 
   render() {
 
-
     if(this.props.gameData.playerGuess[this.props.gameData.mainPlayer]) {
       return (
         <div>
