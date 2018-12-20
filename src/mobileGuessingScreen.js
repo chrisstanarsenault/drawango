@@ -10,7 +10,6 @@ class MobileGuessingScreen extends Component {
 
   render() {
 
-    let guess = false;
 
     if(this.props.gameData.playerGuess[this.props.gameData.mainPlayer]) {
       return (
@@ -30,7 +29,6 @@ class MobileGuessingScreen extends Component {
           </label>
           <input type="submit" value="Guess" />
         </form>
-        <p>{guess}</p>
       </div>
     );
   }
