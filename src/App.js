@@ -21,6 +21,7 @@ class App extends Component {
 			players: [],
 			currentPlayer: '',
 			playerGuess: {},
+			playerVote: {},
 			line: [],
 		};
 		this.changeGameStage = this.changeGameStage.bind(this);
@@ -51,27 +52,33 @@ class App extends Component {
 					this.setState({ players: message.players });
 					this.setState({ currentPlayer: message.currentPlayer.name });
 					this.setState({ playerGuess: message.playerGuess });
-					this.setState({ draw: message.draw });
+					this.setState({ playerVote: message.playerVote });
+					this.setState({ line: message.line });
 					break
 				case 'updatePlayers':
 					this.setState({ players: message.players });
 					break;
-        case 'addGuess':
-          this.setState({ playerGuess: message.guesses});
+				case 'updateVotes':
+					this.setState({ playerVote: message.playerVote });
+					console.log("this are the votes", this.state.playerVote)
+					break;
+				case 'addGuess':
+					this.setState({ playerGuess: message.playerGuess});
           break;
 				case 'gameStage':
-					this.setState({ gameStage: message.stage });
+					this.setState({ gameStage: message.gameStage });
 					break;
 				case 'turns':
 					this.setState({ currentPlayer: message.currentPlayer.name});
-					this.setState({ line: [] })
-					this.setState({ playerGuess: {} })
+					this.setState({ line: [] });
+					this.setState({ playerGuess: {} });
+					this.setState({ playerVote: {} });
 					break;
 				case 'canvas':
 					this.setState({ line: message.line});
 					break;
 				default:
-					console.log("Unknown event type " + message.type)
+					console.log("Unknown event type " + message.type);
 			}
 		};
 	}
@@ -84,7 +91,7 @@ class App extends Component {
 	changeGameStage = (stage) => {
 		const gameStage = {
 			type: 'gameStage',
-			stage
+			gameStage: stage
 		};
 		this.socket.send(JSON.stringify(gameStage));
 		this.setState({ gameStage: stage });
@@ -118,11 +125,12 @@ class App extends Component {
     this.socket.send(JSON.stringify(body));
   }
 
-	addPoints(points, player) {
+	addPoints(points, player, mainPlayer) {
 		const addPoints = {
       type: 'addPoints',
       player,
-      points
+			points,
+			mainPlayer
 		};
 		this.socket.send(JSON.stringify(addPoints));
 	}
@@ -143,7 +151,6 @@ class App extends Component {
 
 export default withCookies(App);
 
-// when everone is in seitch the stage
 // and when everyones votes next stage 
 // can't put the same guess into the system
 // RANDOMIZE THE GUESSES
