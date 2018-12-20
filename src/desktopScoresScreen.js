@@ -19,7 +19,7 @@ class DesktopScoresScreen extends Component {
     });
 
     const playerScores = players.map(player => (
-        <Scores key={player} player={player.name} playerScores={player.points} guess={this.props.gameData.playerGuess[player.name]} />
+        <Scores key={player} player={player.name} points={player.points} guess={this.props.gameData.playerGuess[player.name]} />
       ));
 
     return (
