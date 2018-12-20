@@ -3,7 +3,6 @@ import DesktopWelcome from './desktopWelcomeScreen';
 import Timer from './desktopTimerFooter';
 import DesktopDrawingScreen from './desktopDrawingScreen';
 import DesktopGuessingScreen from './desktopGuessingScreen';
-
 import DesktopVotingScreen from './desktopVotesScreen';
 import DesktopScoresScreen from './desktopScoresScreen';
 
