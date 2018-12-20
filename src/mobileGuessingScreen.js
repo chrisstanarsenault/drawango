@@ -20,7 +20,7 @@ class MobileGuessingScreen extends Component {
     let check = true
     for (const each in guesses) {
       console.log(guesses[each])
-      if (guessInput.value === guesses[each]) {
+      if (guessInput.value.toLowerCase() === guesses[each].toLowerCase()) {
       alert('You should try another guess');
       check = false
       }

@@ -89,12 +89,12 @@ wss.on('connection', (ws) => {
 					currentPlayer: game.currentPlayer
         };
         game.playerGuess[game.currentPlayer.name] = draw;
-        const guesses = {
+        const wordToGuess = {
 					type: 'addGuess',
 					guesses: game.playerGuess
 				};
         wss.broadcast(JSON.stringify(turns));
-        wss.broadcast(JSON.stringify(guesses));
+        wss.broadcast(JSON.stringify(wordToGuess));
 				break;
 			case 'canvas':
 				game.line = data.line;
