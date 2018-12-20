@@ -87,8 +87,14 @@ wss.on('connection', (ws) => {
 				const turns = {
 					type: 'turns',
 					currentPlayer: game.currentPlayer
+        };
+        game.playerGuess[game.currentPlayer.name] = draw;
+        const guesses = {
+					type: 'addGuess',
+					guesses: game.playerGuess
 				};
-				wss.broadcast(JSON.stringify(turns));
+        wss.broadcast(JSON.stringify(turns));
+        wss.broadcast(JSON.stringify(guesses));
 				break;
 			case 'canvas':
 				game.line = data.line;
@@ -96,7 +102,6 @@ wss.on('connection', (ws) => {
 				break;
 			case 'setGuess':
 				game.playerGuess[data.player] = data.guess;
-				game.playerGuess[game.currentPlayer.name] = draw;
 				const guesses = {
 					type: 'addGuess',
 					guesses: game.playerGuess
