@@ -5,14 +5,29 @@ import Scores from './desktopScores'
 class DesktopScoresScreen extends Component {
 
   render() {
-    const scores = this.props.gameData.players.map(player => (
-      <Scores key={player} player={player.name} scores={player.points}/>
+
+    const answer = this.props.gameData.playerGuess[this.props.gameData.currentPlayer];
+
+    const players = [];
+    let drawer;
+    this.props.gameData.players.forEach(player => {
+      if (this.props.gameData.currentPlayer === player.name) {
+        drawer = player;
+      } else {
+        players.push(player);
+      }
+    });
+
+    const playerScores = players.map(player => (
+        <Scores key={player} player={player.name} playerScores={player.points} guess={this.props.gameData.playerGuess[player.name]} />
       ));
 
     return (
       <div>
-        <p>This is the last stage</p>
-        {scores}
+        <h1>Scoreboard!</h1>
+        <h2>{answer}</h2>
+        <p>Drawer: {drawer.name} {drawer.points}</p>
+        {playerScores}
       </div>
     )
   }
