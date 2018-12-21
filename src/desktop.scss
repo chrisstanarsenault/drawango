@@ -4,17 +4,19 @@ $cabinFont: 'Cabin Sketch', cursive;
 body {
   font-size: 15px;
   font-family: $markerFont;
+  background-image: url(https://img.freepik.com/free-photo/grunge-wall-texture_1194-5384.jpg?size=338&ext=jpg);
+  //background-size: cover;
+  background-repeat: repeat;
 }
 
 .desktopWelcomeContainer {
   display: flex;
   align-items: center;
   flex-direction: column;
-  // border: 1px solid black;
     .desktopWelcomeTitle {
-      font-size: 5rem;
+      font-size: 7rem;
+      margin: 0;
       font-family: $cabinFont;
-      // border: 1px solid black;
       color: blue;
     }
 
@@ -25,9 +27,31 @@ body {
 
 #desktop-players-title-container {
   display:flex;
-  justify-content: center;
-    #desktop-players-title {
-      font-size: 2.5rem;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3rem;
+  padding-top: 13rem;
+
+  #desktop-players-title {
+      font-size: 4rem;
+      text-decoration: underline;
+  }
+
+  button {
+  height: 7rem;
+  width: 20rem;
+  border: 1px solid #3B6CFF;
+  border-radius: 1rem;
+  background-color: #42A1FF;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: $markerFont;
+  }
+
+  button:active {
+    box-shadow: inset 0px 0px 5px #c1c1c1;
+    outline: none;
+    background: #3D6EFF;
   }
 }
 
@@ -36,72 +60,74 @@ body {
   position: relative;
 
   #individual-name-container0 {
-    // border: 6px groove lightgrey;
+    // border: 1rem solid rgb(253, 247, 231);
+    // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
     position: relative;
-    font-size: 3rem;
+    font-size: 4.3rem;
     font-family: $cabinFont;
-    margin: -5rem 5rem 0 5rem;;
-    padding: 1.2rem;
-    // background-color: red;
+    margin: -25rem 5rem 0 50rem;
+    color: red;
     align-self: flex-start;
-    animation: rock 0.3s linear 2;
+    animation: rotate 0.3s linear 3;
   }
 
+  // -19rem 5rem 0 35rem
+
   #individual-name-container1 {
-    // border: 6px groove lightgrey;
+    // border: 3rem solid transparent;
+    // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
     position: relative;
-    font-size: 3rem;
+    font-size: 4.3rem;
     font-family: $cabinFont;
-    margin: 1.3rem -5rem -1.9rem -3rem;
-    padding: 1.2rem;
-    // background-color: green;
+    margin: -70rem 0 19rem -55rem;
+    color: green;
     align-self: flex-end;
     animation: push 0.2s linear 4;
   }
 
   #individual-name-container2 {
-    // border: 6px groove lightgrey;
+    // border: 3rem solid transparent;
+    // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
     position: relative;
-    font-size: 3rem;
+    font-size: 4.3rem;
     font-family: $cabinFont;
-    margin: 2rem 20rem;;
-    padding: 1.2rem;
-    // background-color: blue;
-    animation: pop-in 0.32s linear 1;
+    margin: 2rem 1rem;
+    color: blue;
+    animation: rock 0.32s linear 3;
   }
 
   #individual-name-container3 {
-    // border: 6px groove lightgrey;
+    // border: 3rem solid transparent;
+    // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
     position: relative;
-    font-size: 3rem;
+    font-size: 4.3rem;
     font-family: $cabinFont;
-    margin: 2rem 5rem -6rem -5rem;
-    padding: 1.2rem;
-    // background-color: purple;
+    margin: 2rem 5rem -6rem 30rem;
+    color: purple;
     align-self: flex-end;
     animation: push 0.4s linear 4;
   }
 
   #individual-name-container4 {
-    // border: 6px groove lightgrey;
+    // border: 3rem solid transparent;
+    // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
     position: relative;
-    font-size: 3rem;
+    font-size: 4.3rem;
     font-family: $cabinFont;
-    margin: -4rem 5rem 2rem -4rem;
-    padding: 1.2rem;
-    // background-color: cyan;
+    margin: -1rem 5rem 1rem 15rem;
+    color: cyan;
     align-self: flex-start;
     animation: reverse-rotate 0.3s linear 3;
   }
 
   #individual-name-container5 {
-    // border: 6px groove lightgrey;
+    // border: 3rem solid transparent;
+    // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
     position: relative;
-    font-size: 3rem;
+    font-size: 4.3rem;
     font-family: $cabinFont;
-    margin: 2rem 9rem;
-    padding: 1.2rem;
-    // background-color: magenta;
+    margin: -15rem -15rem;
+    color: magenta;
     animation: pop-in 0.3s linear 3;
   }
 }
