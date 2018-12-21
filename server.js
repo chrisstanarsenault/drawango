@@ -19,7 +19,7 @@ const game = {
 	timer: null
 };
 
-const draw = 'Cat';
+const draw = ['french girls', 'face full of hapinness', 'Putin on a bear', 'Cat'];
 
 wss.broadcast = function broadcast(data) {
 	wss.clients.forEach(function each(ws) {
@@ -49,7 +49,8 @@ function takeTurns() {
 		const currentPlayer = playersWhoHaveNotGone[Math.floor(Math.random() * playersWhoHaveNotGone.length)];
 		game.turns.push(currentPlayer);
 		game.currentPlayer = currentPlayer;
-		game.playerGuess[currentPlayer.name] = draw;
+		game.playerGuess[currentPlayer.name] = game.currentPlayer.task;
+;
 	}
 }
 
@@ -76,7 +77,7 @@ wss.on('connection', (ws) => {
 				const player = {
 					name: data.player,
 					points: 0,
-					task: draw
+					task: draw.shift()
 				};
 				game.players.push(player);
 				const players = {
