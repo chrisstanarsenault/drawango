@@ -8,11 +8,12 @@ import DesktopScoresScreen from './desktopScoresScreen';
 import './desktop.scss'
 
 class DesktopMainView extends Component {
-	render() {
+	
+	pickRelevantComponentToRender (gameStage) {
 		
 		let view;
 
-		switch (this.props.gameData.gameStage) {
+		switch (gameStage) {
 			case 'welcomeStage':
 				view = <DesktopWelcome changeGameStage={this.props.changeGameStage} takeTurns={this.props.takeTurns} gameData={this.props.gameData}/>;
 				break;
@@ -28,10 +29,17 @@ class DesktopMainView extends Component {
 			case 'scoreStage':
 				view = <DesktopScoresScreen changeGameStage={this.props.changeGameStage} gameData={this.props.gameData} resetTimer={this.props.resetTimer}/>;
 				break;
-		}
+			default:
+				view = <p>You shouldn't see this</p>
+		}	
+		return view;
+	}
+	
+	render() {
+		
 		return (
 			<div>
-				{view}
+				{this.pickRelevantComponentToRender(this.props.gameData.gameStage)}
 			</div>
 		);
 	}

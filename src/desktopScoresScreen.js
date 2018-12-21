@@ -10,6 +10,7 @@ class DesktopScoresScreen extends Component {
 
     const players = [];
     let drawer;
+    //see if there is a find and pop function 
     this.props.gameData.players.forEach(player => {
       if (this.props.gameData.currentPlayer === player.name) {
         drawer = player;

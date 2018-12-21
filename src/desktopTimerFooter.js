@@ -5,7 +5,6 @@ class Timer extends Component {
   render() {
     
     if (this.props.gameData.timer === 0) {
-      console.log(this.props.stage)
       this.props.resetTimer()
       this.props.changeGameStage(this.props.stage);
       return (<div></div>);  

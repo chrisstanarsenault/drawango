@@ -15,7 +15,8 @@ const game = {
 	turns: [],
 	playerGuess: {},
 	playerVote: {},
-	line: []
+	line: [],
+	timer: null
 };
 
 const draw = 'Cat';
@@ -27,12 +28,13 @@ wss.broadcast = function broadcast(data) {
 };
 
 function timer(time) {
+	clearInterval(game.timer);
 	let timeleftCounter = time;
-	let downloadTimerCounter = setInterval(function() {
+	game.timer = setInterval(function() {
 		timeleftCounter--;
 		wss.broadcast(JSON.stringify({ type: 'timer', timer: timeleftCounter }));
 		if (timeleftCounter <= 0) {
-			clearInterval(downloadTimerCounter);
+			clearInterval(game.timer);
 		}
 	}, 1000);
 };
@@ -47,6 +49,7 @@ function takeTurns() {
 		const currentPlayer = playersWhoHaveNotGone[Math.floor(Math.random() * playersWhoHaveNotGone.length)];
 		game.turns.push(currentPlayer);
 		game.currentPlayer = currentPlayer;
+		game.playerGuess[currentPlayer.name] = draw;
 	}
 }
 
@@ -60,7 +63,8 @@ wss.on('connection', (ws) => {
 		currentPlayer: game.currentPlayer,
 		playerGuess: game.playerGuess,
 		playerVote: game.playerVote,
-		line: game.line
+		line: game.line,
+		timer: game.timer
 	};
 		ws.send(JSON.stringify(welcomePack));
 
@@ -68,6 +72,7 @@ wss.on('connection', (ws) => {
 			let data = JSON.parse(event);
 		switch (data.type) {
 			case 'addPlayer':
+			//turn this into a function - game handling object - each key is a function 
 				const player = {
 					name: data.player,
 					points: 0,
@@ -84,22 +89,26 @@ wss.on('connection', (ws) => {
 				takeTurns();
 				const turns = {
 					type: 'turns',
-					currentPlayer: game.currentPlayer
-        };
-        game.playerGuess[game.currentPlayer.name] = draw;
-        const wordToGuess = {
-					type: 'addGuess',
-					guesses: game.playerGuess
+					currentPlayer: game.currentPlayer,
 				};
-        wss.broadcast(JSON.stringify(turns));
-        wss.broadcast(JSON.stringify(wordToGuess));
+				wss.broadcast(JSON.stringify(turns));
+				game.playerGuess[data.player] = data.guess;
+				const guess = {
+					type: 'addGuess',
+					playerGuess: game.playerGuess
+				};
+				wss.broadcast(JSON.stringify(guess));
 				break;
 			case 'canvas':
 				game.line = data.line;
 				wss.broadcast(event);
 				break;
-			case 'setGuess':
+			case 'addGuess':
 				game.playerGuess[data.player] = data.guess;
+				const addGuess = {
+					type: 'addGuess',
+					playerGuess: game.playerGuess
+				};
 				wss.broadcast(JSON.stringify(addGuess));
 				if (Object.keys(game.playerGuess).length === game.players.length){
 					const gameStage = {
@@ -118,7 +127,8 @@ wss.on('connection', (ws) => {
 					timer(15);
 				}
 				break;
-      case 'addPoints':
+			case 'addPoints':
+			//refactor below 
         for (let i = 0; i < game.players.length; i++ ){
           if (game.players[i].name === data.player) {
 						game.players[i].points += data.points;
@@ -134,6 +144,10 @@ wss.on('connection', (ws) => {
 					players: game.players
 				};
 				wss.broadcast(JSON.stringify(updatePlayers));
+
+				// create a message function with a type and data parameters that sends and stringifies the message
+				
+
 				const updateVotes = {
 					type: 'updateVotes',
 					playerVote: game.playerVote

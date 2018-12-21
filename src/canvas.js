@@ -8,6 +8,10 @@ class Canvas extends Component {
     this.endPaintEvent = this.endPaintEvent.bind(this);
   }
 
+//put this into the stage of canvas
+//add meta data
+// and add state
+
   isPainting = false;
   strokeStyle = '#FF00FF';
   line = [];
