@@ -4,8 +4,8 @@ class MobileNavBar extends Component {
 
   render() {
     return (
-      <nav>
-        <h1>DRAW ME DADDY</h1>
+      <nav id="mobile-navbar-container">
+        <h1 className="mobile-navbar-title">DRAW DADDY</h1>
       </nav>
     );
   }

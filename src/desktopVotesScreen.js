@@ -6,7 +6,7 @@ import Timer from './desktopTimerFooter';
 
 class DesktopVotingScreen extends Component {
 
-  render() {  
+  render() {
 
     const guesses = Object.values(this.props.gameData.playerGuess).map((guess, index) => (
       <DesktopVotes key={index} guess={guess}/>

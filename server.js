@@ -72,7 +72,7 @@ wss.on('connection', (ws) => {
 			let data = JSON.parse(event);
 		switch (data.type) {
 			case 'addPlayer':
-			//turn this into a function - game handling object - each key is a function 
+			//turn this into a function - game handling object - each key is a function
 				const player = {
 					name: data.player,
 					points: 0,
@@ -114,7 +114,7 @@ wss.on('connection', (ws) => {
 				console.log("guesses",Object.keys(game.playerGuess));
 					console.log("players",game.players.length);
 				if (Object.keys(game.playerGuess).length === game.players.length){
-					
+
 					const gameStage = {
 						type: "gameStage",
 						gameStage: "votingStage"
@@ -125,14 +125,14 @@ wss.on('connection', (ws) => {
 			case 'gameStage':
 				game.gameStage = data.gameStage;
 				wss.broadcast(event);
-				if (data.gameStage === "drawingStage" || data.gameStage === "guessingStage" || data.gameStage === "votingStage") { 
+				if (data.gameStage === "drawingStage" || data.gameStage === "guessingStage" || data.gameStage === "votingStage") {
 					timer (31)
 				} else if (data.gameStage === "scoreStage") {
 					timer(15);
 				}
 				break;
 			case 'addPoints':
-			//refactor below 
+			//refactor below
         for (let i = 0; i < game.players.length; i++ ){
           if (game.players[i].name === data.player) {
 						game.players[i].points += data.points;
@@ -150,7 +150,7 @@ wss.on('connection', (ws) => {
 				wss.broadcast(JSON.stringify(updatePlayers));
 
 				// create a message function with a type and data parameters that sends and stringifies the message
-				
+
 
 				const updateVotes = {
 					type: 'updateVotes',
