@@ -49,8 +49,7 @@ function takeTurns() {
 		const currentPlayer = playersWhoHaveNotGone[Math.floor(Math.random() * playersWhoHaveNotGone.length)];
 		game.turns.push(currentPlayer);
 		game.currentPlayer = currentPlayer;
-		game.playerGuess[currentPlayer.name] = game.currentPlayer.task;
-;
+		game.playerGuess[game.currentPlayer.name] = game.currentPlayer.task;
 	}
 }
 
@@ -65,8 +64,8 @@ wss.on('connection', (ws) => {
 		playerGuess: game.playerGuess,
 		playerVote: game.playerVote,
 		line: game.line,
-		timer: game.timer
 	};
+	console.log("welcome",game.playerGuess)
 		ws.send(JSON.stringify(welcomePack));
 
 		ws.on('message', function(event) {
@@ -93,11 +92,12 @@ wss.on('connection', (ws) => {
 					currentPlayer: game.currentPlayer,
 				};
 				wss.broadcast(JSON.stringify(turns));
-				game.playerGuess[data.player] = data.guess;
+				console.log("aother tagert",game.playerGuess)
 				const guess = {
 					type: 'addGuess',
 					playerGuess: game.playerGuess
 				};
+				console.log("this is here",game.playerGuess)
 				wss.broadcast(JSON.stringify(guess));
 				break;
 			case 'canvas':
@@ -111,7 +111,10 @@ wss.on('connection', (ws) => {
 					playerGuess: game.playerGuess
 				};
 				wss.broadcast(JSON.stringify(addGuess));
+				console.log("guesses",Object.keys(game.playerGuess));
+					console.log("players",game.players.length);
 				if (Object.keys(game.playerGuess).length === game.players.length){
+					
 					const gameStage = {
 						type: "gameStage",
 						gameStage: "votingStage"
