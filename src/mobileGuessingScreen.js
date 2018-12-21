@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
 
 class MobileGuessingScreen extends Component {
-
+	constructor() {
+    super()
+		this.state = { errors: ""}
+  }
+    
   handleSubmit = event => {
     event.preventDefault();
     const guessInput = event.target.elements.guess;
@@ -11,13 +15,10 @@ class MobileGuessingScreen extends Component {
     ))
     if (!guesses.includes(guess)){
       this.props.addGuess(guessInput.value);
-      console.log("guesses",guesses);
-      console.log("guesses",guess);
-      console.log("state",this.props.gameData.playerGuess)
-      console.log("another state",Object.values(this.props.gameData.playerGuess))
-
+    } else {
+      this.setState({ errors: "Opps... you came too close" });
     }
-    }
+  }
 
   render() {
 
@@ -39,6 +40,7 @@ class MobileGuessingScreen extends Component {
           </label>
           <input type="submit" value="Guess" />
         </form>
+        <p>{this.state.errors}</p>
       </div>
     );
   }
