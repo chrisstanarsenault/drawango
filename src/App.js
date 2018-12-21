@@ -23,7 +23,7 @@ class App extends Component {
 			playerGuess: {},
 			playerVote: {},
 			line: [],
-			timer: ""
+			timer: null
 		};
 
 		this.changeGameStage = this.changeGameStage.bind(this);
@@ -51,8 +51,9 @@ class App extends Component {
 			const message = JSON.parse(event.data);
 			switch (message.type) {
 				case 'welcomePack':
-					this.setState({ gameStage: message.gameStage });
-					this.setState({ players: message.players });
+					this.setState({ gameStage: message.gameStage,
+													players: message.players });
+													//refactor
 					this.setState({ currentPlayer: message.currentPlayer.name });
 					this.setState({ playerGuess: message.playerGuess });
 					this.setState({ playerVote: message.playerVote });
@@ -116,7 +117,7 @@ class App extends Component {
 
 	addGuess = (guess) => {
     const setGuess = {
-      type: 'setGuess',
+      type: 'addGuess',
       player: this.state.mainPlayer,
       guess
     };
