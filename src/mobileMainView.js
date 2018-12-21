@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import MobileDefault from './mobileDefault';
 import MobileNavBar from './mobileNavBar';
 import MobileGuessingScreen from './mobileGuessingScreen';
 import MobileSubmitName from './mobileSubmitName';
@@ -38,15 +39,13 @@ class MobileMainView extends Component {
 
         if (this.props.gameData.currentPlayer === this.props.gameData.mainPlayer) {
           view =  <div>
-                    <MobileNavBar/>
                     <button onTouchStart={this.handleEvent}> Done Drawing </button>
-                    <p>Your turn! Draw a {task}</p>
                     <Canvas gameData={this.props.gameData} sendPaintData={this.props.sendPaintData}/>
                   </div>
         } else {
           view =  <div>
                     <MobileNavBar/>
-                    <p> This is the default page </p>
+                    <MobileDefault />
                   </div>
         }
         break;
@@ -54,8 +53,8 @@ class MobileMainView extends Component {
       case 'guessingStage':
         if (this.props.gameData.currentPlayer === this.props.gameData.mainPlayer) {
           view =  <div>
-                    <MobileNavBar/>
-                    <p> This is the default page </p>
+                   <MobileNavBar/>
+                   <MobileDefault />
                   </div>
         } else {
           view =  <div>
@@ -68,8 +67,8 @@ class MobileMainView extends Component {
       case 'votingStage':
         if (this.props.gameData.currentPlayer === this.props.gameData.mainPlayer) {
           view =  <div>
-                    <MobileNavBar/>
-                    <p> This is the default page </p>
+                   <MobileNavBar/>
+                   <MobileDefault />
                 </div>
         } else {
           view =  <div>
