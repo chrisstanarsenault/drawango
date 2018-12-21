@@ -7,8 +7,8 @@ class DesktopWelcome extends Component {
 		this.props.takeTurns();
 	};
 	render() {
-		const players = this.props.gameData.players.map(player => (
-      <JoinedUsers key={player} player={player}/>
+		const players = this.props.gameData.players.map((player, index) => (
+      <JoinedUsers key={index} player={player} index={index}/>
     ));
 		return (
       <div>
@@ -18,9 +18,10 @@ class DesktopWelcome extends Component {
         </div>
         <div id="desktop-players-title-container">
           <span id="desktop-players-title">Who's All Playing!?</span>
+          <button onClick={this.handleEvent}> Everyone's in! </button>
         </div>
           <div id="desktop-user-name-container">{players}</div>
-        <button onClick={this.handleEvent}> Everyone's in! </button>
+
       </div>
 		);
 	}

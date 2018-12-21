@@ -4,17 +4,19 @@ $cabinFont: 'Cabin Sketch', cursive;
 body {
   font-size: 15px;
   font-family: $markerFont;
+  background-image: url(https://img.freepik.com/free-photo/grunge-wall-texture_1194-5384.jpg?size=338&ext=jpg);
+  //background-size: cover;
+  background-repeat: repeat;
 }
 
 .desktopWelcomeContainer {
   display: flex;
   align-items: center;
   flex-direction: column;
-  border: 1px solid black;
     .desktopWelcomeTitle {
-      font-size: 5rem;
+      font-size: 7rem;
+      margin: 0;
       font-family: $cabinFont;
-      // border: 1px solid black;
       color: blue;
     }
 
@@ -25,27 +27,110 @@ body {
 
 #desktop-players-title-container {
   display:flex;
-  justify-content: center;
-    #desktop-players-title {
-      font-size: 2.5rem;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3rem;
+  padding-top: 13rem;
+
+  #desktop-players-title {
+      font-size: 4rem;
+      text-decoration: underline;
+  }
+
+  button {
+  height: 7rem;
+  width: 20rem;
+  border: 1px solid #3B6CFF;
+  border-radius: 1rem;
+  background-color: #42A1FF;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: $markerFont;
+  }
+
+  button:active {
+    box-shadow: inset 0px 0px 5px #c1c1c1;
+    outline: none;
+    background: #3D6EFF;
   }
 }
 
 #desktop-user-name-container {
   display: flex;
   position: relative;
-  #individual-name-container {
-    border: 6px groove lightgrey;
+
+  #individual-name-container0 {
+    // border: 1rem solid rgb(253, 247, 231);
+    // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
     position: relative;
-    font-size: 3rem;
+    font-size: 4.3rem;
     font-family: $cabinFont;
-    margin: 2rem 5rem;
-    padding: 1.2rem;
+    margin: -25rem 5rem 0 50rem;
+    color: red;
+    align-self: flex-start;
+    animation: rotate 0.3s linear 3;
   }
 
+  // -19rem 5rem 0 35rem
+
+  #individual-name-container1 {
+    // border: 3rem solid transparent;
+    // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
+    position: relative;
+    font-size: 4.3rem;
+    font-family: $cabinFont;
+    margin: -70rem 0 19rem -50rem;
+    color: green;
+    align-self: flex-end;
+    animation: push 0.2s linear 4;
+  }
+
+  #individual-name-container2 {
+    // border: 3rem solid transparent;
+    // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
+    position: relative;
+    font-size: 4.3rem;
+    font-family: $cabinFont;
+    margin: 2rem 1rem;
+    color: blue;
+    animation: rock 0.32s linear 3;
+  }
+
+  #individual-name-container3 {
+    // border: 3rem solid transparent;
+    // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
+    position: relative;
+    font-size: 4.3rem;
+    font-family: $cabinFont;
+    margin: 2rem 5rem -6rem 30rem;
+    color: purple;
+    align-self: flex-end;
+    animation: push 0.4s linear 4;
+  }
+
+  #individual-name-container4 {
+    // border: 3rem solid transparent;
+    // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
+    position: relative;
+    font-size: 4.3rem;
+    font-family: $cabinFont;
+    margin: -1rem 5rem 1rem 15rem;
+    color: cyan;
+    align-self: flex-start;
+    animation: reverse-rotate 0.3s linear 3;
+  }
+
+  #individual-name-container5 {
+    // border: 3rem solid transparent;
+    // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
+    position: relative;
+    font-size: 4.3rem;
+    font-family: $cabinFont;
+    margin: -15rem -15rem;
+    color: magenta;
+    animation: pop-in 0.3s linear 3;
+  }
 }
-
-
 
 button {
   height: 3rem;
@@ -56,24 +141,82 @@ button {
   font-weight: bold;
 }
 
+@keyframes push{
+  50%  {transform: scale(0.8);}
+}
 
+@keyframes pop-in {
+0% { opacity: 0; transform: scale(0.5); }
+100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes rotate {
+  100% {transform: rotate(360deg)}
+}
+
+@keyframes reverse-rotate {
+  100% {transform: rotate(-360deg)}
+}
+
+@keyframes rock {
+  25% {transform: rotate(30deg)}
+  50% {transform: rotate(-60deg)}
+  75% {transform: rotate(60deg)}
+  100% {transform: rotate(-60deg)}
+}
 
 @media (min-width: 1025px) {
-#desktop-canvas-container {
-  border: 1px solid black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  #desktop-canvas-container {
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     canvas {
       border: 3rem solid transparent;
-      /*width: 800px;*/
-      /*height: 800px;*/
+      width: 50rem;
+      // height: 50rem;
+      // margin: 10rem;
+      // padding: 10rem;
+      // border-image: url(https://d1yn1kh78jj1rr.cloudfront.net/image/preview/rDtN98Qoishumwih/colored-drops-border-design-vector_7Jc0XM_SB_PM.jpg)180 round;
+    }
+  }
+  #canvas-votes-container {
+    display:flex;
+    justify-content: space-evenly;
+      // border-image: url(https://d1yn1kh78jj1rr.cloudfront.net/image/preview/rDtN98Qoishumwih/colored-drops-border-design-vector_7Jc0XM_SB_PM.jpg)180 round;
+
+    #desktop-mock-canvas-container {
+      display: flex;
+      align-items: center;
+      width: 20rem;
+      justify-content: center;
+      border: 3rem solid transparent;
       border-image: url(https://d1yn1kh78jj1rr.cloudfront.net/image/preview/rDtN98Qoishumwih/colored-drops-border-design-vector_7Jc0XM_SB_PM.jpg)180 round;
+
+    }
+
+    #desktop-votes-container {
+      // border: 1px solid red;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: flex-start;
+
+    #desktop-individual-votes {
+      display: flex;
+      border: 1px dotted green;
+      margin: 1rem;
+      height: 6rem;
+      width: 15rem;
+      justify-content: center;
+      align-items: center;
+      background-color: green;
+      border-radius: 10px;
+      font-size: 3rem;
+      }
     }
   }
 }
-
-
 
 #progressBar {
   /* Reset the default appearance */
@@ -113,12 +256,8 @@ progress[value]::-webkit-progress-value {
     font-weight: bold;
     font-family: 'Cabin Sketch', cursive;
   }
-
 }
 
 
 
 
-/* .desktopWelcomeTitle {
-  border: 1px solid black;
-} */

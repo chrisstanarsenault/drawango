@@ -15,10 +15,11 @@ const game = {
 	turns: [],
 	playerGuess: {},
 	playerVote: {},
-	line: []
+	line: [],
+	timer: null
 };
 
-const draw = 'Cat';
+const draw = ['french girls', 'face full of hapinness', 'Putin on a bear', 'Cat'];
 
 wss.broadcast = function broadcast(data) {
 	wss.clients.forEach(function each(ws) {
@@ -26,17 +27,14 @@ wss.broadcast = function broadcast(data) {
 	});
 };
 
-timer = (time, stage) => {
+function timer(time) {
+	clearInterval(game.timer);
 	let timeleftCounter = time;
-	let downloadTimerCounter = setInterval(function() {
+	game.timer = setInterval(function() {
 		timeleftCounter--;
+		wss.broadcast(JSON.stringify({ type: 'timer', timer: timeleftCounter }));
 		if (timeleftCounter <= 0) {
-			clearInterval(downloadTimerCounter);
-			if(game.gameStage !== stage) {
-				wss.broadcast(JSON.stringify({ type: 'gameStage', stage: stage }));
-				console.log("this was triggered here");
-			}
-      console.log("this was triggered another");
+			clearInterval(game.timer);
 		}
 	}, 1000);
 };
@@ -51,6 +49,7 @@ function takeTurns() {
 		const currentPlayer = playersWhoHaveNotGone[Math.floor(Math.random() * playersWhoHaveNotGone.length)];
 		game.turns.push(currentPlayer);
 		game.currentPlayer = currentPlayer;
+		game.playerGuess[game.currentPlayer.name] = game.currentPlayer.task;
 	}
 }
 
@@ -64,20 +63,22 @@ wss.on('connection', (ws) => {
 		currentPlayer: game.currentPlayer,
 		playerGuess: game.playerGuess,
 		playerVote: game.playerVote,
-		line: game.line
+		line: game.line,
 	};
-	ws.send(JSON.stringify(welcomePack));
+	console.log("welcome",game.playerGuess)
+		ws.send(JSON.stringify(welcomePack));
 
-	ws.on('message', function(event) {
-		let data = JSON.parse(event);
+		ws.on('message', function(event) {
+			let data = JSON.parse(event);
 		switch (data.type) {
-			case 'setName':
-				const addPlayer = {
+			case 'addPlayer':
+			//turn this into a function - game handling object - each key is a function 
+				const player = {
 					name: data.player,
 					points: 0,
-					task: draw,
+					task: draw.shift()
 				};
-				game.players.push(addPlayer);
+				game.players.push(player);
 				const players = {
 					type: 'updatePlayers',
 					players: game.players
@@ -88,23 +89,32 @@ wss.on('connection', (ws) => {
 				takeTurns();
 				const turns = {
 					type: 'turns',
-					currentPlayer: game.currentPlayer
+					currentPlayer: game.currentPlayer,
 				};
 				wss.broadcast(JSON.stringify(turns));
+				console.log("aother tagert",game.playerGuess)
+				const guess = {
+					type: 'addGuess',
+					playerGuess: game.playerGuess
+				};
+				console.log("this is here",game.playerGuess)
+				wss.broadcast(JSON.stringify(guess));
 				break;
 			case 'canvas':
 				game.line = data.line;
 				wss.broadcast(event);
 				break;
-			case 'setGuess':
+			case 'addGuess':
 				game.playerGuess[data.player] = data.guess;
-				game.playerGuess[game.currentPlayer.name] = draw;
 				const addGuess = {
 					type: 'addGuess',
 					playerGuess: game.playerGuess
 				};
 				wss.broadcast(JSON.stringify(addGuess));
+				console.log("guesses",Object.keys(game.playerGuess));
+					console.log("players",game.players.length);
 				if (Object.keys(game.playerGuess).length === game.players.length){
+					
 					const gameStage = {
 						type: "gameStage",
 						gameStage: "votingStage"
@@ -115,40 +125,32 @@ wss.on('connection', (ws) => {
 			case 'gameStage':
 				game.gameStage = data.gameStage;
 				wss.broadcast(event);
-				//the logic is not complete, make sure the stage is not too ahead
-				// if (data.gameStage === 'drawingStage') {
-				// 	timer(30,'guessingStage');
-				// }
-				// if (data.gameStage === 'guessingStage') {
-				// 	timer(30,'votingStage');
-				// }
-				// if (data.gameStage === 'votingStage') {
-				// 	timer(30,'scoreStage');
-				// }
-				// if (data.gameStage === 'scoreStage') {
-				// 	timer(15,'scoreStage');
-				// }
-        break;
-      case 'addPoints':
+				if (data.gameStage === "drawingStage" || data.gameStage === "guessingStage" || data.gameStage === "votingStage") { 
+					timer (31)
+				} else if (data.gameStage === "scoreStage") {
+					timer(15);
+				}
+				break;
+			case 'addPoints':
+			//refactor below 
         for (let i = 0; i < game.players.length; i++ ){
           if (game.players[i].name === data.player) {
 						game.players[i].points += data.points;
-						console.log("points" )
 					}
 				}
-
 				for (let i = 0; i < game.players.length; i++ ){
 					if (game.players[i].name === data.mainPlayer){
 						game.playerVote[data.mainPlayer] = true;
-						console.log('main player',data.mainPlayer )
 					}
 				}
-
         const updatePlayers = {
 					type: 'updatePlayers',
 					players: game.players
 				};
 				wss.broadcast(JSON.stringify(updatePlayers));
+
+				// create a message function with a type and data parameters that sends and stringifies the message
+				
 
 				const updateVotes = {
 					type: 'updateVotes',
