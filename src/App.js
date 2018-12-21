@@ -162,7 +162,8 @@ class App extends Component {
 
 export default withCookies(App);
 
-//can't enter the same name 
+//can't enter the same name
 // can't put the same guess into the system
-// randomize guesses 
+// randomize guesses
 // logic for the next round and timer
+

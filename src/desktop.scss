@@ -191,7 +191,7 @@ button {
       width: 20rem;
       justify-content: center;
       border: 3rem solid transparent;
-      border-image: url(https://d1yn1kh78jj1rr.cloudfront.net/image/preview/rDtN98Qoishumwih/colored-drops-border-design-vector_7Jc0XM_SB_PM.jpg)180 round;
+      // border-image: url(https://d1yn1kh78jj1rr.cloudfront.net/image/preview/rDtN98Qoishumwih/colored-drops-border-design-vector_7Jc0XM_SB_PM.jpg)180 round;
 
     }
 
@@ -215,6 +215,10 @@ button {
       font-size: 3rem;
       }
     }
+  }
+
+  .test-container {
+    border: 1px solid black;
   }
 }
 

@@ -12,7 +12,7 @@ class DesktopScoresScreen extends Component {
 
     const players = [];
     let drawer;
-    //see if there is a find and pop function 
+    //see if there is a find and pop function
     this.props.gameData.players.forEach(player => {
       if (this.props.gameData.currentPlayer === player.name) {
         drawer = player;
@@ -31,7 +31,7 @@ class DesktopScoresScreen extends Component {
         <h2>{answer}</h2>
         <p>Drawer: {drawer.name} {drawer.points}</p>
         {playerScores}
-        <Timer gameData={this.props.gameData} changeGameStage={this.props.changeGameStage} stage={"drawingStage"} resetTimer={this.props.resetTimer}/>
+        {/* <Timer gameData={this.props.gameData} changeGameStage={this.props.changeGameStage} stage={"drawingStage"} resetTimer={this.props.resetTimer}/> */}
       </div>
     )
   }
