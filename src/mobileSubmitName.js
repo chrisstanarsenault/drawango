@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MobileDefault from './mobileDefault';
 
 class MobileSubmitName extends Component {
 
@@ -13,7 +14,7 @@ class MobileSubmitName extends Component {
 		if (this.props.gameData.mainPlayer){
 			return (
 				<div>
-					<p>default page</p>
+					<MobileDefault />
 				</div>
 			);
 		}

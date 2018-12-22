@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import MobileDefault from './mobileDefault';
 
 class MobileGuessingScreen extends Component {
 	constructor() {
@@ -25,7 +26,7 @@ class MobileGuessingScreen extends Component {
     if(this.props.gameData.playerGuess[this.props.gameData.mainPlayer]) {
       return (
         <div>
-          <p>Default page</p>
+          <MobileDefault />
         </div>
       );
     }
