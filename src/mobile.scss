@@ -1,0 +1,13 @@
+#mobile-navbar-container {
+  display: flex;
+  border-bottom: 1px solid darkorange;
+  border-right: 1px solid darkorange;
+  border-left: 1px solid darkorange;
+  justify-content: center;
+  background-color: orange;
+  border-radius: 0 0 5px 5px;
+
+  .mobile-navbar-title {
+    margin: 0;
+  }
+}
