@@ -10,7 +10,7 @@ class MobileSubmitName extends Component {
 
 	render() {
 
-		if (this.props.gameData.mainPlayer){ 
+		if (this.props.gameData.mainPlayer){
 			return (
 				<div>
 					<p>default page</p>
@@ -19,13 +19,13 @@ class MobileSubmitName extends Component {
 		}
 
 		return (
-			<div>
-				<form onSubmit={this.handleSubmit}>
-					<label>
-						Name:
-						<input type="text" name="name" />
+			<div id="mobile-name-submit-container">
+				<form className="form-container" onSubmit={this.handleSubmit}>
+					<label className="mobile-submit-name">
+						<p className="mobile-enter-name-title">Enter you name below!</p>
+						<input className="mobile-form-name-text" type="text" name="name" />
 					</label>
-					<input type="submit" value="Submit" />
+					<input className="mobile-form-name-submit" type="submit" value="Get me in this game!" />
 				</form>
 			</div>
 		);

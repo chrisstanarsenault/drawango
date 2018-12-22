@@ -13,7 +13,7 @@ class DesktopWelcome extends Component {
 		return (
       <div>
         <div className="desktopWelcomeContainer">
-          <h1 className="desktopWelcomeTitle">Welcome to Draw Daddy</h1>
+          <h1 className="desktopWelcomeTitle">Welcome to Drawango</h1>
           <p>Go to this site on your mobile to play: www.whatever-we-want-this-to-be.com</p>
         </div>
         <div id="desktop-players-title-container">

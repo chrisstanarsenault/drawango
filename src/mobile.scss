@@ -1,3 +1,6 @@
+$markerFont: 'Permanent Marker', cursive;
+$cabinFont: 'Cabin Sketch', cursive;
+
 #mobile-navbar-container {
   display: flex;
   border-bottom: 1px solid darkorange;
@@ -10,4 +13,51 @@
   .mobile-navbar-title {
     margin: 0;
   }
+}
+
+#mobile-name-submit-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5rem;
+    justify-content: center;
+    align-items: center;
+
+    .mobile-submit-name {
+      font-size: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .mobile-enter-name-title {
+        text-align: center;
+      }
+    }
+    .mobile-form-name-text {
+      height: 2rem;
+      font-size: 1.5rem;
+      border: 3px solid orange;
+      font-family: $markerFont;
+    }
+    .mobile-form-name-submit {
+      border: 1px solid black;
+      font-size: 1.3rem;
+      background-color: blue;
+      border-radius: 10px;
+      height: 3.8rem;
+      color: white;
+      padding: 1rem 2rem;
+      margin-top: 4rem;
+      font-family: $markerFont;
+    }
+  }
+
+
 }
