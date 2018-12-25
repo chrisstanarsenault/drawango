@@ -31,7 +31,7 @@ class DesktopScoresScreen extends Component {
         <h2>{answer}</h2>
         <p>Drawer: {drawer.name} {drawer.points}</p>
         {playerScores}
-        <Timer gameData={this.props.gameData} changeGameStage={this.props.changeGameStage} stage={"drawingStage"} resetTimer={this.props.resetTimer}/>
+        <Timer gameData={this.props.gameData} changeGameStage={this.props.changeGameStage} stage={"drawingStage"} resetTimer={this.props.resetTimer} takeTurns={this.props.takeTurns}/>
       </div>
     )
   }

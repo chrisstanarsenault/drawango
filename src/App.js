@@ -52,96 +52,74 @@ class App extends Component {
 			switch (message.type) {
 				case 'welcomePack':
 					this.setState({ gameStage: message.gameStage,
-													players: message.players });
-													//refactor
-					this.setState({ currentPlayer: message.currentPlayer.name });
-					this.setState({ playerGuess: message.playerGuess });
-					this.setState({ playerVote: message.playerVote });
-					this.setState({ line: message.line });
-					this.setState({ timer: message.timer });
+													players: message.players,
+													currentPlayer: message.currentPlayer.name,
+													playerGuess: message.playerGuess,
+													playerVote: message.playerVote,
+													line: message.line,
+													timer: message.timer });
 					break
 				case 'updatePlayers':
-					this.setState({ players: message.players });
+					this.setState({ players: message.body });
 					break;
 				case 'updateVotes':
-					this.setState({ playerVote: message.playerVote });
+					this.setState({ playerVote: message.body });
 					break;
 				case 'addGuess':
-					this.setState({ playerGuess: message.playerGuess});
+					this.setState({ playerGuess: message.body});
           break;
 				case 'gameStage':
-					this.setState({ gameStage: message.gameStage });
+					this.setState({ gameStage: message.body });
 					break;
 				case 'turns':
-					this.setState({ currentPlayer: message.currentPlayer.name});
-					this.setState({ line: [] });
-					this.setState({ playerGuess: {} });
-					this.setState({ playerVote: {} });
+					this.setState({ currentPlayer: message.body.name,
+						//maybe the line can be cleared else where
+													line: []});
 					break;
 				case 'canvas':
-					this.setState({ line: message.line});
+					this.setState({ line: message.body});
 					break;
 				case 'timer':
-					this.setState({ timer: message.timer});
+					this.setState({ timer: message.body});
 					break;
 				default:
 					console.log("Unknown event type " + message.type);
 			}
 		};
 	}
+	
+	message (type,body){
+			return JSON.stringify({ type, body })
+	}
 
 	takeTurns() {
-		const takeTurns = { type: 'turns'};
-		this.socket.send(JSON.stringify(takeTurns));
+		this.socket.send(this.message('turns'));
 	}
 
 	changeGameStage = (stage) => {
-		const gameStage = {
-			type: 'gameStage',
-			gameStage: stage
-		};
-		this.socket.send(JSON.stringify(gameStage));
-		this.setState({ gameStage: stage });
+		this.socket.send(this.message('gameStage', stage));
 	}
 
 	addPlayerName = (name) => {
     const { cookies } = this.props;
 		cookies.set('name', name, { path: '/' });
 		this.setState({ mainPlayer: name });
-		const addPlayer = {
-			type: 'addPlayer',
-			player: name
-		};
-		this.socket.send(JSON.stringify(addPlayer));
+		this.socket.send(this.message('addPlayer', name));
 	};
 
-	addGuess = (guess) => {
-    const setGuess = {
-      type: 'addGuess',
-      player: this.state.mainPlayer,
-      guess
-    };
-    this.socket.send(JSON.stringify(setGuess));
+	addGuess = (guess) => {   
+		this.socket.send(this.message('addGuess',[this.state.mainPlayer, guess]));
 	};
 
   sendPaintData = (line) => {
-    const body = {
-      type: "canvas",
-      line: line
-    };
-    this.socket.send(JSON.stringify(body));
+		this.socket.send(this.message('canvas', line));
   }
 
 	addPoints(points, player, mainPlayer) {
-		const addPoints = {
-      type: 'addPoints',
-      player,
-			points,
-			mainPlayer
-		};
-		this.socket.send(JSON.stringify(addPoints));
+		this.socket.send(this.message('addPoints', [points, player, mainPlayer]));
 	}
 
+	//double check if I need to clear the timer or do it through the backend 
 	resetTimer(){
 		this.setState({ timer: "" });
 	}
@@ -166,3 +144,4 @@ export default withCookies(App);
 // can't put the same guess into the system
 // randomize guesses 
 // logic for the next round and timer
+//scoreboard doesn't listen to 15? why?? is there another timer hidden somewhere?? 
