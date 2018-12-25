@@ -140,8 +140,8 @@ class App extends Component {
 
 export default withCookies(App);
 
-//can't enter the same name 
-// can't put the same guess into the system
-// randomize guesses 
-// logic for the next round and timer
+
+//finish randomzing guesses on the desktop
+//refactor the mobile main view;
+// logic for the next round and timer do we get to the gameover page??
 //scoreboard doesn't listen to 15? why?? is there another timer hidden somewhere?? 

@@ -4,10 +4,10 @@ class Score extends Component {
 
   render() {
 
-    const mainPlayer = this.props.gameData.mainPlayer;
     let points;
-    const score = this.props.gameData.players.forEach(function(player)  {
-      if (player.name === mainPlayer) {
+
+    this.props.gameData.players.forEach(player => {
+      if (player.name === this.props.gameData.mainPlayer) {
         points = player.points;
       }
     });

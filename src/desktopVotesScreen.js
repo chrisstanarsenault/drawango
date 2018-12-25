@@ -12,6 +12,13 @@ class DesktopVotingScreen extends Component {
       <DesktopVotes key={index} guess={guess}/>
     ));
 
+    //how do you make it stick?? maybe assign a place spesifically??
+    //https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+    let shuffledGuesses = guesses
+    .map((a) => ({sort: Math.random(), value: a}))
+    .sort((a, b) => a.sort - b.sort)
+    .map((a) => a.value)
+
     return (
       <div>
         <div id="canvas-votes-container">
@@ -19,7 +26,7 @@ class DesktopVotingScreen extends Component {
             <p>I am Canvas Container!</p>
           </div>
           <div id="desktop-votes-container">
-            {guesses}
+            {shuffledGuesses}
           </div>
         </div>
         <div>

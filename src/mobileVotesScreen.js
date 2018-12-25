@@ -15,10 +15,15 @@ class MobileVotesScreen extends Component {
       <Votes key={player.name} player={player.name} guess={this.props.gameData.playerGuess[player.name]} gameData={this.props.gameData} addPoints={this.props.addPoints}/>
       ));
 
+    let shuffledGuesses = guesses
+    .map((a) => ({sort: Math.random(), value: a}))
+    .sort((a, b) => a.sort - b.sort)
+    .map((a) => a.value)
+
     if (!this.props.gameData.playerVote[this.props.gameData.mainPlayer]) {
       return (
         <div>
-          {guesses}
+          {shuffledGuesses}
         </div>
       );
     }
