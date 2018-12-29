@@ -121,3 +121,21 @@ $cabinFont: 'Cabin Sketch', cursive;
   }
 }
 
+.mobile-full-default-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+    .mobile-default-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    }
+
+    h2 {
+      text-align: center;
+    }
+}
+
