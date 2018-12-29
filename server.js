@@ -19,7 +19,7 @@ const game = {
 	timer: null
 };
 
-const draw = ['french girls', 'face full of hapinness', 'Putin on a bear', 'Cat'];
+const draw = ['Keith snooping through a window', 'Face full of happiness', 'Putin on a bear', 'Cat'];
 
 wss.broadcast = function broadcast(data) {
 	wss.clients.forEach(function each(ws) {
