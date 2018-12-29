@@ -59,6 +59,44 @@ $cabinFont: 'Cabin Sketch', cursive;
       font-family: $markerFont;
     }
   }
+}
 
+#mobile-guess-test {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 100vh;
 
+  .mobile-guessing-screen-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  p {
+    font-size: 2rem;
+    margin-bottom: 10rem;
+  }
+
+  .mobile-guess-form {
+    font-size: 1.5rem;
+    text-align: center;
+
+    .mobile-guess-button {
+      border: 1px solid black;
+      height: 3rem;
+      padding: 0 2.5rem;
+      background-color: cyan;
+      font-size: 2rem;
+      border-radius: 10px;
+      margin-top: 1rem;
+    }
+    .mobile-guess-field {
+      height: 2rem;
+      width: 20rem;
+      font-size: 1.5rem;
+      font-family: $markerFont;
+    }
+  }
 }

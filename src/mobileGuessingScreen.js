@@ -6,7 +6,7 @@ class MobileGuessingScreen extends Component {
     super()
 		this.state = { errors: ""}
   }
-    
+
   handleSubmit = event => {
     event.preventDefault();
     const guessInput = event.target.elements.guess;
@@ -32,16 +32,22 @@ class MobileGuessingScreen extends Component {
     }
 
     return (
-      <div>
+      <div id="mobile-guess-test">
+      <div className="mobile-guessing-screen-container">
         <p>Make your guess!</p>
-        <form onSubmit={this.handleSubmit}>
-          <label>
+        <form className="mobile-guess-form"onSubmit={this.handleSubmit}>
+          <label className="mobile-guess-label">
             What's the drawing?:
-            <input type="text" name="guess" />
+            <div>
+            <input className="mobile-guess-field" type="text" name="guess" />
+            </div>
           </label>
-          <input type="submit" value="Guess" />
+          <div>
+          <input className="mobile-guess-button" type="submit" value="Guess" />
+          </div>
         </form>
         <p>{this.state.errors}</p>
+      </div>
       </div>
     );
   }
