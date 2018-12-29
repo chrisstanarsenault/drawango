@@ -40,7 +40,7 @@ class MobileMainView extends Component {
                   </div>
         } else {
           view = <div>
-                    <MobileNavBar/>
+                    {/* <MobileNavBar/> */}
                     <MobileDefault />
                   </div>
         }
@@ -48,7 +48,7 @@ class MobileMainView extends Component {
       case 'guessingStage':
         if (this.props.gameData.currentPlayer === this.props.gameData.mainPlayer) {
           view =  <div>
-                   <MobileNavBar/>
+                   {/* <MobileNavBar/> */}
                    <MobileDefault />
                   </div>
         } else {
@@ -58,7 +58,7 @@ class MobileMainView extends Component {
       case 'votingStage':
         if (this.props.gameData.currentPlayer === this.props.gameData.mainPlayer) {
           view =  <div>
-                   <MobileNavBar/>
+                   {/* <MobileNavBar/> */}
                    <MobileDefault />
                 </div>
         } else {
