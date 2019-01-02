@@ -53,7 +53,7 @@ const timerConfig = {
 
 function takeTurns() {
 	if (game.players.length === game.turns.length) {
-		game.gameStage = 'gameOver';
+		game.gameStage = 'finalScore';
 		game.currentPlayer = '';
 		wss.broadcast(message("gameStage",game.gameStage));
 	} else {
