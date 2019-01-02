@@ -68,8 +68,16 @@ class MobileMainView extends Component {
       case 'scoreStage':
         view = <MobileScore gameData={this.props.gameData}/>
         break;
+      case 'finalStage':
+        view = <div>
+                {/* <MobileNavBar/> */}
+                <MobileDefault />
+               </div>
+        break;
       default:
         view = <p>This is the default case. There is a problem if you see this</p>
+      
+  
     }
 
     return (
