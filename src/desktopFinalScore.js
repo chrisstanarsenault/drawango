@@ -5,6 +5,10 @@ import Scores from './desktopScores';
 
 class DesktopFinalScore extends Component {
 
+  handleEvent = (event) => {
+		this.props.changeGameStage('welcomeStage');
+	};
+
   render() {
 
 
@@ -17,7 +21,10 @@ class DesktopFinalScore extends Component {
         <h1>Final Scoreboard!</h1>
         {playerScores}
       </div>
-      // A PLAY AGAIN BUTTON CAN GO HERE
+      <div>
+      <span id="desktop-play-again">Play again?</span>
+          <button onClick={this.handleEvent}> Play again! </button>
+      </div>
     )
   }
 }
