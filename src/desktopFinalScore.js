@@ -12,7 +12,7 @@ class DesktopFinalScore extends Component {
   render() {
 
 
-    const playerScores = this.props.players.map(player => (
+    const playerScores = this.props.gameData.players.map(player => (
         <Scores key={player} player={player.name} points={player.points}/>
       ));
 
