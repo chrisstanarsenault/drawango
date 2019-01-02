@@ -72,7 +72,11 @@ class App extends Component {
 				case 'turns':
 					this.setState({ currentPlayer: message.body.name,
 													line: [],
-													gameStage: "drawingStage"});
+													gameStage: "drawingStage",
+													playerGuess: {},
+													playerVote: {},
+													guessesDisplayed: []
+												});
 					console.log("this is the line updated", this.state.line);
 					break;
 				case 'gameStage':
