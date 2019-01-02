@@ -16,21 +16,21 @@ class App extends Component {
     super(props);
     const { cookies } = props;
 		this.state = {
-			gameStage: '',
+			gameStage: 'scoreStage',
 			mainPlayer: cookies.get('name') || '',
 			players: [],
 			currentPlayer: '',
 			playerGuess: {},
 			playerVote: {},
-			line: [],
-			timer: null
+			line: []
+			//timer: null
 		};
 
 		this.changeGameStage = this.changeGameStage.bind(this);
 		this.takeTurns = this.takeTurns.bind(this);
 		this.sendPaintData = this.sendPaintData.bind(this);
 		this.addPoints = this.addPoints.bind(this);
-		this.resetTimer = this.resetTimer.bind(this);
+		//this.resetTimer = this.resetTimer.bind(this);
 		this.socket = undefined;
 	}
 
@@ -58,7 +58,7 @@ class App extends Component {
 					this.setState({ playerGuess: message.playerGuess });
 					this.setState({ playerVote: message.playerVote });
 					this.setState({ line: message.line });
-					this.setState({ timer: message.timer });
+					//this.setState({ timer: message.timer });
 					break
 				case 'updatePlayers':
 					this.setState({ players: message.players });
@@ -81,9 +81,9 @@ class App extends Component {
 				case 'canvas':
 					this.setState({ line: message.line});
 					break;
-				case 'timer':
-					this.setState({ timer: message.timer});
-					break;
+				// case 'timer':
+				// 	this.setState({ timer: message.timer});
+				// 	break;
 				default:
 					console.log("Unknown event type " + message.type);
 			}

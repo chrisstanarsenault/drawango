@@ -9,14 +9,14 @@ const wss = new SocketServer({
 });
 
 const game = {
-	gameStage: 'welcomeStage',
+	gameStage: 'scoreStage',
 	players: [],
 	currentPlayer: '',
 	turns: [],
 	playerGuess: {},
 	playerVote: {},
-	line: [],
-	timer: null
+	line: []
+	//timer: null
 };
 
 const draw = ['Keith snooping through a window', 'Face full of happiness', 'Putin on a bear', 'Cat'];
@@ -27,17 +27,17 @@ wss.broadcast = function broadcast(data) {
 	});
 };
 
-function timer(time) {
-	clearInterval(game.timer);
-	let timeleftCounter = time;
-	game.timer = setInterval(function() {
-		timeleftCounter--;
-		wss.broadcast(JSON.stringify({ type: 'timer', timer: timeleftCounter }));
-		if (timeleftCounter <= 0) {
-			clearInterval(game.timer);
-		}
-	}, 1000);
-};
+// function timer(time) {
+// 	clearInterval(game.timer);
+// 	let timeleftCounter = time;
+// 	game.timer = setInterval(function() {
+// 		timeleftCounter--;
+// 		wss.broadcast(JSON.stringify({ type: 'timer', timer: timeleftCounter }));
+// 		if (timeleftCounter <= 0) {
+// 			clearInterval(game.timer);
+// 		}
+// 	}, 1000);
+// };
 
 function takeTurns() {
 	if (game.players.length === game.turns.length) {
@@ -125,11 +125,11 @@ wss.on('connection', (ws) => {
 			case 'gameStage':
 				game.gameStage = data.gameStage;
 				wss.broadcast(event);
-				if (data.gameStage === "drawingStage" || data.gameStage === "guessingStage" || data.gameStage === "votingStage") {
-					timer (31)
-				} else if (data.gameStage === "scoreStage") {
-					timer(15);
-				}
+				// if (data.gameStage === "drawingStage" || data.gameStage === "guessingStage" || data.gameStage === "votingStage") {
+				// 	timer (31)
+				// } else if (data.gameStage === "scoreStage") {
+				// 	timer(15);
+				// }
 				break;
 			case 'addPoints':
 			//refactor below
