@@ -13,6 +13,7 @@ class Canvas extends Component {
   strokeStyle = '#FF00FF';
   line = [];
   prevPos = { pageX: 0, pageY: 0 };
+  // currentPlayer = "";
 
   onTouchStart({ nativeEvent }) {
     nativeEvent.preventDefault();
@@ -55,6 +56,7 @@ class Canvas extends Component {
   }
 
   componentDidMount() {
+    // if (this.currentPlayer !== this.props.currentPlayer)
     this.canvas.width = window.innerWidth;
     this.canvas.height = window.innerHeight;
     this.canvas.addEventListener("touchmove", function(event) {
@@ -66,6 +68,9 @@ class Canvas extends Component {
     this.ctx.lineJoin = 'round';
     this.ctx.lineCap = 'round';
     this.ctx.lineWidth = 5;
+    console.log("this this the line", this.props.gameData.line);
+    this.line = this.props.gameData.line;
+    console.log("this this the line here", this.line);
     this.props.gameData.line.forEach((position) => {
       this.paint(position.start, position.stop, this.strokeStyle);
     });

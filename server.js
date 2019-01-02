@@ -67,6 +67,8 @@ function takeTurns() {
 		game.playerVote = {};
 		game.line = [];
 		game.playerGuess[game.currentPlayer.name] = game.currentPlayer.task;
+		wss.broadcast(message("turns", game.currentPlayer));
+		wss.broadcast(message("addGuess", game.playerGuess));
 	}
 }
 
@@ -98,9 +100,6 @@ wss.on('connection', (ws) => {
 				break;
 			case 'turns':
 				takeTurns();
-				wss.broadcast(message("turns", game.currentPlayer));
-				// when the current player gets a task, the task also becomes his/hers guess
-				wss.broadcast(message("addGuess", game.playerGuess));
 				break;
 			case 'canvas':
 				game.line = data.body;
