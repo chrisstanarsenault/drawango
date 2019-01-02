@@ -9,7 +9,7 @@ class DesktopGuessingScreen extends Component {
       <div>
         <p> What do you think this is? Submit your guess</p>
         <Canvas gameData={this.props.gameData} />
-        {/* <Timer gameData={this.props.gameData} changeGameStage={this.props.changeGameStage} resetTimer={this.props.resetTimer} stage={"votingStage"}/> */}
+        <Timer gameData={this.props.gameData} changeGameStage={this.props.changeGameStage} resetTimer={this.props.resetTimer} stage={"votingStage"}/>
       </div>
     )
   }

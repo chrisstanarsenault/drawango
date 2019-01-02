@@ -35,7 +35,6 @@ class DesktopMainView extends Component {
 				break;
 			default:
 				view = <p>You shouldn't see this</p>;
-				console.log("target",gameStage)
 		}	
 		return view;
 	}
