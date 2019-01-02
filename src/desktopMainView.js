@@ -31,7 +31,7 @@ class DesktopMainView extends Component {
 				view = <DesktopScoresScreen changeGameStage={this.props.changeGameStage} gameData={this.props.gameData} resetTimer={this.props.resetTimer} takeTurns={this.props.takeTurns}/>;
 				break;
 			case 'finalScore':
-				view= <DesktopFinalScore gameDate={this.props.gameData} />
+				view = <DesktopFinalScore players={this.props.gameData.players} />
 				break;
 			default:
 				view = <p>You shouldn't see this</p>
