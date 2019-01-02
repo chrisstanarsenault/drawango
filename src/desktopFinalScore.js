@@ -20,8 +20,7 @@ class DesktopFinalScore extends Component {
       <div>
         <h1>Final Scoreboard!</h1>
         {playerScores}
-      </div>
-      <div>
+      
       <span id="desktop-play-again">Play again?</span>
           <button onClick={this.handleEvent}> Play again! </button>
       </div>
