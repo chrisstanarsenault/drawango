@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import MobileDefault from './mobileDefault';
 import MobileNavBar from './mobileNavBar';
 import MobileGuessingScreen from './mobileGuessingScreen';
 import MobileSubmitName from './mobileSubmitName';
@@ -38,19 +39,28 @@ class MobileMainView extends Component {
                   <Canvas gameData={this.props.gameData} sendPaintData={this.props.sendPaintData}/>
                   </div>
         } else {
-          view = <p> This is the default page </p>
+          view = <div>
+                    {/* <MobileNavBar/> */}
+                    <MobileDefault />
+                  </div>
         }
         break;
       case 'guessingStage':
         if (this.props.gameData.currentPlayer === this.props.gameData.mainPlayer) {
-          view = <p> This is the default page </p>
+          view =  <div>
+                   {/* <MobileNavBar/> */}
+                   <MobileDefault />
+                  </div>
         } else {
           view = <MobileGuessingScreen addGuess={this.props.addGuess} gameData={this.props.gameData}/>
         }
         break;
       case 'votingStage':
         if (this.props.gameData.currentPlayer === this.props.gameData.mainPlayer) {
-          view = <p> This is the default page </p>
+          view =  <div>
+                   {/* <MobileNavBar/> */}
+                   <MobileDefault />
+                </div>
         } else {
           view = <MobileVotesScreen gameData={this.props.gameData} addPoints={this.props.addPoints}/>
         }
@@ -58,8 +68,16 @@ class MobileMainView extends Component {
       case 'scoreStage':
         view = <MobileScore gameData={this.props.gameData}/>
         break;
+      case 'finalStage':
+        view = <div>
+                {/* <MobileNavBar/> */}
+                <MobileDefault />
+               </div>
+        break;
       default:
         view = <p>This is the default case. There is a problem if you see this</p>
+      
+  
     }
 
     return (

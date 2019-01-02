@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Canvas from './canvas';
 import Scores from './desktopScores';
 import Timer from './desktopTimerFooter';
 

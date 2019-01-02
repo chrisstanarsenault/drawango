@@ -1,0 +1,142 @@
+$markerFont: 'Permanent Marker', cursive;
+$cabinFont: 'Cabin Sketch', cursive;
+
+#mobile-navbar-container {
+  display: flex;
+  border-bottom: 1px solid darkorange;
+  border-right: 1px solid darkorange;
+  border-left: 1px solid darkorange;
+  justify-content: center;
+  background-color: orange;
+  border-radius: 0 0 5px 5px;
+
+  .mobile-navbar-title {
+    margin: 0;
+    letter-spacing: .40rem;
+  }
+}
+
+#mobile-name-submit-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5rem;
+    justify-content: center;
+    align-items: center;
+
+    .mobile-submit-name {
+      font-size: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .mobile-enter-name-title {
+        text-align: center;
+      }
+    }
+    .mobile-form-name-text {
+      height: 2rem;
+      font-size: 1.5rem;
+      border: 3px solid orange;
+      font-family: $markerFont;
+    }
+    .mobile-form-name-submit {
+      border: 1px solid black;
+      font-size: 1.3rem;
+      background-color: blue;
+      border-radius: 10px;
+      height: 3.8rem;
+      color: white;
+      padding: 1rem 2rem;
+      margin-top: 4rem;
+      font-family: $markerFont;
+    }
+  }
+}
+
+#mobile-guess-test {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 100vh;
+
+  .mobile-guessing-screen-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  p {
+    font-size: 2rem;
+    margin-bottom: 10rem;
+  }
+
+  .mobile-guess-form {
+    font-size: 1.5rem;
+    text-align: center;
+
+    .mobile-guess-button {
+      border: 1px solid black;
+      height: 3rem;
+      padding: 0 2.5rem;
+      background-color: cyan;
+      font-size: 2rem;
+      border-radius: 10px;
+      margin-top: 1rem;
+    }
+    .mobile-guess-field {
+      height: 2rem;
+      width: 20rem;
+      font-size: 1.5rem;
+      font-family: $markerFont;
+      border: 3px solid orange;
+    }
+  }
+}
+
+.mobile-score-full-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+    .mobile-score-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+  }
+
+  p {
+    font-size: 4.6rem;
+    text-align: center;
+    font-family: $cabinFont;
+  }
+}
+
+.mobile-full-default-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+    .mobile-default-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    }
+
+    h2 {
+      text-align: center;
+    }
+}
+

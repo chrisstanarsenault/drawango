@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import DesktopVotes from './desktopVotes';
-import Canvas from './canvas';
 import Timer from './desktopTimerFooter';
 
 

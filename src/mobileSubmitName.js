@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MobileDefault from './mobileDefault';
 
 class MobileSubmitName extends Component {
 	constructor() {
@@ -22,22 +23,22 @@ class MobileSubmitName extends Component {
 
 	render() {
 
-		if (this.props.gameData.mainPlayer){ 
+		if (this.props.gameData.mainPlayer){
 			return (
 				<div>
-					<p>default page</p>
+					<MobileDefault />
 				</div>
 			);
 		}
 
 		return (
-			<div>
-				<form onSubmit={this.handleSubmit}>
-					<label>
-						Name:
-						<input type="text" name="name" />
+			<div id="mobile-name-submit-container">
+				<form className="form-container" onSubmit={this.handleSubmit}>
+					<label className="mobile-submit-name">
+						<p className="mobile-enter-name-title">Enter you name below!</p>
+						<input className="mobile-form-name-text" type="text" name="name" />
 					</label>
-					<input type="submit" value="Submit" />
+					<input className="mobile-form-name-submit" type="submit" value="Get me in this game!" />
 				</form>
 				<p>{this.state.errors}</p>
 			</div>

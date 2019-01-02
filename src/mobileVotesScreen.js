@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Votes from './mobileVotes';
+import MobileDefault from './mobileDefault';
 
 class MobileVotesScreen extends Component {
   render() {
@@ -28,10 +29,10 @@ class MobileVotesScreen extends Component {
         </div>
       );
     }
-    
+
     return (
       <div>
-        <p>This is the default page</p>
+        <MobileDefault />
       </div>
     );
   }

@@ -3,8 +3,10 @@ import React, {Component} from 'react';
 class Scores extends Component {
   render() {
     return (
-      <div>
-        <p> {this.props.guess} {this.props.player} {this.props.points}</p>
+      <div className="test-container">
+        <p className="desktop-individual-scores-guess"> {this.props.guess} </p>
+        <p className="desktop-individual-scores-player"> {this.props.player} </p>
+        <p className="desktop-individual-scores-points"> {this.props.points} </p>
       </div>
     );
   }

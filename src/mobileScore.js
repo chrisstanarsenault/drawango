@@ -13,8 +13,11 @@ class Score extends Component {
     });
 
     return (
-      <div>
-        <h1>Your current score: {points}</h1>
+      <div className="mobile-score-full-container">
+        <div className="mobile-score-container">
+          <h1>Your current score: </h1>
+          <p>{points}</p>
+        </div>
       </div>
     );
   }
