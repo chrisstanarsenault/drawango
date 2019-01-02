@@ -32,6 +32,12 @@ function message (type,body){
 	return JSON.stringify({ type, body })
 }
 
+function reset () {
+	game.playerGuess = {};
+	game.playerVote = {};
+	game.line = [];
+}
+
 function timer(time) {
 	clearInterval(game.timer);
 	let timeleftCounter = time;
@@ -56,6 +62,7 @@ function takeTurns() {
 		game.gameStage = 'finalScore';
 		game.currentPlayer = '';
 		game.turns = []; //clears the turns to start another game if needed
+		reset();
 		wss.broadcast(message("gameStage",game.gameStage));
 	} else {
 		const playersWhoHaveNotGone = game.players.filter(function(obj) {
@@ -64,9 +71,7 @@ function takeTurns() {
 		const currentPlayer = playersWhoHaveNotGone[Math.floor(Math.random() * playersWhoHaveNotGone.length)];
 		game.turns.push(currentPlayer);
 		game.currentPlayer = currentPlayer;
-		game.playerGuess = {};
-		game.playerVote = {};
-		game.line = [];
+		reset();
 		game.playerGuess[game.currentPlayer.name] = game.currentPlayer.task;
 		wss.broadcast(message("turns", game.currentPlayer));
 		wss.broadcast(message("addGuess", game.playerGuess));
