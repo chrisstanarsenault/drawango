@@ -9,17 +9,12 @@ class Canvas extends Component {
     this.endPaintEvent = this.endPaintEvent.bind(this);
   }
 
-//put this into the stage of canvas
-//add meta data
-// and add state
-
   isPainting = false;
   strokeStyle = '#FF00FF';
   line = [];
   prevPos = { pageX: 0, pageY: 0 };
 
   onTouchStart({ nativeEvent }) {
-    //maybe I won't need below
     nativeEvent.preventDefault();
     const touch = nativeEvent.changedTouches[0];
     const { pageX, pageY } = touch;
@@ -28,7 +23,6 @@ class Canvas extends Component {
   }
 
   onTouchMove({ nativeEvent }) {
-    //maybe I won't need below
     nativeEvent.preventDefault();
     if (this.isPainting) {
       const touch = nativeEvent.changedTouches[0]
@@ -46,7 +40,6 @@ class Canvas extends Component {
   endPaintEvent() {
     if (this.isPainting) {
       this.isPainting = false;
-      this.props.sendPaintData(this.line);
     }
   }
 
@@ -73,15 +66,13 @@ class Canvas extends Component {
     this.ctx.lineJoin = 'round';
     this.ctx.lineCap = 'round';
     this.ctx.lineWidth = 5;
-    const line = this.props.gameData.line;
-    line.forEach((position) => {
+    this.props.gameData.line.forEach((position) => {
       this.paint(position.start, position.stop, this.strokeStyle);
     });
   }
 
   componentDidUpdate() {
-    const line = this.props.gameData.line;
-    line.forEach((position) => {
+    this.props.gameData.line.forEach((position) => {
       this.paint(position.start, position.stop, this.strokeStyle);
     });
   }

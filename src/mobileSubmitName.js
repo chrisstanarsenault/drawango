@@ -2,11 +2,23 @@ import React, { Component } from 'react';
 import MobileDefault from './mobileDefault';
 
 class MobileSubmitName extends Component {
+	constructor() {
+    super()
+		this.state = { errors: ""}
+  }
 
 	handleSubmit = (event) => {
 		event.preventDefault();
 		const nameInput = event.target.elements.name;
-		this.props.addPlayerName(nameInput.value);
+    const name = nameInput.value.replace(/^\s+|\s+$/gm,'').toLowerCase();;
+		const playerNames = this.props.gameData.players.map(player => (
+      player.name.replace(/^\s+|\s+$/gm,'').toLowerCase()
+    ))
+		if (!playerNames.includes(name)){
+			this.props.addPlayerName(nameInput.value);
+    } else {
+      this.setState({ errors: "Opps... this name has already been taken" });
+    }
 	};
 
 	render() {
@@ -28,6 +40,7 @@ class MobileSubmitName extends Component {
 					</label>
 					<input className="mobile-form-name-submit" type="submit" value="Get me in this game!" />
 				</form>
+				<p>{this.state.errors}</p>
 			</div>
 		);
 	}
