@@ -17,6 +17,7 @@ class DesktopFinalScore extends Component {
         <h1>Final Scoreboard!</h1>
         {playerScores}
       </div>
+      // A PLAY AGAIN BUTTON CAN GO HERE
     )
   }
 }
