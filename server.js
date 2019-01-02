@@ -37,7 +37,6 @@ function timer(time) {
 	let timeleftCounter = time;
 	game.timer = setInterval(function() {
 		timeleftCounter--;
-		console.log("this is the timer",timeleftCounter)
 		wss.broadcast(message("timer", timeleftCounter));
 		if (timeleftCounter <= 0) {
 			clearInterval(game.timer);
