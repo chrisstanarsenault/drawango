@@ -7,10 +7,13 @@ class Timer extends Component {
     if (this.props.gameData.timer === 0) {
       //check if you need the function below to clear the timer
       this.props.resetTimer()
-      this.props.changeGameStage(this.props.stage);
       if (this.props.stage === "drawingStage") {
-        this.props.takeTurns()
+        this.props.takeTurns();
+      } else {
+        this.props.changeGameStage(this.props.stage);
       }
+      
+   
       return (<div></div>);  
     } else {
       return (

@@ -68,14 +68,15 @@ class App extends Component {
 					break;
 				case 'addGuess':
 					this.setState({ playerGuess: message.body});
-          break;
-				case 'gameStage':
-					this.setState({ gameStage: message.body });
 					break;
 				case 'turns':
 					this.setState({ currentPlayer: message.body.name,
-						//maybe the line can be cleared else where
-													line: []});
+													line: [],
+													gameStage: "drawingStage"});
+					console.log("this is the line updated", this.state.line);
+					break;
+				case 'gameStage':
+					this.setState({ gameStage: message.body });
 					break;
 				case 'canvas':
 					this.setState({ line: message.body});
@@ -85,8 +86,6 @@ class App extends Component {
 					break;
 				case 'guessesDisplayed':
 					this.setState({ guessesDisplayed: message.body});
-					console.log("guessesthis updated", this.state);
-					console.log("message", message.body);
 					break;
 				default:
 					console.log("Unknown event type " + message.type);

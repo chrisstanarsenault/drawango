@@ -34,7 +34,8 @@ class DesktopMainView extends Component {
 				view = <DesktopFinalScore changeGameStage={this.props.changeGameStage} gameData={this.props.gameData} />
 				break;
 			default:
-				view = <p>You shouldn't see this</p>
+				view = <p>You shouldn't see this</p>;
+				console.log("target",gameStage)
 		}	
 		return view;
 	}
