@@ -16,7 +16,8 @@ const game = {
 	playerGuess: {},
 	playerVote: {},
 	line: [],
-	timer: null
+	timer: null,
+	guessesDisplayed: []
 };
 
 const draw = ['french girls', 'face full of hapinness', 'Putin on a bear', 'Cat'];
@@ -110,7 +111,15 @@ wss.on('connection', (ws) => {
 				wss.broadcast(message("addGuess", game.playerGuess));
 				if (Object.keys(game.playerGuess).length === game.players.length){
 					game.gameStage = "votingStage";
+					let guesses = Object.values(game.playerGuess);
+					//shuffling the guesses;
+					//https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+					game.guessesDisplayed = guesses
+					.map((a) => ({sort: Math.random(), value: a}))
+					.sort((a, b) => a.sort - b.sort)
+					.map((a) => a.value);
 					wss.broadcast(message("gameStage",game.gameStage));
+					wss.broadcast(message("guessesDisplayed",game.guessesDisplayed));
 				}
 				break;
 			case 'gameStage':

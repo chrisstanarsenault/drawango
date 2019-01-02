@@ -23,7 +23,8 @@ class App extends Component {
 			playerGuess: {},
 			playerVote: {},
 			line: [],
-			timer: null
+			timer: null,
+			guessesDisplayed: []
 		};
 
 		this.changeGameStage = this.changeGameStage.bind(this);
@@ -81,6 +82,11 @@ class App extends Component {
 					break;
 				case 'timer':
 					this.setState({ timer: message.body});
+					break;
+				case 'guessesDisplayed':
+					this.setState({ guessesDisplayed: message.body});
+					console.log("guessesthis updated", this.state);
+					console.log("message", message.body);
 					break;
 				default:
 					console.log("Unknown event type " + message.type);
@@ -140,8 +146,6 @@ class App extends Component {
 
 export default withCookies(App);
 
-
-//finish randomzing guesses on the desktop
+//things to do:
+//timer when you get to the scoreboard;
 //refactor the mobile main view;
-// logic for the next round and timer do we get to the gameover page??
-//scoreboard doesn't listen to 15? why?? is there another timer hidden somewhere?? 
