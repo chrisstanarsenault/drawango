@@ -55,6 +55,7 @@ function takeTurns() {
 	if (game.players.length === game.turns.length) {
 		game.gameStage = 'finalScore';
 		game.currentPlayer = '';
+		game.turns = []; //clears the turns to start another game if needed
 		wss.broadcast(message("gameStage",game.gameStage));
 	} else {
 		const playersWhoHaveNotGone = game.players.filter(function(obj) {
