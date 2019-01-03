@@ -87,7 +87,6 @@ class Canvas extends Component {
       <div id="desktop-canvas-container">
         <canvas
           ref={(ref) => (this.canvas = ref)}
-          style={{ background: 'white' }}
           onTouchStart={this.onTouchStart}
           onTouchEnd={this.endPaintEvent}
           onTouchMove={this.onTouchMove}
