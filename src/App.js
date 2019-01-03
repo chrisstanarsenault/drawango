@@ -28,7 +28,7 @@ class App extends Component {
 		};
 
 		this.changeGameStage = this.changeGameStage.bind(this);
-		this.resetGame = this.resetGame.bing(this);
+		this.resetGame = this.resetGame.bind(this);
 		this.takeTurns = this.takeTurns.bind(this);
 		this.sendPaintData = this.sendPaintData.bind(this);
 		this.addPoints = this.addPoints.bind(this);
