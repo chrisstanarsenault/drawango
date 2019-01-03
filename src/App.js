@@ -18,10 +18,10 @@ class App extends Component {
 		this.state = {
 			gameStage: 'scoreStage',
 			mainPlayer: cookies.get('name') || '',
-			players: [],
-			currentPlayer: '',
-			playerGuess: {},
-			playerVote: {},
+			players: [{ name: 'Chris', points: 100, task: "smth" }, { name: 'Maija', points: 100, task: "smth" }, { name: 'Biggs', points: 100, task: "smth" }],
+			currentPlayer: 'Chris',
+			playerGuess: {Chris: 'Poop', Maija: 'Peep', Biggs: 'jump'},
+			playerVote: {Chris: 'Poop'},
 			line: [],
 			timer: null,
 			guessesDisplayed: []

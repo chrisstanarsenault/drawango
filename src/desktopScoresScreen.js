@@ -15,7 +15,7 @@ class DesktopScoresScreen extends Component {
       <div>
         <h1>Scoreboard!</h1>
         <h2>{[this.props.gameData.currentPlayer]} had to draw: {this.props.gameData.playerGuess[this.props.gameData.currentPlayer]}</h2>
-        <p>{playerScores}</p>
+        <div id="scores-test-container">{playerScores}</div>
         <Timer gameData={this.props.gameData} changeGameStage={this.props.changeGameStage} stage={"drawingStage"} resetTimer={this.props.resetTimer} takeTurns={this.props.takeTurns}/>
       </div>
     )
