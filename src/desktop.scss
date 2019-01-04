@@ -11,6 +11,11 @@ body {
   background-repeat: repeat;
 }
 
+h1 {
+  font: normal 70px "Patrick Hand", sans-serif;
+  text-align: center;
+}
+
 .desktopWelcomeContainer {
   display: flex;
   align-items: center;
@@ -573,6 +578,6 @@ a {
   display: flex;
   flex-direction: column;
   text-align: center;
-  font-size: 3rem;
+  font-size: 2rem;
   margin-top: 20px;
 }
