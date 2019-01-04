@@ -35,10 +35,11 @@ class SelfieCamera extends React.Component {
  
   takePhoto () {
     const config = {
-      sizeFactor: 1
+      sizeFactor: 0.5
     };
  
     let dataUri = this.cameraPhoto.getDataUri(config);
+    console.log('DataUri of the photo:', dataUri)
     this.setState({ dataUri });
   }
  
@@ -69,26 +70,16 @@ class SelfieCamera extends React.Component {
 
     return (
       <div>
-      {this.state.dataUri ? selfie : video}
+      {video}
       <div>
         <button onClick={ () => {
           this.takePhoto();
         }}> Take photo </button>
         <button onClick={ () => {
           this.setState({dataUri: ''})
-          this.initiateCamera();
-          this.forceUpdate();
         }}>Retake picture</button>
       </div>
-      
-      <div>
-        <button onClick={ () => {
-          this.stopCamera();
-        }}> Stop </button>
-      </div>
-        
-        
-        
+      {this.state.dataUri ? selfie : ''}
       </div>
     );
   }

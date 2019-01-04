@@ -123,6 +123,11 @@ class App extends Component {
 		this.socket.send(this.message('addPlayer', name));
 	};
 
+	addAvatar = (name, avatar) => {
+		const body = {name: name, avatar: avatar}
+    this.socket.send(this.message('addAvatar', body))
+	}
+
 	addGuess = (guess) => {
 		this.socket.send(this.message('addGuess',[this.state.mainPlayer, guess]));
 	};
