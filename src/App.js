@@ -24,7 +24,9 @@ class App extends Component {
 			playerVote: {},
 			line: [],
 			timer: null,
-			guessesDisplayed: []
+			guessesDisplayed: [],
+			color: 'red'
+			// color hard coded for now
 		};
 
 		this.changeGameStage = this.changeGameStage.bind(this);

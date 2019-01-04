@@ -9,12 +9,22 @@ $cabinFont: 'Cabin Sketch', cursive;
   justify-content: center;
   background-color: orange;
   border-radius: 0 0 5px 5px;
+  position: fixed;
+  width: 100%;
 
   .mobile-navbar-title {
     margin: 0;
     letter-spacing: .40rem;
   }
 }
+
+.drawing {
+  position: fixed;
+  margin-top: 100px;
+  width: 100%;
+  background-image: url(/static/media/background3.bfd5b7a6.jpg);
+}
+
 
 #mobile-name-submit-container {
   display: flex;
