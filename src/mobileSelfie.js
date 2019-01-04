@@ -16,6 +16,11 @@ class SelfieCamera extends React.Component {
     // need the refs.video to get the videoElement so the component has to be
     // mounted.
     this.cameraPhoto = new CameraPhoto(this.videoRef.current);
+    this.initiateCamera();
+    
+  }
+  componentDidUpdate () {
+    this.initiateCamera();
   }
  
   startCamera (idealFacingMode, idealResolution) {
@@ -46,32 +51,44 @@ class SelfieCamera extends React.Component {
         console.log('No camera to stop!:', error);
       });
   }
+  initiateCamera() {
+    let facingMode = FACING_MODES.USER;
+    let idealResolution = { width: 320, height: 400 };
+    this.startCamera(facingMode, idealResolution);
+  }
  
   render () {
+    const video = <video
+    ref={this.videoRef}
+    autoPlay="true"
+  />
+  const selfie = <img
+  alt="imgCamera"
+  src={this.state.dataUri}
+  />
+
     return (
       <div>
-        <button onClick={ () => {
-          let facingMode = FACING_MODES.USER;
-          let idealResolution = { width: 640, height: 480 };
-          this.startCamera(facingMode, idealResolution);
-        }}> Start user facingMode resolution ideal 640 by 480 </button>
- 
+      {this.state.dataUri ? selfie : video}
+      <div>
         <button onClick={ () => {
           this.takePhoto();
         }}> Take photo </button>
- 
+        <button onClick={ () => {
+          this.setState({dataUri: ''})
+          this.initiateCamera();
+          this.forceUpdate();
+        }}>Retake picture</button>
+      </div>
+      
+      <div>
         <button onClick={ () => {
           this.stopCamera();
         }}> Stop </button>
- 
-        <video
-          ref={this.videoRef}
-          autoPlay="true"
-        />
-        <img
-          alt="imgCamera"
-          src={this.state.dataUri}
-        />
+      </div>
+        
+        
+        
       </div>
     );
   }
