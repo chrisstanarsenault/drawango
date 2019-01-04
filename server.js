@@ -36,14 +36,17 @@ function reset () {
 	game.playerGuess = {};
 	game.playerVote = {};
 	game.line = [];
+	game.guessesDisplayed = [];
 }
 
 function timer(time) {
+	console.log("time", time);
 	clearInterval(game.timer);
 	let timeleftCounter = time;
 	game.timer = setInterval(function() {
 		timeleftCounter--;
 		wss.broadcast(message("timer", timeleftCounter));
+		console.log("time left",timeleftCounter);
 		if (timeleftCounter <= 0) {
 			clearInterval(game.timer);
 		}
@@ -53,7 +56,7 @@ function timer(time) {
 const timerConfig = {
 	drawingStage: 30,
 	guessingStage: 30,
-	votingStage: 30,
+	votingStage: 3000,
 	scoreStage: 15
 }
 
@@ -118,6 +121,8 @@ wss.on('connection', (ws) => {
 				wss.broadcast(message("addGuess", game.playerGuess));
 				if (Object.keys(game.playerGuess).length === game.players.length){
 					game.gameStage = "votingStage";
+					timer(timerConfig["votingStage"]); 
+					wss.broadcast(message("gameStage",game.gameStage));
 					let guesses = Object.values(game.playerGuess);
 					//shuffling the guesses;
 					//https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
@@ -125,14 +130,15 @@ wss.on('connection', (ws) => {
 					.map((a) => ({sort: Math.random(), value: a}))
 					.sort((a, b) => a.sort - b.sort)
 					.map((a) => a.value);
-					wss.broadcast(message("gameStage",game.gameStage));
 					wss.broadcast(message("guessesDisplayed",game.guessesDisplayed));
 				}
 				break;
 			case 'gameStage':
 				game.gameStage = data.body;
+				console.log("stage",data.body)
+				console.log("timer",timerConfig[data.body])
+				timer(timerConfig[data.body]); 
 				wss.broadcast(event);
-				timer(timerConfig[data.body]);
 				break;
 			case 'addPoints':
         for (let i = 0; i < game.players.length; i++ ){
@@ -145,9 +151,9 @@ wss.on('connection', (ws) => {
 				}
 				wss.broadcast(message("updatePlayers", game.players));
 				wss.broadcast(message("updateVotes", game.playerVote));
-
 				if (Object.keys(game.playerVote).length === game.players.length-1) {
 					game.gameStage = "scoreStage";
+					timer(timerConfig["scoreStage"]); 
 					wss.broadcast(message("gameStage",game.gameStage));
 				}
 				break;
