@@ -9,8 +9,8 @@ const wss = new SocketServer({
 });
 
 const game = {
-	gameStage: 'scoreStage',
-	players: ['Chris', 'Maija', 'Biggs'],
+	gameStage: 'welcomeStage',
+	players: [],
 	currentPlayer: '',
 	turns: [],
 	playerGuess: {},

@@ -16,12 +16,12 @@ class App extends Component {
     super(props);
     const { cookies } = props;
 		this.state = {
-			gameStage: 'scoreStage',
+			gameStage: 'welcomeStage',
 			mainPlayer: cookies.get('name') || '',
-			players: [{ name: 'Chris', points: 100, task: "smth" }, { name: 'Maija', points: 100, task: "smth" }, { name: 'Biggs', points: 100, task: "smth" }],
+			players: [],
 			currentPlayer: 'Chris',
-			playerGuess: {Chris: 'Poop', Maija: 'Peep', Biggs: 'jump'},
-			playerVote: {Chris: 'Poop'},
+			playerGuess: {},
+			playerVote: {},
 			line: [],
 			timer: null,
 			guessesDisplayed: []
