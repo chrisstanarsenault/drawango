@@ -112,7 +112,8 @@ wss.on('connection', (ws) => {
 						game.players[i].avatar = data.body.avatar
 					}
 			  }
-			wss.broadcast(message("updatePlayers", game.players));	
+			  wss.broadcast(message("updatePlayers", game.players));	
+			  break;
 			case 'turns':
 				takeTurns();
 				break;
