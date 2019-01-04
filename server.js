@@ -20,8 +20,8 @@ const game = {
 	guessesDisplayed: []
 };
 
-const draw = ['french girls', 'face full of hapinness', 'Putin on a bear', 'Cat'];
-
+const draw = ['french girls', 'face full of hapinness', 'Putin on a bear', 'Cat', 'Dog', 'Chicken', 'Pizza', 'Dancing grandma', 'Bored rat'];
+const colors = ['#299617', '#5946B2', '#FA5B3D', '#E936A7', '#9C2542']
 //possibly combine the two functions below:
 wss.broadcast = function broadcast(data) {
 	wss.clients.forEach(function each(ws) {
@@ -30,6 +30,12 @@ wss.broadcast = function broadcast(data) {
 };
 function message (type,body){
 	return JSON.stringify({ type, body })
+}
+
+function reset () {
+	game.playerGuess = {};
+	game.playerVote = {};
+	game.line = [];
 }
 
 function timer(time) {
@@ -56,6 +62,7 @@ function takeTurns() {
 		game.gameStage = 'finalScore';
 		game.currentPlayer = '';
 		game.turns = []; //clears the turns to start another game if needed
+		reset();
 		wss.broadcast(message("gameStage",game.gameStage));
 	} else {
 		const playersWhoHaveNotGone = game.players.filter(function(obj) {
@@ -64,9 +71,7 @@ function takeTurns() {
 		const currentPlayer = playersWhoHaveNotGone[Math.floor(Math.random() * playersWhoHaveNotGone.length)];
 		game.turns.push(currentPlayer);
 		game.currentPlayer = currentPlayer;
-		game.playerGuess = {};
-		game.playerVote = {};
-		game.line = [];
+		reset();
 		game.playerGuess[game.currentPlayer.name] = game.currentPlayer.task;
 		wss.broadcast(message("turns", game.currentPlayer));
 		wss.broadcast(message("addGuess", game.playerGuess));
@@ -94,8 +99,10 @@ wss.on('connection', (ws) => {
 				const player = {
 					name: data.body,
 					points: 0,
-					task: draw.shift()
+					task: draw.shift(),
+					color : colors.shift()
 				};
+				console.log(player);
 				game.players.push(player);
 				wss.broadcast(message("updatePlayers", game.players));
 				break;
@@ -143,6 +150,13 @@ wss.on('connection', (ws) => {
 					game.gameStage = "scoreStage";
 					wss.broadcast(message("gameStage",game.gameStage));
 				}
+				break;
+			case 'resetGame':
+        for (let i = 0; i < game.players.length; i++ ){
+						game.players[i].points = 0;
+						game.players[i].task = draw.shift();
+				 }
+				wss.broadcast(message("updatePlayers", game.players));
 				break;
 			default:
 				console.log('Unknown event type ' + data.type);

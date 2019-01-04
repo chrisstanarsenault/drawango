@@ -16,7 +16,7 @@ class DesktopMainView extends Component {
 
 		switch (gameStage) {
 			case 'welcomeStage':
-				view = <DesktopWelcome changeGameStage={this.props.changeGameStage} takeTurns={this.props.takeTurns} gameData={this.props.gameData}/>;
+				view = <DesktopWelcome changeGameStage={this.props.changeGameStage} takeTurns={this.props.takeTurns} gameData={this.props.gameData} resetGame={this.props.resetGame}/>;
 				break;
 			case 'drawingStage':
 				view = <DesktopDrawingScreen changeGameStage={this.props.changeGameStage} gameData={this.props.gameData} resetTimer={this.props.resetTimer}/>;

@@ -72,7 +72,7 @@ class MobileMainView extends Component {
       case 'scoreStage':
         view = <MobileScore gameData={this.props.gameData}/>
         break;
-      case 'finalStage':
+      case 'finalScore':
         view = <div>
                 {/* <MobileNavBar/> */}
                 <MobileDefault />
