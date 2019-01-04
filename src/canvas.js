@@ -26,7 +26,12 @@ class Canvas extends Component {
 
   onTouchMove({ nativeEvent }) {
     nativeEvent.preventDefault();
-    this.strokeStyle = this.props.gameData.color;
+    //this is for color
+    this.props.gameData.players.forEach(player => {
+      if (player.name === this.props.gameData.currentPlayer) {
+        this.strokeStyle = player.color;
+      }
+    });
     if (this.isPainting) {
       const touch = nativeEvent.changedTouches[0];
       const { pageX, pageY } = touch;
@@ -50,7 +55,7 @@ class Canvas extends Component {
     const { pageX, pageY } = currPos;
     const { pageX: x, pageY: y } = prevPos;
     this.ctx.beginPath();
-    this.ctx.strokeStyle = strokeStyle;
+    this.ctx.strokeStyle = this.strokeStyle;
     this.ctx.moveTo(x, y);
     this.ctx.lineTo(pageX, pageY);
     this.ctx.stroke();
@@ -59,14 +64,19 @@ class Canvas extends Component {
 
   componentDidMount() {
     // if (this.currentPlayer !== this.props.currentPlayer)
-    this.strokeStyle = this.props.gameData.color;
+    //this is for color
+    this.props.gameData.players.forEach(player => {
+      if (player.name === this.props.gameData.currentPlayer) {
+        this.strokeStyle = player.color;
+      }
+    });
     this.canvas.width = window.innerWidth;
     this.canvas.height = window.innerHeight;
     this.canvas.addEventListener("touchmove", function(event) {
     event.preventDefault();});
     this.ctx = this.canvas.getContext('2d');
     if (isBrowser) {
-      this.ctx.scale(4.5, 2);
+      this.ctx.scale(3.5, 2);
     }
     this.ctx.lineJoin = 'round';
     this.ctx.lineCap = 'round';
@@ -81,6 +91,13 @@ class Canvas extends Component {
   }
 
   componentDidUpdate() {
+    // and again here so i tried to make a function but kept telling me gameData is undefined
+    // find way to factor this
+    this.props.gameData.players.forEach(player => {
+      if (player.name === this.props.gameData.currentPlayer) {
+        this.strokeStyle = player.color;
+      }
+    });
     this.props.gameData.line.forEach((position) => {
       this.paint(position.start, position.stop, this.strokeStyle);
     });
