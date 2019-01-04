@@ -18,7 +18,7 @@ $cabinFont: 'Cabin Sketch', cursive;
   }
 }
 
-.drawing {
+.mobile-drawing {
   position: fixed;
   margin-top: 100px;
   width: 100%;
@@ -110,6 +110,10 @@ $cabinFont: 'Cabin Sketch', cursive;
       border: 3px solid orange;
     }
   }
+}
+
+.mobile-votes {
+  padding-top: 100px;
 }
 
 .mobile-score-full-container {
