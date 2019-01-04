@@ -20,7 +20,7 @@ const game = {
 	guessesDisplayed: []
 };
 
-const draw = ['french girls', 'face full of hapinness', 'Putin on a bear', 'Cat'];
+const draw = ['french girls', 'face full of hapinness', 'Putin on a bear', 'Cat', 'Dog', 'Chicken', 'Pizza', 'Dancing grandma', 'Bored rat'];
 
 //possibly combine the two functions below:
 wss.broadcast = function broadcast(data) {
@@ -101,6 +101,7 @@ wss.on('connection', (ws) => {
 					points: 0,
 					task: draw.shift()
 				};
+				console.log(player);
 				game.players.push(player);
 				wss.broadcast(message("updatePlayers", game.players));
 				break;
