@@ -152,9 +152,10 @@ wss.on('connection', (ws) => {
 			case 'resetGame':
         for (let i = 0; i < game.players.length; i++ ){
 						game.players[i].points = 0;
-						game.players[i].task = draw.push();
+						game.players[i].task = draw.shift();
 				 }
 				wss.broadcast(message("updatePlayers", game.players));
+				break;
 			default:
 				console.log('Unknown event type ' + data.type);
 		}
