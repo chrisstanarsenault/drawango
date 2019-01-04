@@ -9,6 +9,7 @@ class Timer extends Component {
       this.props.resetTimer()
       if (this.props.stage === "drawingStage") {
         this.props.takeTurns();
+        this.props.changeGameStage(this.props.stage);
       } else {
         this.props.changeGameStage(this.props.stage);
       }
