@@ -34,7 +34,7 @@ class MobileSubmitName extends Component {
 			} else {
 				return(
 					<div>
-						<SelfieCamera />
+						<SelfieCamera gameData={this.props.gameData} addAvatar={this.props.addAvatar}/>
 					</div>
 				)
 			}

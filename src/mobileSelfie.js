@@ -60,13 +60,16 @@ class SelfieCamera extends React.Component {
  
   render () {
     const video = <video
-    ref={this.videoRef}
-    autoPlay="true"
-  />
-  const selfie = <img
-  alt="imgCamera"
-  src={this.state.dataUri}
-  />
+      ref={this.videoRef}
+      autoPlay="true"
+      />
+    const selfie = <img
+      alt="imgCamera"
+      src={this.state.dataUri}
+      />
+    const validate = <button onClick={ () => {
+      this.props.addAvatar(this.props.gameData.mainPlayer, this.state.dataURi)
+    }}>confirm</button>
 
     return (
       <div>
@@ -75,9 +78,7 @@ class SelfieCamera extends React.Component {
         <button onClick={ () => {
           this.takePhoto();
         }}> Take photo </button>
-        <button onClick={ () => {
-          this.setState({dataUri: ''})
-        }}>Retake picture</button>
+        {this.state.dataUri ? validate : ''}
       </div>
       {this.state.dataUri ? selfie : ''}
       </div>
