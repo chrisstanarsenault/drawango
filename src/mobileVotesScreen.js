@@ -20,7 +20,7 @@ class MobileVotesScreen extends Component {
 
     if (!this.props.gameData.playerVote[this.props.gameData.mainPlayer]) {
       return (
-        <div>
+        <div className="mobile-votes-container">
           {guesses}
         </div>
       );
