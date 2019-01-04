@@ -9,7 +9,7 @@ const wss = new SocketServer({
 });
 
 const game = {
-	gameStage: '',
+	gameStage: 'welcomeStage',
 	players: [],
 	currentPlayer: '',
 	turns: [],
