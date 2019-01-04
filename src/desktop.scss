@@ -11,11 +11,6 @@ body {
   background-repeat: repeat;
 }
 
-h1 {
-  font: normal 70px "Patrick Hand", sans-serif;
-  text-align: center;
-}
-
 .desktopWelcomeContainer {
   display: flex;
   align-items: center;
@@ -310,12 +305,59 @@ button {
         margin-top: -23px;
         margin-left: -46px;
       }
-
-
     }
-
   }
 
+  .desktop-final-scores-title {
+    font-family: $markerFont;
+    text-align: center;
+    font-size: 4rem;
+  }
+
+  .desktop-full-scoresFinal-name-points-container {
+    //border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .desktop-full-scoresFinal-container {
+      display: flex;
+      //border: 1px solid red;
+
+      .desktop-individual-scoresFinal-player {
+        background-color: purple;
+        font-size: 3rem;
+        margin: 3rem 4rem 0 0;
+        padding: 1.5rem 2rem;
+        border-radius: 10px
+      }
+
+      .desktop-individual-scoresFinal-points {
+        background-color: green;
+        font-size: 3rem;
+        margin: 3rem 0 0 0;
+        padding: 1.5rem 2rem;
+        border-radius: 10px;
+      }
+    }
+  }
+
+  .desktop-final-scores-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+
+    .desktop-gameover-play-again-button {
+      border: 1px solid black;
+      padding: 2rem 2rem 3rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+    }
+  }
 }
 
 .desktopTimerContainer {
@@ -396,7 +438,7 @@ svg {
 }
 
 @keyframes leftpupil {
-	17% {transform: translateX(0);} 
+	17% {transform: translateX(0);}
 	20% {transform: translateX(10px);}
 	47% {transform: translateX(10px);}
 	50% {transform: translateX(0) translateY(-30px);}

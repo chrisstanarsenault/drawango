@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Scores from './desktopScores';
+import ScoresFinal from './desktopScoresFinal';
 
 
 
@@ -12,17 +12,20 @@ class DesktopFinalScore extends Component {
   render() {
 
 
-    const playerScores = this.props.gameData.players.map(player => (
-        <Scores key={player} player={player.name} points={player.points}/>
+    const playerScoresFinal = this.props.gameData.players.map(player => (
+        <ScoresFinal key={player} player={player.name} points={player.points}/>
       ));
 
     return (
       <div>
-        <h1>Final Scoreboard!</h1>
-        {playerScores}
-      
-      <span id="desktop-play-again">Play again?</span>
-          <button onClick={this.handleEvent}> Play again! </button>
+        <h1 className='desktop-final-scores-title'>Final Scores!</h1>
+        <div className="desktop-full-scoresFinal-name-points-container">
+        {playerScoresFinal}
+        </div>
+
+        <span className="desktop-final-scores-button-container">
+          <button className="desktop-gameover-play-again-button" onClick={this.handleEvent}> Play again! </button>
+        </span>
       </div>
     )
   }
