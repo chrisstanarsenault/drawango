@@ -36,8 +36,8 @@ class MobileMainView extends Component {
       case 'drawingStage':
         if (this.props.gameData.currentPlayer === this.props.gameData.mainPlayer) {
           drawingAddition = <div className="drawing">
-                            <button onTouchStart={this.handleEvent}> Done Drawing </button>
                             <p>Your turn! Draw a {task}</p>
+                            <button onTouchStart={this.handleEvent}> Done Drawing </button>
                             </div>
           view =  <div>
                   <Canvas gameData={this.props.gameData} sendPaintData={this.props.sendPaintData}/>
