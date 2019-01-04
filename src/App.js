@@ -18,6 +18,7 @@ class App extends Component {
 		this.state = {
 			gameStage: '',
 			mainPlayer: cookies.get('name') || '',
+			avatar: '',
 			players: [],
 			currentPlayer: '',
 			playerGuess: {},

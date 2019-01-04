@@ -31,7 +31,7 @@ class MobileMainView extends Component {
     switch (this.props.gameData.gameStage) {
 
       case 'welcomeStage':
-        view = <MobileSubmitName addPlayerName={this.props.addPlayerName} changeGameStage={this.props.changeGameStage} gameData={this.props.gameData}/>
+        view = <MobileSubmitName addPlayerName={this.props.addPlayerName} changeGameStage={this.props.changeGameStage} gameData={this.props.gameData} />
         break;
       case 'drawingStage':
         if (this.props.gameData.currentPlayer === this.props.gameData.mainPlayer) {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MobileDefault from './mobileDefault';
+import SelfieCamera from './mobileSelfie';
 
 class MobileSubmitName extends Component {
 	constructor() {
@@ -24,11 +25,19 @@ class MobileSubmitName extends Component {
 	render() {
 
 		if (this.props.gameData.mainPlayer){
+			if (this.props.gameData.avatar) {
 			return (
 				<div>
 					<MobileDefault />
 				</div>
 			);
+			} else {
+				return(
+					<div>
+						<SelfieCamera />
+					</div>
+				)
+			}
 		}
 
 		return (
