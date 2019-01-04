@@ -28,6 +28,7 @@ class App extends Component {
 		};
 
 		this.changeGameStage = this.changeGameStage.bind(this);
+		this.resetGame = this.resetGame.bind(this);
 		this.takeTurns = this.takeTurns.bind(this);
 		this.sendPaintData = this.sendPaintData.bind(this);
 		this.addPoints = this.addPoints.bind(this);
@@ -104,6 +105,9 @@ class App extends Component {
 	takeTurns() {
 		this.socket.send(this.message('turns'));
 	}
+  resetGame() {
+		this.socket.send(this.message('resetGame'));
+	}
 
 	changeGameStage = (stage) => {
 		this.socket.send(this.message('gameStage', stage));
@@ -137,7 +141,7 @@ class App extends Component {
 		return (
 			<Fragment >
 				<BrowserView >
-					<DesktopMainView gameData={this.state} changeGameStage={this.changeGameStage} takeTurns={this.takeTurns} resetTimer={this.resetTimer}/>
+					<DesktopMainView gameData={this.state} changeGameStage={this.changeGameStage} takeTurns={this.takeTurns} resetTimer={this.resetTimer} resetGame={this.resetGame}/>
 				</BrowserView>
 				<MobileView >
 					<MobileMainView gameData={this.state} addPlayerName={this.addPlayerName} sendPaintData={this.sendPaintData} addGuess={this.addGuess} changeGameStage={this.changeGameStage} addPoints={this.addPoints}/>

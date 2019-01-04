@@ -3,7 +3,8 @@ import JoinedUsers from './desktopJoinedUsers';
 
 class DesktopWelcome extends Component {
 	handleEvent = (event) => {
-		this.props.changeGameStage('drawingStage');
+    this.props.resetGame();
+    this.props.changeGameStage('drawingStage');
 		this.props.takeTurns();
 	};
 	render() {
