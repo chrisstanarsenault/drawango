@@ -19,7 +19,7 @@ class App extends Component {
 			gameStage: '',
 			mainPlayer: cookies.get('name') || '',
 			players: [],
-			currentPlayer: 'Chris',
+			currentPlayer: '',
 			playerGuess: {},
 			playerVote: {},
 			line: [],
@@ -31,7 +31,7 @@ class App extends Component {
 		this.takeTurns = this.takeTurns.bind(this);
 		this.sendPaintData = this.sendPaintData.bind(this);
 		this.addPoints = this.addPoints.bind(this);
-		//this.resetTimer = this.resetTimer.bind(this);
+		this.resetTimer = this.resetTimer.bind(this);
 		this.socket = undefined;
 	}
 
