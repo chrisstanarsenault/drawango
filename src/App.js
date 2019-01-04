@@ -102,10 +102,9 @@ class App extends Component {
 		this.socket.send(this.message('turns'));
 	}
   resetGame() {
-		for (const player in this.state.players) {
-      this.state.players[player] = 0;
-		}
+		this.socket.send(this.message('resetGame'));
 	}
+
 	changeGameStage = (stage) => {
 		this.socket.send(this.message('gameStage', stage));
 	}
