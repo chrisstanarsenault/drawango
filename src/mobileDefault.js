@@ -7,7 +7,7 @@ class Default extends Component {
     return (
       <div className="mobile-full-default-container">
         <div className="mobile-default-container">
-          <h2>Don't look here! Look at the screen!</h2>
+          <h2>Don't look here! Look at the TV!</h2>
         </div>
       </div>
     );
