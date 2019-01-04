@@ -21,7 +21,7 @@ const game = {
 };
 
 const draw = ['french girls', 'face full of hapinness', 'Putin on a bear', 'Cat', 'Dog', 'Chicken', 'Pizza', 'Dancing grandma', 'Bored rat'];
-
+const colors = ['#299617', '#5946B2', '#FA5B3D', '#E936A7', '#9C2542']
 //possibly combine the two functions below:
 wss.broadcast = function broadcast(data) {
 	wss.clients.forEach(function each(ws) {
@@ -99,7 +99,8 @@ wss.on('connection', (ws) => {
 				const player = {
 					name: data.body,
 					points: 0,
-					task: draw.shift()
+					task: draw.shift(),
+					color : colors.shift()
 				};
 				console.log(player);
 				game.players.push(player);
