@@ -53,8 +53,9 @@ const timerConfig = {
 
 function takeTurns() {
 	if (game.players.length === game.turns.length) {
-		game.gameStage = 'gameOver';
+		game.gameStage = 'finalScore';
 		game.currentPlayer = '';
+		game.turns = []; //clears the turns to start another game if needed
 		wss.broadcast(message("gameStage",game.gameStage));
 	} else {
 		const playersWhoHaveNotGone = game.players.filter(function(obj) {
@@ -67,6 +68,8 @@ function takeTurns() {
 		game.playerVote = {};
 		game.line = [];
 		game.playerGuess[game.currentPlayer.name] = game.currentPlayer.task;
+		wss.broadcast(message("turns", game.currentPlayer));
+		wss.broadcast(message("addGuess", game.playerGuess));
 	}
 }
 
@@ -98,9 +101,6 @@ wss.on('connection', (ws) => {
 				break;
 			case 'turns':
 				takeTurns();
-				wss.broadcast(message("turns", game.currentPlayer));
-				// when the current player gets a task, the task also becomes his/hers guess
-				wss.broadcast(message("addGuess", game.playerGuess));
 				break;
 			case 'canvas':
 				game.line = data.body;

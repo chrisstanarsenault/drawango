@@ -6,9 +6,9 @@ class DesktopDrawingScreen extends Component {
 	render() {
 		return (
 			<div>
-				<p>{this.props.gameData.currentPlayer} is drawing</p>
+				<h1>{this.props.gameData.currentPlayer} is drawing</h1>
 				<Canvas gameData={this.props.gameData}/>
-				{/* <Timer gameData={this.props.gameData} changeGameStage={this.props.changeGameStage} stage={"guessingStage"} resetTimer={this.props.resetTimer}/> */}
+				<Timer gameData={this.props.gameData} changeGameStage={this.props.changeGameStage} stage={"guessingStage"} resetTimer={this.props.resetTimer}/>
 			</div>
 		);
 	}

@@ -1,12 +1,19 @@
 $markerFont: 'Permanent Marker', cursive;
 $cabinFont: 'Cabin Sketch', cursive;
 
+@import url("https://fonts.googleapis.com/css?family=Patrick+Hand");
+
 body {
   font-size: 15px;
   font-family: $markerFont;
-  background-image: url(./images/background3.jpg);
+  background-image: url(./images/background5.jpg);
   background-size: cover;
   background-repeat: repeat;
+}
+
+h1 {
+  font: normal 70px "Patrick Hand", sans-serif;
+  text-align: center;
 }
 
 .desktopWelcomeContainer {
@@ -17,11 +24,12 @@ body {
       font-size: 7rem;
       margin: 0;
       font-family: $cabinFont;
-      color: blue;
+      color: #688738;
     }
 
   p {
     font-size: 2rem;
+    color: #575757;
   }
 }
 
@@ -37,22 +45,22 @@ body {
       text-decoration: underline;
   }
 
-  button {
-  height: 7rem;
-  width: 20rem;
-  border: 1px solid #3B6CFF;
-  border-radius: 1rem;
-  background-color: #42A1FF;
-  font-size: 2rem;
-  font-weight: bold;
-  font-family: $markerFont;
-  }
+  // button {
+  // height: 7rem;
+  // width: 20rem;
+  // border: 1px solid #3B6CFF;
+  // border-radius: 1rem;
+  // background-color: #42A1FF;
+  // font-size: 2rem;
+  // font-weight: bold;
+  // font-family: $markerFont;
+  // }
 
-  button:active {
-    box-shadow: inset 0px 0px 5px #c1c1c1;
-    outline: none;
-    background: #3D6EFF;
-  }
+//   button:active {
+//     box-shadow: inset 0px 0px 5px #c1c1c1;
+//     outline: none;
+//     background: #3D6EFF;
+//   }
 }
 
 #desktop-user-name-container {
@@ -167,7 +175,6 @@ button {
 
 @media (min-width: 1025px) {
   #desktop-canvas-container {
-    border: 1px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -311,35 +318,6 @@ button {
 
 }
 
-#progressBar {
-  /* Reset the default appearance */
-  -webkit-appearance: none;
-   appearance: none;
-   height: 3rem;
-   width: 90%;
-   margin-top: 3rem;
-}
-
-progress[value]::-webkit-progress-bar {
-  background-color: #eee;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
-}
-
-progress[value]::-webkit-progress-value {
-  background-image:
-	   -webkit-linear-gradient(-45deg,
-	                           transparent 33%, rgba(0, 0, 0, .1) 33%,
-	                           rgba(0,0, 0, .1) 66%, transparent 66%),
-	   -webkit-linear-gradient(top,
-	                           rgba(255, 255, 255, .25),
-	                           rgba(0, 0, 0, .25)),
-	   -webkit-linear-gradient(left, #09c, #f44);
-
-    border-radius: 10px;
-    background-size: 35px 20px, 100% 100%, 100% 100%;
-}
-
 .desktopTimerContainer {
   display: flex;
   flex-direction: column;
@@ -352,5 +330,193 @@ progress[value]::-webkit-progress-value {
 }
 
 
+.sky {
+	position: absolute;
+	left: 0;
+  right: 0;
+  top: 0;
+  height: 550px;
+  background: #D9EAFF;
+  border-bottom: 2px solid #BEAE6F;
+}
 
+svg {
+	margin: auto;
+	padding: 2em;
+	display: block;
+  z-index: 1;
+  position: relative;
+}
 
+#bird {
+	animation: fly .9s ease-in-out infinite;
+}
+
+#shadow {
+	animation: shadow .9s ease-in-out infinite;
+}
+
+#rightwing {
+	animation: rightwing .25s ease-in-out infinite;
+	transform-origin: 330px 350px;
+}
+
+#leftwing {
+	animation: leftwing .25s ease-in-out infinite;
+	transform-origin: 90px 390px;
+}
+
+#leftpupil {
+	animation: leftpupil 12s ease-in-out infinite;
+}
+
+#rightpupil {
+	animation: rightpupil 12s ease-in-out infinite;
+}
+
+// Keyframes
+
+@keyframes fly {
+	from {transform: translateY(0);}
+	50% {transform: translateY(12px);}
+}
+
+@keyframes shadow {
+	50% {transform: scale(1.05) translateX(-10px);}
+}
+
+@keyframes rightwing {
+	from {transform: rotate(0deg);}
+	50% {transform: rotate(40deg);}
+}
+
+@keyframes leftwing {
+	from {transform: rotate(0deg);}
+	50% {transform: rotate(-30deg);}
+}
+
+@keyframes leftpupil {
+	17% {transform: translateX(0);} 
+	20% {transform: translateX(10px);}
+	47% {transform: translateX(10px);}
+	50% {transform: translateX(0) translateY(-30px);}
+	82% {transform: translateX(0) translateY(-30px);}
+	85% {transform: translateX(-50px) translateY(-5px);}
+	97% {transform: translateX(-50px) translateY(-5px);}
+}
+
+@keyframes rightpupil {
+	17% {transform: translateX(0);}
+	20% {transform: translateX(70px);}
+	48% {transform: translateX(70px);}
+	50% {transform: translateX(0) translateY(-30px);}
+	82% {transform: translateX(0) translateY(-30px);}
+	85% {transform: translateX(-12px) translateY(-5px);}
+	97% {transform: translateX(-12px) translateY(-5px);}
+}
+
+.circle-sb {
+  width: 210px;
+  border: 5px solid #575757;
+  padding: 50px 0px;
+  margin: 30px auto;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 900;
+  font-family: arial;
+  position: relative;
+  color: #575757;
+  background: #fff;
+  font: normal 22px/25px "Patrick Hand", sans-serif;
+}
+
+.dcircle {
+  border: 5px solid #575757;
+  position: absolute;
+  width: 10px;
+  padding: 15px;
+  border-radius: 50%;
+  right: -15px;
+  bottom: 15px;
+}
+
+.dcircle:before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  padding: 15px;
+  border-radius: 50%;
+  right: 0px;
+  bottom: 0px;
+  background: #fff;
+}
+
+.dcircle1 {
+  border: 5px solid #575757;
+  position: absolute;
+  width: 1px;
+  padding: 10px 12px;
+  border-radius: 50%;
+  right: -35px;
+  bottom: 13px;
+}
+
+.dcircle1:before {
+  content: "";
+  position: absolute;
+  width: 1px;
+  padding: 10px 12px;
+  border-radius: 50%;
+  right: 0px;
+  bottom: 0px;
+  background: #fff;
+}
+
+a span {
+  background: #FFF;
+  display: block;
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: 2px solid #575757;
+}
+
+a:active {
+  top: 4px;
+  padding-bottom: 0px;
+  box-shadow: 0 1px 0 #575757;
+}
+
+a {
+  position: relative;
+  float: left;
+  font: normal 22px/25px "Patrick Hand", sans-serif;
+  margin-right: 10px;
+  text-transform: uppercase;
+  color: #575757;
+  text-decoration: none;
+  padding-bottom: 3px;
+  border-radius: 5px;
+  box-shadow: 0 2px 0 #575757;
+  transition: padding 0.1s, box-shadow 0.1s, top 0.1s;
+  background-image: url('data:image/gif;base64,R0lGODlhBAAEAIABAAAAAAAAACH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjEgNjQuMTQwOTQ5LCAyMDEwLzEyLzA3LTEwOjU3OjAxICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgV2luZG93cyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo5NUY1OENCRDdDMDYxMUUyOTEzMEE1MEM5QzM0NDVBMyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo5NUY1OENCRTdDMDYxMUUyOTEzMEE1MEM5QzM0NDVBMyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjk1RjU4Q0JCN0MwNjExRTI5MTMwQTUwQzlDMzQ0NUEzIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjk1RjU4Q0JDN0MwNjExRTI5MTMwQTUwQzlDMzQ0NUEzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Af/+/fz7+vn49/b19PPy8fDv7u3s6+rp6Ofm5eTj4uHg397d3Nva2djX1tXU09LR0M/OzczLysnIx8bFxMPCwcC/vr28u7q5uLe2tbSzsrGwr66trKuqqainpqWko6KhoJ+enZybmpmYl5aVlJOSkZCPjo2Mi4qJiIeGhYSDgoGAf359fHt6eXh3dnV0c3JxcG9ubWxramloZ2ZlZGNiYWBfXl1cW1pZWFdWVVRTUlFQT05NTEtKSUhHRkVEQ0JBQD8+PTw7Ojk4NzY1NDMyMTAvLi0sKyopKCcmJSQjIiEgHx4dHBsaGRgXFhUUExIREA8ODQwLCgkIBwYFBAMCAQAAIfkEAQAAAQAsAAAAAAQABAAAAgYEEpdoeQUAOw==');
+}
+
+#myProgress {
+  width: 90%;
+  background-color: white;
+  border-radius: 10px;
+  height: 3rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+#myBar {
+  width: 0%;
+  background-color: #688738;
+  border-radius: 10px;
+  /* background-size: 35px 20px, 100% 100%, 100% 100%; */
+  height: 3rem;
+  background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ff7c7c' fill-opacity='1'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
