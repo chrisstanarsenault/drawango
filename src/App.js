@@ -24,10 +24,13 @@ class App extends Component {
 			playerVote: {},
 			line: [],
 			timer: null,
-			guessesDisplayed: []
+			guessesDisplayed: [],
+			color: 'red'
+			// color hard coded for now
 		};
 
 		this.changeGameStage = this.changeGameStage.bind(this);
+		this.resetGame = this.resetGame.bind(this);
 		this.takeTurns = this.takeTurns.bind(this);
 		this.sendPaintData = this.sendPaintData.bind(this);
 		this.addPoints = this.addPoints.bind(this);
@@ -96,13 +99,16 @@ class App extends Component {
 			}
 		};
 	}
-	
+
 	message (type,body){
 			return JSON.stringify({ type, body })
 	}
 
 	takeTurns() {
 		this.socket.send(this.message('turns'));
+	}
+  resetGame() {
+		this.socket.send(this.message('resetGame'));
 	}
 
 	changeGameStage = (stage) => {
@@ -116,7 +122,7 @@ class App extends Component {
 		this.socket.send(this.message('addPlayer', name));
 	};
 
-	addGuess = (guess) => {   
+	addGuess = (guess) => {
 		this.socket.send(this.message('addGuess',[this.state.mainPlayer, guess]));
 	};
 
@@ -128,7 +134,7 @@ class App extends Component {
 		this.socket.send(this.message('addPoints', [points, player, mainPlayer]));
 	}
 
-	//double check if I need to clear the timer or do it through the backend 
+	//double check if I need to clear the timer or do it through the backend
 	resetTimer(){
 		this.setState({ timer: "" });
 	}
@@ -137,7 +143,7 @@ class App extends Component {
 		return (
 			<Fragment >
 				<BrowserView >
-					<DesktopMainView gameData={this.state} changeGameStage={this.changeGameStage} takeTurns={this.takeTurns} resetTimer={this.resetTimer}/>
+					<DesktopMainView gameData={this.state} changeGameStage={this.changeGameStage} takeTurns={this.takeTurns} resetTimer={this.resetTimer} resetGame={this.resetGame}/>
 				</BrowserView>
 				<MobileView >
 					<MobileMainView gameData={this.state} addPlayerName={this.addPlayerName} sendPaintData={this.sendPaintData} addGuess={this.addGuess} changeGameStage={this.changeGameStage} addPoints={this.addPoints}/>

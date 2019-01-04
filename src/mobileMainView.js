@@ -19,6 +19,8 @@ class MobileMainView extends Component {
 
     let view;
 
+    let drawingAddition;
+
     let task;
     this.props.gameData.players.forEach(player => {
       if (player.name === this.props.gameData.currentPlayer) {
@@ -33,9 +35,11 @@ class MobileMainView extends Component {
         break;
       case 'drawingStage':
         if (this.props.gameData.currentPlayer === this.props.gameData.mainPlayer) {
+          drawingAddition = <div className="mobile-drawing">
+                            <p>Your turn! Draw a {task}</p>
+                            <button onTouchStart={this.handleEvent}> Done Drawing </button>
+                            </div>
           view =  <div>
-                  <button onTouchStart={this.handleEvent}> Done Drawing </button>
-                  <p>Your turn! Draw a {task}</p>
                   <Canvas gameData={this.props.gameData} sendPaintData={this.props.sendPaintData}/>
                   </div>
         } else {
@@ -68,21 +72,23 @@ class MobileMainView extends Component {
       case 'scoreStage':
         view = <MobileScore gameData={this.props.gameData}/>
         break;
-      case 'finalStage':
+      case 'finalScore':
         view = <div>
                 {/* <MobileNavBar/> */}
                 <MobileDefault />
                </div>
         break;
       default:
-        view = <p>This is the default case. There is a problem if you see this</p>
-      
-  
+        view = <div>
+                <p>This is the default case. There is a problem if you see this</p>
+               </div>
+
     }
 
     return (
       <div>
-        <MobileNavBar/>
+        <MobileNavBar />
+        {drawingAddition}
         {view}
       </div>
     );

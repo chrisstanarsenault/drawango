@@ -227,9 +227,98 @@ h1 {
     }
   }
 
-  .test-container {
-    border: 1px solid black;
+  .desktop-scores-title-container {
+    //border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0 4rem 0;
+
+    h1 {
+      font-size: 4rem;
+      margin: 0;
+    }
+
+    h2 {
+      font-size: 2rem;
+      align-self: flex-start;
+      margin: 0 0 0 18rem;
+    }
   }
+
+
+  #desktop-full-scores-container {
+    //border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+
+
+    .desktop-score-player-container {
+      display: flex;
+      //border: 1px solid navy;
+      align-items: center;
+      flex-direction: column;
+
+
+      .desktop-individual-scores-player {
+      //border: 1px solid green;
+      font-size: 3rem;
+      background-color: green;
+      border-radius: 1.5rem;
+      padding: .5rem;
+      margin: .5rem
+    }
+
+    .desktop-individual-scores-points {
+        //border: 1px solid orange;
+        margin: 0;
+        align-self: flex-end;
+        font-size: 1.4rem;
+        background-color: orange;
+        border-radius: 50%;
+        padding: .5rem;
+      }
+  }
+
+    .desktop-scores-guess-points-container {
+      display: flex;
+      // flex-direction: column;
+      //border: 1px solid purple;
+      justify-content: center;
+      align-items: center;
+      margin-left: 3rem;
+
+      .desktop-individual-scores-guess {
+        font-size: 2.5rem;
+        margin: 0;
+        position: relative;
+	      background: #00aabb;
+        border-radius: .4em;
+        padding: 1.5rem;
+
+      }
+
+      .desktop-individual-scores-guess::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 0;
+        height: 0;
+        border: 46px solid transparent;
+        border-right-color: #00aabb;
+        border-left: 0;
+        border-bottom: 0;
+        margin-top: -23px;
+        margin-left: -46px;
+      }
+
+
+    }
+
+  }
+
 }
 
 .desktopTimerContainer {

@@ -14,7 +14,7 @@ class Votes extends Component {
 
   render() {
       return (
-        <div>
+        <div className="mobile-votes">
           <button onTouchStart={this.handleEvent} value={this.props.player}>{this.props.guess}</button>
         </div>
       );

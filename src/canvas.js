@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { isBrowser } from 'react-device-detect';
+import { isMobile } from 'react-device-detect';
 
 class Canvas extends Component {
   constructor() {
@@ -10,7 +11,7 @@ class Canvas extends Component {
   }
 
   isPainting = false;
-  strokeStyle = '#FF00FF';
+  strokeStyle;
   line = [];
   prevPos = { pageX: 0, pageY: 0 };
   // currentPlayer = "";
@@ -25,8 +26,9 @@ class Canvas extends Component {
 
   onTouchMove({ nativeEvent }) {
     nativeEvent.preventDefault();
+    this.strokeStyle = this.props.gameData.color;
     if (this.isPainting) {
-      const touch = nativeEvent.changedTouches[0]
+      const touch = nativeEvent.changedTouches[0];
       const { pageX, pageY } = touch;
       const offSetData = { pageX, pageY };
       const positionData = {  start: { ...this.prevPos},
@@ -57,21 +59,23 @@ class Canvas extends Component {
 
   componentDidMount() {
     // if (this.currentPlayer !== this.props.currentPlayer)
+    this.strokeStyle = this.props.gameData.color;
     this.canvas.width = window.innerWidth;
     this.canvas.height = window.innerHeight;
     this.canvas.addEventListener("touchmove", function(event) {
     event.preventDefault();});
     this.ctx = this.canvas.getContext('2d');
     if (isBrowser) {
-      this.ctx.scale(3, 2);
+      this.ctx.scale(4.5, 2);
     }
     this.ctx.lineJoin = 'round';
     this.ctx.lineCap = 'round';
     this.ctx.lineWidth = 5;
-    console.log("this this the line", this.props.gameData.line);
+    // console.log("this this the line", this.props.gameData.line);
     this.line = this.props.gameData.line;
-    console.log("this this the line here", this.line);
+    // console.log("this this the line here", this.line);
     this.props.gameData.line.forEach((position) => {
+      console.log(position);
       this.paint(position.start, position.stop, this.strokeStyle);
     });
   }
