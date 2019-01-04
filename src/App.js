@@ -16,7 +16,7 @@ class App extends Component {
     super(props);
     const { cookies } = props;
 		this.state = {
-			gameStage: '',
+			gameStage: 'welcomeStage',
 			mainPlayer: cookies.get('name') || '',
 			players: [],
 			currentPlayer: '',
