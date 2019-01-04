@@ -40,13 +40,11 @@ function reset () {
 }
 
 function timer(time) {
-	console.log("time", time);
 	clearInterval(game.timer);
 	let timeleftCounter = time;
 	game.timer = setInterval(function() {
 		timeleftCounter--;
 		wss.broadcast(message("timer", timeleftCounter));
-		console.log("time left",timeleftCounter);
 		if (timeleftCounter <= 0) {
 			clearInterval(game.timer);
 		}
@@ -56,8 +54,8 @@ function timer(time) {
 const timerConfig = {
 	drawingStage: 30,
 	guessingStage: 30,
-	votingStage: 3000,
-	scoreStage: 15
+	votingStage: 30,
+	scoreStage: 30
 }
 
 function takeTurns() {
@@ -105,7 +103,6 @@ wss.on('connection', (ws) => {
 					task: draw.shift(),
 					color : colors.shift()
 				};
-				console.log(player);
 				game.players.push(player);
 				wss.broadcast(message("updatePlayers", game.players));
 				break;
@@ -135,8 +132,6 @@ wss.on('connection', (ws) => {
 				break;
 			case 'gameStage':
 				game.gameStage = data.body;
-				console.log("stage",data.body)
-				console.log("timer",timerConfig[data.body])
 				timer(timerConfig[data.body]); 
 				wss.broadcast(event);
 				break;
