@@ -4,7 +4,7 @@ class DesktopVotes extends Component {
   render() {
     return (
       <div>
-        <p id="desktop-individual-votes">{this.props.guess}</p>
+        <a href="#" className="btn"><span>{this.props.guess}</span></a>
       </div>
     );
   }
