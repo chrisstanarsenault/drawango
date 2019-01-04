@@ -97,7 +97,7 @@ class App extends Component {
 			}
 		};
 	}
-	
+
 	message (type,body){
 			return JSON.stringify({ type, body })
 	}
@@ -120,7 +120,7 @@ class App extends Component {
 		this.socket.send(this.message('addPlayer', name));
 	};
 
-	addGuess = (guess) => {   
+	addGuess = (guess) => {
 		this.socket.send(this.message('addGuess',[this.state.mainPlayer, guess]));
 	};
 
@@ -132,7 +132,7 @@ class App extends Component {
 		this.socket.send(this.message('addPoints', [points, player, mainPlayer]));
 	}
 
-	//double check if I need to clear the timer or do it through the backend 
+	//double check if I need to clear the timer or do it through the backend
 	resetTimer(){
 		this.setState({ timer: "" });
 	}
