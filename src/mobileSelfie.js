@@ -68,8 +68,8 @@ class SelfieCamera extends React.Component {
       src={this.state.dataUri}
       />
     const validate = <button onClick={ () => {
-      this.props.addAvatar(this.props.gameData.mainPlayer, this.state.dataURi)
-    }}>confirm</button>
+      this.props.addAvatar(this.props.gameData.mainPlayer, this.state.dataUri)
+    }}>Confirm</button>
 
     return (
       <div>

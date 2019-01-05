@@ -107,11 +107,13 @@ wss.on('connection', (ws) => {
 				wss.broadcast(message("updatePlayers", game.players));
 				break;
 			case 'addAvatar':
+			  console.log('data adding avatar', data);
 				for (let i = 0; i < game.players.length; i++ ){
 					if (game.players[i].name === data.body.name) {
 						game.players[i].avatar = data.body.avatar
 					}
-			  }
+				}
+				console.log('avatar added ', game.players);
 			  wss.broadcast(message("updatePlayers", game.players));	
 			  break;
 			case 'turns':

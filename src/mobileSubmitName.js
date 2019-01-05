@@ -28,7 +28,7 @@ class MobileSubmitName extends Component {
 			if (this.props.gameData.avatar) {
 			return (
 				<div>
-					<MobileDefault />
+					<MobileDefault gameData={this.props.gameData}/>
 				</div>
 			);
 			} else {
