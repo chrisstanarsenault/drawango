@@ -7,8 +7,8 @@ class Default extends Component {
     return (
       <div className="mobile-full-default-container">
         <div className="mobile-default-container">
-          <p>{this.props.gameData.mainPlayer}</p>
-          <img alt='avatar' src={this.props.gameData.avatar} />
+          {/* <p>{this.props.gameData.mainPlayer}</p>
+          <img alt='avatar' src={this.props.gameData.avatar} /> */}
           <h2>Don't look here! Look at the screen!</h2>
         </div>
       </div>
