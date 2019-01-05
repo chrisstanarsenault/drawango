@@ -61,7 +61,7 @@ class SelfieCamera extends React.Component {
   render () {
     const video = <video
       ref={this.videoRef}
-      autoPlay={true}
+      autoPlay='true'
       />
     const selfie = <img
       alt="imgCamera"
