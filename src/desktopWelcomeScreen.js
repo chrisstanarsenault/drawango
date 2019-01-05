@@ -62,10 +62,12 @@ class DesktopWelcome extends Component {
             </div>
           </div>
 
+          <div id="desktop-user-name-container">{players}</div>
+
           <div className="desktop-welcome-button-container">
             <a onClick={this.handleEvent} href="#" className="desktop-welcome-button btn"><span>Everyone's in!</span></a>
           </div>
-        <div id="desktop-user-name-container">{players}</div>
+
       </div>
 		);
 	}
