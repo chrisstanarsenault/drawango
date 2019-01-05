@@ -65,36 +65,36 @@ body {
   #individual-name-container0 {
     // border: 1rem solid rgb(253, 247, 231);
     // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
-    position: relative;
+    position: absolute;
     font-size: 4.3rem;
     font-family: $cabinFont;
-    margin: -25rem 5rem 0 50rem;
+    top: -23rem;
+    left: 10rem;
     color: red;
     align-self: flex-start;
     animation: rotate 0.3s linear 3;
   }
 
-  // -19rem 5rem 0 35rem
-
   #individual-name-container1 {
     // border: 3rem solid transparent;
     // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
-    position: relative;
+    position: absolute;
     font-size: 4.3rem;
     font-family: $cabinFont;
-    margin: -70rem 0 19rem -50rem;
+    top: 1rem;
+    left: 70rem;
     color: green;
-    align-self: flex-end;
     animation: push 0.2s linear 4;
   }
 
   #individual-name-container2 {
     // border: 3rem solid transparent;
     // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
-    position: relative;
+    position: absolute;
     font-size: 4.3rem;
     font-family: $cabinFont;
-    margin: 2rem 1rem;
+    top: -23rem;
+    left: 90rem;
     color: blue;
     animation: rock 0.32s linear 3;
   }
@@ -102,24 +102,22 @@ body {
   #individual-name-container3 {
     // border: 3rem solid transparent;
     // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
-    position: relative;
+    position: absolute;
     font-size: 4.3rem;
     font-family: $cabinFont;
-    margin: 2rem 5rem -6rem 30rem;
+    top: -1rem;
+    left: 20rem;
     color: purple;
-    align-self: flex-end;
-    animation: push 0.4s linear 4;
+    animation: pop-in 0.4s linear 4;
   }
 
   #individual-name-container4 {
     // border: 3rem solid transparent;
     // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
-    position: relative;
+    position: absolute;
     font-size: 4.3rem;
     font-family: $cabinFont;
-    margin: -1rem 5rem 1rem 15rem;
     color: cyan;
-    align-self: flex-start;
     animation: reverse-rotate 0.3s linear 3;
   }
 
@@ -281,6 +279,7 @@ button {
   .desktop-welcome-button-container {
     display: flex;
     justify-content: center;
+    margin-top: 6rem;
 
     .desktop-welcome-button {
       position: relative;

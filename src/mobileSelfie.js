@@ -1,6 +1,6 @@
 import React from 'react';
 import CameraPhoto, { FACING_MODES } from 'jslib-html5-camera-photo';
- 
+
 class SelfieCamera extends React.Component {
   constructor (props, context) {
     super(props, context);
@@ -10,19 +10,19 @@ class SelfieCamera extends React.Component {
       dataUri: ''
     }
   }
- 
+
   componentDidMount () {
     // We need to instantiate CameraPhoto inside componentDidMount because we
     // need the refs.video to get the videoElement so the component has to be
     // mounted.
     this.cameraPhoto = new CameraPhoto(this.videoRef.current);
     this.initiateCamera();
-    
+
   }
   componentDidUpdate () {
     this.initiateCamera();
   }
- 
+
   startCamera (idealFacingMode, idealResolution) {
     this.cameraPhoto.startCamera(idealFacingMode, idealResolution)
       .then(() => {
@@ -32,17 +32,17 @@ class SelfieCamera extends React.Component {
         console.error('Camera not started!', error);
       });
   }
- 
+
   takePhoto () {
     const config = {
       sizeFactor: 0.5
     };
- 
+
     let dataUri = this.cameraPhoto.getDataUri(config);
     console.log('DataUri of the photo:', dataUri)
     this.setState({ dataUri });
   }
- 
+
   stopCamera () {
     this.cameraPhoto.stopCamera()
       .then(() => {
@@ -57,11 +57,11 @@ class SelfieCamera extends React.Component {
     let idealResolution = { width: 320, height: 400 };
     this.startCamera(facingMode, idealResolution);
   }
- 
+
   render () {
     const video = <video
       ref={this.videoRef}
-      autoPlay="true"
+      autoPlay='true'
       />
     const selfie = <img
       alt="imgCamera"
@@ -85,5 +85,5 @@ class SelfieCamera extends React.Component {
     );
   }
 }
- 
+
 export default SelfieCamera;
