@@ -18,7 +18,7 @@ class App extends Component {
 		this.state = {
 			gameStage: '',
 			mainPlayer: cookies.get('name') || '',
-			avatar: '',
+			avatar: false,
 			players: [],
 			currentPlayer: '',
 			playerGuess: {},
@@ -126,7 +126,8 @@ class App extends Component {
 
 	addAvatar = (name, avatar) => {
 		const body = {name: name, avatar: avatar}
-    this.socket.send(this.message('addAvatar', body))
+		this.setState({avatar: true});
+		this.socket.send(this.message('addAvatar', body));
 	};
 
 	addGuess = (guess) => {
@@ -153,7 +154,7 @@ class App extends Component {
 					<DesktopMainView gameData={this.state} changeGameStage={this.changeGameStage} takeTurns={this.takeTurns} resetTimer={this.resetTimer} resetGame={this.resetGame}/>
 				</BrowserView>
 				<MobileView >
-					<MobileMainView gameData={this.state} addPlayerName={this.addPlayerName} addavatar={this.addAvatar} sendPaintData={this.sendPaintData} addGuess={this.addGuess} changeGameStage={this.changeGameStage} addPoints={this.addPoints}/>
+					<MobileMainView gameData={this.state} addPlayerName={this.addPlayerName} addAvatar={this.addAvatar} sendPaintData={this.sendPaintData} addGuess={this.addGuess} changeGameStage={this.changeGameStage} addPoints={this.addPoints}/>
 				</MobileView>
 			</Fragment>
 		);
