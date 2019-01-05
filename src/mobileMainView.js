@@ -39,7 +39,7 @@ class MobileMainView extends Component {
                             <p>Your turn! Draw a {task}</p>
                             <button onTouchStart={this.handleEvent}> Done Drawing </button>
                             </div>
-          view =  <div>
+          view =  <div id="mobile-canvas">
                   <Canvas gameData={this.props.gameData} sendPaintData={this.props.sendPaintData}/>
                   </div>
         } else {

@@ -25,7 +25,9 @@ $cabinFont: 'Cabin Sketch', cursive;
   background-image: url(/static/media/background3.bfd5b7a6.jpg);
 }
 
-
+#mobile-canvas{
+  margin-top: 13rem;
+}
 #mobile-name-submit-container {
   display: flex;
   flex-direction: column;

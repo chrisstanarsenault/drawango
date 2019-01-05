@@ -1,22 +1,22 @@
 import React, { Component } from "react";
 import DesktopVotes from './desktopVotes';
 import Timer from './desktopTimerFooter';
+import Canvas from './canvas';
 
 
 class DesktopVotingScreen extends Component {
 
-  render() {  
-    
+  render() {
+
     const guesses = this.props.gameData.guessesDisplayed.map((guess, index) => (
       <DesktopVotes key={index} guess={guess}/>
     ));
 
     return (
       <div>
+      <h1>What is it?</h1>
         <div id="canvas-votes-container">
-          <div id="desktop-mock-canvas-container">
-            <p>I am Canvas Container!</p>
-          </div>
+            <Canvas gameData={this.props.gameData}/>
           <div id="desktop-votes-container">
             {guesses}
           </div>
