@@ -158,3 +158,6 @@ export default withCookies(App);
 //and then the score page
 //when I choose something is up
 //canvas from mobile to descktop doesn't work properly 
+// create a CSS for opps the name hasn't been taken and someone else have guessed this
+// add the default page - maybe the bird
+// add the mistake place 

@@ -35,8 +35,7 @@ class MobileSubmitName extends Component {
 			<div id="mobile-name-submit-container">
 				<form className="form-container" onSubmit={this.handleSubmit}>
 					<label className="mobile-submit-name">
-						<p className="mobile-enter-name-title">Enter you name below!</p>
-						<input className="mobile-form-name-text" type="text" name="name" />
+						<input className="mobile-form-name-text" type="text" name="name" placeholder="Enter your name here" />
 					</label>
 					<input className="mobile-form-name-submit" type="submit" value="Get me in this game!" />
 				</form>
