@@ -88,7 +88,7 @@ class Canvas extends Component {
     this.ctx.lineWidth = 5;
     // console.log("this this the line", this.props.gameData.line);
     this.line = this.props.gameData.line;
-    // console.log("this this the line here", this.line);
+    console.log("this this the line here", this.line);
     this.props.gameData.line.forEach((position) => {
       console.log("this is position", position);
       this.paint(position.start, position.stop, this.strokeStyle);
