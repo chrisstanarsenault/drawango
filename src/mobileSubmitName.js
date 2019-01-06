@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import MobileDefault from './mobileDefault';
 import SelfieCamera from './mobileSelfie';
 import DrawAvatar from './mobileSelfie';
-import UploadAvatar from './mobileSelfie';
+import UploadAvatar from './mobileUpload';
 
 class MobileSubmitName extends Component {
 	constructor() {
