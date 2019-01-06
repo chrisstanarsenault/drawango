@@ -106,6 +106,16 @@ wss.on('connection', (ws) => {
 				game.players.push(player);
 				wss.broadcast(message("updatePlayers", game.players));
 				break;
+			case 'addAvatar':
+			  console.log('data adding avatar', data);
+				for (let i = 0; i < game.players.length; i++ ){
+					if (game.players[i].name === data.body.name) {
+						game.players[i].avatar = data.body.avatar
+					}
+				}
+				console.log('avatar added ', game.players);
+			  wss.broadcast(message("updatePlayers", game.players));
+			  break;
 			case 'turns':
 				takeTurns();
 				break;
@@ -118,7 +128,7 @@ wss.on('connection', (ws) => {
 				wss.broadcast(message("addGuess", game.playerGuess));
 				if (Object.keys(game.playerGuess).length === game.players.length){
 					game.gameStage = "votingStage";
-					timer(timerConfig["votingStage"]); 
+					timer(timerConfig["votingStage"]);
 					wss.broadcast(message("gameStage",game.gameStage));
 					let guesses = Object.values(game.playerGuess);
 					//shuffling the guesses;
@@ -132,7 +142,7 @@ wss.on('connection', (ws) => {
 				break;
 			case 'gameStage':
 				game.gameStage = data.body;
-				timer(timerConfig[data.body]); 
+				timer(timerConfig[data.body]);
 				wss.broadcast(event);
 				break;
 			case 'addPoints':
@@ -148,7 +158,7 @@ wss.on('connection', (ws) => {
 				wss.broadcast(message("updateVotes", game.playerVote));
 				if (Object.keys(game.playerVote).length === game.players.length-1) {
 					game.gameStage = "scoreStage";
-					timer(timerConfig["scoreStage"]); 
+					timer(timerConfig["scoreStage"]);
 					wss.broadcast(message("gameStage",game.gameStage));
 				}
 				break;

@@ -139,12 +139,11 @@ $cabinFont: 'Cabin Sketch', cursive;
       justify-content: center;
       align-items: center;
       border: 1px solid black;
-      padding: 1.2rem 6rem 2.5rem 6rem;
-
+      padding: 1.2rem;
+      background-color: green;
+      border-radius: 10px;
     }
   }
-
-
 
 .mobile-score-full-container {
   display: flex;

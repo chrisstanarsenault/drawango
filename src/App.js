@@ -18,6 +18,7 @@ class App extends Component {
 		this.state = {
 			gameStage: '',
 			mainPlayer: cookies.get('name') || '',
+			avatar: '',
 			players: [],
 			currentPlayer: '',
 			playerGuess: {},
@@ -28,6 +29,7 @@ class App extends Component {
 		};
 
 		this.changeGameStage = this.changeGameStage.bind(this);
+		this.addAvatar = this.addAvatar.bind(this);
 		this.resetGame = this.resetGame.bind(this);
 		this.takeTurns = this.takeTurns.bind(this);
 		this.sendPaintData = this.sendPaintData.bind(this);
@@ -59,7 +61,7 @@ class App extends Component {
 													playerGuess: message.playerGuess,
 													playerVote: message.playerVote,
 													line: message.line,
-													timer: message.timer });
+												  timer: message.timer });
 					break
 				case 'updatePlayers':
 					this.setState({ players: message.body });
@@ -120,6 +122,13 @@ class App extends Component {
 		this.socket.send(this.message('addPlayer', name));
 	};
 
+	addAvatar = (name, avatar) => {
+		const body = {name: name, avatar: avatar}
+		console.log('addAvatar function that sends it to the server', body);
+		this.setState({avatar: avatar});
+		this.socket.send(this.message('addAvatar', body));
+	};
+
 	addGuess = (guess) => {
 		this.socket.send(this.message('addGuess',[this.state.mainPlayer, guess]));
 	};
@@ -144,7 +153,7 @@ class App extends Component {
 					<DesktopMainView gameData={this.state} changeGameStage={this.changeGameStage} takeTurns={this.takeTurns} resetTimer={this.resetTimer} resetGame={this.resetGame}/>
 				</BrowserView>
 				<MobileView >
-					<MobileMainView gameData={this.state} addPlayerName={this.addPlayerName} sendPaintData={this.sendPaintData} addGuess={this.addGuess} changeGameStage={this.changeGameStage} addPoints={this.addPoints}/>
+					<MobileMainView gameData={this.state} addPlayerName={this.addPlayerName} addAvatar={this.addAvatar} sendPaintData={this.sendPaintData} addGuess={this.addGuess} changeGameStage={this.changeGameStage} addPoints={this.addPoints}/>
 				</MobileView>
 			</Fragment>
 		);
@@ -154,10 +163,11 @@ class App extends Component {
 export default withCookies(App);
 
 //things to do:
-//something is up with the timer at the drawing stage the second time arround 
+//something is up with the timer at the drawing stage the second time arround
 //and then the score page
 //when I choose something is up
 //canvas from mobile to descktop doesn't work properly 
 // create a CSS for opps the name hasn't been taken and someone else have guessed this
 // add the default page - maybe the bird
 // add the mistake place 
+
