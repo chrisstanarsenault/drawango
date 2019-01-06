@@ -4,6 +4,8 @@ $cabinFont: 'Cabin Sketch', cursive;
 #mobile-navbar-container {
   display: flex;
   justify-content: center;
+  background-color: orange;
+  border-radius: 0 0 5px 5px;
   position: fixed;
   width: 100%;
   background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ff7c7c' fill-opacity='1'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
@@ -27,7 +29,10 @@ $cabinFont: 'Cabin Sketch', cursive;
   }
 }
 
-
+#mobile-canvas{
+  /*margin-top: 13rem;*/
+  /*position: fixed;*/
+}
 #mobile-name-submit-container {
   display: flex;
   flex-direction: column;
@@ -166,7 +171,7 @@ $cabinFont: 'Cabin Sketch', cursive;
 }
 
 .mobile-full-default-container {
-  display: flex;
+  /*display: flex;*/
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -179,8 +184,13 @@ $cabinFont: 'Cabin Sketch', cursive;
     }
 
     h2 {
+      margin-top: 6rem;
       text-align: center;
     }
+
+   .mobile-default-bird {
+    margin: 2.5rem;
+   }
 }
 
 a span {

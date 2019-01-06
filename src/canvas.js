@@ -76,16 +76,13 @@ class Canvas extends Component {
     event.preventDefault();});
     this.ctx = this.canvas.getContext('2d');
     if (isBrowser) {
-      this.ctx.scale(3.5, 2);
+      this.ctx.scale(3, 2);
     }
     this.ctx.lineJoin = 'round';
     this.ctx.lineCap = 'round';
     this.ctx.lineWidth = 5;
-    // console.log("this this the line", this.props.gameData.line);
     this.line = this.props.gameData.line;
-    // console.log("this this the line here", this.line);
     this.props.gameData.line.forEach((position) => {
-      console.log(position);
       this.paint(position.start, position.stop, this.strokeStyle);
     });
   }
@@ -105,14 +102,12 @@ class Canvas extends Component {
 
   render() {
     return (
-      <div id="desktop-canvas-container">
         <canvas
           ref={(ref) => (this.canvas = ref)}
           onTouchStart={this.onTouchStart}
           onTouchEnd={this.endPaintEvent}
-          onTouchMove={this.onTouchMove}
-        />
-      </div>
+          onTouchMove={this.onTouchMove}/>
+
     );
   }
 }

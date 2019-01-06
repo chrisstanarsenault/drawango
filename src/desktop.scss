@@ -173,6 +173,7 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-left: 50rem;
 
     .desktop-bird-speech-container {
       align-self: flex-start;
@@ -377,6 +378,11 @@ button {
       font-size: 2rem;
       align-self: flex-start;
       margin: 0 0 0 18rem;
+    }
+
+    #scores-test-container {
+      display: flex;
+      justify-content: space-around;
     }
   }
 

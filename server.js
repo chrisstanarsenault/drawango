@@ -52,7 +52,7 @@ function timer(time) {
 };
 
 const timerConfig = {
-	drawingStage: 3000,
+	drawingStage: 30,
 	guessingStage: 30,
 	votingStage: 30,
 	scoreStage: 15

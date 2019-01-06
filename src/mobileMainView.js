@@ -39,12 +39,11 @@ class MobileMainView extends Component {
                             <p>Your turn! Draw {task}</p>
                             <a onClick={this.handleEvent} href="#" className="btn" onTouchStart={this.handleEvent}><span>Done drawing!</span></a>
                             </div>
-          view =  <div>
+          view =  <div id="mobile-canvas">
                   <Canvas gameData={this.props.gameData} sendPaintData={this.props.sendPaintData}/>
                   </div>
         } else {
           view = <div>
-                    <MobileNavBar/>
                     <MobileDefault />
                   </div>
         }
@@ -52,7 +51,6 @@ class MobileMainView extends Component {
       case 'guessingStage':
         if (this.props.gameData.currentPlayer === this.props.gameData.mainPlayer) {
           view =  <div>
-                   <MobileNavBar/>
                    <MobileDefault />
                   </div>
         } else {
@@ -62,7 +60,6 @@ class MobileMainView extends Component {
       case 'votingStage':
         if (this.props.gameData.currentPlayer === this.props.gameData.mainPlayer) {
           view =  <div>
-                   <MobileNavBar/>
                    <MobileDefault />
                 </div>
         } else {
@@ -74,7 +71,6 @@ class MobileMainView extends Component {
         break;
       case 'finalScore':
         view = <div>
-                <MobileNavBar/>
                 <MobileDefault />
                </div>
         break;
