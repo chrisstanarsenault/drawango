@@ -8,7 +8,7 @@ class DesktopScoresScreen extends Component {
   render() {
 
     const playerScores = this.props.gameData.players.map(player => (
-        <Scores key={player} player={player.name} points={player.points} guess={this.props.gameData.playerGuess[player.name]} />
+        <Scores key={player} player={player.name} avatar={player.avatar} points={player.points} guess={this.props.gameData.playerGuess[player.name]} />
       ));
 
     return (

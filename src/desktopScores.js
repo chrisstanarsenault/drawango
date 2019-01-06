@@ -6,7 +6,7 @@ class Scores extends Component {
       <div id="desktop-full-scores-container">
         <div className="desktop-score-player-container">
           <p className="desktop-individual-scores-points"> {this.props.points} </p>
-
+          <img alt="avatar" src={this.props.avatar} />
           <p className="desktop-individual-scores-player"> {this.props.player} </p>
         </div>
         <div className="desktop-scores-guess-points-container">
