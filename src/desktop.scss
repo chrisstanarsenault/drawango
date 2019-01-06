@@ -189,8 +189,9 @@ button {
 
     .desktop-bird-speech-container {
       align-self: flex-start;
-      position: absolute;
-      right: 67.34rem;
+      position: relative;
+      //right: 67.34rem;
+      margin-right: -7rem;
 
       .circle-sb {
       width: 210px;
@@ -260,6 +261,7 @@ button {
       position: relative;
       width: 30rem;
       height: 30rem;
+      margin-right: 10rem;
     }
 
     #bird {
