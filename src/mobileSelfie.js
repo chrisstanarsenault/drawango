@@ -51,7 +51,7 @@ class SelfieCamera extends React.Component {
   }
   initiateCamera() {
     let facingMode = FACING_MODES.USER;
-    let idealResolution = { width: 240, height: 300 };
+    let idealResolution = { width: 240, height: 240 };
     this.startCamera(facingMode, idealResolution);
   }
 
