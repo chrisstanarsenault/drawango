@@ -34,7 +34,7 @@ class App extends Component {
 		this.takeTurns = this.takeTurns.bind(this);
 		this.sendPaintData = this.sendPaintData.bind(this);
 		this.addPoints = this.addPoints.bind(this);
-		this.resetTimer = this.resetTimer.bind(this);
+		// this.resetTimer = this.resetTimer.bind(this);
 		this.socket = undefined;
 	}
 
@@ -60,8 +60,8 @@ class App extends Component {
 													currentPlayer: message.currentPlayer.name,
 													playerGuess: message.playerGuess,
 													playerVote: message.playerVote,
-													line: message.line,
-													timer: message.timer });
+													line: message.line});
+													// timer: message.timer });
 					break
 				case 'updatePlayers':
 					this.setState({ players: message.body });
@@ -88,9 +88,9 @@ class App extends Component {
 				case 'canvas':
 					this.setState({ line: message.body});
 					break;
-				case 'timer':
-					this.setState({ timer: message.body});
-					break;
+				// case 'timer':
+				// 	this.setState({ timer: message.body});
+				// 	break;
 				case 'guessesDisplayed':
 					this.setState({ guessesDisplayed: message.body});
 					break;
@@ -142,9 +142,9 @@ class App extends Component {
 	}
 
 	//double check if I need to clear the timer or do it through the backend
-	resetTimer(){
-		this.setState({ timer: "" });
-	}
+	// resetTimer(){
+	// 	this.setState({ timer: "" });
+	// }
 
 	render() {
 		return (
@@ -163,7 +163,7 @@ class App extends Component {
 export default withCookies(App);
 
 //things to do:
-//something is up with the timer at the drawing stage the second time arround 
+//something is up with the timer at the drawing stage the second time arround
 //and then the score page
 //when I choose something is up
-//canvas from mobile to descktop doesn't work properly 
+//canvas from mobile to descktop doesn't work properly
