@@ -34,17 +34,11 @@ class MobileGuessingScreen extends Component {
     return (
       <div id="mobile-guess-test">
       <div className="mobile-guessing-screen-container">
-        <p>Make your guess!</p>
         <form className="mobile-guess-form"onSubmit={this.handleSubmit}>
           <label className="mobile-guess-label">
-            What's the drawing?:
-            <div>
-            <input className="mobile-guess-field" type="text" name="guess" />
-            </div>
+            <input className="mobile-guess-field" type="text" name="guess" placeholder="Enter your guess here" maxlength="25"/>
           </label>
-          <div>
-          <input className="mobile-guess-button" type="submit" value="Guess" />
-          </div>
+          <input className="mobile-guess-button" type="submit" value="Submit your guess" />
         </form>
         <p>{this.state.errors}</p>
       </div>
