@@ -20,7 +20,7 @@ const game = {
 	guessesDisplayed: []
 };
 
-const draw = ['french girls', 'a face full of hapinness', 'Putin on a bear', 'a cat', 'a dog', 'a chicken', 'pizza', 'a dancing grandma', 'a bored rat'];
+const draw = ['french girls', 'a face full of hapinness', 'Putin on a bear', 'a cat', 'a dog', 'a chicken', 'a pizza', 'a dancing grandma', 'a bored rat'];
 const colors = ['#299617', '#5946B2', '#FA5B3D', '#E936A7', '#9C2542']
 //possibly combine the two functions below:
 wss.broadcast = function broadcast(data) {
@@ -52,10 +52,10 @@ function timer(time) {
 };
 
 const timerConfig = {
-	drawingStage: 3000,
+	drawingStage: 30,
 	guessingStage: 30,
 	votingStage: 30,
-	scoreStage: 15
+	scoreStage: 1500
 }
 
 function takeTurns() {
@@ -107,13 +107,11 @@ wss.on('connection', (ws) => {
 				wss.broadcast(message("updatePlayers", game.players));
 				break;
 			case 'addAvatar':
-			  console.log('data adding avatar', data);
 				for (let i = 0; i < game.players.length; i++ ){
 					if (game.players[i].name === data.body.name) {
 						game.players[i].avatar = data.body.avatar
 					}
 				}
-				console.log('avatar added ', game.players);
 			  wss.broadcast(message("updatePlayers", game.players));
 			  break;
 			case 'turns':
