@@ -7,11 +7,22 @@ class DesktopDrawingScreen extends Component {
 		
 		return (
 			<div>
-				<h1>{this.props.gameData.currentPlayer} is drawing</h1>
 
         <div id="desktop-canvas-container">
-        	 <div className="desktop-logo-container">
+				  <Canvas gameData={this.props.gameData}/>
+        </div>
 
+        <div className="desktop-logo-container">
+          <div className="desktop-bird-speech-container">
+          <div className="circle-sb">
+          {this.props.gameData.currentPlayer} is drawing
+            <div className="dcircle"></div>
+            <div className="dcircle1"></div>
+          </div>
+          </div>
+
+
+          <div>
             <svg width="500px" height="500px" viewBox="0 0 500 698" version="1.1" xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">
               <defs>
                   <circle id="path-1" cx="116.5" cy="247.5" r="55.5"></circle>
@@ -43,9 +54,8 @@ class DesktopDrawingScreen extends Component {
                 </g>
               </svg>
             </div>
+          </div>
 
-				  <Canvas gameData={this.props.gameData}/>
-        </div>
 				<Timer gameData={this.props.gameData} changeGameStage={this.props.changeGameStage} stage={"guessingStage"} resetTimer={this.props.resetTimer}/>
 			</div>
 		);
