@@ -31,20 +31,19 @@ class MobileMainView extends Component {
     switch (this.props.gameData.gameStage) {
 
       case 'welcomeStage':
-        view = <MobileSubmitName addPlayerName={this.props.addPlayerName} changeGameStage={this.props.changeGameStage} gameData={this.props.gameData}/>
+        view = <MobileSubmitName addPlayerName={this.props.addPlayerName} addAvatar={this.props.addAvatar} changeGameStage={this.props.changeGameStage} gameData={this.props.gameData} />
         break;
       case 'drawingStage':
         if (this.props.gameData.currentPlayer === this.props.gameData.mainPlayer) {
           drawingAddition = <div className="mobile-drawing">
-                            <p>Your turn! Draw a {task}</p>
-                            <button onTouchStart={this.handleEvent}> Done Drawing </button>
+                            <p>Your turn! Draw {task}</p>
+                            <a onClick={this.handleEvent} href="#" className="btn" onTouchStart={this.handleEvent}><span>Done drawing!</span></a>
                             </div>
           view =  <div id="mobile-canvas">
                   <Canvas gameData={this.props.gameData} sendPaintData={this.props.sendPaintData}/>
                   </div>
         } else {
           view = <div>
-                    {/* <MobileNavBar/> */}
                     <MobileDefault />
                   </div>
         }
@@ -52,7 +51,6 @@ class MobileMainView extends Component {
       case 'guessingStage':
         if (this.props.gameData.currentPlayer === this.props.gameData.mainPlayer) {
           view =  <div>
-                   {/* <MobileNavBar/> */}
                    <MobileDefault />
                   </div>
         } else {
@@ -62,7 +60,6 @@ class MobileMainView extends Component {
       case 'votingStage':
         if (this.props.gameData.currentPlayer === this.props.gameData.mainPlayer) {
           view =  <div>
-                   {/* <MobileNavBar/> */}
                    <MobileDefault />
                 </div>
         } else {
@@ -74,7 +71,6 @@ class MobileMainView extends Component {
         break;
       case 'finalScore':
         view = <div>
-                {/* <MobileNavBar/> */}
                 <MobileDefault />
                </div>
         break;

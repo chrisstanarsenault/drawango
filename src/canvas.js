@@ -20,7 +20,6 @@ class Canvas extends Component {
     nativeEvent.preventDefault();
     const touch = nativeEvent.changedTouches[0];
     const { pageX, pageY } = touch;
-    console.log("this is touch", touch);
     this.isPainting = true;
     this.prevPos = { pageX, pageY };
   }
@@ -37,7 +36,6 @@ class Canvas extends Component {
       const touch = nativeEvent.changedTouches[0];
       const { pageX, pageY } = touch;
       const offSetData = { pageX, pageY };
-      console.log("this is offest", offSetData);
       const positionData = {  start: { ...this.prevPos},
                               stop: { ...offSetData},
                             };
@@ -74,23 +72,17 @@ class Canvas extends Component {
     });
     this.canvas.width = window.innerWidth;
     this.canvas.height = window.innerHeight;
-    if (isMobile) {
-      this.canvas.height = 600;
-    }
     this.canvas.addEventListener("touchmove", function(event) {
     event.preventDefault();});
     this.ctx = this.canvas.getContext('2d');
     if (isBrowser) {
-      this.ctx.scale(4.5, 2.1);
+      this.ctx.scale(3, 2);
     }
     this.ctx.lineJoin = 'round';
     this.ctx.lineCap = 'round';
     this.ctx.lineWidth = 5;
-    // console.log("this this the line", this.props.gameData.line);
     this.line = this.props.gameData.line;
-    console.log("this this the line here", this.line);
     this.props.gameData.line.forEach((position) => {
-      console.log("this is position", position);
       this.paint(position.start, position.stop, this.strokeStyle);
     });
   }
