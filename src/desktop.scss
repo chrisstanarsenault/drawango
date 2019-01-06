@@ -73,6 +73,8 @@ body {
     color: red;
     align-self: flex-start;
     animation: rotate 0.3s linear 3;
+    display: flex;
+    align-items: center;
   }
 
   #individual-name-container1 {
@@ -85,6 +87,8 @@ body {
     left: 70rem;
     color: green;
     animation: push 0.2s linear 4;
+    display: flex;
+    align-items: center;
   }
 
   #individual-name-container2 {
@@ -97,6 +101,8 @@ body {
     left: 90rem;
     color: blue;
     animation: rock 0.32s linear 3;
+    display: flex;
+    align-items: center;
   }
 
   #individual-name-container3 {
@@ -109,6 +115,8 @@ body {
     left: 20rem;
     color: purple;
     animation: pop-in 0.4s linear 4;
+    display: flex;
+    align-items: center;
   }
 
   #individual-name-container4 {
@@ -119,6 +127,8 @@ body {
     font-family: $cabinFont;
     color: cyan;
     animation: reverse-rotate 0.3s linear 3;
+    display: flex;
+    align-items: center;
   }
 
   #individual-name-container5 {
@@ -130,6 +140,8 @@ body {
     margin: -15rem -15rem;
     color: magenta;
     animation: pop-in 0.3s linear 3;
+    display: flex;
+    align-items: center;
   }
 }
 

@@ -19,7 +19,7 @@ class SelfieCamera extends React.Component {
     this.initiateCamera();
 
   }
-  
+
   startCamera (idealFacingMode, idealResolution) {
     this.cameraPhoto.startCamera(idealFacingMode, idealResolution)
       .then(() => {
@@ -70,7 +70,7 @@ class SelfieCamera extends React.Component {
     }}>Confirm</button>
 
     return (
-      <div>
+      <div className="mobile-video-container">
       {video}
       <div>
         <button onClick={ () => {
@@ -78,7 +78,9 @@ class SelfieCamera extends React.Component {
         }}> Take photo </button>
         {this.state.dataUri ? validate : ''}
       </div>
-      {this.state.dataUri ? selfie : ''}
+        <div className="mobile-selfie-container">
+          {this.state.dataUri ? selfie : ''}
+        </div>
       </div>
     );
   }

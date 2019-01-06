@@ -33,7 +33,7 @@ class MobileSubmitName extends Component {
 			);
 			} else {
 				return(
-					<div>
+					<div className="mobile-full-selfie-camera-container">
 						<SelfieCamera gameData={this.props.gameData} addAvatar={this.props.addAvatar}/>
 					</div>
 				)
