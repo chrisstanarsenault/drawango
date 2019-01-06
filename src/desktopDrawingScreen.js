@@ -4,6 +4,7 @@ import Timer from './desktopTimerFooter';
 
 class DesktopDrawingScreen extends Component {
 	render() {
+		
 		return (
 			<div>
 				<h1>{this.props.gameData.currentPlayer} is drawing</h1>

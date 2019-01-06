@@ -19,10 +19,7 @@ class SelfieCamera extends React.Component {
     this.initiateCamera();
 
   }
-  componentDidUpdate () {
-    this.initiateCamera();
-  }
-
+  
   startCamera (idealFacingMode, idealResolution) {
     this.cameraPhoto.startCamera(idealFacingMode, idealResolution)
       .then(() => {
@@ -35,7 +32,7 @@ class SelfieCamera extends React.Component {
 
   takePhoto () {
     const config = {
-      sizeFactor: 0.5
+      sizeFactor: 0.75
     };
 
     let dataUri = this.cameraPhoto.getDataUri(config);
@@ -54,7 +51,7 @@ class SelfieCamera extends React.Component {
   }
   initiateCamera() {
     let facingMode = FACING_MODES.USER;
-    let idealResolution = { width: 320, height: 400 };
+    let idealResolution = { width: 240, height: 240 };
     this.startCamera(facingMode, idealResolution);
   }
 
@@ -66,6 +63,7 @@ class SelfieCamera extends React.Component {
     const selfie = <img
       alt="imgCamera"
       src={this.state.dataUri}
+      height="120px"
       />
     const validate = <button onClick={ () => {
       this.props.addAvatar(this.props.gameData.mainPlayer, this.state.dataUri)
