@@ -5,12 +5,20 @@ class Default extends Component {
 
   render() {
     return (
-      <div className="mobile-full-default-container">
-        <div className="mobile-default-container">
-          <h2>Don't look here! Look at the TV!</h2>
-        </div>
-        <div className="mobile-default-bird">
-            <svg width="300px" height="300px" viewBox="0 0 500 698" version="1.1" xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">
+      <div>
+   
+        <div className="desktop-logo-container">
+          <div className="desktop-bird-speech-container">
+          <div className="circle-sb">
+            Look at the TV!
+            <div className="dcircle"></div>
+            <div className="dcircle1"></div>
+          </div>
+          </div>
+
+
+          <div>
+            <svg width="500px" height="500px" viewBox="0 0 500 698" version="1.1" xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">
               <defs>
                   <circle id="path-1" cx="116.5" cy="247.5" r="55.5"></circle>
                   <circle id="path-2" cx="312" cy="244" r="74"></circle>
@@ -41,6 +49,8 @@ class Default extends Component {
                 </g>
               </svg>
             </div>
+          </div>
+
       </div>
     );
   }
