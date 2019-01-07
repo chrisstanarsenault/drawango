@@ -86,6 +86,8 @@ h1 {
   #desktop-user-name-container {
     display: flex;
     position: relative;
+    justify-content: center;
+    align-items: center;
 
     #individual-name-container0 {
       // border: 1rem solid rgb(253, 247, 231);
@@ -93,16 +95,16 @@ h1 {
       position: relative;
       font-size: 4.3rem;
       font-family: $cabinFont;
-      // top: -23rem;
-      // left: 10rem;
+      top: -23rem;
+      left: 5rem;
       color: red;
       align-self: flex-start;
       animation: rotate 0.3s linear 3;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-top: -22rem;
-      margin-left: 5rem;
+      //margin-top: -22rem;
+      //margin-left: 5rem;
 
       .desktop-name-box {
         margin-left: -6rem;
@@ -115,15 +117,15 @@ h1 {
       position: relative;
       font-size: 4.3rem;
       font-family: $cabinFont;
-      // top: 1rem;
-      // left: 70rem;
+      top: -6rem;
+      left: -4rem;
       color: green;
       animation: push 0.2s linear 4;
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-top: -10rem;
-      margin-left: -3rem;
+      //margin-top: -10rem;
+      //margin-left: -3rem;
 
       .desktop-name-box {
         margin-left: -6rem;
@@ -136,14 +138,14 @@ h1 {
       position: relative;
       font-size: 4.3rem;
       font-family: $cabinFont;
-      // top: -23rem;
-      // left: 90rem;
+      top: -23rem;
+      left: 35rem;
       color: blue;
       animation: rock 0.32s linear 3;
       display: flex;
       align-items: center;
-      margin-top: -10rem;
-      margin-left: 24rem;
+      //margin-top: -10rem;
+      //margin-left: 24rem;
 
       .desktop-name-box {
         margin-right: 1.5rem;
@@ -161,14 +163,14 @@ h1 {
       position: relative;
       font-size: 4.3rem;
       font-family: $cabinFont;
-      // top: -1rem;
-      // left: 20rem;
+      top: -1rem;
+      left: -15rem;
       color: purple;
       animation: pop-in 0.4s linear 4;
       display: flex;
       align-items: center;
-      margin-top: -33rem;
-      margin-left: -12rem;
+      // margin-top: -33rem;
+      // margin-left: -12rem;
 
 
       .desktop-name-box {
@@ -329,7 +331,7 @@ h1 {
   .desktop-welcome-button-container {
     display: flex;
     justify-content: center;
-    margin-top: 6rem;
+    margin-top: -2rem;
 
     .desktop-welcome-button {
       position: relative;
