@@ -40,9 +40,7 @@ getFiles(files){
 }
   render() {
     const validate = <div className="mobile-confirm-upload">
-
     <img alt="avatar" src={this.state.image} width="240px" />
-    <p id="error">{this.state.error}</p>
     <button onClick={ () => {
       this.props.addAvatar(this.props.gameData.mainPlayer, this.state.image)
     }}>Confirm</button>
@@ -51,7 +49,7 @@ getFiles(files){
 
     return (
       <div className="mobile-upload-container">
-
+      <p id="error">{this.state.error}</p>
       <div className="mobile-test">
       <input type="file" onChange={this.fileChangedHandler} />
       <button onClick={this.uploadHandler}>Upload!</button>
