@@ -16,9 +16,17 @@ fileChangedHandler = (event) => {
 uploadHandler = () => { 
   const reader = new FileReader();
   reader.readAsDataURL(this.state.selectedImage);
-  reader.onload = () => {
-    this.setState({image: reader.result})
-    console.log("datauri :", this.state.image)
+  reader.onload = (event) => {
+    const img = new Image()
+    img.src = event.target.result;
+    img.onload = () => {
+      const elem = document.createElement('canvas');
+      const ctx = elem.getContext('2d');
+      ctx.drawImage(img, 0, 0, 180, 180);
+      const data = ctx.canvas.toDataURL(img);
+      this.setState({image: data})
+      console.log("datauri :", data)
+    }
   }
 
 }
@@ -35,7 +43,10 @@ getFiles(files){
 
     return (
       <div>
-    
+      <div><button>fake</button></div>
+      <div><button>fake</button></div>
+      <div><button>fake</button></div>
+      <div><button>fake</button></div>
       <input type="file" onChange={this.fileChangedHandler} />
        <button onClick={this.uploadHandler}>Upload!</button>
         {this.state.image ? validate : ''}
