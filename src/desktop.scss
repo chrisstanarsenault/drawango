@@ -440,15 +440,20 @@ h1 {
     #scores-test-container {
       display: flex;
       justify-content: space-around;
+      margin: 10rem;
     }
   }
 
+  .desktop-player-scores-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
 
   #desktop-full-scores-container {
     //border: 1px solid black;
     display: flex;
     justify-content: center;
-    margin-top: 3rem;
+    margin: 4rem;
 
 
     .desktop-score-player-container {
