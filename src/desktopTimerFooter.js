@@ -16,24 +16,21 @@ class Timer extends Component {
       return (<div></div>);  
     } else {
 
-      let progress = 90 - (Math.round(this.props.gameData.timer / 30 * 90));
-      let style;
+      let style = {width: "0%"};
+      let progress = 100 - (Math.round(this.props.gameData.timer / 30 * 100));
       if (progress) {
         style = {width: `${progress}%`};
-      } else {
-        style = {width: `0%`};
       }
 
       return (
-        <div className="desktopTimerContainer">
-
-        <div id="myProgress">
-          <div id="myBar" style={style}></div>
+        <div>
+          <div id="myProgress">
+            <div id="myBar" style={style}></div>
+          </div>
+          <div className="desktopTimerContainer">
+            <span id="countTimer">{this.props.gameData.timer}</span>
+          </div>
         </div>
-
-          <span id="countTimer">{this.props.gameData.timer}</span>
-        </div>
-          
       );    
     }
   }
