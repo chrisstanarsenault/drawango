@@ -75,7 +75,7 @@ class Canvas extends Component {
     event.preventDefault();});
     this.ctx = this.canvas.getContext('2d');
     if (isBrowser) {
-      this.ctx.scale(3, 2);
+      this.ctx.scale(2.7, 2);
     }
     this.ctx.lineJoin = 'round';
     this.ctx.lineCap = 'round';

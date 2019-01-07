@@ -221,6 +221,7 @@ h1 {
     justify-content: center;
     align-items: center;
     border-left: 50rem;
+    margin-top: 10rem;
 
     .desktop-bird-speech-container {
       align-self: flex-start;
@@ -370,7 +371,7 @@ h1 {
     align-items: center;
     canvas {
       border: 3rem solid transparent;
-      width: 50rem;
+      width: 70rem;
       // height: 50rem;
       // margin: 10rem;
       // padding: 10rem;
@@ -398,7 +399,8 @@ h1 {
       flex-direction: column;
       align-items: flex-end;
       justify-content: flex-start;
-
+      margin-top: 10rem;
+    }
 
     #desktop-individual-votes {
       display: flex;
@@ -411,7 +413,7 @@ h1 {
       background-color: green;
       border-radius: 10px;
       font-size: 3rem;
-      }
+
     }
   }
 
@@ -440,15 +442,20 @@ h1 {
     #scores-test-container {
       display: flex;
       justify-content: space-around;
+      margin: 10rem;
     }
   }
 
+  .desktop-player-scores-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
 
   #desktop-full-scores-container {
     //border: 1px solid black;
     display: flex;
     justify-content: center;
-    margin-top: 3rem;
+    margin: 4rem;
 
 
     .desktop-score-player-container {
