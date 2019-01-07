@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import MobileDefault from './mobileDefault';
 import SelfieCamera from './mobileSelfie';
+import UploadAvatar from './mobileUpload';
 
 class MobileSubmitName extends Component {
 	constructor() {
     super()
-		this.state = { errors: ""}
+		this.state = { errors: "", image: ""}
   }
 
 	handleSubmit = (event) => {
@@ -21,7 +22,8 @@ class MobileSubmitName extends Component {
       this.setState({ errors: "Opps... this name has already been taken" });
     }
 	};
-
+	
+	
 	render() {
 
 		if (this.props.gameData.mainPlayer){
@@ -32,11 +34,31 @@ class MobileSubmitName extends Component {
 				</div>
 			);
 			} else {
-				return(
-					<div className="mobile-full-selfie-camera-container">
-						<SelfieCamera gameData={this.props.gameData} addAvatar={this.props.addAvatar}/>
-					</div>
-				)
+				switch(this.state.image) {
+					case "selfie":
+						return (
+							<SelfieCamera gameData={this.props.gameData} addAvatar={this.props.addAvatar}/>
+						);
+						break;
+					case "upload":
+						return (
+							<UploadAvatar gameData={this.props.gameData} addAvatar={this.props.addAvatar}/>
+						);
+						break;
+					default:
+						return(<div>
+							<div><button onClick={ () => {
+								this.setState({image: "selfie"})
+							}}>Take a Selfie</button>
+							</div>
+							<div><button onClick={ () => {
+								this.setState({image: "upload"})
+							}}>Upload a picture</button>
+							</div>
+							</div>
+						)
+				}
+				
 			}
 		}
 
