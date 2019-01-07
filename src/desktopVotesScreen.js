@@ -14,7 +14,7 @@ class DesktopVotingScreen extends Component {
 
     return (
       <div>
-          <h1>What is it?</h1>
+          <h1>What do you think this is?</h1>
         
           <div id="desktop-canvas-container">
             <Canvas gameData={this.props.gameData}/>

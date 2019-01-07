@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { isBrowser } from 'react-device-detect';
-import { isMobile } from 'react-device-detect';
 
 class Canvas extends Component {
   constructor() {
