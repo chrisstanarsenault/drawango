@@ -22,8 +22,8 @@ class MobileSubmitName extends Component {
       this.setState({ errors: "Opps... this name has already been taken" });
     }
 	};
-	
-	
+
+
 	render() {
 
 		if (this.props.gameData.mainPlayer){
@@ -46,19 +46,20 @@ class MobileSubmitName extends Component {
 						);
 						break;
 					default:
-						return(<div>
-							<div><button onClick={ () => {
-								this.setState({image: "selfie"})
-							}}>Take a Selfie</button>
-							</div>
-							<div><button onClick={ () => {
-								this.setState({image: "upload"})
-							}}>Upload a picture</button>
-							</div>
+						return(
+							<div className="mobile-test-selfie-upload">
+								<div><button onClick={ () => {
+									this.setState({image: "selfie"})
+								}}>Take a Selfie</button>
+								</div>
+								<div><button onClick={ () => {
+									this.setState({image: "upload"})
+								}}>Upload a picture</button>
+								</div>
 							</div>
 						)
 				}
-				
+
 			}
 		}
 

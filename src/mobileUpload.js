@@ -7,13 +7,13 @@ class UploadAvatar extends Component {
     super(props);
     this.state = {selectedImage: null, image: null}
     }
-  
+
 
 fileChangedHandler = (event) => {
   this.setState({selectedImage: event.target.files[0]})
 }
 
-uploadHandler = () => { 
+uploadHandler = () => {
   const reader = new FileReader();
   reader.readAsDataURL(this.state.selectedImage);
   reader.onload = (event) => {
@@ -35,23 +35,25 @@ getFiles(files){
   this.setState({ files: files })
 }
   render() {
-    const validate = <div>
-    
+    const validate = <div className="mobile-confirm-upload">
+
+    <img alt="avatar" src={this.state.image} width="240px" />
     <button onClick={ () => {
       this.props.addAvatar(this.props.gameData.mainPlayer, this.state.image)
     }}>Confirm</button>
-    <img alt="avatar" src={this.state.image} width="240px" />
+
     </div>;
 
     return (
-      <div>
-      <div><button>fake</button></div>
-      <div><button>fake</button></div>
-      <div><button>fake</button></div>
-      <div><button>fake</button></div>
+      <div className="mobile-upload-container">
+
+      <div className="mobile-test">
       <input type="file" onChange={this.fileChangedHandler} />
       <button onClick={this.uploadHandler}>Upload!</button>
+      </div>
+      <div>
               {this.state.image ? validate : ''}
+      </div>
       </div>
     );
   }

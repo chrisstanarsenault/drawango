@@ -70,7 +70,7 @@ class SelfieCamera extends React.Component {
     }}>Confirm</button>
 
     return (
-      <div>
+      <div className="mobile-full-selfie-camera-container">
       <div className="mobile-video-container">
         {video}
       </div>
