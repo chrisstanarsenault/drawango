@@ -6,19 +6,18 @@ class Default extends Component {
   render() {
     return (
       <div>
-   
-        <div className="desktop-logo-container">
-          <div className="desktop-bird-speech-container">
-          <div className="circle-sb">
-            Look at the TV!
-            <div className="dcircle"></div>
-            <div className="dcircle1"></div>
-          </div>
-          </div>
 
+        <div className="mobile-logo-container">
+          <div className="mobile-bird-speech-container">
+          <div className="mobile-circle-sb">
+            Look at the TV!
+            <div className="mobile-dcircle"></div>
+            <div className="mobile-dcircle1"></div>
+          </div>
+          </div>
 
           <div>
-            <svg width="500px" height="500px" viewBox="0 0 500 698" version="1.1" xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">
+            <svg className="mobile-bird" width="500px" height="500px" viewBox="0 0 500 698" version="1.1" xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">
               <defs>
                   <circle id="path-1" cx="116.5" cy="247.5" r="55.5"></circle>
                   <circle id="path-2" cx="312" cy="244" r="74"></circle>
