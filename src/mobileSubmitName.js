@@ -46,9 +46,9 @@ class MobileSubmitName extends Component {
 					<label className="mobile-submit-name">
 						<input className="mobile-form-name-text" type="text" name="name" placeholder="Enter your name here" maxlength="10"/>
 					</label>
+					<p id="error">{this.state.errors}</p>
 					<input className="mobile-form-name-submit" type="submit" value="Get me in this game!" />
 				</form>
-				<p>{this.state.errors}</p>
 			</div>
 		);
 	}
