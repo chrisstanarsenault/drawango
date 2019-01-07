@@ -5,7 +5,7 @@ class UploadAvatar extends Component {
 
   constructor (props) {
     super(props);
-    this.state = {files: '', selectedImage: null, image: null}
+    this.state = {selectedImage: null, image: null}
     }
   
 
@@ -14,17 +14,12 @@ fileChangedHandler = (event) => {
 }
 
 uploadHandler = () => { 
-  let reader = new FileReader();
-
-      // Convert the file to base64 text
-      reader.readAsDataURL(this.state.selectedImage);
-
-      // on reader load somthing...
-      reader.onload = () => {
-
-        this.setState({image: reader.result})
-        console.log("datauri :", this.state.image)
-        }
+  const reader = new FileReader();
+  reader.readAsDataURL(this.state.selectedImage);
+  reader.onload = () => {
+    this.setState({image: reader.result})
+    console.log("datauri :", this.state.image)
+  }
 
 }
 
@@ -32,18 +27,18 @@ getFiles(files){
   this.setState({ files: files })
 }
   render() {
-    const selfie = <img alt="avatar" src={this.state.image} />
-  
+    const validate = <div><button onClick={ () => {
+      this.props.addAvatar(this.props.gameData.mainPlayer, this.state.image)
+    }}>Confirm</button>
+    <img alt="avatar" src={this.state.image} width="240px" />
+    </div>;
 
     return (
       <div>
-      <button>fake</button>
-      <button>fake</button>
-      <button>fake</button>
-      <button>fake</button>
+    
       <input type="file" onChange={this.fileChangedHandler} />
        <button onClick={this.uploadHandler}>Upload!</button>
-        {this.state.image ? selfie : ''}
+        {this.state.image ? validate : ''}
         <div className="text-center">
         {this.state.files}
         </div>

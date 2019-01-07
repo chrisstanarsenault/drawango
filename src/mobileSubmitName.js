@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import MobileDefault from './mobileDefault';
 import SelfieCamera from './mobileSelfie';
-import DrawAvatar from './mobileSelfie';
 import UploadAvatar from './mobileUpload';
 
 class MobileSubmitName extends Component {
@@ -41,11 +40,6 @@ class MobileSubmitName extends Component {
 							<SelfieCamera gameData={this.props.gameData} addAvatar={this.props.addAvatar}/>
 						);
 						break;
-					case "draw":
-						return (
-							<DrawAvatar gameData={this.props.gameData} addAvatar={this.props.addAvatar}/>
-						);
-						break;
 					case "upload":
 						return (
 							<UploadAvatar gameData={this.props.gameData} addAvatar={this.props.addAvatar}/>
@@ -53,10 +47,6 @@ class MobileSubmitName extends Component {
 						break;
 					default:
 						return(<div>
-							<div><button onClick={ () => {
-								this.setState({image: "draw"})
-							}}>Draw your face</button>
-							</div>
 							<div><button onClick={ () => {
 								this.setState({image: "selfie"})
 							}}>Take a Selfie</button>
