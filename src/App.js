@@ -124,7 +124,6 @@ class App extends Component {
 
 	addAvatar = (name, avatar) => {
 		const body = {name: name, avatar: avatar}
-		console.log('addAvatar function that sends it to the server', body);
 		this.setState({avatar: avatar});
 		this.socket.send(this.message('addAvatar', body));
 	};
