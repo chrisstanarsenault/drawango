@@ -36,7 +36,7 @@ getFiles(files){
 }
   render() {
     const validate = <div>
-    <button onClick={this.uploadHandler}>Upload!</button>
+    
     <button onClick={ () => {
       this.props.addAvatar(this.props.gameData.mainPlayer, this.state.image)
     }}>Confirm</button>
@@ -50,9 +50,8 @@ getFiles(files){
       <div><button>fake</button></div>
       <div><button>fake</button></div>
       <input type="file" onChange={this.fileChangedHandler} />
-       
-        {this.state.image ? validate : ''}
-        </div>
+      <button onClick={this.uploadHandler}>Upload!</button>
+              {this.state.image ? validate : ''}
       </div>
     );
   }
