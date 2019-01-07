@@ -7,7 +7,7 @@ class DesktopGuessingScreen extends Component {
   render() {
     return (
       <div>
-
+        <div id="desktop-main-container">
           <div id="desktop-canvas-container">
             <Canvas gameData={this.props.gameData} />
           </div>
@@ -54,6 +54,7 @@ class DesktopGuessingScreen extends Component {
                 </g>
               </svg>
             </div>
+          </div>
           </div>
 
         <Timer gameData={this.props.gameData} changeGameStage={this.props.changeGameStage} resetTimer={this.props.resetTimer} stage={"votingStage"}/>

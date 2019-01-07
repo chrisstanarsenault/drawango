@@ -311,6 +311,10 @@ h1 {
     }
   }
 
+  #desktop-main-container {
+    display: flex;
+    justify-content: center;
+  }
 
 
   #desktop-canvas-container {
@@ -362,6 +366,10 @@ h1 {
       font-size: 3rem;
       }
     }
+  }
+
+  #scores-test-container {
+    display: flex;
   }
 
   .desktop-scores-title-container {
