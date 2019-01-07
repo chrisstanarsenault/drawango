@@ -44,23 +44,6 @@ h1 {
       font-size: 4rem;
       text-decoration: underline;
   }
-
-  // button {
-  // height: 7rem;
-  // width: 20rem;
-  // border: 1px solid #3B6CFF;
-  // border-radius: 1rem;
-  // background-color: #42A1FF;
-  // font-size: 2rem;
-  // font-weight: bold;
-  // font-family: $markerFont;
-  // }
-
-//   button:active {
-//     box-shadow: inset 0px 0px 5px #c1c1c1;
-//     outline: none;
-//     background: #3D6EFF;
-//   }
 }
 
 #desktop-user-name-container {
@@ -150,14 +133,14 @@ h1 {
   }
 }
 
-button {
-  height: 3rem;
-  width: 10rem;
-  border-radius: .7rem;
-  background-color: darkturquoise;
-  font-size: 1.1rem;
-  font-weight: bold;
-}
+// button {
+//   height: 3rem;
+//   width: 10rem;
+//   border-radius: .7rem;
+//   background-color: darkturquoise;
+//   font-size: 1.1rem;
+//   font-weight: bold;
+// }
 
 @keyframes push{
   50%  {transform: scale(0.8);}
@@ -198,7 +181,7 @@ button {
       //right: 67.34rem;
       margin-right: -7rem;
 
-      .circle-sb {
+    .circle-sb {
       width: 210px;
       border: 5px solid #575757;
       padding: 50px 0px;
