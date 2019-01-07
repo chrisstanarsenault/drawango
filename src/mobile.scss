@@ -95,12 +95,29 @@ $cabinFont: 'Cabin Sketch', cursive;
 
     video {
       margin-bottom: 1rem;
+      border: 4px solid #575757;
+      border-radius: 4px;
+      padding: 5px;
     }
   }
 
-  .mobile-selfie-container {
-    margin-top: 2rem;
+  .mobile-take-photo-button {
+    display: flex;
+    justify-content: center;
   }
+
+  .mobile-selfie-container {
+    display: flex;
+    justify-content: center;
+
+    img {
+      margin-top: 2rem;
+      border: 4px solid #575757;
+      border-radius: 4px;
+      padding: 5px;
+    }
+  }
+
 
 }
 
@@ -420,11 +437,11 @@ button {
   margin-right: 5px;
 }
 
-video {
-  border: 4px solid #575757;
-  border-radius: 4px;
-  padding: 5px;
-}
+// video {
+//   border: 4px solid #575757;
+//   border-radius: 4px;
+//   padding: 5px;
+// }
 
 #error{
   font-size: 15px;
@@ -432,8 +449,8 @@ video {
   color: #da6767
 }
 
-img {
-  border: 4px solid #575757;
-  border-radius: 4px;
-  padding: 5px;
-}
+// img {
+//   border: 4px solid #575757;
+//   border-radius: 4px;
+//   padding: 5px;
+// }
