@@ -38,9 +38,9 @@ class MobileGuessingScreen extends Component {
           <label className="mobile-guess-label">
             <input className="mobile-guess-field" type="text" name="guess" placeholder="Enter your guess here" maxlength="25"/>
           </label>
+          <p id="error">{this.state.errors}</p>
           <input className="mobile-guess-button" type="submit" value="Submit your guess" />
         </form>
-        <p>{this.state.errors}</p>
       </div>
       </div>
     );

@@ -72,12 +72,10 @@ class SelfieCamera extends React.Component {
     return (
       <div className="mobile-video-container">
         {video}
-        <div>
           <button onClick={ () => {
             this.takePhoto();
           }}> Take photo </button>
           {this.state.dataUri ? validate : ''}
-        </div>
         <div className="mobile-selfie-container">
           {this.state.dataUri ? selfie : ''}
         </div>

@@ -53,7 +53,7 @@ $cabinFont: 'Cabin Sketch', cursive;
     .mobile-form-name-text {
       height: 2rem;
       font: normal 25px/25px "Patrick Hand", sans-serif;
-      text-indent: 5px;
+      text-align: center;
       color: #575757;
       background-color: transparent;
       border-bottom: 3px solid gray;
@@ -65,7 +65,7 @@ $cabinFont: 'Cabin Sketch', cursive;
     .mobile-form-name-submit {
       border-radius: 10px;
       height: 3rem;
-      margin-top: 3.5rem;
+      margin-top: 0.5rem;
       background: #FFF;
       padding-top: 5px;
       padding-bottom: 5px;
@@ -102,8 +102,6 @@ $cabinFont: 'Cabin Sketch', cursive;
 
 }
 
-
-
 #mobile-guess-test {
   display: flex;
   justify-content: center;
@@ -139,7 +137,7 @@ $cabinFont: 'Cabin Sketch', cursive;
     .mobile-guess-field {
       height: 2rem;
       font: normal 25px/25px "Patrick Hand", sans-serif;
-      text-indent: 5px;
+      text-align: center;
       color: #575757;
       background-color: transparent;
       border-bottom: 3px solid gray;
@@ -401,4 +399,36 @@ svg {
   right: 0px;
   bottom: 0px;
   background: #fff;
+}
+
+button {
+  background: #FFF;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border: 2px solid #575757;
+  font: normal 22px/25px "Patrick Hand", sans-serif;
+  text-transform: uppercase;
+  color: #575757;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+video {
+  border: 4px solid #575757;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+#error{
+  font-size: 15px;
+  font-family: "Permanent Marker", cursive;
+  color: #da6767
+}
+
+img {
+  border: 4px solid #575757;
+  border-radius: 4px;
+  padding: 5px;
 }
