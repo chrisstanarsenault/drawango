@@ -94,9 +94,11 @@ class Canvas extends Component {
         this.strokeStyle = player.color;
       }
     });
-    this.props.gameData.line.forEach((position) => {
-      this.paint(position.start, position.stop, this.strokeStyle);
-    });
+    if (isBrowser) {
+      this.props.gameData.line.forEach((position) => {
+        this.paint(position.start, position.stop, this.strokeStyle);
+      });
+    }
   }
 
   render() {
