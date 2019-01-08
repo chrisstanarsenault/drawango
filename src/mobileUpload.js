@@ -19,6 +19,7 @@ uploadHandler = () => {
     const reader = new FileReader();
     reader.readAsDataURL(this.state.selectedImage);
     reader.onload = (event) => {
+      console.log(event);
       const img = new Image()
       img.src = event.target.result;
       img.onload = () => {

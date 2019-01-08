@@ -15,6 +15,7 @@ class DesktopFinalScore extends Component {
     const playerScoresFinal = this.props.gameData.players.map(player => (
         <ScoresFinal key={player} player={player.name} points={player.points}/>
       ));
+    const playersSorted = this.props.gameData.players.sort((a, b) => a.points - b.points);
 
     return (
       <div>
@@ -52,6 +53,7 @@ class DesktopFinalScore extends Component {
               </svg>
             </div>
         <div className="desktop-full-scoresFinal-name-points-container">
+        <p>The winner is {playersSorted[0]['name']} with the score of {playersSorted[0]['points']} points</p>
         {playerScoresFinal}
         </div>
 
