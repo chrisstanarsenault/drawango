@@ -18,7 +18,7 @@ class App extends Component {
 		this.state = {
 			gameStage: '',
 			mainPlayer: cookies.get('name') || '',
-			avatar: '',
+			avatar: cookies.get('avatar') || '',
 			players: [],
 			currentPlayer: '',
 			playerGuess: {},
@@ -123,6 +123,8 @@ class App extends Component {
 	};
 
 	addAvatar = (name, avatar) => {
+		const { cookies } = this.props;
+		cookies.set('avatar', true, { path: '/' });
 		const body = {name: name, avatar: avatar}
 		this.setState({avatar: avatar});
 		this.socket.send(this.message('addAvatar', body));

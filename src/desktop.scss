@@ -9,6 +9,7 @@ body {
   background-image: url(./images/background5.jpg);
   background-size: cover;
   background-repeat: repeat;
+  width: 100%;
 }
 
 h1 {
@@ -166,7 +167,162 @@ h1 {
   100% {transform: rotate(-60deg)}
 }
 
-@media (min-width: 1025px) {
+@media screen and (min-width: 1025px) {
+
+
+  #desktop-user-name-container {
+    display: flex;
+    position: relative;
+
+  }
+
+  .desktop-logo-container {
+    // border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    //border-left: 50rem;
+
+    #individual-name-container0 {
+      // border: 1rem solid rgb(253, 247, 231);
+      // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
+      position: absolute;
+      font-size: 4.3rem;
+      font-family: $cabinFont;
+      // top: -23rem;
+      // left: 5rem;
+      top: -12rem;
+      left: -15rem;
+      color: red;
+      align-self: flex-start;
+      animation: rotate 0.3s linear 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      //margin-top: -22rem;
+      //margin-left: 5rem;
+
+      .desktop-name-box {
+        margin-left: -7.5rem;
+      }
+    }
+
+    #individual-name-container1 {
+      // border: 3rem solid transparent;
+      // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
+      position: absolute;
+      font-size: 4.3rem;
+      font-family: $cabinFont;
+      //top: -6rem;
+      //left: -4rem;
+      color: green;
+      animation: push 0.2s linear 4;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      //margin-top: -10rem;
+      //margin-left: -3rem;
+
+      .desktop-name-box {
+        margin-left: -7.5rem;
+      }
+    }
+
+    #individual-name-container2 {
+      // border: 3rem solid transparent;
+      // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
+      position: absolute;
+      font-size: 4.3rem;
+      font-family: $cabinFont;
+      //top: -23rem;
+      //left: 35rem;
+      top: .5rem;
+      left: 38rem;
+      color: blue;
+      animation: rock 0.32s linear 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      //margin-top: -10rem;
+      //margin-left: 24rem;
+
+      .desktop-name-box {
+        margin-left: -7.5rem;
+        order: 0;
+      }
+
+      .desktop-avatar-box {
+        //order: 1;
+      }
+    }
+
+    #individual-name-container3 {
+      // border: 3rem solid transparent;
+      // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
+      position: absolute;
+      font-size: 4.3rem;
+      font-family: $cabinFont;
+      //top: -1rem;
+      //left: -15rem;
+      top: -12rem;
+      left: 53rem;
+      color: purple;
+      animation: pop-in 0.4s linear 4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      // margin-top: -33rem;
+      // margin-left: -12rem;
+
+
+      .desktop-name-box {
+        margin-left: -7.5rem;
+        order: 0;
+      }
+
+      .desktop-avatar-box {
+        //order: 1;
+      }
+    }
+
+    #individual-name-container4 {
+      // border: 3rem solid transparent;
+      // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
+      position: absolute;
+      font-size: 4.3rem;
+      font-family: $cabinFont;
+      color: cyan;
+      animation: reverse-rotate 0.3s linear 3;
+      display: flex;
+      align-items: center;
+
+      .desktop-name-box {
+        margin-left: -6rem;
+      }
+    }
+
+    #individual-name-container5 {
+      // border: 3rem solid transparent;
+      // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
+      position: relative;
+      font-size: 4.3rem;
+      font-family: $cabinFont;
+      margin: -15rem -15rem;
+      color: magenta;
+      animation: pop-in 0.3s linear 3;
+      display: flex;
+      align-items: center;
+
+      .desktop-name-box {
+        margin-left: -6rem;
+      }
+    }
+
+  }
+
 
   .desktop-logo-container {
     // border: 1px solid black;
@@ -174,6 +330,7 @@ h1 {
     justify-content: center;
     align-items: center;
     border-left: 50rem;
+
 
     .desktop-bird-speech-container {
       align-self: flex-start;
@@ -370,6 +527,10 @@ h1 {
 
   #scores-test-container {
     display: flex;
+
+    svg {
+      margin: 0;
+    }
   }
 
   .desktop-scores-title-container {
@@ -386,8 +547,8 @@ h1 {
 
     h2 {
       font-size: 2rem;
-      align-self: flex-start;
-      margin: 0 0 0 18rem;
+      //align-self: flex-start;
+      margin: 0;
     }
 
     #scores-test-container {
@@ -397,11 +558,22 @@ h1 {
   }
 
 
-  #desktop-full-scores-container {
+  .desktop-scores-container {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 2;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+
+
+    #desktop-full-scores-container {
     //border: 1px solid black;
     display: flex;
     justify-content: center;
     margin-top: 3rem;
+
 
 
     .desktop-score-player-container {
@@ -423,7 +595,7 @@ h1 {
     .desktop-individual-scores-points {
         //border: 1px solid orange;
         margin: 0;
-        align-self: flex-end;
+        //align-self: flex-end;
         font-size: 1.4rem;
         background-color: orange;
         border-radius: 50%;
@@ -465,6 +637,8 @@ h1 {
       }
     }
   }
+  }
+
 
   .desktop-final-scores-title {
     font-family: $markerFont;
