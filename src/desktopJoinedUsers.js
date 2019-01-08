@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 class JoinedUsers extends Component {
+
 	render() {
 		const avatar = <img alt='avatar' src={this.props.player.avatar} />
 		return (
