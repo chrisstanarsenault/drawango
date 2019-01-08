@@ -61,7 +61,9 @@ class App extends Component {
 													playerGuess: message.playerGuess,
 													playerVote: message.playerVote,
 													line: message.line,
-												  timer: message.timer });
+													timer: message.timer,
+													guessesDisplayed: message.guessesDisplayed
+												 });
 					break
 				case 'updatePlayers':
 					this.setState({ players: message.body });

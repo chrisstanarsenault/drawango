@@ -27,12 +27,13 @@ class MobileSubmitName extends Component {
 	render() {
 
 		if (this.props.gameData.mainPlayer){
+
 			if (this.props.gameData.avatar) {
-			return (
-				<div>
-					<MobileDefault gameData={this.props.gameData}/>
-				</div>
-			);
+				return (
+					<div>
+						<MobileDefault/>
+					</div>
+				);
 			} else {
 				switch(this.state.image) {
 					case "selfie":
@@ -48,13 +49,10 @@ class MobileSubmitName extends Component {
 					default:
 						return(
 							<div className="mobile-test-selfie-upload">
-								<div><button onClick={ () => {
-									this.setState({image: "selfie"})
-								}}>Take a Selfie</button>
+								<div>
+									<button onClick={ () => {this.setState({image: "selfie"})}}>Take a Selfie</button>
 								</div>
-								<div><button onClick={ () => {
-									this.setState({image: "upload"})
-								}}>Upload a picture</button>
+								<div><button onClick={ () => {this.setState({image: "upload"})}}>Upload a picture</button>
 								</div>
 							</div>
 						)
