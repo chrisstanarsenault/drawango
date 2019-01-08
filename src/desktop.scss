@@ -93,29 +93,30 @@ footer {
     #individual-name-container0 {
       // border: 1rem solid rgb(253, 247, 231);
       // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
-      position: relative;
+      position: absolute;
       font-size: 4.3rem;
       font-family: $cabinFont;
-      // top: -23rem;
+      top: -15rem;
       // left: 10rem;
       color: red;
-      align-self: flex-start;
+      //align-self: flex-start;
       animation: rotate 0.3s linear 3;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      margin-top: -22rem;
-      margin-left: 5rem;
+      //margin-top: -22rem;
+      //margin-left: 5rem;
 
       .desktop-name-box {
-        margin-left: -6rem;
+        margin-left: -7rem;
       }
     }
 
     #individual-name-container1 {
       // border: 3rem solid transparent;
       // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
-      position: relative;
+      position: absolute;
       font-size: 4.3rem;
       font-family: $cabinFont;
       // top: 1rem;
@@ -123,20 +124,25 @@ footer {
       color: green;
       animation: push 0.2s linear 4;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      margin-top: -10rem;
-      margin-left: -3rem;
+      top: 3rem;
+      left: 14rem;
+
+
+      //margin-top: -10rem;
+      //margin-left: -3rem;
 
       .desktop-name-box {
-        margin-left: -6rem;
+        margin-left: -7rem;
       }
     }
 
     #individual-name-container2 {
       // border: 3rem solid transparent;
       // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
-      position: relative;
+      position: absolute;
       font-size: 4.3rem;
       font-family: $cabinFont;
       // top: -23rem;
@@ -144,43 +150,47 @@ footer {
       color: blue;
       animation: rock 0.32s linear 3;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      margin-top: -10rem;
-      margin-left: 24rem;
+      //margin-top: -10rem;
+      //margin-left: 24rem;
+      top: 3.5rem;
+      left: 52rem;
 
       .desktop-name-box {
-        margin-right: 1.5rem;
+        margin-left: -7rem;
         order: 0;
       }
 
       .desktop-avatar-box {
-        order: 1;
+        //order: 1;
       }
     }
 
     #individual-name-container3 {
       // border: 3rem solid transparent;
       // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
-      position: relative;
+      position: absolute;
       font-size: 4.3rem;
       font-family: $cabinFont;
-      // top: -1rem;
-      // left: 20rem;
+      top: -15rem;
+      left: 65rem;
       color: purple;
       animation: pop-in 0.4s linear 4;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      margin-top: -33rem;
-      margin-left: -12rem;
+      //margin-top: -33rem;
+      //margin-left: -12rem;
 
 
       .desktop-name-box {
-        margin-right: 1.5rem;
+        margin-left: -7rem;
         order: 0;
       }
 
       .desktop-avatar-box {
-        order: 1;
+        //order: 1;
       }
     }
 
