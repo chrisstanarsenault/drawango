@@ -9,13 +9,12 @@ body {
   background-image: url(./images/background5.jpg);
   background-size: cover;
   background-repeat: repeat;
-  width: 100%;
 }
 
-h1 {
-  font: normal 70px "Patrick Hand", sans-serif;
-  text-align: center;
-}
+// h1 {
+//   font: normal 70px "Patrick Hand", sans-serif;
+//   text-align: center;
+// }
 
 .desktopWelcomeContainer {
   display: flex;
@@ -47,102 +46,6 @@ h1 {
   }
 }
 
-#desktop-user-name-container {
-  display: flex;
-  position: relative;
-
-  #individual-name-container0 {
-    // border: 1rem solid rgb(253, 247, 231);
-    // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
-    position: absolute;
-    font-size: 4.3rem;
-    font-family: $cabinFont;
-    top: -23rem;
-    left: 10rem;
-    color: red;
-    align-self: flex-start;
-    animation: rotate 0.3s linear 3;
-    display: flex;
-    align-items: center;
-  }
-
-  #individual-name-container1 {
-    // border: 3rem solid transparent;
-    // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
-    position: absolute;
-    font-size: 4.3rem;
-    font-family: $cabinFont;
-    top: 1rem;
-    left: 70rem;
-    color: green;
-    animation: push 0.2s linear 4;
-    display: flex;
-    align-items: center;
-  }
-
-  #individual-name-container2 {
-    // border: 3rem solid transparent;
-    // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
-    position: absolute;
-    font-size: 4.3rem;
-    font-family: $cabinFont;
-    top: -23rem;
-    left: 90rem;
-    color: blue;
-    animation: rock 0.32s linear 3;
-    display: flex;
-    align-items: center;
-  }
-
-  #individual-name-container3 {
-    // border: 3rem solid transparent;
-    // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
-    position: absolute;
-    font-size: 4.3rem;
-    font-family: $cabinFont;
-    top: -1rem;
-    left: 20rem;
-    color: purple;
-    animation: pop-in 0.4s linear 4;
-    display: flex;
-    align-items: center;
-  }
-
-  #individual-name-container4 {
-    // border: 3rem solid transparent;
-    // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
-    position: absolute;
-    font-size: 4.3rem;
-    font-family: $cabinFont;
-    color: cyan;
-    animation: reverse-rotate 0.3s linear 3;
-    display: flex;
-    align-items: center;
-  }
-
-  #individual-name-container5 {
-    // border: 3rem solid transparent;
-    // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
-    position: relative;
-    font-size: 4.3rem;
-    font-family: $cabinFont;
-    margin: -15rem -15rem;
-    color: magenta;
-    animation: pop-in 0.3s linear 3;
-    display: flex;
-    align-items: center;
-  }
-}
-
-// button {
-//   height: 3rem;
-//   width: 10rem;
-//   border-radius: .7rem;
-//   background-color: darkturquoise;
-//   font-size: 1.1rem;
-//   font-weight: bold;
-// }
-
 @keyframes push{
   50%  {transform: scale(0.8);}
 }
@@ -167,131 +70,110 @@ h1 {
   100% {transform: rotate(-60deg)}
 }
 
-@media screen and (min-width: 1025px) {
-
+@media (min-width: 1025px) {
 
   #desktop-user-name-container {
     display: flex;
     position: relative;
 
-  }
-
-  .desktop-logo-container {
-    // border: 1px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: auto;
-    //border-left: 50rem;
-
     #individual-name-container0 {
       // border: 1rem solid rgb(253, 247, 231);
       // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
-      position: absolute;
+      position: relative;
       font-size: 4.3rem;
       font-family: $cabinFont;
       // top: -23rem;
-      // left: 5rem;
-      top: -12rem;
-      left: -15rem;
+      // left: 10rem;
       color: red;
       align-self: flex-start;
       animation: rotate 0.3s linear 3;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      //margin-top: -22rem;
-      //margin-left: 5rem;
+      margin-top: -22rem;
+      margin-left: 5rem;
 
       .desktop-name-box {
-        margin-left: -7.5rem;
+        margin-left: -6rem;
       }
     }
 
     #individual-name-container1 {
       // border: 3rem solid transparent;
       // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
-      position: absolute;
+      position: relative;
       font-size: 4.3rem;
       font-family: $cabinFont;
-      //top: -6rem;
-      //left: -4rem;
+      // top: 1rem;
+      // left: 70rem;
       color: green;
       animation: push 0.2s linear 4;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      //margin-top: -10rem;
-      //margin-left: -3rem;
+      margin-top: -10rem;
+      margin-left: -3rem;
 
       .desktop-name-box {
-        margin-left: -7.5rem;
+        margin-left: -6rem;
       }
     }
 
     #individual-name-container2 {
       // border: 3rem solid transparent;
       // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
-      position: absolute;
+      position: relative;
       font-size: 4.3rem;
       font-family: $cabinFont;
-      //top: -23rem;
-      //left: 35rem;
-      top: .5rem;
-      left: 38rem;
+      // top: -23rem;
+      // left: 90rem;
       color: blue;
       animation: rock 0.32s linear 3;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      //margin-top: -10rem;
-      //margin-left: 24rem;
+      margin-top: -10rem;
+      margin-left: 24rem;
 
       .desktop-name-box {
-        margin-left: -7.5rem;
+        margin-right: 1.5rem;
         order: 0;
       }
 
       .desktop-avatar-box {
-        //order: 1;
+        order: 1;
       }
     }
 
     #individual-name-container3 {
       // border: 3rem solid transparent;
       // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
-      position: absolute;
+      position: relative;
       font-size: 4.3rem;
       font-family: $cabinFont;
-      //top: -1rem;
-      //left: -15rem;
-      top: -12rem;
-      left: 53rem;
+      // top: -1rem;
+      // left: 20rem;
       color: purple;
       animation: pop-in 0.4s linear 4;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      // margin-top: -33rem;
-      // margin-left: -12rem;
+      margin-top: -33rem;
+      margin-left: -12rem;
 
 
       .desktop-name-box {
-        margin-left: -7.5rem;
+        margin-right: 1.5rem;
         order: 0;
       }
 
       .desktop-avatar-box {
-        //order: 1;
+        order: 1;
       }
     }
 
     #individual-name-container4 {
       // border: 3rem solid transparent;
       // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
-      position: absolute;
+      position: relative;
       font-size: 4.3rem;
       font-family: $cabinFont;
       color: cyan;
@@ -320,9 +202,7 @@ h1 {
         margin-left: -6rem;
       }
     }
-
   }
-
 
   .desktop-logo-container {
     // border: 1px solid black;
@@ -330,7 +210,6 @@ h1 {
     justify-content: center;
     align-items: center;
     border-left: 50rem;
-
 
     .desktop-bird-speech-container {
       align-self: flex-start;
@@ -480,7 +359,7 @@ h1 {
     align-items: center;
     canvas {
       border: 3rem solid transparent;
-      width: 70rem;
+      width: 50rem;
       // height: 50rem;
       // margin: 10rem;
       // padding: 10rem;
@@ -490,7 +369,6 @@ h1 {
   #canvas-votes-container {
     display:flex;
     justify-content: space-evenly;
-      // border-image: url(https://d1yn1kh78jj1rr.cloudfront.net/image/preview/rDtN98Qoishumwih/colored-drops-border-design-vector_7Jc0XM_SB_PM.jpg)180 round;
 
     #desktop-mock-canvas-container {
       display: flex;
@@ -498,12 +376,9 @@ h1 {
       width: 20rem;
       justify-content: center;
       border: 3rem solid transparent;
-      // border-image: url(https://d1yn1kh78jj1rr.cloudfront.net/image/preview/rDtN98Qoishumwih/colored-drops-border-design-vector_7Jc0XM_SB_PM.jpg)180 round;
-
     }
 
     #desktop-votes-container {
-      // border: 1px solid red;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
@@ -525,144 +400,206 @@ h1 {
     }
   }
 
-  #scores-test-container {
-    display: flex;
 
-    svg {
-      margin: 0;
-    }
-  }
+
+
+
+
+//below CSS is for the score page
 
   .desktop-scores-title-container {
-    //border: 1px solid black;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0 0 4rem 0;
-
+    margin-bottom: 0px;
     h1 {
+      font: normal 70px "Patrick Hand", sans-serif;
+      text-align: center;
       font-size: 4rem;
       margin: 0;
     }
+  }
 
-    h2 {
-      font-size: 2rem;
-      //align-self: flex-start;
-      margin: 0;
+  .destop-scores-overall-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: stretch;
+
+    .circle-sb {
+      width: 210px;
+      border: 5px solid #575757;
+      padding: 50px 0px;
+      margin: 2rem;;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 900;
+      font-family: arial;
+      position: relative;
+      color: #575757;
+      background: #fff;
+      font: normal 22px/25px "Patrick Hand", sans-serif;
+      align-self: flex-start;
+      animation: fly .9s ease-in-out infinite;
+      top: 200px;
+      right: auto;
+      left: 60px;
+      p {
+        padding-left: 5px;
+        padding-right: 5px;
+      }
     }
 
-    #scores-test-container {
-      display: flex;
-      justify-content: space-around;
+    .dcircle {
+      border: 5px solid #575757;
+      position: absolute;
+      width: 10px;
+      padding: 15px;
+      border-radius: 50%;
+      right: -15px;
+      bottom: 15px;
+    }
+
+    .dcircle:before {
+      content: "";
+      position: absolute;
+      width: 10px;
+      padding: 15px;
+      border-radius: 50%;
+      right: 0px;
+      bottom: 0px;
+      background: #fff;
+    }
+
+    .dcircle1 {
+      border: 5px solid #575757;
+      position: absolute;
+      width: 1px;
+      padding: 10px 12px;
+      border-radius: 50%;
+      right: -35px;
+      bottom: 13px;
+    }
+
+    .dcircle1:before {
+      content: "";
+      position: absolute;
+      width: 1px;
+      padding: 10px 12px;
+      border-radius: 50%;
+      right: 0px;
+      bottom: 0px;
+      background: #fff;
     }
   }
 
 
-  .desktop-scores-container {
+
+  #scores-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0px;
+    width: 600px;
+    height: 1000px;
+  }
+
+
+  #desktop-scores-container {
     display: flex;
     flex-direction: row;
-    flex-grow: 2;
-    flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-
-
-
-    #desktop-full-scores-container {
-    //border: 1px solid black;
-    display: flex;
-    justify-content: center;
-    margin-top: 3rem;
-
-
 
     .desktop-score-player-container {
       display: flex;
-      //border: 1px solid navy;
-      align-items: center;
       flex-direction: column;
-
-
-      .desktop-individual-scores-player {
-      //border: 1px solid green;
-      font-size: 3rem;
-      background-color: green;
-      border-radius: 1.5rem;
-      padding: .5rem;
-      margin: .5rem
-    }
-
-    .desktop-individual-scores-points {
-        //border: 1px solid orange;
-        margin: 0;
-        //align-self: flex-end;
-        font-size: 1.4rem;
-        background-color: orange;
-        border-radius: 50%;
-        padding: .5rem;
-      }
-  }
-
-    .desktop-scores-guess-points-container {
-      display: flex;
-      // flex-direction: column;
-      //border: 1px solid purple;
-      justify-content: center;
       align-items: center;
-      margin-left: 3rem;
-
-      .desktop-individual-scores-guess {
-        font-size: 2.5rem;
-        margin: 0;
-        position: relative;
-	      background: #00aabb;
-        border-radius: .4em;
-        padding: 1.5rem;
-
+      justify-content: center;
+      img {
+        border: 4px solid #688738;
+        border-radius: 4px;
+        padding: 5px;
+        width: 120px;
+        height: auto;
       }
-
-      .desktop-individual-scores-guess::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 50%;
-        width: 0;
-        height: 0;
-        border: 46px solid transparent;
-        border-right-color: #00aabb;
-        border-left: 0;
-        border-bottom: 0;
-        margin-top: -23px;
-        margin-left: -46px;
+      p {
+        align-self: flex-end;
+        font-size: 1.5rem;
+        background-color: white;
+        border-radius: 50%;
+        padding: 1rem;
+        border: solid orange;
+        font-family: "Permanent Marker";
+        position: relative;
+        top: 60px;
+        left: 30px;
       }
     }
-  }
-  }
 
+    .desktop-individual-scores-guess {
+      font-size: 2.5rem;
+      position: relative;
+      background: white;
+      border-radius: .6em;
+      padding: 1.5rem;
+      border: 5px solid #7BB03E;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      margin-top: 190px;
+      margin-bottom: 0px;
+      font: normal 40px "Patrick Hand", sans-serif;
+      margin-left: 20px;
+      font-size: xx-large;
+    }
+
+    .desktop-individual-scores-guess::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 0;
+      height: 0;
+      border: 46px solid transparent;
+      border-right-color: #7BB03E;
+      border-left: 0;
+      border-bottom: 0;
+      margin-top: -23px;
+      margin-left: -46px;
+    }
+
+  }
 
   .desktop-final-scores-title {
-    font-family: $markerFont;
+    font: normal 70px "Patrick Hand", sans-serif;
     text-align: center;
     font-size: 4rem;
   }
 
   .desktop-full-scoresFinal-name-points-container {
-    //border: 1px solid black;
-    display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
 
     .desktop-full-scoresFinal-container {
-      display: flex;
+      // display: flex;
       //border: 1px solid red;
 
       .desktop-individual-scoresFinal-player {
-        background-color: purple;
-        font-size: 3rem;
-        margin: 3rem 4rem 0 0;
-        padding: 1.5rem 2rem;
-        border-radius: 10px
+        border: solid 2px #41403E;
+        border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+        box-shadow: 20px 38px 34px -26px rgba(0, 0, 0, 0.2);
+        letter-spacing: 1px;
+        color: #41403E;
+        background: transparent;
+        width: 100%;
+        text-align: center;
+        font-size: 2rem;
+        padding: .5rem;
+        margin: .5rem;
       }
 
       .desktop-individual-scoresFinal-points {
@@ -692,19 +629,32 @@ h1 {
   }
 }
 
-.desktopTimerContainer {
+.TimerProgressBar {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 2rem;
   span {
     font-size: 4rem;
     font-weight: bold;
     font-family: 'Cabin Sketch', cursive;
   }
+  #myProgress {
+    width: 90%;
+    background-color: white;
+    border-radius: 10px;
+    height: 3rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+  }
+  #myBar {
+    background-color: #6B9F2F;
+    border-radius: 10px;
+    height: 3rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 40' width='60' height='30'%3E%3Cpath fill='%2340584a' fill-opacity='0.47' d='M0 40a19.96 19.96 0 0 1 5.9-14.11 20.17 20.17 0 0 1 19.44-5.2A20 20 0 0 1 20.2 40H0zM65.32.75A20.02 20.02 0 0 1 40.8 25.26 20.02 20.02 0 0 1 65.32.76zM.07 0h20.1l-.08.07A20.02 20.02 0 0 1 .75 5.25 20.08 20.08 0 0 1 .07 0zm1.94 40h2.53l4.26-4.24v-9.78A17.96 17.96 0 0 0 2 40zm5.38 0h9.8a17.98 17.98 0 0 0 6.67-16.42L7.4 40zm3.43-15.42v9.17l11.62-11.59c-3.97-.5-8.08.3-11.62 2.42zm32.86-.78A18 18 0 0 0 63.85 3.63L43.68 23.8zm7.2-19.17v9.15L62.43 2.22c-3.96-.5-8.05.3-11.57 2.4zm-3.49 2.72c-4.1 4.1-5.81 9.69-5.13 15.03l6.61-6.6V6.02c-.51.41-1 .85-1.48 1.33zM17.18 0H7.42L3.64 3.78A18 18 0 0 0 17.18 0zM2.08 0c-.01.8.04 1.58.14 2.37L4.59 0H2.07z'%3E%3C/path%3E%3C/svg%3E");
+  }
 }
-
-
-
 
 // Keyframes
 
@@ -749,28 +699,6 @@ h1 {
 
 
 
-
-
-#myProgress {
-  width: 90%;
-  background-color: white;
-  border-radius: 10px;
-  height: 3rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-}
-
-#myBar {
-  width: 0%;
-  background-color: #688738;
-  border-radius: 10px;
-  /* background-size: 35px 20px, 100% 100%, 100% 100%; */
-  height: 3rem;
-  background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ff7c7c' fill-opacity='1'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}
-
-
 #votes {
   border: solid 2px #41403E;
   border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
@@ -792,3 +720,6 @@ h1 {
   font-size: 2rem;
   margin-top: 20px;
 }
+
+
+
