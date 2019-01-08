@@ -34,6 +34,7 @@ class MobileMainView extends Component {
         view = <MobileSubmitName addPlayerName={this.props.addPlayerName} addAvatar={this.props.addAvatar} changeGameStage={this.props.changeGameStage} gameData={this.props.gameData} />
         break;
       case 'drawingStage':
+
         if (this.props.gameData.currentPlayer === this.props.gameData.mainPlayer) {
           drawingAddition = <div className="mobile-drawing">
                             <p>Your turn! Draw {task}</p>

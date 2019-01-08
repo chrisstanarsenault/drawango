@@ -21,6 +21,7 @@ const game = {
 };
 
 const draw = ['french girls', 'a face full of hapinness', 'Putin on a bear', 'a cat', 'a dog', 'a chicken', 'a pizza', 'a dancing grandma', 'a bored rat'];
+const drawTwo = ['french girls', 'a face full of hapinness', 'Putin on a bear', 'a cat', 'a dog', 'a chicken', 'a pizza', 'a dancing grandma', 'a bored rat'];
 const colors = ['#299617', '#5946B2', '#FA5B3D', '#E936A7', '#9C2542']
 //possibly combine the two functions below:
 wss.broadcast = function broadcast(data) {
@@ -59,11 +60,18 @@ const timerConfig = {
 }
 
 function takeTurns() {
+	console.log("turns",game.turns)
 	if (game.players.length === game.turns.length) {
 		game.gameStage = 'finalScore';
 		game.currentPlayer = '';
-		game.turns = []; //clears the turns to start another game if needed
+		game.turns = [];
 		reset();
+		for (let i = 0; i < game.players.length; i++ ){
+			game.players[i].points = 0;
+			console.log("draw", draw);
+			game.players[i].task = drawTwo.shift();
+			console.log("draw two", drawTwo)
+		}
 		wss.broadcast(message("gameStage",game.gameStage));
 	} else {
 		const playersWhoHaveNotGone = game.players.filter(function(obj) {
@@ -76,6 +84,8 @@ function takeTurns() {
 		game.playerGuess[game.currentPlayer.name] = game.currentPlayer.task;
 		wss.broadcast(message("turns", game.currentPlayer));
 		wss.broadcast(message("addGuess", game.playerGuess));
+		game.gameStage = "drawingStage";
+		wss.broadcast(message("gameStage",game.gameStage));
 	}
 }
 
@@ -90,11 +100,14 @@ wss.on('connection', (ws) => {
 		playerGuess: game.playerGuess,
 		playerVote: game.playerVote,
 		line: game.line,
+		guessesDisplayed: game.guessesDisplayed
 	};
 	ws.send(JSON.stringify(welcomePack));
 
 		ws.on('message', function(event) {
+
 			let data = JSON.parse(event);
+
 		switch (data.type) {
 			case 'addPlayer':
 				const player = {
@@ -103,6 +116,7 @@ wss.on('connection', (ws) => {
 					task: draw.shift(),
 					color : colors.shift()
 				};
+				console.log("draw",draw)
 				game.players.push(player);
 				wss.broadcast(message("updatePlayers", game.players));
 				break;
@@ -112,7 +126,7 @@ wss.on('connection', (ws) => {
 						game.players[i].avatar = data.body.avatar
 					}
 				}
-			  wss.broadcast(message("updatePlayers", game.players));
+				wss.broadcast(message("updatePlayers", game.players));
 			  break;
 			case 'turns':
 				takeTurns();
