@@ -3,15 +3,17 @@ import React, {Component} from 'react';
 class Scores extends Component {
   render() {
     return (
-      <div id="desktop-full-scores-container">
+      <div id="desktop-scores-container">
+
         <div className="desktop-score-player-container">
-          <p className="desktop-individual-scores-points"> {this.props.points} </p>
+          <p>{this.props.points}</p>
           <img alt="avatar" src={this.props.avatar} />
-    {/* <p className="desktop-individual-scores-player"> {this.props.player} </p> */ }
         </div>
-        <div className="desktop-scores-guess-points-container">
+
+        <div className="desktop-scores-guess-container">
           <p className="desktop-individual-scores-guess"> {this.props.guess} </p>
         </div>
+
       </div>
     );
   }

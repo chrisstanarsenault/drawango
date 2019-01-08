@@ -15,10 +15,11 @@ class DesktopFinalScore extends Component {
     const playerScoresFinal = this.props.gameData.players.map(player => (
         <ScoresFinal key={player} player={player.name} points={player.points}/>
       ));
+    const playersSorted = this.props.gameData.players.sort((a, b) => b.points - a.points);
 
     return (
       <div>
-        <h1 className='desktop-final-scores-title'>Final Scores!</h1>
+        <h1 className='desktop-final-scores-title'>{playersSorted[0]['name']} wins with {playersSorted[0]['points']} points</h1>
         <div className="desktop-logo-container">
             <svg width="500px" height="500px" viewBox="0 0 500 698" version="1.1" xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">
               <defs>
@@ -52,6 +53,7 @@ class DesktopFinalScore extends Component {
               </svg>
             </div>
         <div className="desktop-full-scoresFinal-name-points-container">
+        <img alt="avatar of the winner" src={playersSorted[0]['avatar']} />
         {playerScoresFinal}
         </div>
 

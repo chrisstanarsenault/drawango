@@ -21,14 +21,12 @@ class Timer extends Component {
       }
 
       return (
-        <footer>
-          <div id="myProgress">
-            <div id="myBar" style={style}></div>
-          </div>
-          <div className="desktopTimerContainer">
-            <span id="countTimer">{this.props.gameData.timer}</span>
-          </div>
-        </footer>
+        <div className="TimerProgressBar">
+        <div id="myProgress">
+          <div id="myBar" style={style}></div>
+        </div>
+          <span id="countTimer">{this.props.gameData.timer}</span>
+        </div>
       );
     }
   }
