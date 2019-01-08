@@ -52,8 +52,10 @@ class DesktopScoresScreen extends Component {
               </svg>
 
             </div>
+
           <div className="desktop-scores-container">
             {playerScores}
+
             </div>
             </div>
         <Timer gameData={this.props.gameData} changeGameStage={this.props.changeGameStage} stage={"drawingStage"} resetTimer={this.props.resetTimer} takeTurns={this.props.takeTurns}/>

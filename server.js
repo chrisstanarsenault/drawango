@@ -55,7 +55,7 @@ const timerConfig = {
 	drawingStage: 30,
 	guessingStage: 30,
 	votingStage: 30,
-	scoreStage: 1500
+	scoreStage: 15
 }
 
 function takeTurns() {

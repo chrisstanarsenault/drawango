@@ -8,11 +8,7 @@ class DesktopDrawingScreen extends Component {
 		return (
 			<div>
         <div id="desktop-main-container">
-          <div id="desktop-canvas-container">
-  				  <Canvas gameData={this.props.gameData}/>
-          </div>
-
-          <div className="desktop-logo-container">
+         <div className="desktop-logo-container">
             <div className="desktop-bird-speech-container">
             <div className="circle-sb">
             {this.props.gameData.currentPlayer} is drawing
@@ -54,6 +50,10 @@ class DesktopDrawingScreen extends Component {
                   </g>
                 </svg>
               </div>
+            </div>
+
+            <div id="desktop-canvas-container">
+  				    <Canvas gameData={this.props.gameData}/>
             </div>
           </div>
 
