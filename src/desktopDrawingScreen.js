@@ -7,6 +7,7 @@ class DesktopDrawingScreen extends Component {
 
 		return (
 			<div>
+      <nav></nav>
         <div id="desktop-main-container">
          <div className="desktop-logo-container">
             <div className="desktop-bird-speech-container">

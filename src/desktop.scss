@@ -17,6 +17,12 @@ h1 {
   text-align: center;
 }
 
+footer {
+  position: fixed;
+  /*bottom: 12%;*/
+  width: 100%;
+}
+
 .desktopWelcomeContainer {
   display: flex;
   align-items: center;
@@ -168,6 +174,15 @@ h1 {
 }
 
 @media screen and (min-width: 1025px) {
+
+  body {
+    position: fixed;
+    overflow: hidden;
+  }
+
+  nav {
+    height: 188.8px;
+  }
 
 
   #desktop-user-name-container {
@@ -503,11 +518,12 @@ h1 {
     }
 
     #desktop-votes-container {
-      // border: 1px solid red;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
       justify-content: flex-start;
+      margin: auto;
+      // border: 1px solid red;
 
 
     #desktop-individual-votes {
@@ -692,11 +708,13 @@ h1 {
   }
 }
 
+
 .desktopTimerContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   span {
+    margin: 4rem;
     font-size: 4rem;
     font-weight: bold;
     font-family: 'Cabin Sketch', cursive;
@@ -747,7 +765,9 @@ h1 {
 	97% {transform: translateX(-12px) translateY(-5px);}
 }
 
-
+#desktop-votes-container {
+  margin: auto;
+}
 
 
 
@@ -757,8 +777,7 @@ h1 {
   border-radius: 10px;
   height: 3rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
+  margin: auto;
 }
 
 #myBar {
