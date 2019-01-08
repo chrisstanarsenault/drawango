@@ -11,10 +11,13 @@ body {
   background-repeat: repeat;
 }
 
-// h1 {
-//   font: normal 70px "Patrick Hand", sans-serif;
-//   text-align: center;
-// }
+h1 {
+  font: normal 70px "Patrick Hand", sans-serif;
+  text-align: center;
+  // font-size: 4rem;
+  // margin: 0;
+}
+
 
 footer {
   position: fixed;
@@ -246,6 +249,10 @@ footer {
       font: normal 22px/25px "Patrick Hand", sans-serif;
       align-self: flex-start;
       animation: fly .9s ease-in-out infinite;
+      p {
+        padding-left: 5px;
+        padding-right: 5px;
+      }
     }
 
     .dcircle {
@@ -518,8 +525,6 @@ footer {
     align-items: center;
     justify-content: center;
     margin-top: 0px;
-    width: 600px;
-    height: 1000px;
   }
 
 
