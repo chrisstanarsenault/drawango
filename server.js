@@ -53,14 +53,13 @@ function timer(time) {
 };
 
 const timerConfig = {
-	drawingStage: 30,
-	guessingStage: 30,
-	votingStage: 30,
-	scoreStage: 15
+	drawingStage: 31,
+	guessingStage: 31,
+	votingStage: 31,
+	scoreStage: 16
 }
 
 function takeTurns() {
-	console.log("turns",game.turns)
 	if (game.players.length === game.turns.length) {
 		game.gameStage = 'finalScore';
 		game.currentPlayer = '';
@@ -68,9 +67,7 @@ function takeTurns() {
 		reset();
 		for (let i = 0; i < game.players.length; i++ ){
 			game.players[i].points = 0;
-			console.log("draw", draw);
 			game.players[i].task = drawTwo.shift();
-			console.log("draw two", drawTwo)
 		}
 		wss.broadcast(message("gameStage",game.gameStage));
 	} else {
@@ -86,6 +83,8 @@ function takeTurns() {
 		wss.broadcast(message("addGuess", game.playerGuess));
 		game.gameStage = "drawingStage";
 		wss.broadcast(message("gameStage",game.gameStage));
+		timer(timerConfig["drawingStage"]);
+
 	}
 }
 
@@ -116,7 +115,6 @@ wss.on('connection', (ws) => {
 					task: draw.shift(),
 					color : colors.shift()
 				};
-				console.log("draw",draw)
 				game.players.push(player);
 				wss.broadcast(message("updatePlayers", game.players));
 				break;
