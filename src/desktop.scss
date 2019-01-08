@@ -336,7 +336,8 @@ h1 {
       align-self: flex-start;
       position: relative;
       //right: 67.34rem;
-      margin-right: -7rem;
+      margin-left: 7rem;
+      margin-top: 7rem;
 
     .circle-sb {
       width: 210px;
@@ -470,7 +471,6 @@ h1 {
 
   #desktop-main-container {
     display: flex;
-    justify-content: center;
   }
 
 
