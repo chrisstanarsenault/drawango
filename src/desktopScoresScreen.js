@@ -15,11 +15,19 @@ class DesktopScoresScreen extends Component {
       <div>
         <div className="desktop-scores-title-container">
           <h1>Scoreboard!</h1>
-          <h2>{[this.props.gameData.currentPlayer]} had to draw: {this.props.gameData.playerGuess[this.props.gameData.currentPlayer]}</h2>
         </div>
 
-        <div id="scores-test-container">
-          <div className="desktop-logo-container">
+        <div className="destop-scores-overall-container">
+
+      
+        <div className="circle-sb">
+          <p>{[this.props.gameData.currentPlayer]} had to draw {this.props.gameData.playerGuess[this.props.gameData.currentPlayer]}</p>
+          <div className="dcircle"></div>
+          <div className="dcircle1"></div>
+        </div>
+
+        
+        <div className="scores-birds">
             <svg width="500px" height="500px" viewBox="0 0 500 698" version="1.1" xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">
               <defs>
                   <circle id="path-1" cx="116.5" cy="247.5" r="55.5"></circle>
@@ -50,14 +58,11 @@ class DesktopScoresScreen extends Component {
                     </g>
                 </g>
               </svg>
-
             </div>
+    
+        <div id="scores-container">{playerScores}</div>
+        </div>
 
-          <div className="desktop-scores-container">
-            {playerScores}
-
-            </div>
-            </div>
         <Timer gameData={this.props.gameData} changeGameStage={this.props.changeGameStage} stage={"drawingStage"} resetTimer={this.props.resetTimer} takeTurns={this.props.takeTurns}/>
       </div>
     )
