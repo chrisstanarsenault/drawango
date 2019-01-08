@@ -22,7 +22,7 @@ class DesktopWelcome extends Component {
 
           <div className="desktop-bird-speech-container">
           <div className="circle-sb">
-            Who's All Playing!?
+            <p>Who's All Playing!?</p>
             <div className="dcircle"></div>
             <div className="dcircle1"></div>
           </div>

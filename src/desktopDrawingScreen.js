@@ -12,7 +12,7 @@ class DesktopDrawingScreen extends Component {
          <div className="desktop-logo-container">
             <div className="desktop-bird-speech-container">
             <div className="circle-sb">
-            {this.props.gameData.currentPlayer} is drawing
+              <p>{this.props.gameData.currentPlayer} is drawing</p>
               <div className="dcircle"></div>
               <div className="dcircle1"></div>
             </div>

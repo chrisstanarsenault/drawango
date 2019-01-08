@@ -12,7 +12,7 @@ class DesktopGuessingScreen extends Component {
           <div className="desktop-logo-container">
           <div className="desktop-bird-speech-container">
           <div className="circle-sb">
-            What is this? Submit your guess!
+            <p>What is this? Submit your guess!</p>
             <div className="dcircle"></div>
             <div className="dcircle1"></div>
           </div>
