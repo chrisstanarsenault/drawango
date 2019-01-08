@@ -117,7 +117,11 @@ $cabinFont: 'Cabin Sketch', cursive;
     margin-top: 2rem;
 
     img {
-      padding: 0 0 2rem 5.5rem;
+      height: 150px;
+      width: 150px;
+      padding: .4rem;
+      border: 2px solid black;
+      margin-bottom: 2rem;
     }
   }
 }
