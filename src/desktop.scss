@@ -90,6 +90,13 @@ footer {
     display: flex;
     position: relative;
 
+    img {
+      height: 150px;
+      width: 150px;
+      border: 2px solid black;
+      padding: .4rem;
+    }
+
     #individual-name-container0 {
       // border: 1rem solid rgb(253, 247, 231);
       // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
@@ -109,7 +116,7 @@ footer {
       //margin-left: 5rem;
 
       .desktop-name-box {
-        margin-left: -7rem;
+        // margin-left: -7rem;
       }
     }
 
@@ -135,7 +142,7 @@ footer {
       //margin-left: -3rem;
 
       .desktop-name-box {
-        margin-left: -7rem;
+        // margin-left: -7rem;
       }
     }
 
@@ -158,8 +165,8 @@ footer {
       left: 52rem;
 
       .desktop-name-box {
-        margin-left: -7rem;
-        order: 0;
+        // margin-left: -7rem;
+        // order: 0;
       }
 
       .desktop-avatar-box {
@@ -185,8 +192,8 @@ footer {
 
 
       .desktop-name-box {
-        margin-left: -7rem;
-        order: 0;
+        // margin-left: -7rem;
+        // order: 0;
       }
 
       .desktop-avatar-box {
@@ -348,8 +355,8 @@ footer {
   .desktop-welcome-button-container {
     display: flex;
     justify-content: center;
-    margin-top: 3rem;
-    margin-right: 2rem;
+    margin-top: 10rem;
+    margin-right: 5rem;
 
     .desktop-welcome-button {
       position: relative;
