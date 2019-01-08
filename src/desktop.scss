@@ -16,6 +16,12 @@ body {
 //   text-align: center;
 // }
 
+footer {
+  position: fixed;
+  /*bottom: 12%;*/
+  width: 100%;
+}
+
 .desktopWelcomeContainer {
   display: flex;
   align-items: center;
@@ -70,7 +76,17 @@ body {
   100% {transform: rotate(-60deg)}
 }
 
-@media (min-width: 1025px) {
+
+@media screen and (min-width: 1025px) {
+
+  body {
+    position: fixed;
+    overflow: hidden;
+  }
+
+  nav {
+    height: 188.8px;
+  }
 
   #desktop-user-name-container {
     display: flex;
@@ -215,7 +231,8 @@ body {
       align-self: flex-start;
       position: relative;
       //right: 67.34rem;
-      margin-right: -7rem;
+      margin-left: 7rem;
+      margin-top: 7rem;
 
     .circle-sb {
       width: 210px;
@@ -349,7 +366,6 @@ body {
 
   #desktop-main-container {
     display: flex;
-    justify-content: center;
   }
 
 
@@ -383,6 +399,8 @@ body {
       flex-direction: column;
       align-items: flex-end;
       justify-content: flex-start;
+      margin: auto;
+      // border: 1px solid red;
 
 
     #desktop-individual-votes {
@@ -635,6 +653,7 @@ body {
   align-items: center;
   margin-bottom: 2rem;
   span {
+    margin: 4rem;
     font-size: 4rem;
     font-weight: bold;
     font-family: 'Cabin Sketch', cursive;
@@ -697,7 +716,9 @@ body {
 	97% {transform: translateX(-12px) translateY(-5px);}
 }
 
-
+#desktop-votes-container {
+  margin: auto;
+}
 
 #votes {
   border: solid 2px #41403E;

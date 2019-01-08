@@ -11,7 +11,7 @@ class Timer extends Component {
       } else {
         this.props.changeGameStage(this.props.stage);
       }
-      return (<div></div>);  
+      return (<div></div>);
     } else {
 
       let style = {width: "0%"};
@@ -21,15 +21,16 @@ class Timer extends Component {
       }
 
       return (
-        <div className="TimerProgressBar">
+        <footer>
+          <div className="TimerProgressBar">
           <div id="myProgress">
             <div id="myBar" style={style}></div>
           </div>
           <div className="desktopTimerContainer">
             <span id="countTimer">{this.props.gameData.timer}</span>
           </div>
-        </div>
-      );    
+        </footer>
+      );
     }
   }
 }
