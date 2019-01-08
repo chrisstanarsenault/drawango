@@ -22,6 +22,7 @@ class Timer extends Component {
 
       return (
         <footer>
+          <div className="TimerProgressBar">
           <div id="myProgress">
             <div id="myBar" style={style}></div>
           </div>
