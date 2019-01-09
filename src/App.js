@@ -24,7 +24,7 @@ class App extends Component {
 			playerGuess: {},
 			playerVote: {},
 			line: [],
-			//timer: null,
+			timer: null,
 			guessesDisplayed: []
 		};
 
@@ -34,7 +34,7 @@ class App extends Component {
 		this.takeTurns = this.takeTurns.bind(this);
 		this.sendPaintData = this.sendPaintData.bind(this);
 		this.addPoints = this.addPoints.bind(this);
-		//this.resetTimer = this.resetTimer.bind(this);
+		this.resetTimer = this.resetTimer.bind(this);
 		this.socket = undefined;
 	}
 
@@ -145,9 +145,9 @@ class App extends Component {
 	}
 
 	//double check if I need to clear the timer or do it through the backend
-	// resetTimer(){
-	// 	this.setState({ timer: "" });
-	// }
+	resetTimer(){
+		this.setState({ timer: "" });
+	}
 
 	render() {
 		return (
