@@ -90,9 +90,9 @@ class App extends Component {
 				case 'canvas':
 					this.setState({ line: message.body});
 					break;
-				// case 'timer':
-				// 	this.setState({ timer: message.body});
-				// 	break;
+				case 'timer':
+					this.setState({ timer: message.body});
+					break;
 				case 'guessesDisplayed':
 					this.setState({ guessesDisplayed: message.body});
 					break;
