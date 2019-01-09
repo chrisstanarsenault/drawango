@@ -20,8 +20,8 @@ const game = {
 	guessesDisplayed: []
 };
 
-const draw = ['french girls', 'a face full of hapinness', 'Putin on a bear', 'a cat', 'a dog', 'a chicken', 'a pizza', 'a dancing grandma', 'a bored rat'];
-const drawTwo = ['french girls', 'a face full of hapinness', 'Putin on a bear', 'a cat', 'a dog', 'a chicken', 'a pizza', 'a dancing grandma', 'a bored rat'];
+const draw = ['flying cow', 'face full of hapinness', 'Poutine on a bear', 'dancing chicken', 'Veggie hot-dog', 'sleepy rabbit', 'pineapple pizza', 'a dancing grandma', 'a bored rat'];
+const drawTwo = ['flying cow', 'face full of hapinness', 'Poutine on a bear', 'dancing chicken', 'Veggie hot-dog', 'sleepy rabbit', 'pineapple pizza', 'a dancing grandma', 'a bored rat'];
 const colors = ['#299617', '#5946B2', '#FA5B3D', '#E936A7', '#9C2542']
 //possibly combine the two functions below:
 wss.broadcast = function broadcast(data) {
@@ -56,7 +56,8 @@ const timerConfig = {
 	drawingStage: 31,
 	guessingStage: 31,
 	votingStage: 31,
-	scoreStage: 15
+	scoreStage: 16
+
 }
 
 function takeTurns() {

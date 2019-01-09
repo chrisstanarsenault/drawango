@@ -18,18 +18,12 @@ uploadHandler = () => {
     this.setState({error : ''});
     const reader = new FileReader();
     reader.readAsDataURL(this.state.selectedImage);
-    reader.onload = (event) => {
-      console.log(event);
-      const img = new Image()
-      img.src = event.target.result;
-      img.onload = () => {
-        const elem = document.createElement('canvas');
-        const ctx = elem.getContext('2d');
-        ctx.drawImage(img, 0, 0, 180, 180);
-        const data = ctx.canvas.toDataURL(img);
-        this.setState({image: data})
-        console.log("datauri :", data)
-      }
+    
+    
+    reader.onload = () => {
+         const data = reader.result
+         this.setState({image: data})
+ 
     }
   } else {
     this.setState({error : 'Please select a picture to upload'});

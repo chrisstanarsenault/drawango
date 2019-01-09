@@ -11,10 +11,14 @@ body {
   background-repeat: repeat;
 }
 
-// h1 {
-//   font: normal 70px "Patrick Hand", sans-serif;
-//   text-align: center;
-// }
+h1 {
+  font: normal 70px "Patrick Hand", sans-serif;
+  text-align: center;
+  /*margin: auto;*/
+  // font-size: 4rem;
+  // margin: 0;
+}
+
 
 footer {
   position: fixed;
@@ -79,45 +83,48 @@ footer {
 
 @media screen and (min-width: 1025px) {
 
-/*  body {
-    position: fixed;
-    overflow: hidden;
-  }
-*/
   nav {
-    height: 188.8px;
+    height: 90px;
   }
 
   #desktop-user-name-container {
     display: flex;
     position: relative;
 
+    img {
+      height: 150px;
+      width: 150px;
+      border: 2px solid black;
+      padding: .4rem;
+    }
+
     #individual-name-container0 {
       // border: 1rem solid rgb(253, 247, 231);
       // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
-      position: relative;
+      position: absolute;
       font-size: 4.3rem;
       font-family: $cabinFont;
-      // top: -23rem;
+      top: -15rem;
       // left: 10rem;
       color: red;
-      align-self: flex-start;
+      //align-self: flex-start;
       animation: rotate 0.3s linear 3;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      margin-top: -22rem;
-      margin-left: 5rem;
+      //margin-top: -22rem;
+      //margin-left: 5rem;
 
       .desktop-name-box {
-        margin-left: -6rem;
+        // margin-left: -7rem;
       }
     }
 
     #individual-name-container1 {
       // border: 3rem solid transparent;
       // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
-      position: relative;
+      position: absolute;
       font-size: 4.3rem;
       font-family: $cabinFont;
       // top: 1rem;
@@ -125,20 +132,25 @@ footer {
       color: green;
       animation: push 0.2s linear 4;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      margin-top: -10rem;
-      margin-left: -3rem;
+      top: 3rem;
+      left: 14rem;
+
+
+      //margin-top: -10rem;
+      //margin-left: -3rem;
 
       .desktop-name-box {
-        margin-left: -6rem;
+        // margin-left: -7rem;
       }
     }
 
     #individual-name-container2 {
       // border: 3rem solid transparent;
       // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
-      position: relative;
+      position: absolute;
       font-size: 4.3rem;
       font-family: $cabinFont;
       // top: -23rem;
@@ -146,43 +158,47 @@ footer {
       color: blue;
       animation: rock 0.32s linear 3;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      margin-top: -10rem;
-      margin-left: 24rem;
+      //margin-top: -10rem;
+      //margin-left: 24rem;
+      top: 3.5rem;
+      left: 52rem;
 
       .desktop-name-box {
-        margin-right: 1.5rem;
-        order: 0;
+        // margin-left: -7rem;
+        // order: 0;
       }
 
       .desktop-avatar-box {
-        order: 1;
+        //order: 1;
       }
     }
 
     #individual-name-container3 {
       // border: 3rem solid transparent;
       // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
-      position: relative;
+      position: absolute;
       font-size: 4.3rem;
       font-family: $cabinFont;
-      // top: -1rem;
-      // left: 20rem;
+      top: -15rem;
+      left: 65rem;
       color: purple;
       animation: pop-in 0.4s linear 4;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      margin-top: -33rem;
-      margin-left: -12rem;
+      //margin-top: -33rem;
+      //margin-left: -12rem;
 
 
       .desktop-name-box {
-        margin-right: 1.5rem;
-        order: 0;
+        // margin-left: -7rem;
+        // order: 0;
       }
 
       .desktop-avatar-box {
-        order: 1;
+        //order: 1;
       }
     }
 
@@ -225,14 +241,15 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-left: 50rem;
+    //border-left: 50rem;
 
     .desktop-bird-speech-container {
       align-self: flex-start;
       position: relative;
       //right: 67.34rem;
       margin-left: 7rem;
-      margin-top: 7rem;
+      //margin-top: 7rem;
+      left: 6rem;
 
     .circle-sb {
       width: 210px;
@@ -250,6 +267,10 @@ footer {
       font: normal 22px/25px "Patrick Hand", sans-serif;
       align-self: flex-start;
       animation: fly .9s ease-in-out infinite;
+      p {
+        padding-left: 5px;
+        padding-right: 5px;
+      }
     }
 
     .dcircle {
@@ -302,7 +323,7 @@ footer {
       position: relative;
       width: 30rem;
       height: 30rem;
-      margin-right: 10rem;
+      margin-right: 26rem;
     }
 
     #bird {
@@ -335,7 +356,8 @@ footer {
   .desktop-welcome-button-container {
     display: flex;
     justify-content: center;
-    margin-top: 6rem;
+    margin-top: 10rem;
+    margin-right: 5rem;
 
     .desktop-welcome-button {
       position: relative;
@@ -366,6 +388,14 @@ footer {
 
   #desktop-main-container {
     display: flex;
+
+    .desktop-bird-speech-container {
+      margin-left: 0;
+    }
+
+    svg {
+      margin-right: 0;
+    }
   }
 
 
@@ -374,7 +404,7 @@ footer {
     justify-content: center;
     align-items: center;
     canvas {
-      border: 3rem solid transparent;
+      /*border: 3rem solid transparent;*/
       width: 50rem;
       // height: 50rem;
       // margin: 10rem;
@@ -521,8 +551,6 @@ footer {
     align-items: center;
     justify-content: center;
     margin-top: 0px;
-    width: 600px;
-    height: 1000px;
   }
 
 
@@ -653,7 +681,7 @@ footer {
   align-items: center;
   margin-bottom: 2rem;
   span {
-    margin: 4rem;
+    /*margin: 4rem;*/
     font-size: 4rem;
     font-weight: bold;
     font-family: 'Cabin Sketch', cursive;
