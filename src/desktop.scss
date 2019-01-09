@@ -14,6 +14,7 @@ body {
 h1 {
   font: normal 70px "Patrick Hand", sans-serif;
   text-align: center;
+  /*margin: auto;*/
   // font-size: 4rem;
   // margin: 0;
 }
@@ -83,7 +84,7 @@ footer {
 @media screen and (min-width: 1025px) {
 
   nav {
-    height: 188.8px;
+    height: 90px;
   }
 
   #desktop-user-name-container {
@@ -387,6 +388,14 @@ footer {
 
   #desktop-main-container {
     display: flex;
+
+    .desktop-bird-speech-container {
+      margin-left: 0;
+    }
+
+    svg {
+      margin-right: 0;
+    }
   }
 
 
@@ -395,7 +404,7 @@ footer {
     justify-content: center;
     align-items: center;
     canvas {
-      border: 3rem solid transparent;
+      /*border: 3rem solid transparent;*/
       width: 50rem;
       // height: 50rem;
       // margin: 10rem;
@@ -622,7 +631,7 @@ footer {
     flex-direction: column;
 
     .desktop-full-scoresFinal-container {
-      // display: flex;
+      display: flex;
       //border: 1px solid red;
 
       .desktop-individual-scoresFinal-player {
@@ -672,7 +681,7 @@ footer {
   align-items: center;
   margin-bottom: 2rem;
   span {
-    margin: 4rem;
+    /*margin: 4rem;*/
     font-size: 4rem;
     font-weight: bold;
     font-family: 'Cabin Sketch', cursive;
