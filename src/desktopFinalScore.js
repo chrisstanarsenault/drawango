@@ -64,7 +64,6 @@ class DesktopFinalScore extends Component {
           </div>
 
         <div className="desktop-full-scoresFinal-name-points-container">
-        <div className="winner"><p>WINNER</p></div>
         {playerScoresFinal}
         </div>
 
