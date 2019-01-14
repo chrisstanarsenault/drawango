@@ -1,46 +1,31 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Drawango
+=====================
 
-## Available Scripts
+A drawing game (Pictionary like) using ReactJS and a websocket server.
+You connect first to the main Screen (desktop or laptop) and then players can join the game via their smartphones
 
-In the project directory, you can run:
+## Final Product
 
-### install and run the APP
-
-'npm install'
-'node server' will start the websocket server
-'npm start' will run the App.
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
+!["Screenshot of main page 01"](https://github.com/SylvainJunca/drawango/blob/master/src/images/Desktop_welcome_view.png?raw=true)
+!["Screenshot of main page 02"](https://github.com/SylvainJunca/drawango/blob/master/src/images/Desktop_drawing_view.png?raw=true)
+!["Screenshot of smartphone 01"](https://github.com/SylvainJunca/drawango/blob/master/src/images/Mobile_submit_name_view.png?raw=true)
+!["Screenshot of smartphone 02"](https://github.com/SylvainJunca/drawango/blob/master/src/images/Mobile_drawing_view.png?raw=true)
 
 
-### `npm test`
+### Installation
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Install the dependencies and start the websocket server.
 
-### `npm run build`
+```
+npm install
+npm start
+```
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Start the App.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+```
+npm start
+open http://localhost:3000
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Each player needs to connect to the localhost (via the IP adress 'xxx.xxx.xxx.xxx:3000' or 'name_of_the_mac.local:3000'
