@@ -1,8 +1,13 @@
 Drawango
 =====================
 
-A drawing game (Pictionary like) using ReactJS and a websocket server.
+A drawing game (Pictionary like) using ReactJS and a websocket server for 2-4 players.
 You connect first to the main Screen (desktop or laptop) and then players can join the game via their smartphones
+
+Contributors are:
+Sylvain Junca(https://github.com/SylvainJunca)
+Valeria Kozlova(https://github.com/valeriakozlova)
+Alisa Chuvilskaya(https://github.com/alica-c)
 
 ## Final Product
 
