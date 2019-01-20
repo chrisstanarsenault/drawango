@@ -14,15 +14,11 @@ body {
 h1 {
   font: normal 70px "Patrick Hand", sans-serif;
   text-align: center;
-  /*margin: auto;*/
-  // font-size: 4rem;
-  // margin: 0;
 }
 
 
 footer {
   position: fixed;
-  /*bottom: 12%;*/
   width: 100%;
 }
 
@@ -56,31 +52,6 @@ footer {
   }
 }
 
-@keyframes push{
-  50%  {transform: scale(0.8);}
-}
-
-@keyframes pop-in {
-0% { opacity: 0; transform: scale(0.5); }
-100% { opacity: 1; transform: scale(1); }
-}
-
-@keyframes rotate {
-  100% {transform: rotate(360deg)}
-}
-
-@keyframes reverse-rotate {
-  100% {transform: rotate(-360deg)}
-}
-
-@keyframes rock {
-  25% {transform: rotate(30deg)}
-  50% {transform: rotate(-60deg)}
-  75% {transform: rotate(60deg)}
-  100% {transform: rotate(-60deg)}
-}
-
-
 @media screen and (min-width: 1025px) {
 
   nav {
@@ -99,36 +70,23 @@ footer {
     }
 
     #individual-name-container0 {
-      // border: 1rem solid rgb(253, 247, 231);
-      // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
       position: absolute;
       font-size: 4.3rem;
       font-family: $cabinFont;
       top: -15rem;
-      // left: 10rem;
       color: red;
-      //align-self: flex-start;
       animation: rotate 0.3s linear 3;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      //margin-top: -22rem;
-      //margin-left: 5rem;
 
-      .desktop-name-box {
-        // margin-left: -7rem;
-      }
     }
 
     #individual-name-container1 {
-      // border: 3rem solid transparent;
-      // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
       position: absolute;
       font-size: 4.3rem;
       font-family: $cabinFont;
-      // top: 1rem;
-      // left: 70rem;
       color: green;
       animation: push 0.2s linear 4;
       display: flex;
@@ -137,47 +95,22 @@ footer {
       align-items: center;
       top: 3rem;
       left: 14rem;
-
-
-      //margin-top: -10rem;
-      //margin-left: -3rem;
-
-      .desktop-name-box {
-        // margin-left: -7rem;
-      }
     }
 
     #individual-name-container2 {
-      // border: 3rem solid transparent;
-      // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
       position: absolute;
       font-size: 4.3rem;
       font-family: $cabinFont;
-      // top: -23rem;
-      // left: 90rem;
       color: blue;
       animation: rock 0.32s linear 3;
       display: flex;
       flex-direction: column;
       align-items: center;
-      //margin-top: -10rem;
-      //margin-left: 24rem;
       top: 3.5rem;
       left: 52rem;
-
-      .desktop-name-box {
-        // margin-left: -7rem;
-        // order: 0;
-      }
-
-      .desktop-avatar-box {
-        //order: 1;
-      }
     }
 
     #individual-name-container3 {
-      // border: 3rem solid transparent;
-      // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
       position: absolute;
       font-size: 4.3rem;
       font-family: $cabinFont;
@@ -188,132 +121,84 @@ footer {
       display: flex;
       flex-direction: column;
       align-items: center;
-      //margin-top: -33rem;
-      //margin-left: -12rem;
-
-
-      .desktop-name-box {
-        // margin-left: -7rem;
-        // order: 0;
-      }
-
-      .desktop-avatar-box {
-        //order: 1;
-      }
-    }
-
-    #individual-name-container4 {
-      // border: 3rem solid transparent;
-      // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
-      position: relative;
-      font-size: 4.3rem;
-      font-family: $cabinFont;
-      color: cyan;
-      animation: reverse-rotate 0.3s linear 3;
-      display: flex;
-      align-items: center;
-
-      .desktop-name-box {
-        margin-left: -6rem;
-      }
-    }
-
-    #individual-name-container5 {
-      // border: 3rem solid transparent;
-      // border-image: url(https://us.123rf.com/450wm/mr_vector/mr_vector1612/mr_vector161200042/69508948-frame-border-line-page-vector-vintage-simple.jpg?ver=6) 20% round;
-      position: relative;
-      font-size: 4.3rem;
-      font-family: $cabinFont;
-      margin: -15rem -15rem;
-      color: magenta;
-      animation: pop-in 0.3s linear 3;
-      display: flex;
-      align-items: center;
-
-      .desktop-name-box {
-        margin-left: -6rem;
-      }
     }
   }
 
   .desktop-logo-container {
-    // border: 1px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
-    //border-left: 50rem;
 
     .desktop-bird-speech-container {
       align-self: flex-start;
       position: relative;
-      //right: 67.34rem;
       margin-left: 7rem;
-      //margin-top: 7rem;
       left: 6rem;
 
-    .circle-sb {
-      width: 210px;
-      border: 5px solid #575757;
-      padding: 50px 0px;
-      margin: 2rem;;
-      border-radius: 50%;
-      text-align: center;
-      font-size: 24px;
-      font-weight: 900;
-      font-family: arial;
-      position: relative;
-      color: #575757;
-      background: #fff;
-      font: normal 22px/25px "Patrick Hand", sans-serif;
-      align-self: flex-start;
-      animation: fly .9s ease-in-out infinite;
-      p {
-        padding-left: 5px;
-        padding-right: 5px;
+      .circle-sb {
+        width: 210px;
+        border: 5px solid #575757;
+        padding: 50px 0px;
+        margin: 2rem;;
+        border-radius: 50%;
+        text-align: center;
+        font-size: 24px;
+        font-weight: 900;
+        font-family: arial;
+        position: relative;
+        color: #575757;
+        background: #fff;
+        font: normal 22px/25px "Patrick Hand", sans-serif;
+        align-self: flex-start;
+        animation: fly .9s ease-in-out infinite;
+
+          p {
+            padding-left: 5px;
+            padding-right: 5px;
+          }
+        }
+
+      .dcircle {
+        border: 5px solid #575757;
+        position: absolute;
+        width: 10px;
+        padding: 15px;
+        border-radius: 50%;
+        right: -15px;
+        bottom: 15px;
       }
-    }
 
-    .dcircle {
-      border: 5px solid #575757;
-      position: absolute;
-      width: 10px;
-      padding: 15px;
-      border-radius: 50%;
-      right: -15px;
-      bottom: 15px;
-    }
+      .dcircle:before {
+        content: "";
+        position: absolute;
+        width: 10px;
+        padding: 15px;
+        border-radius: 50%;
+        right: 0px;
+        bottom: 0px;
+        background: #fff;
+      }
 
-    .dcircle:before {
-      content: "";
-      position: absolute;
-      width: 10px;
-      padding: 15px;
-      border-radius: 50%;
-      right: 0px;
-      bottom: 0px;
-      background: #fff;
-    }
+      .dcircle1 {
+        border: 5px solid #575757;
+        position: absolute;
+        width: 1px;
+        padding: 10px 12px;
+        border-radius: 50%;
+        right: -35px;
+        bottom: 13px;
+      }
 
-    .dcircle1 {
-      border: 5px solid #575757;
-      position: absolute;
-      width: 1px;
-      padding: 10px 12px;
-      border-radius: 50%;
-      right: -35px;
-      bottom: 13px;
-    }
-
-    .dcircle1:before {
-      content: "";
-      position: absolute;
-      width: 1px;
-      padding: 10px 12px;
-      border-radius: 50%;
-      right: 0px;
-      bottom: 0px;
-      background: #fff;
-    }
+      .dcircle1:before {
+        content: "";
+        position: absolute;
+        width: 1px;
+        padding: 10px 12px;
+        border-radius: 50%;
+        right: 0px;
+        bottom: 0px;
+        background: #fff;
+      }
     }
 
     svg {
@@ -398,20 +283,16 @@ footer {
     }
   }
 
-
   #desktop-canvas-container {
     display: flex;
     justify-content: center;
     align-items: center;
+
     canvas {
-      /*border: 3rem solid transparent;*/
       width: 50rem;
-      // height: 50rem;
-      // margin: 10rem;
-      // padding: 10rem;
-      // border-image: url(https://d1yn1kh78jj1rr.cloudfront.net/image/preview/rDtN98Qoishumwih/colored-drops-border-design-vector_7Jc0XM_SB_PM.jpg)180 round;
     }
   }
+
   #canvas-votes-container {
     display:flex;
     justify-content: space-evenly;
@@ -430,8 +311,6 @@ footer {
       align-items: flex-end;
       justify-content: flex-start;
       margin: auto;
-      // border: 1px solid red;
-
 
     #desktop-individual-votes {
       display: flex;
@@ -447,11 +326,6 @@ footer {
       }
     }
   }
-
-
-
-
-
 
 //below CSS is for the score page
 
@@ -491,9 +365,8 @@ footer {
       font: normal 22px/25px "Patrick Hand", sans-serif;
       align-self: flex-start;
       animation: fly .9s ease-in-out infinite;
-      //top: 200px;
-      //right: auto;
       left: 6rem;
+
       p {
         padding-left: 5px;
         padding-right: 5px;
@@ -543,19 +416,14 @@ footer {
     }
   }
 
-
-
   #scores-container {
     display: flex;
-    //flex-direction: column;
     align-items: center;
     justify-content: center;
-    //margin-top: 0px;
     flex-wrap: wrap;
     flex-grow: 2;
     position: relative;
   }
-
 
   #desktop-scores-container {
     display: flex;
@@ -579,6 +447,7 @@ footer {
         width: 120px;
         height: auto;
       }
+
       p {
         align-self: flex-end;
         font-size: 1.5rem;
@@ -607,7 +476,6 @@ footer {
       border: 5px solid #7BB03E;
       padding-top: 15px;
       padding-bottom: 15px;
-      //margin-top: 190px;
       margin-bottom: 0px;
       font: normal 40px "Patrick Hand", sans-serif;
       margin-left: 20px;
@@ -628,10 +496,7 @@ footer {
       margin-top: -23px;
       margin-left: -46px;
     }
-
   }
-
-
 
   .desktop-final-overall-container {
     display: flex;
@@ -659,6 +524,7 @@ footer {
       top: 200px;
       right: auto;
       left: 60px;
+
       p {
         padding-left: 5px;
         padding-right: 5px;
@@ -712,9 +578,7 @@ footer {
       position: relative;
       top: 120px;
     }
-
   }
-
 
   .winner {
     position: relative;
@@ -730,13 +594,11 @@ footer {
     padding-right: 30px;
     top: 155px;
     left: 420px;
+
     p{
       margin: 0;
     }
   }
-
-
-
 
   .desktop-individual-scoresFinal-player {
     border: dashed 5px #41403E;
@@ -759,6 +621,7 @@ footer {
       margin-bottom: 0px;
       margin-top: 15px;
     }
+
     p {
       font-size: 30px;
       margin-top: 0px;
@@ -766,13 +629,12 @@ footer {
     }
   }
 
-
-
   .desktop-final-scores-button-container {
     display: flex;
     justify-content: center;
     position: relative;
     top: 200px;
+
     .desktop-gameover-play-again-button {
       font: normal 60px "Patrick Hand", sans-serif;
       text-transform: uppercase;
@@ -787,6 +649,7 @@ footer {
         padding-bottom: 0px;
         box-shadow: 0 1px 0 #575757;
       }
+
       span {
         background: #FFF;
         padding: 2rem 2rem;
@@ -802,12 +665,13 @@ footer {
   flex-direction: column;
   align-items: center;
   margin-bottom: 2rem;
+
   span {
-    /*margin: 4rem;*/
     font-size: 4rem;
     font-weight: bold;
     font-family: 'Cabin Sketch', cursive;
   }
+
   #myProgress {
     width: 90%;
     background-color: white;
@@ -817,6 +681,7 @@ footer {
     margin-top: 5rem;
     margin-bottom: 3rem;
   }
+
   #myBar {
     background-color: #6B9F2F;
     border-radius: 10px;
@@ -826,7 +691,6 @@ footer {
 }
 
 // Keyframes
-
 @keyframes fly {
 	from {transform: translateY(0);}
 	50% {transform: translateY(12px);}
@@ -864,6 +728,30 @@ footer {
 	82% {transform: translateX(0) translateY(-30px);}
 	85% {transform: translateX(-12px) translateY(-5px);}
 	97% {transform: translateX(-12px) translateY(-5px);}
+}
+
+@keyframes push{
+  50%  {transform: scale(0.8);}
+}
+
+@keyframes pop-in {
+0% { opacity: 0; transform: scale(0.5); }
+100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes rotate {
+  100% {transform: rotate(360deg)}
+}
+
+@keyframes reverse-rotate {
+  100% {transform: rotate(-360deg)}
+}
+
+@keyframes rock {
+  25% {transform: rotate(30deg)}
+  50% {transform: rotate(-60deg)}
+  75% {transform: rotate(60deg)}
+  100% {transform: rotate(-60deg)}
 }
 
 #desktop-votes-container {
