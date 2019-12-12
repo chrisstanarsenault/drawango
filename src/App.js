@@ -47,7 +47,7 @@ class App extends Component {
 	componentDidMount() {
 		const hostname = App.getHostName();
 		const port = 3001;
-		this.socket = new WebSocket('ws://' + hostname + ':' + port);
+		this.socket = new WebSocket('wss://' + hostname + ':' + port);
 		this.socket.onopen = function (event) {
 			console.log('Connected to: ' + event.currentTarget.url);
 		};
